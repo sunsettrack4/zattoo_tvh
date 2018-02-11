@@ -1,0 +1,57 @@
+# zattoo_tvh
+
+ABOUT THIS PROJECT
+Use these scripts to retrieve ZATTOO Live TV channels, channel logo images and EPG files.
+The created files will be processed by tvHeadend; the channels can be played back via Kodi etc.
+
+
+HOW TO USE THIS SCRIPT
+Supported platforms: any Linux-based OS, e.g. Ubuntu, Debian
+Additional applications required: phantomjs, uni2ascii, libxml2-utils 
+
+Instructions:
+1) Create a directory called "ztvh" in your home folder
+2) Download the .zip file and extract the files into the "ztvh" folder
+3) Run the command "chmod a+x ~/ztvh/*"
+4) Run the command "bash ~/ztvh/ztvh.sh"
+    ==> PLEASE NOTE: You will be able to set up the settings on first run.
+
+
+--- OPTIONS MENU ---
+The following options are available:
+
+1) ZATTOO CHANNEL LOGOS (related files saved in "~/ztvh/logos")
+    ==> enable / disable the option to grab channel logo images
+2) ZATTOO EPG GRABBER (final XMLTV file saved in "~/ztvh/zattoo_fullepg.xml")
+    ==> enable the option to grab full EPG data and choose the related time period (1-7 days) or
+    ==> disable this option
+3) Change streaming quality/bandwidth
+    ==> stream your channels in 
+		LOW (600 kBit/s),
+		MEDIUM (1,5 MBit/s) or
+		MAXIMUM quality (up to 5 MBit/s)
+4) Restart script
+5) Exit script
+9) Logout from Zattoo and exit script
+    ==> PLEASE NOTE: All data files will be deleted without any warnings!
+
+
+HOW TO USE THE FILES
+1) Open the tvHeadend webpage - go to menu option "Configuration/DVB inputs/Networks"
+2) Click on "Add" button to add a new IPTV source
+3) Choose "IPTV Automatic Network" and enter a network name
+4) Fill in the fields as follows:
+    "Maximum # input streams" = 1    <== you can enter the value "2" if you have a premium account
+    "URL" = file:///home/<user>/ztvh/channels.m3u   <== enter your PC username instead of "<user>"
+    "Icon base URL" = file:///home/<user>/ztvh      <== enter your PC username instead of "<user>"
+   Accept your settings by clicking on "Save" button
+   tvHeadend will do a channel scan automatically.
+5) Go to menu option "Configuration/Channel / EPG/EPG Grabber Modules" and enable "External: XMLTV"
+6) Run the command "cat ~/ztvh/zattoo_fullepg.xml | socat - UNIX-CONNECT:~/.hts/tvheadend/epggrab/xmltv.sock"
+   tvHeadend will process the EPG XMLTV file automatically.
+
+FURTHER SUPPORT
+Contact me for support via email: sunsettrack4@gmail.com
+
+DONATIONS ARE APPRECIATED!
+https://paypal.me/sunsettrack4
