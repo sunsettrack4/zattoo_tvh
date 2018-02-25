@@ -7,14 +7,18 @@ The created files will be processed by tvHeadend; the channels can be played bac
 
 HOW TO USE THIS SCRIPT
 Supported platforms: any Linux-based OS, e.g. Ubuntu, Debian
-Additional applications required: phantomjs, uni2ascii, libxml2-utils 
+Additional applications required: phantomjs, uni2ascii, libxml2-utils, ffmpeg
 
 Instructions:
 1) Create a directory called "ztvh" in your home folder
 2) Download the .zip file and extract the files into the "ztvh" folder
-3) Run the command "chmod a+x ~/ztvh/*"
+3) Run the commands "sudo chmod a+x ~/ztvh" + "sudo chmod a+x ~/ztvh/*"
 4) Run the command "bash ~/ztvh/ztvh.sh"
     ==> PLEASE NOTE: You will be able to set up the settings on first run.
+5) Run the command "sudo chmod a+x ~/ztvh/chpipe/*"
+
+    ==> PLEASE NOTE: You might have to edit "pipe.sh" file in line 2 e.g. from "cd ~/ztvh" to "cd /home/pi/ztvh",
+        otherwise the channels can't be recognized by tvHeadend.
 
 
 --- OPTIONS MENU ---
