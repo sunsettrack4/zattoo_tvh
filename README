@@ -17,9 +17,6 @@ Instructions:
     ==> PLEASE NOTE: You will be able to set up the settings on first run.
 5) Run the command "sudo chmod a+x ~/ztvh/chpipe/*"
 
-    ==> PLEASE NOTE: You might have to edit "pipe.sh" file in line 2 e.g. from "cd ~/ztvh" to "cd /home/pi/ztvh",
-        otherwise the channels can't be recognized by tvHeadend.
-
 
 --- OPTIONS MENU ---
 The following options are available:
