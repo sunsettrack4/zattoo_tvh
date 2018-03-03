@@ -345,10 +345,16 @@ do
 done
 
 echo "Creating pipe scripts..."
+
+echo '#!/bin/bash' > pipe_workfile
+echo "cd $PWD" >> pipe_workfile
+sed -i "s/\/work//g" pipe_workfile
+cat ~/ztvh/pipe.sh >> pipe_workfile
+
 mkdir ~/ztvh/chpipe 2> /dev/null
 sed 's/#EXTM3U/#\!\/bin\/bash/g' ~/ztvh/channels.m3u > workfile
 sed -i '/#EXTINF/{s/.*tvg-id="/ch_id=\$(echo "/g;s/" tvg-logo.*/")/g;s/" group-title.*/")/g;}' workfile
-sed -i '/pipe:\/\//{s/.*chpipe\//sed "s\/CID_CHANNEL\/\$ch_id\/g" ~\/ztvh\/pipe.sh > ~\/ztvh\/chpipe\//g;}' workfile
+sed -i '/pipe:\/\//{s/.*chpipe\//sed "s\/CID_CHANNEL\/\$ch_id\/g" ~\/ztvh\/work\/pipe_workfile > ~\/ztvh\/chpipe\//g;}' workfile
 bash workfile
 
 if grep -q "chpipe 3" ~/ztvh/user/options
@@ -363,7 +369,7 @@ fi
 
 chmod a+x ~/ztvh/chpipe/*
 echo "- PIPE SCRIPTS CREATED! -" && echo ""
-rm workfile
+rm workfile pipe_workfile
 
 
 # ################
