@@ -22,12 +22,118 @@ echo "(c) 2017-2018 Jan-Luca Neumann"
 echo "Version 0.3.3 2018/02/25"
 echo ""
 
+# ##################
+# CHECK CONDITIONS #
+# ##################
+
+#
+# Existance of required programs
+#
+
 command -v phantomjs >/dev/null 2>&1 || { echo "PhantomJS is required but it's not installed!  Aborting." >&2; exit 1; }
 command -v uni2ascii >/dev/null 2>&1 || { echo "uni2ascii is required but it's not installed!  Aborting." >&2; exit 1; }
 command -v xmllint >/dev/null 2>&1 || { echo "libxml2-utils is required but it's not installed!  Aborting." >&2; exit 1; }
 command -v ffmpeg >/dev/null 2>&1 || { echo "ffmpeg is required for watching Live TV but it's not installed!" && echo ""; }
 
-cd ~/ztvh
+
+#
+# Existance of internet connectivity
+#
+
+echo "Checking internet connectivity..."
+if ping -q -w 1 -c 1 `ip r | grep default | cut -d ' ' -f 3` > /dev/null 2> /dev/null
+then :
+else
+	echo "- ERROR: NO INTERNET CONNECTION AVAILABLE! -"
+	exit 0
+fi
+
+if ping -q -w 1 -c 1 www.zattoo.com > /dev/null 2> /dev/null
+then :
+else
+	echo "- ERROR: ZATTOO WEBSERVICE UNAVAILABLE! -"
+	exit 0
+fi
+echo ""
+
+
+#
+# Existance of all required scripts and its executable permissions
+#
+
+# FOLDER + FILES missing
+
+if cd ~/ztvh 2> /dev/null
+then
+	chmod a+x ~/ztvh
+else
+	echo "- ERROR: SCRIPT FOLDER NOT EXISTING IN HOME DIRECTORY! -"
+	exit 0
+fi
+
+
+# FILES missing
+
+chmod a+x ~/ztvh/*
+
+if [ ! -x ztvh.sh ]
+then
+	echo "Main script should be executed from ztvh folder."
+fi
+
+if [ ! -x save_page.js ]
+then
+	echo "Missing file: save_page.js"
+	touch fakefile
+fi
+
+if [ ! -x zguide_dl.sh ]
+then
+	echo "Missing file: zguide_dl.sh"
+	touch fakefile
+fi
+
+if [ ! -x zguide_fc.sh ]
+then
+	echo "Missing file: zguide_fc.sh"
+	touch fakefile
+fi
+
+if [ ! -x zguide_pc.sh ]
+then
+	echo "Missing file: zguide_pc.sh"
+	touch fakefile
+fi
+
+if [ ! -x zguide_su.sh ]
+then
+	echo "Missing file: zguide_su.sh"
+	touch fakefile
+fi
+
+if [ ! -x zguide_xmltv.sh ]
+then
+	echo "Missing file: zguide_xmltv.sh"
+	touch fakefile
+fi
+
+if [ ! -x pipe.sh ]
+then
+	echo "Missing file: pipe.sh"
+	touch fakefile
+fi
+
+if [ -e fakefile ]
+then
+	echo "- ERROR: REQUIRED SCRIPT(S) NOT EXISTING IN RELATED DIRECTORY! -"
+	rm fakefile
+	exit 0
+fi
+
+
+#
+# Further actions
+#
 
 export QT_QPA_PLATFORM=offscreen
 
