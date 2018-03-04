@@ -25,9 +25,9 @@ echo ""
 command -v phantomjs >/dev/null 2>&1 || { echo "PhantomJS is required but it's not installed!  Aborting." >&2; exit 1; }
 command -v uni2ascii >/dev/null 2>&1 || { echo "uni2ascii is required but it's not installed!  Aborting." >&2; exit 1; }
 command -v xmllint >/dev/null 2>&1 || { echo "libxml2-utils is required but it's not installed!  Aborting." >&2; exit 1; }
+command -v ffmpeg >/dev/null 2>&1 || { echo "ffmpeg is required for watching Live TV but it's not installed!" && echo ""; }
 
 cd ~/ztvh
-mkdir user 2> /dev/null
 
 export QT_QPA_PLATFORM=offscreen
 
@@ -156,67 +156,58 @@ then
 			esac
 		done
 	fi
-else
-	touch user/options
 fi
 
 echo "Starting script..." && echo ""
 rm -rf work 2> /dev/null && mkdir work
 
 
-# ###############################
-# EXPORT COOKIES AND SESSION ID #
-# ###############################
+# ###############
+# LOGIN PROCESS #
+# ###############
 
 cd work
 phantomjs ~/ztvh/save_page.js https://zattoo.com/login > cookie_list
 grep "beaker.session.id" cookie_list > session
 
 # retrieve user data
-if grep -q -E "login|password" ~/ztvh/user/userfile 2> /dev/null
-then true
-else
-	echo "- ZATTOO LOGIN PAGE -"
-	read -p "email.....: " login
-	read -sp "password..: " password
-	echo "login=$login" > ~/ztvh/user/userfile
-	echo "password=$password" >> ~/ztvh/user/userfile
-	echo "- ACCOUNT DATA SAVED! -"
-	echo ""
-fi 
+until grep -q '"success": true' login.txt 2> /dev/null
+do
+	if grep -q -E "login|password" ~/ztvh/user/userfile 2> /dev/null
+	then true
+	else
+		echo "- ZATTOO LOGIN PAGE -"
+		read -p "email.....: " login
+		read -sp "password..: " password
+		mkdir ~/ztvh/user 2> /dev/null
+		echo "login=$login" > ~/ztvh/user/userfile
+		echo "password=$password" >> ~/ztvh/user/userfile
+		echo "OK"
+		echo ""
+	fi 
 
-
-# ###############
-# LOGIN PROCESS #
-# ###############
-
-echo "Login to Zattoo webservice..."
-
-session=$(<session)
-
-curl -i -X POST -H "Content-Type: application/x-www-form-urlencoded" -H "Accept: application/x-www-form-urlencoded" -v --cookie "$session" --data-urlencode "$(sed '1!d' ~/ztvh/user/userfile)" --data-urlencode "$(sed '2!d' ~/ztvh/user/userfile)" https://zattoo.com/zapi/v2/account/login > login.txt 2> /dev/null
-
-
-# #############
-# LOGIN CHECK #
-# #############
-
-if grep -q '"success": true' login.txt
-then
-	echo "- LOGIN SUCCESSFUL! -" && echo ""
-	rm cookie_list
-	sed '/Set-cookie/!d' login.txt > workfile
-	sed -i 's/expires.*//g' workfile
-	sed -i 's/Set-cookie: //g' workfile
-	sed -i 's/Set-cookie: //g' workfile
-	tr -d '\n' < workfile > session
-	sed -i 's/; Path.*//g' session
+	echo "Login to Zattoo webservice..." && echo ""
+	
 	session=$(<session)
-else 
-	rm ~/ztvh/user/userfile
-	echo "- LOGIN FAILED! -" && echo ""
-	exit 0
-fi
+
+	curl -i -X POST -H "Content-Type: application/x-www-form-urlencoded" -H "Accept: application/x-www-form-urlencoded" -v --cookie "$session" --data-urlencode "$(sed '1!d' ~/ztvh/user/userfile)" --data-urlencode "$(sed '2!d' ~/ztvh/user/userfile)" https://zattoo.com/zapi/v2/account/login > login.txt 2> /dev/null
+
+	if grep -q '"success": true' login.txt
+	then
+		echo "- LOGIN SUCCESSFUL! -" && echo ""
+		rm cookie_list
+		sed '/Set-cookie/!d' login.txt > workfile
+		sed -i 's/expires.*//g' workfile
+		sed -i 's/Set-cookie: //g' workfile
+		sed -i 's/Set-cookie: //g' workfile
+		tr -d '\n' < workfile > session
+		sed -i 's/; Path.*//g' session
+		session=$(<session)
+	else
+		rm -rf ~/ztvh/user/userfile
+		echo "- LOGIN FAILED! PLEASE RETRY! -" && echo ""
+	fi
+done
 
 
 # ##############
