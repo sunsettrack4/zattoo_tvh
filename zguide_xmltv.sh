@@ -102,12 +102,18 @@ sed -i '/category lang/s/>Wirtschaft.*/>Social \/ Political issues \/ Economics<
 sed -i '/category lang/s/>Spielshow.*/>Show \/ Game show<\/category>/g' workfile2
 sed -i '/category lang/s/>Wissen.*/>Education \/ Science \/ Factual topics<\/category>/g' workfile2
 sed -i '/category lang/s/>Fußball.*/>Football \/ Soccer<\/category>/g' workfile2
-sed -i '/category lang/s/>Wintersport.*/>Sports<\/category>/g' workfile2
+sed -i '/category lang/s/>Wintersport.*/>Winter sports<\/category>/g' workfile2
 sed -i '/category lang/s/>Wassersport.*/>Water sport<\/category>/g' workfile2
 sed -i '/category lang/s/>Reality.*/>Soap \/ Melodrama \/ Folkloric<\/category>/g' workfile2
 sed -i '/category lang/s/>Eishockey.*/>Team sports (excluding football)<\/category>/g' workfile2
 sed -i '/category lang/s/>US-Sport.*/>Sports<\/category>/g' workfile2
+sed -i '/category lang/s/>Boxen.*/>Sports<\/category>/g' workfile2
+sed -i '/category lang/s/>Golf.*/>Sports<\/category>/g' workfile2
+sed -i '/category lang/s/>Motorsport.*/>Motor sport<\/category>/g' workfile2
+sed -i '/category lang/s/>Radsport.*/>Sports<\/category>/g' workfile2
 sed -i '/category lang/s/>Drama.*/>Movie \/ Drama<\/category>/g' workfile2
+sed -i '/category lang/s/>Kino.*/>Movie \/ Drama<\/category>/g' workfile2
+sed -i '/category lang/s/>Heimat.*/>Movie \/ Drama<\/category>/g' workfile2
 sed -i '/category lang/s/>Tennis.*/>Tennis \/ Squash<\/category>/g' workfile2
 sed -i "/category lang/s/>Humor \/ Kinderserie.*/>Children's \/ Youth programs<\/category>/g" workfile2
 sed -i "/category lang/s/>Humor \/ Familie \/ Kinderserie.*/>Children's \/ Youth programs<\/category>/g" workfile2
@@ -127,6 +133,9 @@ sed -i '/category lang/s/>Talkshow.*/>Talk show<\/category>/g' workfile2
 sed -i '/category lang/s/>Geschichte.*/>Documentary<\/category>/g' workfile2
 sed -i '/category lang/s/>Zeichentrick.*/>Cartoons \/ Puppets<\/category>/g' workfile2
 sed -i "/category lang/s/>Kinderserie.*/>Children's \/ Youth programs<\/category>/g" workfile2
+sed -i "/category lang/s/>Kindershow.*/>Children's \/ Youth programs<\/category>/g" workfile2
+sed -i "/category lang/s/>Kinderfilm.*/>Children's \/ Youth programs<\/category>/g" workfile2
+sed -i "/category lang/s/>Kindernachrichten.*/>Children's \/ Youth programs<\/category>/g" workfile2
 sed -i "/category lang/s/>Abenteuer \/ Zeichentrick.*/>Children's \/ Youth programs<\/category>/g" workfile2
 sed -i "/category lang/s/>Abenteuer \/ Kinderserie.*/>Children's \/ Youth programs<\/category>/g" workfile2
 sed -i '/category lang/s/>Abenteuer.*/>Adventure \/ Western \/ War<\/category>/g' workfile2
@@ -150,6 +159,8 @@ sed -i "/category lang/s/>Familie \/ Jugend.*/>Children's \/ Youth programs<\/ca
 sed -i "/category lang/s/>Familie \/ Abenteuer.*/>Children's \/ Youth programs<\/category>/g" workfile2
 sed -i '/category lang/s/>Familie.*/>Soap \/ Melodrama \/ Folkloric<\/category>/g' workfile2
 sed -i '/category lang/s/>Erotik.*/>Adult movie \/ Drama<\/category>/g' workfile2
+sed -i '/category lang/s/>Romantik \& Liebe \/ Erotik.*/>Adult movie \/ Drama<\/category>/g' workfile2
+sed -i '/category lang/s/>Romantik \& Liebe.*/>Romance<\/category>/g' workfile2
 sed -i '/category lang/s/>Politik.*/>Social \/ Political issues \/ Economics<\/category>/g' workfile2
 sed -i '/category lang/s/>Natur.*/>Nature \/ Animals \/ Environment<\/category>/g' workfile2
 sed -i '/category lang/s/>Science Fiction.*/>Science fiction \/ Fantasy \/ Horror<\/category>/g' workfile2
