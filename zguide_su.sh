@@ -20,7 +20,7 @@
 # SUM UP EPG DETAILS #
 # ####################
 
-if grep -q "epgdata [1-7]" ~/ztvh/user/options 2> /dev/null
+if grep -q -E "epgdata [1-9]-|epgdata 1[0-4]-" ~/ztvh/user/options 2> /dev/null
 then 
 	cd ~/ztvh/epg/$(date '+%Y%m%d')
 	rm workfile 2> /dev/null
@@ -31,7 +31,7 @@ then
 	sed -i '$i\ ' ~/ztvh/epg/workfile
 fi
 
-if grep -q "epgdata [2-7]" ~/ztvh/user/options 2> /dev/null
+if grep -q -E "epgdata [2-9]-|epgdata 1[0-4]-" ~/ztvh/user/options 2> /dev/null
 then 
 	cd ~/ztvh/epg/$(date -d '1 day' '+%Y%m%d')
 	rm workfile 2> /dev/null
@@ -42,7 +42,7 @@ then
 	sed -i '$i\ ' ~/ztvh/epg/workfile
 fi
 
-if grep -q "epgdata [3-7]" ~/ztvh/user/options 2> /dev/null
+if grep -q -E "epgdata [3-9]-|epgdata 1[0-4]-" ~/ztvh/user/options 2> /dev/null
 then 
 	cd ~/ztvh/epg/$(date -d '2 days' '+%Y%m%d')
 	rm workfile 2> /dev/null
@@ -53,7 +53,7 @@ then
 	sed -i '$i\ ' ~/ztvh/epg/workfile
 fi
 
-if grep -q "epgdata [4-7]" ~/ztvh/user/options 2> /dev/null
+if grep -q -E "epgdata [4-9]-|epgdata 1[0-4]-" ~/ztvh/user/options 2> /dev/null
 then 
 	cd ~/ztvh/epg/$(date -d '3 days' '+%Y%m%d')
 	rm workfile 2> /dev/null
@@ -64,7 +64,7 @@ then
 	sed -i '$i\ ' ~/ztvh/epg/workfile
 fi
 
-if grep -q "epgdata [5-7]" ~/ztvh/user/options 2> /dev/null
+if grep -q -E "epgdata [5-9]-|epgdata 1[0-4]-" ~/ztvh/user/options 2> /dev/null
 then 
 	cd ~/ztvh/epg/$(date -d '4 days' '+%Y%m%d')
 	rm workfile 2> /dev/null
@@ -75,7 +75,7 @@ then
 	sed -i '$i\ ' ~/ztvh/epg/workfile
 fi
 
-if grep -q "epgdata [6-7]" ~/ztvh/user/options 2> /dev/null
+if grep -q -E "epgdata [6-9]-|epgdata 1[0-4]-" ~/ztvh/user/options 2> /dev/null
 then 
 	cd ~/ztvh/epg/$(date -d '5 days' '+%Y%m%d')
 	rm workfile 2> /dev/null
@@ -86,9 +86,86 @@ then
 	sed -i '$i\ ' ~/ztvh/epg/workfile
 fi
 
-if grep -q "epgdata 7" ~/ztvh/user/options 2> /dev/null
+if grep -q -E "epgdata [7-9]-|epgdata 1[0-4]-" ~/ztvh/user/options 2> /dev/null
 then 
 	cd ~/ztvh/epg/$(date -d '6 days' '+%Y%m%d')
+	rm workfile 2> /dev/null
+	cat * >> workfile
+	sed -i 's/{"program"/\n/g' workfile
+	sed -i '1d' workfile
+	cat workfile >> ~/ztvh/epg/workfile
+	sed -i '$i\ ' ~/ztvh/epg/workfile
+fi
+
+if grep -q -E "epgdata [8-9]-|epgdata 1[0-4]-" ~/ztvh/user/options 2> /dev/null
+then 
+	cd ~/ztvh/epg/$(date -d '7 days' '+%Y%m%d')
+	rm workfile 2> /dev/null
+	cat * >> workfile
+	sed -i 's/{"program"/\n/g' workfile
+	sed -i '1d' workfile
+	cat workfile >> ~/ztvh/epg/workfile
+	sed -i '$i\ ' ~/ztvh/epg/workfile
+fi
+
+if grep -q -E "epgdata 9-|epgdata 1[0-4]-" ~/ztvh/user/options 2> /dev/null
+then 
+	cd ~/ztvh/epg/$(date -d '8 days' '+%Y%m%d')
+	rm workfile 2> /dev/null
+	cat * >> workfile
+	sed -i 's/{"program"/\n/g' workfile
+	sed -i '1d' workfile
+	cat workfile >> ~/ztvh/epg/workfile
+	sed -i '$i\ ' ~/ztvh/epg/workfile
+fi
+
+if grep -q "epgdata 1[0-4]-" ~/ztvh/user/options 2> /dev/null
+then 
+	cd ~/ztvh/epg/$(date -d '9 days' '+%Y%m%d')
+	rm workfile 2> /dev/null
+	cat * >> workfile
+	sed -i 's/{"program"/\n/g' workfile
+	sed -i '1d' workfile
+	cat workfile >> ~/ztvh/epg/workfile
+	sed -i '$i\ ' ~/ztvh/epg/workfile
+fi
+
+if grep -q "epgdata 1[1-4]-" ~/ztvh/user/options 2> /dev/null
+then 
+	cd ~/ztvh/epg/$(date -d '10 days' '+%Y%m%d')
+	rm workfile 2> /dev/null
+	cat * >> workfile
+	sed -i 's/{"program"/\n/g' workfile
+	sed -i '1d' workfile
+	cat workfile >> ~/ztvh/epg/workfile
+	sed -i '$i\ ' ~/ztvh/epg/workfile
+fi
+
+if grep -q "epgdata 1[2-4]-" ~/ztvh/user/options 2> /dev/null
+then 
+	cd ~/ztvh/epg/$(date -d '11 days' '+%Y%m%d')
+	rm workfile 2> /dev/null
+	cat * >> workfile
+	sed -i 's/{"program"/\n/g' workfile
+	sed -i '1d' workfile
+	cat workfile >> ~/ztvh/epg/workfile
+	sed -i '$i\ ' ~/ztvh/epg/workfile
+fi
+
+if grep -q "epgdata 1[3-4]-" ~/ztvh/user/options 2> /dev/null
+then 
+	cd ~/ztvh/epg/$(date -d '12 days' '+%Y%m%d')
+	rm workfile 2> /dev/null
+	cat * >> workfile
+	sed -i 's/{"program"/\n/g' workfile
+	sed -i '1d' workfile
+	cat workfile >> ~/ztvh/epg/workfile
+	sed -i '$i\ ' ~/ztvh/epg/workfile
+fi
+
+if grep -q "epgdata 14-" ~/ztvh/user/options 2> /dev/null
+then 
+	cd ~/ztvh/epg/$(date -d '13 days' '+%Y%m%d')
 	rm workfile 2> /dev/null
 	cat * >> workfile
 	sed -i 's/{"program"/\n/g' workfile

@@ -163,17 +163,17 @@ then
 			then
 				echo "[1] Enable ZATTOO CHANNEL LOGOS"
 			fi
-			if grep -q "epgdata [1-7]" user/options
+			if grep -q -E "epgdata [1-9]-|epgdata 1[0-4]-" user/options
 			then
-				echo "[2] Change time period for ZATTOO EPG GRABBER (current: $(sed '/epgdata/!d;s/epgdata //g;' ~/ztvh/user/options) day(s))"
-			elif grep -q "epgdata 0" user/options
+				echo "[2] Change time period for ZATTOO EPG GRABBER (current: $(sed '/epgdata/!d;s/epgdata //g;s/-//g;' ~/ztvh/user/options) day(s))"
+			elif grep -q "epgdata 0-" user/options
 			then
 				echo "[2] Enable ZATTOO EPG GRABBER"
 			else
 				sed -i 's/epgdata.*//g' user/options
 				sed -i '/^\s*$/d' user/options
 				echo "[2] Enable ZATTOO EPG GRABBER"
-				echo "epgdata 0" >> user/options
+				echo "epgdata 0-" >> user/options
 			fi
 			echo "[3] Change streaming quality/bandwidth"
 			if grep -q "chpipe 3" user/options
@@ -207,19 +207,19 @@ then
 				fi;;
 			2)	sed -i 's/epgdata.*//g' user/options
 				sed -i '/^\s*$/d' user/options
-				until grep -q "epgdata [0-7]" user/options 2> /dev/null
+				until grep -q -E "epgdata [0-9]-|epgdata 1[0-4]-" user/options 2> /dev/null
 				do
 					echo "Please enter the number of days you want to retrieve the EPG information."
-					echo "[0] - DISABLE /// [1-7] - ENABLE"
-					read -p "Number....: " -n1 epgnum && echo ""
+					echo "[0] - DISABLE /// [1-14] - ENABLE"
+					read -p "Number....: " -n2 epgnum && echo ""
 					sed -i 's/epgdata.*//g' user/options
 					sed -i '/^\s*$/d' user/options
-					echo "epgdata $epgnum" >> user/options
-					if grep -q "epgdata [1-7]" user/options 2> /dev/null
+					echo "epgdata $epgnum-" >> user/options
+					if grep -q -E "epgdata [1-9]-|epgdata 1[0-4]-" user/options 2> /dev/null
 					then
-						echo "ZATTOO EPG GRABBER enabled for $(sed '/epgdata/!d;s/epgdata //g;' ~/ztvh/user/options) day(s)!" && echo ""
+						echo "ZATTOO EPG GRABBER enabled for $(sed '/epgdata/!d;s/epgdata //g;s/-//g;' ~/ztvh/user/options) day(s)!" && echo ""
 						mv ~/ztvh/epg/$(date +%Y%m%d)_zattoo_fullepg.xml ~/ztvh/epg/$(date +%Y%m%d)_zattoo_fullepg_OLD.xml 2> /dev/null 
-					elif grep -q "epgdata 0" user/options
+					elif grep -q "epgdata 0-" user/options
 					then
 						echo "ZATTOO EPG GRABBER disabled!" && echo ""
 					else
@@ -475,13 +475,13 @@ rm workfile pipe_workfile
 
 echo "--- ZATTOO EPG GRABBER ---"
 
-until grep -q "epgdata [0-7]" ~/ztvh/user/options 2> /dev/null
+until grep -q -E "epgdata [0-9]-|epgdata 1[0-4]-" ~/ztvh/user/options 2> /dev/null
 do
 	echo "Please enter the number of days you want to retrieve the EPG information."
-	echo "[0] - DISABLE /// [1-7] - ENABLE"
-	read -p "Number....: " -n1 epgnum
-	echo "epgdata $epgnum" >> ~/ztvh/user/options
-	if grep -q "epgdata [0-7]" ~/ztvh/user/options 2> /dev/null
+	echo "[0] - DISABLE /// [1-14] - ENABLE"
+	read -p "Number....: " -n2 epgnum
+	echo "epgdata $epgnum-" >> ~/ztvh/user/options
+	if grep -q -E "epgdata [0-9]-|epgdata 1[0-4]-" ~/ztvh/user/options 2> /dev/null
 	then
 		echo ""
 	else
@@ -491,12 +491,12 @@ do
 	fi
 done
 
-if grep -q "epgdata 0" ~/ztvh/user/options 2> /dev/null
+if grep -q "epgdata 0-" ~/ztvh/user/options 2> /dev/null
 then
 	echo "- EPG GRABBER DISABLED! -" && echo "--- DONE ---" && exit 0
 fi 
 
-echo "Grabbing EPG data for $(sed '/epgdata/!d;s/epgdata //g;' ~/ztvh/user/options) day(s)!" && echo ""
+echo "Grabbing EPG data for $(sed '/epgdata/!d;s/epgdata //g;s/-//g;' ~/ztvh/user/options) day(s)!" && echo ""
 
 mkdir ~/ztvh/epg 2> /dev/null
 
@@ -556,7 +556,7 @@ do
 	fi
 
 
-	for i in {1..7..1}
+	for i in {1..14..1}
 	do
 		bash epg/datafile_${i} 2> /dev/null &
 	done

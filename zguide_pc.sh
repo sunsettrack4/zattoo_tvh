@@ -105,3 +105,59 @@ then
 else
 	rm -rf $(date -d '6 days' '+%Y%m%d')* 2> /dev/null
 fi
+
+# DAY 8
+if grep -q "$(date -d '7 days' '+%Y%m%d') finished" status 2> /dev/null
+then
+	echo "DAY 8 - $(date -d '7 days' '+%Y%m%d'): DATA FOUND!"
+else
+	rm -rf $(date -d '7 days' '+%Y%m%d')* 2> /dev/null
+fi
+
+# DAY 9
+if grep -q "$(date -d '8 days' '+%Y%m%d') finished" status 2> /dev/null
+then
+	echo "DAY 9 - $(date -d '8 days' '+%Y%m%d'): DATA FOUND!"
+else
+	rm -rf $(date -d '8 days' '+%Y%m%d')* 2> /dev/null
+fi
+
+# DAY 10
+if grep -q "$(date -d '9 days' '+%Y%m%d') finished" status 2> /dev/null
+then
+	echo "DAY 10 - $(date -d '9 days' '+%Y%m%d'): DATA FOUND!"
+else
+	rm -rf $(date -d '9 days' '+%Y%m%d')* 2> /dev/null
+fi
+
+# DAY 11
+if grep -q "$(date -d '10 days' '+%Y%m%d') finished" status 2> /dev/null
+then
+	echo "DAY 11 - $(date -d '10 days' '+%Y%m%d'): DATA FOUND!"
+else
+	rm -rf $(date -d '10 days' '+%Y%m%d')* 2> /dev/null
+fi
+
+# DAY 12
+if grep -q "$(date -d '11 days' '+%Y%m%d') finished" status 2> /dev/null
+then
+	echo "DAY 12 - $(date -d '11 days' '+%Y%m%d'): DATA FOUND!"
+else
+	rm -rf $(date -d '11 days' '+%Y%m%d')* 2> /dev/null
+fi
+
+# DAY 13
+if grep -q "$(date -d '12 days' '+%Y%m%d') finished" status 2> /dev/null
+then
+	echo "DAY 13 - $(date -d '12 days' '+%Y%m%d'): DATA FOUND!"
+else
+	rm -rf $(date -d '12 days' '+%Y%m%d')* 2> /dev/null
+fi
+
+# DAY 14
+if grep -q "$(date -d '13 days' '+%Y%m%d') finished" status 2> /dev/null
+then
+	echo "DAY 14 - $(date -d '13 days' '+%Y%m%d'): DATA FOUND!"
+else
+	rm -rf $(date -d '13 days' '+%Y%m%d')* 2> /dev/null
+fi
