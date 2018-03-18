@@ -211,7 +211,7 @@ then
 				do
 					echo "Please enter the number of days you want to retrieve the EPG information."
 					echo "[0] - DISABLE /// [1-14] - ENABLE"
-					read -p "Number....: " -n2 epgnum && echo ""
+					read -e -p "Number....: " -n2 epgnum && echo ""
 					sed -i 's/epgdata.*//g' user/options
 					sed -i '/^\s*$/d' user/options
 					echo "epgdata $epgnum-" >> user/options
@@ -283,8 +283,8 @@ do
 	then true
 	else
 		echo "- ZATTOO LOGIN PAGE -"
-		read -p "email.....: " login
-		read -sp "password..: " password
+		read -e -p "email.....: " login
+		read -e -sp "password..: " password
 		mkdir ~/ztvh/user 2> /dev/null
 		echo "login=$login" > ~/ztvh/user/userfile
 		echo "password=$password" >> ~/ztvh/user/userfile
@@ -479,7 +479,7 @@ until grep -q -E "epgdata [0-9]-|epgdata 1[0-4]-" ~/ztvh/user/options 2> /dev/nu
 do
 	echo "Please enter the number of days you want to retrieve the EPG information."
 	echo "[0] - DISABLE /// [1-14] - ENABLE"
-	read -p "Number....: " -n2 epgnum
+	read -e -p "Number....: " -n2 epgnum
 	echo "epgdata $epgnum-" >> ~/ztvh/user/options
 	if grep -q -E "epgdata [0-9]-|epgdata 1[0-4]-" ~/ztvh/user/options 2> /dev/null
 	then
@@ -535,10 +535,12 @@ do
 		fi
 	done
 	rm epglist
+	rm ~/ztvh/epg/scriptbase 2> /dev/null
+	rm ~/ztvh/epg/scriptfile_0* 2> /dev/null
 
 
 	#
-	# Download EPG details
+	# Download EPG manifest files, create scripts to collect EPG details
 	#
 	
 	cd ~/ztvh
@@ -549,19 +551,22 @@ do
 	# Collect EPG details
 	#
 
-	if ls ~/ztvh/epg | grep -q "datafile" 2> /dev/null
+	if ls ~/ztvh/epg | grep -q "scriptfile" 2> /dev/null
 	then
 		echo "Collecting EPG details..."
 		echo "That may take a while..."	&& echo ""
 	fi
 
 
-	for i in {1..14..1}
+	for i in {0..7..1}
 	do
-		bash epg/datafile_${i} 2> /dev/null &
+		bash epg/scriptfile_0${i} 2> /dev/null &
 	done
 	wait
-
+	
+	rm epg/scriptbase 2> /dev/null
+	rm epg/scriptfile_0* 2> /dev/null
+	
 
 	# 
 	# Check EPG cache for completeness

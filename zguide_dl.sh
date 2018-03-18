@@ -37,6 +37,7 @@ echo "" && echo "Checking EPG manifest files..."
 
 if grep -q -E "epgdata [1-9]-|epgdata 1[0-4]-" ~/ztvh/user/options 2> /dev/null
 then
+	mkdir ~/ztvh/epg/$(date '+%Y%m%d') 2> /dev/null
 	until grep -q '"success":true' ~/ztvh/epg/datafile_1 2> /dev/null
 	do
 		date '+%Y-%m-%d 06:00:00' > date0
@@ -86,10 +87,10 @@ then
 		# Create file checker to download changed/new broadcasts
 		comm -2 -3 <(sort ~/ztvh/epg/$(date +%Y%m%d)_manifest_new) <(sort ~/ztvh/epg/$(date +%Y%m%d)_manifest_old 2> /dev/null) > workfile
 		sed -i -e 's/\(.*\)\("id":.*\)/\2/g' -e 's/"id"://g' -e 's/},//g' workfile && cp workfile workfile2
-		sed -i 's/.*/curl -X GET --cookie "\$session" "https:\/\/zattoo.com\/zapi\/program\/details?program_id=&" > epg\/\$date\/& 2> \/dev\/null/g' workfile
+		sed -i 's/.*/curl -X GET --cookie "\$session" "https:\/\/zattoo.com\/zapi\/program\/details?program_id=&" > epg\/\$date_01\/& 2> \/dev\/null/g' workfile
 		if grep -q "curl" workfile
 		then 
-			sed '1i #\!\/bin\/bash\nsession=\$(<work\/session)\ndate=\$(date +%Y%m%d)' workfile > ~/ztvh/epg/filecheck
+			mv workfile ~/ztvh/epg/filecheck
 		fi
 	
 		# Add commands to file checker to remove deleted broadcasts
@@ -102,7 +103,7 @@ then
 		if [ -s workfile ]
 		then
 			sed -i -e 's/\(.*\)\("id":.*\)/\2/g' -e 's/"id"://g' -e 's/},//g' workfile
-			sed -i 's/.*/rm epg\/\$date\/&/g' workfile
+			sed -i 's/.*/rm epg\/\$date_01\/&/g' workfile
 			if [ -s ~/ztvh/epg/filecheck ]
 			then
 				cat workfile >> ~/ztvh/epg/filecheck
@@ -113,9 +114,7 @@ then
 				touch ~/ztvh/epg/stats2
 				sed -i "s/$(date +%Y%m%d) finished//g" ~/ztvh/epg/status 2> /dev/null
 			else
-				echo "#!/bin/bash" > ~/ztvh/epg/datafile_1
-				echo "date=$(date +%Y%m%d)" >> ~/ztvh/epg/datafile_1
-				cat workfile >> ~/ztvh/epg/datafile_1
+				mv workfile ~/ztvh/epg/datafile_1
 				echo "- SYNCED FILES TO BE DELETED -"
 				touch ~/ztvh/epg/stats
 				touch ~/ztvh/epg/stats2
@@ -142,8 +141,7 @@ then
 		sed -i 's/,.*//g' workfile
 		sed -i 's/"id"://g' workfile
 		sed -i 's/}.*//g' workfile
-		sed -i 's/.*/if \[ -e epg\/\$date\/& \]\nthen :\nelse\ncurl -X GET --cookie "\$session" "https:\/\/zattoo.com\/zapi\/program\/details?program_id=&" > epg\/\$date\/& 2> \/dev\/null\nfi/g' workfile
-		sed -i '1i #\!\/bin\/bash\nsession=\$(<work\/session)\ndate=\$(date +%Y%m%d)\nmkdir epg\/\$date 2> \/dev\/null' workfile
+		sed -i 's/.*/curl -X GET --cookie "\$session" "https:\/\/zattoo.com\/zapi\/program\/details?program_id=&" > epg\/\$date_01\/& 2> \/dev\/null/g' workfile
 		mv workfile ~/ztvh/epg/datafile_1
 		echo "- COMPLETE DATABASE TO BE SYNCED -"
 		touch ~/ztvh/epg/stats
@@ -159,6 +157,7 @@ fi
 
 if grep -q -E "epgdata [2-9]-|epgdata 1[0-4]-" ~/ztvh/user/options 2> /dev/null
 then
+	mkdir ~/ztvh/epg/$(date -d '1 day' '+%Y%m%d') 2> /dev/null
 	until grep -q '"success":true' ~/ztvh/epg/datafile_2 2> /dev/null
 	do
 		date -d '1 day' '+%Y-%m-%d 06:00:00' > date0
@@ -208,10 +207,10 @@ then
 		# Create file checker to download changed/new broadcasts
 		comm -2 -3 <(sort ~/ztvh/epg/$(date -d '1 day' '+%Y%m%d')_manifest_new) <(sort ~/ztvh/epg/$(date -d '1 day' '+%Y%m%d')_manifest_old 2> /dev/null) > workfile
 		sed -i -e 's/\(.*\)\("id":.*\)/\2/g' -e 's/"id"://g' -e 's/},//g' workfile && cp workfile workfile2
-		sed -i 's/.*/curl -X GET --cookie "\$session" "https:\/\/zattoo.com\/zapi\/program\/details?program_id=&" > epg\/\$date\/& 2> \/dev\/null/g' workfile
+		sed -i 's/.*/curl -X GET --cookie "\$session" "https:\/\/zattoo.com\/zapi\/program\/details?program_id=&" > epg\/\$date_02\/& 2> \/dev\/null/g' workfile
 		if grep -q "curl" workfile
 		then 
-			sed "1i #\!\/bin\/bash\nsession=\$(<work\/session)\ndate=\$(date -d '1 day' '+%Y%m%d')" workfile > ~/ztvh/epg/filecheck
+			mv workfile ~/ztvh/epg/filecheck
 		fi
 	
 		# Add commands to file checker to remove deleted broadcasts
@@ -224,7 +223,7 @@ then
 		if [ -s workfile ]
 		then
 			sed -i -e 's/\(.*\)\("id":.*\)/\2/g' -e 's/"id"://g' -e 's/},//g' workfile
-			sed -i 's/.*/rm epg\/\$date\/&/g' workfile
+			sed -i 's/.*/rm epg\/\$date_02\/&/g' workfile
 			if [ -s ~/ztvh/epg/filecheck ]
 			then
 				cat workfile >> ~/ztvh/epg/filecheck
@@ -235,9 +234,7 @@ then
 				touch ~/ztvh/epg/stats2
 				sed -i "s/$(date -d '1 day' '+%Y%m%d') finished//g" ~/ztvh/epg/status 2> /dev/null
 			else
-				echo "#!/bin/bash" > ~/ztvh/epg/datafile_2
-				echo "date=$(date -d '1 day' '+%Y%m%d')" >> ~/ztvh/epg/datafile_2
-				cat workfile >> ~/ztvh/epg/datafile_2
+				mv workfile ~/ztvh/epg/datafile_2
 				echo "- SYNCED FILES TO BE DELETED -"
 				touch ~/ztvh/epg/stats
 				touch ~/ztvh/epg/stats2
@@ -264,8 +261,7 @@ then
 		sed -i 's/,.*//g' workfile
 		sed -i 's/"id"://g' workfile
 		sed -i 's/}.*//g' workfile
-		sed -i 's/.*/if \[ -e epg\/\$date\/& \]\nthen :\nelse\ncurl -X GET --cookie "\$session" "https:\/\/zattoo.com\/zapi\/program\/details?program_id=&" > epg\/\$date\/& 2> \/dev\/null\nfi/g' workfile
-		sed -i "1i #\!\/bin\/bash\nsession=\$(<work\/session)\ndate=\$(date -d '1 day' '+%Y%m%d')\nmkdir epg\/\$date 2> \/dev\/null" workfile
+		sed -i 's/.*/curl -X GET --cookie "\$session" "https:\/\/zattoo.com\/zapi\/program\/details?program_id=&" > epg\/\$date_02\/& 2> \/dev\/null/g' workfile
 		mv workfile ~/ztvh/epg/datafile_2
 		echo "- COMPLETE DATABASE TO BE SYNCED -"
 		touch ~/ztvh/epg/stats
@@ -281,6 +277,7 @@ fi
 
 if grep -q -E "epgdata [3-9]-|epgdata 1[0-4]-" ~/ztvh/user/options 2> /dev/null
 then
+	mkdir ~/ztvh/epg/$(date -d '2 days' '+%Y%m%d') 2> /dev/null
 	until grep -q '"success":true' ~/ztvh/epg/datafile_3 2> /dev/null
 	do
 		date -d '2 days' '+%Y-%m-%d 06:00:00' > date0
@@ -330,10 +327,10 @@ then
 		# Create file checker to download changed/new broadcasts
 		comm -2 -3 <(sort ~/ztvh/epg/$(date -d '2 days' '+%Y%m%d')_manifest_new) <(sort ~/ztvh/epg/$(date -d '2 days' '+%Y%m%d')_manifest_old 2> /dev/null) > workfile
 		sed -i -e 's/\(.*\)\("id":.*\)/\2/g' -e 's/"id"://g' -e 's/},//g' workfile && cp workfile workfile2
-		sed -i 's/.*/curl -X GET --cookie "\$session" "https:\/\/zattoo.com\/zapi\/program\/details?program_id=&" > epg\/\$date\/& 2> \/dev\/null/g' workfile
+		sed -i 's/.*/curl -X GET --cookie "\$session" "https:\/\/zattoo.com\/zapi\/program\/details?program_id=&" > epg\/\$date_03\/& 2> \/dev\/null/g' workfile
 		if grep -q "curl" workfile
 		then 
-			sed "1i #\!\/bin\/bash\nsession=\$(<work\/session)\ndate=\$(date -d '2 days' '+%Y%m%d')" workfile > ~/ztvh/epg/filecheck
+			mv workfile ~/ztvh/epg/filecheck
 		fi
 	
 		# Add commands to file checker to remove deleted broadcasts
@@ -346,7 +343,7 @@ then
 		if [ -s workfile ]
 		then
 			sed -i -e 's/\(.*\)\("id":.*\)/\2/g' -e 's/"id"://g' -e 's/},//g' workfile
-			sed -i 's/.*/rm epg\/\$date\/&/g' workfile
+			sed -i 's/.*/rm epg\/\$date_03\/&/g' workfile
 			if [ -s ~/ztvh/epg/filecheck ]
 			then
 				cat workfile >> ~/ztvh/epg/filecheck
@@ -357,9 +354,7 @@ then
 				touch ~/ztvh/epg/stats2
 				sed -i "s/$(date -d '2 days' '+%Y%m%d') finished//g" ~/ztvh/epg/status 2> /dev/null
 			else
-				echo "#!/bin/bash" > ~/ztvh/epg/datafile_3
-				echo "date=$(date -d '2 days' '+%Y%m%d')" >> ~/ztvh/epg/datafile_3
-				cat workfile >> ~/ztvh/epg/datafile_3
+				mv workfile ~/ztvh/epg/datafile_3
 				echo "- SYNCED FILES TO BE DELETED -"
 				touch ~/ztvh/epg/stats
 				touch ~/ztvh/epg/stats2
@@ -386,8 +381,7 @@ then
 		sed -i 's/,.*//g' workfile
 		sed -i 's/"id"://g' workfile
 		sed -i 's/}.*//g' workfile
-		sed -i 's/.*/if \[ -e epg\/\$date\/& \]\nthen :\nelse\ncurl -X GET --cookie "\$session" "https:\/\/zattoo.com\/zapi\/program\/details?program_id=&" > epg\/\$date\/& 2> \/dev\/null\nfi/g' workfile
-		sed -i "1i #\!\/bin\/bash\nsession=\$(<work\/session)\ndate=\$(date -d '2 days' '+%Y%m%d')\nmkdir epg\/\$date 2> \/dev\/null" workfile
+		sed -i 's/.*/curl -X GET --cookie "\$session" "https:\/\/zattoo.com\/zapi\/program\/details?program_id=&" > epg\/\$date_03\/& 2> \/dev\/null/g' workfile
 		mv workfile ~/ztvh/epg/datafile_3
 		echo "- COMPLETE DATABASE TO BE SYNCED -"
 		touch ~/ztvh/epg/stats
@@ -403,6 +397,7 @@ fi
 
 if grep -q -E "epgdata [4-9]-|epgdata 1[0-4]-" ~/ztvh/user/options 2> /dev/null
 then
+	mkdir ~/ztvh/epg/$(date -d '3 days' '+%Y%m%d') 2> /dev/null
 	until grep -q '"success":true' ~/ztvh/epg/datafile_4 2> /dev/null
 	do
 		date -d '3 days' '+%Y-%m-%d 06:00:00' > date0
@@ -452,10 +447,10 @@ then
 		# Create file checker to download changed/new broadcasts
 		comm -2 -3 <(sort ~/ztvh/epg/$(date -d '3 days' '+%Y%m%d')_manifest_new) <(sort ~/ztvh/epg/$(date -d '3 days' '+%Y%m%d')_manifest_old 2> /dev/null) > workfile
 		sed -i -e 's/\(.*\)\("id":.*\)/\2/g' -e 's/"id"://g' -e 's/},//g' workfile && cp workfile workfile2
-		sed -i 's/.*/curl -X GET --cookie "\$session" "https:\/\/zattoo.com\/zapi\/program\/details?program_id=&" > epg\/\$date\/& 2> \/dev\/null/g' workfile
+		sed -i 's/.*/curl -X GET --cookie "\$session" "https:\/\/zattoo.com\/zapi\/program\/details?program_id=&" > epg\/\$date_04\/& 2> \/dev\/null/g' workfile
 		if grep -q "curl" workfile
 		then 
-			sed "1i #\!\/bin\/bash\nsession=\$(<work\/session)\ndate=\$(date -d '3 days' '+%Y%m%d')" workfile > ~/ztvh/epg/filecheck
+			mv workfile ~/ztvh/epg/filecheck
 		fi
 	
 		# Add commands to file checker to remove deleted broadcasts
@@ -468,7 +463,7 @@ then
 		if [ -s workfile ]
 		then
 			sed -i -e 's/\(.*\)\("id":.*\)/\2/g' -e 's/"id"://g' -e 's/},//g' workfile
-			sed -i 's/.*/rm epg\/\$date\/&/g' workfile
+			sed -i 's/.*/rm epg\/\$date_04\/&/g' workfile
 			if [ -s ~/ztvh/epg/filecheck ]
 			then
 				cat workfile >> ~/ztvh/epg/filecheck
@@ -479,9 +474,7 @@ then
 				touch ~/ztvh/epg/stats2
 				sed -i "s/$(date -d '3 days' '+%Y%m%d') finished//g" ~/ztvh/epg/status 2> /dev/null
 			else
-				echo "#!/bin/bash" > ~/ztvh/epg/datafile_4
-				echo "date=$(date -d '3 days' '+%Y%m%d')" >> ~/ztvh/epg/datafile_4
-				cat workfile >> ~/ztvh/epg/datafile_4
+				mv workfile ~/ztvh/epg/datafile_4
 				echo "- SYNCED FILES TO BE DELETED -"
 				touch ~/ztvh/epg/stats
 				touch ~/ztvh/epg/stats2
@@ -508,8 +501,7 @@ then
 		sed -i 's/,.*//g' workfile
 		sed -i 's/"id"://g' workfile
 		sed -i 's/}.*//g' workfile
-		sed -i 's/.*/if \[ -e epg\/\$date\/& \]\nthen :\nelse\ncurl -X GET --cookie "\$session" "https:\/\/zattoo.com\/zapi\/program\/details?program_id=&" > epg\/\$date\/& 2> \/dev\/null\nfi/g' workfile
-		sed -i "1i #\!\/bin\/bash\nsession=\$(<work\/session)\ndate=\$(date -d '3 days' '+%Y%m%d')\nmkdir epg\/\$date 2> \/dev\/null" workfile
+		sed -i 's/.*/curl -X GET --cookie "\$session" "https:\/\/zattoo.com\/zapi\/program\/details?program_id=&" > epg\/\$date_04\/& 2> \/dev\/null/g' workfile
 		mv workfile ~/ztvh/epg/datafile_4
 		echo "- COMPLETE DATABASE TO BE SYNCED -"
 		touch ~/ztvh/epg/stats
@@ -525,6 +517,7 @@ fi
 
 if grep -q -E "epgdata [5-9]-|epgdata 1[0-4]-" ~/ztvh/user/options 2> /dev/null
 then
+	mkdir ~/ztvh/epg/$(date -d '4 days' '+%Y%m%d') 2> /dev/null
 	until grep -q '"success":true' ~/ztvh/epg/datafile_5 2> /dev/null
 	do
 		date -d '4 days' '+%Y-%m-%d 06:00:00' > date0
@@ -574,10 +567,10 @@ then
 		# Create file checker to download changed/new broadcasts
 		comm -2 -3 <(sort ~/ztvh/epg/$(date -d '4 days' '+%Y%m%d')_manifest_new) <(sort ~/ztvh/epg/$(date -d '4 days' '+%Y%m%d')_manifest_old 2> /dev/null) > workfile
 		sed -i -e 's/\(.*\)\("id":.*\)/\2/g' -e 's/"id"://g' -e 's/},//g' workfile && cp workfile workfile2
-		sed -i 's/.*/curl -X GET --cookie "\$session" "https:\/\/zattoo.com\/zapi\/program\/details?program_id=&" > epg\/\$date\/& 2> \/dev\/null/g' workfile
+		sed -i 's/.*/curl -X GET --cookie "\$session" "https:\/\/zattoo.com\/zapi\/program\/details?program_id=&" > epg\/\$date_05\/& 2> \/dev\/null/g' workfile
 		if grep -q "curl" workfile
 		then 
-			sed "1i #\!\/bin\/bash\nsession=\$(<work\/session)\ndate=\$(date -d '4 days' '+%Y%m%d')" workfile > ~/ztvh/epg/filecheck
+			mv workfile ~/ztvh/epg/filecheck
 		fi
 	
 		# Add commands to file checker to remove deleted broadcasts
@@ -590,7 +583,7 @@ then
 		if [ -s workfile ]
 		then
 			sed -i -e 's/\(.*\)\("id":.*\)/\2/g' -e 's/"id"://g' -e 's/},//g' workfile
-			sed -i 's/.*/rm epg\/\$date\/&/g' workfile
+			sed -i 's/.*/rm epg\/\$date_05\/&/g' workfile
 			if [ -s ~/ztvh/epg/filecheck ]
 			then
 				cat workfile >> ~/ztvh/epg/filecheck
@@ -601,9 +594,7 @@ then
 				touch ~/ztvh/epg/stats2
 				sed -i "s/$(date -d '4 days' '+%Y%m%d') finished//g" ~/ztvh/epg/status 2> /dev/null
 			else
-				echo "#!/bin/bash" > ~/ztvh/epg/datafile_5
-				echo "date=$(date -d '4 days' '+%Y%m%d')" >> ~/ztvh/epg/datafile_5
-				cat workfile >> ~/ztvh/epg/datafile_5
+				mv workfile ~/ztvh/epg/datafile_5
 				echo "- SYNCED FILES TO BE DELETED -"
 				touch ~/ztvh/epg/stats
 				touch ~/ztvh/epg/stats2
@@ -630,8 +621,7 @@ then
 		sed -i 's/,.*//g' workfile
 		sed -i 's/"id"://g' workfile
 		sed -i 's/}.*//g' workfile
-		sed -i 's/.*/if \[ -e epg\/\$date\/& \]\nthen :\nelse\ncurl -X GET --cookie "\$session" "https:\/\/zattoo.com\/zapi\/program\/details?program_id=&" > epg\/\$date\/& 2> \/dev\/null\nfi/g' workfile
-		sed -i "1i #\!\/bin\/bash\nsession=\$(<work\/session)\ndate=\$(date -d '4 days' '+%Y%m%d')\nmkdir epg\/\$date 2> \/dev\/null" workfile
+		sed -i 's/.*/curl -X GET --cookie "\$session" "https:\/\/zattoo.com\/zapi\/program\/details?program_id=&" > epg\/\$date_05\/& 2> \/dev\/null/g' workfile
 		mv workfile ~/ztvh/epg/datafile_5
 		echo "- COMPLETE DATABASE TO BE SYNCED -"
 		touch ~/ztvh/epg/stats
@@ -647,6 +637,7 @@ fi
 
 if grep -q -E "epgdata [6-9]-|epgdata 1[0-4]-" ~/ztvh/user/options 2> /dev/null
 then
+	mkdir ~/ztvh/epg/$(date -d '5 days' '+%Y%m%d') 2> /dev/null
 	until grep -q '"success":true' ~/ztvh/epg/datafile_6 2> /dev/null
 	do
 		date -d '5 days' '+%Y-%m-%d 06:00:00' > date0
@@ -696,10 +687,10 @@ then
 		# Create file checker to download changed/new broadcasts
 		comm -2 -3 <(sort ~/ztvh/epg/$(date -d '5 days' '+%Y%m%d')_manifest_new) <(sort ~/ztvh/epg/$(date -d '5 days' '+%Y%m%d')_manifest_old 2> /dev/null) > workfile
 		sed -i -e 's/\(.*\)\("id":.*\)/\2/g' -e 's/"id"://g' -e 's/},//g' workfile && cp workfile workfile2
-		sed -i 's/.*/curl -X GET --cookie "\$session" "https:\/\/zattoo.com\/zapi\/program\/details?program_id=&" > epg\/\$date\/& 2> \/dev\/null/g' workfile
+		sed -i 's/.*/curl -X GET --cookie "\$session" "https:\/\/zattoo.com\/zapi\/program\/details?program_id=&" > epg\/\$date_06\/& 2> \/dev\/null/g' workfile
 		if grep -q "curl" workfile
 		then 
-			sed "1i #\!\/bin\/bash\nsession=\$(<work\/session)\ndate=\$(date -d '5 days' '+%Y%m%d')" workfile > ~/ztvh/epg/filecheck
+			mv workfile ~/ztvh/epg/filecheck
 		fi
 	
 		# Add commands to file checker to remove deleted broadcasts
@@ -712,7 +703,7 @@ then
 		if [ -s workfile ]
 		then
 			sed -i -e 's/\(.*\)\("id":.*\)/\2/g' -e 's/"id"://g' -e 's/},//g' workfile
-			sed -i 's/.*/rm epg\/\$date\/&/g' workfile
+			sed -i 's/.*/rm epg\/\$date_06\/&/g' workfile
 			if [ -s ~/ztvh/epg/filecheck ]
 			then
 				cat workfile >> ~/ztvh/epg/filecheck
@@ -723,9 +714,7 @@ then
 				touch ~/ztvh/epg/stats2
 				sed -i "s/$(date -d '5 days' '+%Y%m%d') finished//g" ~/ztvh/epg/status 2> /dev/null
 			else
-				echo "#!/bin/bash" > ~/ztvh/epg/datafile_6
-				echo "date=$(date -d '5 days' '+%Y%m%d')" >> ~/ztvh/epg/datafile_6
-				cat workfile >> ~/ztvh/epg/datafile_6
+				mv workfile ~/ztvh/epg/datafile_6
 				echo "- SYNCED FILES TO BE DELETED -"
 				touch ~/ztvh/epg/stats
 				touch ~/ztvh/epg/stats2
@@ -752,8 +741,7 @@ then
 		sed -i 's/,.*//g' workfile
 		sed -i 's/"id"://g' workfile
 		sed -i 's/}.*//g' workfile
-		sed -i 's/.*/if \[ -e epg\/\$date\/& \]\nthen :\nelse\ncurl -X GET --cookie "\$session" "https:\/\/zattoo.com\/zapi\/program\/details?program_id=&" > epg\/\$date\/& 2> \/dev\/null\nfi/g' workfile
-		sed -i "1i #\!\/bin\/bash\nsession=\$(<work\/session)\ndate=\$(date -d '5 days' '+%Y%m%d')\nmkdir epg\/\$date 2> \/dev\/null" workfile
+		sed -i 's/.*/curl -X GET --cookie "\$session" "https:\/\/zattoo.com\/zapi\/program\/details?program_id=&" > epg\/\$date_06\/& 2> \/dev\/null/g' workfile
 		mv workfile ~/ztvh/epg/datafile_6
 		echo "- COMPLETE DATABASE TO BE SYNCED -"
 		touch ~/ztvh/epg/stats
@@ -769,6 +757,7 @@ fi
 
 if grep -q -E "epgdata [7-9]-|epgdata 1[0-4]-" ~/ztvh/user/options 2> /dev/null
 then
+	mkdir ~/ztvh/epg/$(date -d '6 days' '+%Y%m%d') 2> /dev/null
 	until grep -q '"success":true' ~/ztvh/epg/datafile_7 2> /dev/null
 	do
 		date -d '6 days' '+%Y-%m-%d 06:00:00' > date0
@@ -818,10 +807,10 @@ then
 		# Create file checker to download changed/new broadcasts
 		comm -2 -3 <(sort ~/ztvh/epg/$(date -d '6 days' '+%Y%m%d')_manifest_new) <(sort ~/ztvh/epg/$(date -d '6 days' '+%Y%m%d')_manifest_old 2> /dev/null) > workfile
 		sed -i -e 's/\(.*\)\("id":.*\)/\2/g' -e 's/"id"://g' -e 's/},//g' workfile && cp workfile workfile2
-		sed -i 's/.*/curl -X GET --cookie "\$session" "https:\/\/zattoo.com\/zapi\/program\/details?program_id=&" > epg\/\$date\/& 2> \/dev\/null/g' workfile
+		sed -i 's/.*/curl -X GET --cookie "\$session" "https:\/\/zattoo.com\/zapi\/program\/details?program_id=&" > epg\/\$date_07\/& 2> \/dev\/null/g' workfile
 		if grep -q "curl" workfile
 		then 
-			sed "1i #\!\/bin\/bash\nsession=\$(<work\/session)\ndate=\$(date -d '6 days' '+%Y%m%d')" workfile > ~/ztvh/epg/filecheck
+			mv workfile ~/ztvh/epg/filecheck
 		fi
 	
 		# Add commands to file checker to remove deleted broadcasts
@@ -834,7 +823,7 @@ then
 		if [ -s workfile ]
 		then
 			sed -i -e 's/\(.*\)\("id":.*\)/\2/g' -e 's/"id"://g' -e 's/},//g' workfile
-			sed -i 's/.*/rm epg\/\$date\/&/g' workfile
+			sed -i 's/.*/rm epg\/\$date_07\/&/g' workfile
 			if [ -s ~/ztvh/epg/filecheck ]
 			then
 				cat workfile >> ~/ztvh/epg/filecheck
@@ -845,9 +834,7 @@ then
 				touch ~/ztvh/epg/stats2
 				sed -i "s/$(date -d '6 days' '+%Y%m%d') finished//g" ~/ztvh/epg/status 2> /dev/null
 			else
-				echo "#!/bin/bash" > ~/ztvh/epg/datafile_7
-				echo "date=$(date -d '6 days' '+%Y%m%d')" >> ~/ztvh/epg/datafile_7
-				cat workfile >> ~/ztvh/epg/datafile_7
+				mv workfile ~/ztvh/epg/datafile_7
 				echo "- SYNCED FILES TO BE DELETED -"
 				touch ~/ztvh/epg/stats
 				touch ~/ztvh/epg/stats2
@@ -874,8 +861,7 @@ then
 		sed -i 's/,.*//g' workfile
 		sed -i 's/"id"://g' workfile
 		sed -i 's/}.*//g' workfile
-		sed -i 's/.*/if \[ -e epg\/\$date\/& \]\nthen :\nelse\ncurl -X GET --cookie "\$session" "https:\/\/zattoo.com\/zapi\/program\/details?program_id=&" > epg\/\$date\/& 2> \/dev\/null\nfi/g' workfile
-		sed -i "1i #\!\/bin\/bash\nsession=\$(<work\/session)\ndate=\$(date -d '6 days' '+%Y%m%d')\nmkdir epg\/\$date 2> \/dev\/null" workfile
+		sed -i 's/.*/curl -X GET --cookie "\$session" "https:\/\/zattoo.com\/zapi\/program\/details?program_id=&" > epg\/\$date_07\/& 2> \/dev\/null/g' workfile
 		mv workfile ~/ztvh/epg/datafile_7
 		echo "- COMPLETE DATABASE TO BE SYNCED -"
 		touch ~/ztvh/epg/stats
@@ -891,6 +877,7 @@ fi
 
 if grep -q -E "epgdata [8-9]-|epgdata 1[0-4]-" ~/ztvh/user/options 2> /dev/null
 then
+	mkdir ~/ztvh/epg/$(date -d '7 days' '+%Y%m%d') 2> /dev/null
 	until grep -q '"success":true' ~/ztvh/epg/datafile_8 2> /dev/null
 	do
 		date -d '7 days' '+%Y-%m-%d 06:00:00' > date0
@@ -940,10 +927,10 @@ then
 		# Create file checker to download changed/new broadcasts
 		comm -2 -3 <(sort ~/ztvh/epg/$(date -d '7 days' '+%Y%m%d')_manifest_new) <(sort ~/ztvh/epg/$(date -d '7 days' '+%Y%m%d')_manifest_old 2> /dev/null) > workfile
 		sed -i -e 's/\(.*\)\("id":.*\)/\2/g' -e 's/"id"://g' -e 's/},//g' workfile && cp workfile workfile2
-		sed -i 's/.*/curl -X GET --cookie "\$session" "https:\/\/zattoo.com\/zapi\/program\/details?program_id=&" > epg\/\$date\/& 2> \/dev\/null/g' workfile
+		sed -i 's/.*/curl -X GET --cookie "\$session" "https:\/\/zattoo.com\/zapi\/program\/details?program_id=&" > epg\/\$date_08\/& 2> \/dev\/null/g' workfile
 		if grep -q "curl" workfile
 		then 
-			sed "1i #\!\/bin\/bash\nsession=\$(<work\/session)\ndate=\$(date -d '7 days' '+%Y%m%d')" workfile > ~/ztvh/epg/filecheck
+			mv workfile ~/ztvh/epg/filecheck
 		fi
 	
 		# Add commands to file checker to remove deleted broadcasts
@@ -956,7 +943,7 @@ then
 		if [ -s workfile ]
 		then
 			sed -i -e 's/\(.*\)\("id":.*\)/\2/g' -e 's/"id"://g' -e 's/},//g' workfile
-			sed -i 's/.*/rm epg\/\$date\/&/g' workfile
+			sed -i 's/.*/rm epg\/\$date_08\/&/g' workfile
 			if [ -s ~/ztvh/epg/filecheck ]
 			then
 				cat workfile >> ~/ztvh/epg/filecheck
@@ -967,9 +954,7 @@ then
 				touch ~/ztvh/epg/stats2
 				sed -i "s/$(date -d '7 days' '+%Y%m%d') finished//g" ~/ztvh/epg/status 2> /dev/null
 			else
-				echo "#!/bin/bash" > ~/ztvh/epg/datafile_8
-				echo "date=$(date -d '7 days' '+%Y%m%d')" >> ~/ztvh/epg/datafile_8
-				cat workfile >> ~/ztvh/epg/datafile_8
+				mv workfile ~/ztvh/epg/datafile_8
 				echo "- SYNCED FILES TO BE DELETED -"
 				touch ~/ztvh/epg/stats
 				touch ~/ztvh/epg/stats2
@@ -996,8 +981,7 @@ then
 		sed -i 's/,.*//g' workfile
 		sed -i 's/"id"://g' workfile
 		sed -i 's/}.*//g' workfile
-		sed -i 's/.*/if \[ -e epg\/\$date\/& \]\nthen :\nelse\ncurl -X GET --cookie "\$session" "https:\/\/zattoo.com\/zapi\/program\/details?program_id=&" > epg\/\$date\/& 2> \/dev\/null\nfi/g' workfile
-		sed -i "1i #\!\/bin\/bash\nsession=\$(<work\/session)\ndate=\$(date -d '7 days' '+%Y%m%d')\nmkdir epg\/\$date 2> \/dev\/null" workfile
+		sed -i 's/.*/curl -X GET --cookie "\$session" "https:\/\/zattoo.com\/zapi\/program\/details?program_id=&" > epg\/\$date_08\/& 2> \/dev\/null/g' workfile
 		mv workfile ~/ztvh/epg/datafile_8
 		echo "- COMPLETE DATABASE TO BE SYNCED -"
 		touch ~/ztvh/epg/stats
@@ -1013,6 +997,7 @@ fi
 
 if grep -q -E "epgdata 9-|epgdata 1[0-4]-" ~/ztvh/user/options 2> /dev/null
 then
+	mkdir ~/ztvh/epg/$(date -d '8 days' '+%Y%m%d') 2> /dev/null
 	until grep -q '"success":true' ~/ztvh/epg/datafile_9 2> /dev/null
 	do
 		date -d '8 days' '+%Y-%m-%d 06:00:00' > date0
@@ -1062,10 +1047,10 @@ then
 		# Create file checker to download changed/new broadcasts
 		comm -2 -3 <(sort ~/ztvh/epg/$(date -d '8 days' '+%Y%m%d')_manifest_new) <(sort ~/ztvh/epg/$(date -d '8 days' '+%Y%m%d')_manifest_old 2> /dev/null) > workfile
 		sed -i -e 's/\(.*\)\("id":.*\)/\2/g' -e 's/"id"://g' -e 's/},//g' workfile && cp workfile workfile2
-		sed -i 's/.*/curl -X GET --cookie "\$session" "https:\/\/zattoo.com\/zapi\/program\/details?program_id=&" > epg\/\$date\/& 2> \/dev\/null/g' workfile
+		sed -i 's/.*/curl -X GET --cookie "\$session" "https:\/\/zattoo.com\/zapi\/program\/details?program_id=&" > epg\/\$date_09\/& 2> \/dev\/null/g' workfile
 		if grep -q "curl" workfile
 		then 
-			sed "1i #\!\/bin\/bash\nsession=\$(<work\/session)\ndate=\$(date -d '8 days' '+%Y%m%d')" workfile > ~/ztvh/epg/filecheck
+			mv workfile ~/ztvh/epg/filecheck
 		fi
 	
 		# Add commands to file checker to remove deleted broadcasts
@@ -1078,7 +1063,7 @@ then
 		if [ -s workfile ]
 		then
 			sed -i -e 's/\(.*\)\("id":.*\)/\2/g' -e 's/"id"://g' -e 's/},//g' workfile
-			sed -i 's/.*/rm epg\/\$date\/&/g' workfile
+			sed -i 's/.*/rm epg\/\$date_09\/&/g' workfile
 			if [ -s ~/ztvh/epg/filecheck ]
 			then
 				cat workfile >> ~/ztvh/epg/filecheck
@@ -1089,9 +1074,7 @@ then
 				touch ~/ztvh/epg/stats2
 				sed -i "s/$(date -d '8 days' '+%Y%m%d') finished//g" ~/ztvh/epg/status 2> /dev/null
 			else
-				echo "#!/bin/bash" > ~/ztvh/epg/datafile_9
-				echo "date=$(date -d '8 days' '+%Y%m%d')" >> ~/ztvh/epg/datafile_9
-				cat workfile >> ~/ztvh/epg/datafile_9
+				mv workfile ~/ztvh/epg/datafile_9
 				echo "- SYNCED FILES TO BE DELETED -"
 				touch ~/ztvh/epg/stats
 				touch ~/ztvh/epg/stats2
@@ -1118,8 +1101,7 @@ then
 		sed -i 's/,.*//g' workfile
 		sed -i 's/"id"://g' workfile
 		sed -i 's/}.*//g' workfile
-		sed -i 's/.*/if \[ -e epg\/\$date\/& \]\nthen :\nelse\ncurl -X GET --cookie "\$session" "https:\/\/zattoo.com\/zapi\/program\/details?program_id=&" > epg\/\$date\/& 2> \/dev\/null\nfi/g' workfile
-		sed -i "1i #\!\/bin\/bash\nsession=\$(<work\/session)\ndate=\$(date -d '8 days' '+%Y%m%d')\nmkdir epg\/\$date 2> \/dev\/null" workfile
+		sed -i 's/.*/curl -X GET --cookie "\$session" "https:\/\/zattoo.com\/zapi\/program\/details?program_id=&" > epg\/\$date_09\/& 2> \/dev\/null/g' workfile
 		mv workfile ~/ztvh/epg/datafile_9
 		echo "- COMPLETE DATABASE TO BE SYNCED -"
 		touch ~/ztvh/epg/stats
@@ -1135,6 +1117,7 @@ fi
 
 if grep -q "epgdata 1[0-4]-" ~/ztvh/user/options 2> /dev/null
 then
+	mkdir ~/ztvh/epg/$(date -d '9 days' '+%Y%m%d') 2> /dev/null
 	until grep -q '"success":true' ~/ztvh/epg/datafile_10 2> /dev/null
 	do
 		date -d '9 days' '+%Y-%m-%d 06:00:00' > date0
@@ -1184,10 +1167,10 @@ then
 		# Create file checker to download changed/new broadcasts
 		comm -2 -3 <(sort ~/ztvh/epg/$(date -d '9 days' '+%Y%m%d')_manifest_new) <(sort ~/ztvh/epg/$(date -d '9 days' '+%Y%m%d')_manifest_old 2> /dev/null) > workfile
 		sed -i -e 's/\(.*\)\("id":.*\)/\2/g' -e 's/"id"://g' -e 's/},//g' workfile && cp workfile workfile2
-		sed -i 's/.*/curl -X GET --cookie "\$session" "https:\/\/zattoo.com\/zapi\/program\/details?program_id=&" > epg\/\$date\/& 2> \/dev\/null/g' workfile
+		sed -i 's/.*/curl -X GET --cookie "\$session" "https:\/\/zattoo.com\/zapi\/program\/details?program_id=&" > epg\/\$date_10\/& 2> \/dev\/null/g' workfile
 		if grep -q "curl" workfile
 		then 
-			sed "1i #\!\/bin\/bash\nsession=\$(<work\/session)\ndate=\$(date -d '9 days' '+%Y%m%d')" workfile > ~/ztvh/epg/filecheck
+			mv workfile ~/ztvh/epg/filecheck
 		fi
 	
 		# Add commands to file checker to remove deleted broadcasts
@@ -1200,7 +1183,7 @@ then
 		if [ -s workfile ]
 		then
 			sed -i -e 's/\(.*\)\("id":.*\)/\2/g' -e 's/"id"://g' -e 's/},//g' workfile
-			sed -i 's/.*/rm epg\/\$date\/&/g' workfile
+			sed -i 's/.*/rm epg\/\$date_10\/&/g' workfile
 			if [ -s ~/ztvh/epg/filecheck ]
 			then
 				cat workfile >> ~/ztvh/epg/filecheck
@@ -1211,9 +1194,7 @@ then
 				touch ~/ztvh/epg/stats2
 				sed -i "s/$(date -d '9 days' '+%Y%m%d') finished//g" ~/ztvh/epg/status 2> /dev/null
 			else
-				echo "#!/bin/bash" > ~/ztvh/epg/datafile_10
-				echo "date=$(date -d '9 days' '+%Y%m%d')" >> ~/ztvh/epg/datafile_10
-				cat workfile >> ~/ztvh/epg/datafile_10
+				mv workfile ~/ztvh/epg/datafile_10
 				echo "- SYNCED FILES TO BE DELETED -"
 				touch ~/ztvh/epg/stats
 				touch ~/ztvh/epg/stats2
@@ -1240,8 +1221,7 @@ then
 		sed -i 's/,.*//g' workfile
 		sed -i 's/"id"://g' workfile
 		sed -i 's/}.*//g' workfile
-		sed -i 's/.*/if \[ -e epg\/\$date\/& \]\nthen :\nelse\ncurl -X GET --cookie "\$session" "https:\/\/zattoo.com\/zapi\/program\/details?program_id=&" > epg\/\$date\/& 2> \/dev\/null\nfi/g' workfile
-		sed -i "1i #\!\/bin\/bash\nsession=\$(<work\/session)\ndate=\$(date -d '9 days' '+%Y%m%d')\nmkdir epg\/\$date 2> \/dev\/null" workfile
+		sed -i 's/.*/curl -X GET --cookie "\$session" "https:\/\/zattoo.com\/zapi\/program\/details?program_id=&" > epg\/\$date_10\/& 2> \/dev\/null/g' workfile
 		mv workfile ~/ztvh/epg/datafile_10
 		echo "- COMPLETE DATABASE TO BE SYNCED -"
 		touch ~/ztvh/epg/stats
@@ -1257,6 +1237,7 @@ fi
 
 if grep -q "epgdata 1[1-4]-" ~/ztvh/user/options 2> /dev/null
 then
+	mkdir ~/ztvh/epg/$(date -d '10 days' '+%Y%m%d') 2> /dev/null
 	until grep -q '"success":true' ~/ztvh/epg/datafile_11 2> /dev/null
 	do
 		date -d '10 days' '+%Y-%m-%d 06:00:00' > date0
@@ -1306,10 +1287,10 @@ then
 		# Create file checker to download changed/new broadcasts
 		comm -2 -3 <(sort ~/ztvh/epg/$(date -d '10 days' '+%Y%m%d')_manifest_new) <(sort ~/ztvh/epg/$(date -d '10 days' '+%Y%m%d')_manifest_old 2> /dev/null) > workfile
 		sed -i -e 's/\(.*\)\("id":.*\)/\2/g' -e 's/"id"://g' -e 's/},//g' workfile && cp workfile workfile2
-		sed -i 's/.*/curl -X GET --cookie "\$session" "https:\/\/zattoo.com\/zapi\/program\/details?program_id=&" > epg\/\$date\/& 2> \/dev\/null/g' workfile
+		sed -i 's/.*/curl -X GET --cookie "\$session" "https:\/\/zattoo.com\/zapi\/program\/details?program_id=&" > epg\/\$date_11\/& 2> \/dev\/null/g' workfile
 		if grep -q "curl" workfile
 		then 
-			sed "1i #\!\/bin\/bash\nsession=\$(<work\/session)\ndate=\$(date -d '10 days' '+%Y%m%d')" workfile > ~/ztvh/epg/filecheck
+			mv workfile ~/ztvh/epg/filecheck
 		fi
 	
 		# Add commands to file checker to remove deleted broadcasts
@@ -1322,7 +1303,7 @@ then
 		if [ -s workfile ]
 		then
 			sed -i -e 's/\(.*\)\("id":.*\)/\2/g' -e 's/"id"://g' -e 's/},//g' workfile
-			sed -i 's/.*/rm epg\/\$date\/&/g' workfile
+			sed -i 's/.*/rm epg\/\$date_11\/&/g' workfile
 			if [ -s ~/ztvh/epg/filecheck ]
 			then
 				cat workfile >> ~/ztvh/epg/filecheck
@@ -1333,9 +1314,7 @@ then
 				touch ~/ztvh/epg/stats2
 				sed -i "s/$(date -d '10 days' '+%Y%m%d') finished//g" ~/ztvh/epg/status 2> /dev/null
 			else
-				echo "#!/bin/bash" > ~/ztvh/epg/datafile_11
-				echo "date=$(date -d '10 days' '+%Y%m%d')" >> ~/ztvh/epg/datafile_11
-				cat workfile >> ~/ztvh/epg/datafile_11
+				mv workfile ~/ztvh/epg/datafile_11
 				echo "- SYNCED FILES TO BE DELETED -"
 				touch ~/ztvh/epg/stats
 				touch ~/ztvh/epg/stats2
@@ -1362,8 +1341,7 @@ then
 		sed -i 's/,.*//g' workfile
 		sed -i 's/"id"://g' workfile
 		sed -i 's/}.*//g' workfile
-		sed -i 's/.*/if \[ -e epg\/\$date\/& \]\nthen :\nelse\ncurl -X GET --cookie "\$session" "https:\/\/zattoo.com\/zapi\/program\/details?program_id=&" > epg\/\$date\/& 2> \/dev\/null\nfi/g' workfile
-		sed -i "1i #\!\/bin\/bash\nsession=\$(<work\/session)\ndate=\$(date -d '10 days' '+%Y%m%d')\nmkdir epg\/\$date 2> \/dev\/null" workfile
+		sed -i 's/.*/curl -X GET --cookie "\$session" "https:\/\/zattoo.com\/zapi\/program\/details?program_id=&" > epg\/\$date_11\/& 2> \/dev\/null/g' workfile
 		mv workfile ~/ztvh/epg/datafile_11
 		echo "- COMPLETE DATABASE TO BE SYNCED -"
 		touch ~/ztvh/epg/stats
@@ -1379,6 +1357,7 @@ fi
 
 if grep -q "epgdata 1[2-4]-" ~/ztvh/user/options 2> /dev/null
 then
+	mkdir ~/ztvh/epg/$(date -d '11 days' '+%Y%m%d') 2> /dev/null
 	until grep -q '"success":true' ~/ztvh/epg/datafile_12 2> /dev/null
 	do
 		date -d '11 days' '+%Y-%m-%d 06:00:00' > date0
@@ -1428,10 +1407,10 @@ then
 		# Create file checker to download changed/new broadcasts
 		comm -2 -3 <(sort ~/ztvh/epg/$(date -d '11 days' '+%Y%m%d')_manifest_new) <(sort ~/ztvh/epg/$(date -d '11 days' '+%Y%m%d')_manifest_old 2> /dev/null) > workfile
 		sed -i -e 's/\(.*\)\("id":.*\)/\2/g' -e 's/"id"://g' -e 's/},//g' workfile && cp workfile workfile2
-		sed -i 's/.*/curl -X GET --cookie "\$session" "https:\/\/zattoo.com\/zapi\/program\/details?program_id=&" > epg\/\$date\/& 2> \/dev\/null/g' workfile
+		sed -i 's/.*/curl -X GET --cookie "\$session" "https:\/\/zattoo.com\/zapi\/program\/details?program_id=&" > epg\/\$date_12\/& 2> \/dev\/null/g' workfile
 		if grep -q "curl" workfile
 		then 
-			sed "1i #\!\/bin\/bash\nsession=\$(<work\/session)\ndate=\$(date -d '11 days' '+%Y%m%d')" workfile > ~/ztvh/epg/filecheck
+			mv workfile ~/ztvh/epg/filecheck
 		fi
 	
 		# Add commands to file checker to remove deleted broadcasts
@@ -1444,7 +1423,7 @@ then
 		if [ -s workfile ]
 		then
 			sed -i -e 's/\(.*\)\("id":.*\)/\2/g' -e 's/"id"://g' -e 's/},//g' workfile
-			sed -i 's/.*/rm epg\/\$date\/&/g' workfile
+			sed -i 's/.*/rm epg\/\$date_12\/&/g' workfile
 			if [ -s ~/ztvh/epg/filecheck ]
 			then
 				cat workfile >> ~/ztvh/epg/filecheck
@@ -1455,9 +1434,7 @@ then
 				touch ~/ztvh/epg/stats2
 				sed -i "s/$(date -d '11 days' '+%Y%m%d') finished//g" ~/ztvh/epg/status 2> /dev/null
 			else
-				echo "#!/bin/bash" > ~/ztvh/epg/datafile_12
-				echo "date=$(date -d '11 days' '+%Y%m%d')" >> ~/ztvh/epg/datafile_12
-				cat workfile >> ~/ztvh/epg/datafile_12
+				mv workfile ~/ztvh/epg/datafile_12
 				echo "- SYNCED FILES TO BE DELETED -"
 				touch ~/ztvh/epg/stats
 				touch ~/ztvh/epg/stats2
@@ -1484,8 +1461,7 @@ then
 		sed -i 's/,.*//g' workfile
 		sed -i 's/"id"://g' workfile
 		sed -i 's/}.*//g' workfile
-		sed -i 's/.*/if \[ -e epg\/\$date\/& \]\nthen :\nelse\ncurl -X GET --cookie "\$session" "https:\/\/zattoo.com\/zapi\/program\/details?program_id=&" > epg\/\$date\/& 2> \/dev\/null\nfi/g' workfile
-		sed -i "1i #\!\/bin\/bash\nsession=\$(<work\/session)\ndate=\$(date -d '11 days' '+%Y%m%d')\nmkdir epg\/\$date 2> \/dev\/null" workfile
+		sed -i 's/.*/curl -X GET --cookie "\$session" "https:\/\/zattoo.com\/zapi\/program\/details?program_id=&" > epg\/\$date_12\/& 2> \/dev\/null/g' workfile
 		mv workfile ~/ztvh/epg/datafile_12
 		echo "- COMPLETE DATABASE TO BE SYNCED -"
 		touch ~/ztvh/epg/stats
@@ -1501,6 +1477,7 @@ fi
 
 if grep -q "epgdata 1[3-4]-" ~/ztvh/user/options 2> /dev/null
 then
+	mkdir ~/ztvh/epg/$(date -d '12 days' '+%Y%m%d') 2> /dev/null
 	until grep -q '"success":true' ~/ztvh/epg/datafile_13 2> /dev/null
 	do
 		date -d '12 days' '+%Y-%m-%d 06:00:00' > date0
@@ -1550,10 +1527,10 @@ then
 		# Create file checker to download changed/new broadcasts
 		comm -2 -3 <(sort ~/ztvh/epg/$(date -d '12 days' '+%Y%m%d')_manifest_new) <(sort ~/ztvh/epg/$(date -d '12 days' '+%Y%m%d')_manifest_old 2> /dev/null) > workfile
 		sed -i -e 's/\(.*\)\("id":.*\)/\2/g' -e 's/"id"://g' -e 's/},//g' workfile && cp workfile workfile2
-		sed -i 's/.*/curl -X GET --cookie "\$session" "https:\/\/zattoo.com\/zapi\/program\/details?program_id=&" > epg\/\$date\/& 2> \/dev\/null/g' workfile
+		sed -i 's/.*/curl -X GET --cookie "\$session" "https:\/\/zattoo.com\/zapi\/program\/details?program_id=&" > epg\/\$date_13\/& 2> \/dev\/null/g' workfile
 		if grep -q "curl" workfile
 		then 
-			sed "1i #\!\/bin\/bash\nsession=\$(<work\/session)\ndate=\$(date -d '12 days' '+%Y%m%d')" workfile > ~/ztvh/epg/filecheck
+			mv workfile ~/ztvh/epg/filecheck
 		fi
 	
 		# Add commands to file checker to remove deleted broadcasts
@@ -1566,7 +1543,7 @@ then
 		if [ -s workfile ]
 		then
 			sed -i -e 's/\(.*\)\("id":.*\)/\2/g' -e 's/"id"://g' -e 's/},//g' workfile
-			sed -i 's/.*/rm epg\/\$date\/&/g' workfile
+			sed -i 's/.*/rm epg\/\$date_13\/&/g' workfile
 			if [ -s ~/ztvh/epg/filecheck ]
 			then
 				cat workfile >> ~/ztvh/epg/filecheck
@@ -1577,9 +1554,7 @@ then
 				touch ~/ztvh/epg/stats2
 				sed -i "s/$(date -d '12 days' '+%Y%m%d') finished//g" ~/ztvh/epg/status 2> /dev/null
 			else
-				echo "#!/bin/bash" > ~/ztvh/epg/datafile_13
-				echo "date=$(date -d '12 days' '+%Y%m%d')" >> ~/ztvh/epg/datafile_13
-				cat workfile >> ~/ztvh/epg/datafile_13
+				mv workfile ~/ztvh/epg/datafile_13
 				echo "- SYNCED FILES TO BE DELETED -"
 				touch ~/ztvh/epg/stats
 				touch ~/ztvh/epg/stats2
@@ -1606,8 +1581,7 @@ then
 		sed -i 's/,.*//g' workfile
 		sed -i 's/"id"://g' workfile
 		sed -i 's/}.*//g' workfile
-		sed -i 's/.*/if \[ -e epg\/\$date\/& \]\nthen :\nelse\ncurl -X GET --cookie "\$session" "https:\/\/zattoo.com\/zapi\/program\/details?program_id=&" > epg\/\$date\/& 2> \/dev\/null\nfi/g' workfile
-		sed -i "1i #\!\/bin\/bash\nsession=\$(<work\/session)\ndate=\$(date -d '12 days' '+%Y%m%d')\nmkdir epg\/\$date 2> \/dev\/null" workfile
+		sed -i 's/.*/curl -X GET --cookie "\$session" "https:\/\/zattoo.com\/zapi\/program\/details?program_id=&" > epg\/\$date_13\/& 2> \/dev\/null/g' workfile
 		mv workfile ~/ztvh/epg/datafile_13
 		echo "- COMPLETE DATABASE TO BE SYNCED -"
 		touch ~/ztvh/epg/stats
@@ -1623,6 +1597,7 @@ fi
 
 if grep -q "epgdata 14-" ~/ztvh/user/options 2> /dev/null
 then
+	mkdir ~/ztvh/epg/$(date -d '13 days' '+%Y%m%d') 2> /dev/null
 	until grep -q '"success":true' ~/ztvh/epg/datafile_14 2> /dev/null
 	do
 		date -d '13 days' '+%Y-%m-%d 06:00:00' > date0
@@ -1672,10 +1647,10 @@ then
 		# Create file checker to download changed/new broadcasts
 		comm -2 -3 <(sort ~/ztvh/epg/$(date -d '13 days' '+%Y%m%d')_manifest_new) <(sort ~/ztvh/epg/$(date -d '13 days' '+%Y%m%d')_manifest_old 2> /dev/null) > workfile
 		sed -i -e 's/\(.*\)\("id":.*\)/\2/g' -e 's/"id"://g' -e 's/},//g' workfile && cp workfile workfile2
-		sed -i 's/.*/curl -X GET --cookie "\$session" "https:\/\/zattoo.com\/zapi\/program\/details?program_id=&" > epg\/\$date\/& 2> \/dev\/null/g' workfile
+		sed -i 's/.*/curl -X GET --cookie "\$session" "https:\/\/zattoo.com\/zapi\/program\/details?program_id=&" > epg\/\$date_14\/& 2> \/dev\/null/g' workfile
 		if grep -q "curl" workfile
 		then 
-			sed "1i #\!\/bin\/bash\nsession=\$(<work\/session)\ndate=\$(date -d '13 days' '+%Y%m%d')" workfile > ~/ztvh/epg/filecheck
+			mv workfile > ~/ztvh/epg/filecheck
 		fi
 	
 		# Add commands to file checker to remove deleted broadcasts
@@ -1688,7 +1663,7 @@ then
 		if [ -s workfile ]
 		then
 			sed -i -e 's/\(.*\)\("id":.*\)/\2/g' -e 's/"id"://g' -e 's/},//g' workfile
-			sed -i 's/.*/rm epg\/\$date\/&/g' workfile
+			sed -i 's/.*/rm epg\/\$date_14\/&/g' workfile
 			if [ -s ~/ztvh/epg/filecheck ]
 			then
 				cat workfile >> ~/ztvh/epg/filecheck
@@ -1699,9 +1674,7 @@ then
 				touch ~/ztvh/epg/stats2
 				sed -i "s/$(date -d '13 days' '+%Y%m%d') finished//g" ~/ztvh/epg/status 2> /dev/null
 			else
-				echo "#!/bin/bash" > ~/ztvh/epg/datafile_14
-				echo "date=$(date -d '13 days' '+%Y%m%d')" >> ~/ztvh/epg/datafile_14
-				cat workfile >> ~/ztvh/epg/datafile_14
+				mv workfile ~/ztvh/epg/datafile_14
 				echo "- SYNCED FILES TO BE DELETED -"
 				touch ~/ztvh/epg/stats
 				touch ~/ztvh/epg/stats2
@@ -1728,8 +1701,7 @@ then
 		sed -i 's/,.*//g' workfile
 		sed -i 's/"id"://g' workfile
 		sed -i 's/}.*//g' workfile
-		sed -i 's/.*/if \[ -e epg\/\$date\/& \]\nthen :\nelse\ncurl -X GET --cookie "\$session" "https:\/\/zattoo.com\/zapi\/program\/details?program_id=&" > epg\/\$date\/& 2> \/dev\/null\nfi/g' workfile
-		sed -i "1i #\!\/bin\/bash\nsession=\$(<work\/session)\ndate=\$(date -d '13 days' '+%Y%m%d')\nmkdir epg\/\$date 2> \/dev\/null" workfile
+		sed -i 's/.*/curl -X GET --cookie "\$session" "https:\/\/zattoo.com\/zapi\/program\/details?program_id=&" > epg\/\$date_14\/& 2> \/dev\/null/g' workfile
 		mv workfile ~/ztvh/epg/datafile_14
 		echo "- COMPLETE DATABASE TO BE SYNCED -"
 		touch ~/ztvh/epg/stats
@@ -1741,3 +1713,70 @@ fi
 rm ~/ztvh/epg/filecheck 2> /dev/null
 
 echo "" && echo "- EPG MANIFEST FILES SAVED SUCCESSFULLY! -" && echo ""
+
+
+# ##########################
+# COLLECT / SPLIT COMMANDS #
+# ##########################
+
+if [ -e ~/ztvh/epg/stats ]
+then
+	echo "Setup data collection..." && echo ""
+
+	rm ~/ztvh/epg/scriptfile_* 2> /dev/null
+	cat ~/ztvh/epg/datafile_* > ~/ztvh/epg/scriptbase
+	sed -i 's/nullcurl/null\ncurl/g' ~/ztvh/epg/scriptbase
+	sort -u ~/ztvh/epg/scriptbase -o ~/ztvh/epg/scriptbase
+	rm ~/ztvh/epg/datafile_*
+	x=$(wc -l < ~/ztvh/epg/scriptbase)
+	y=7
+
+	if [ "$x" -gt "$y" ]
+	then
+
+		split -d -l $(expr $x / $y) ~/ztvh/epg/scriptbase ~/ztvh/epg/scriptfile_
+
+		for i in ~/ztvh/epg/scriptfile_*
+		do
+			sed -i '1i#\!\/bin\/bash \
+			cd ~\/ztvh \
+			session=\$(<work\/session) \
+			date_01=\$(date "+%Y%m%d") \
+			date_02=\$(date -d "1 day" "+%Y%m%d") \
+			date_03=\$(date -d "2 days" "+%Y%m%d") \
+			date_04=\$(date -d "3 days" "+%Y%m%d") \
+			date_05=\$(date -d "4 days" "+%Y%m%d") \
+			date_06=\$(date -d "5 days" "+%Y%m%d") \
+			date_07=\$(date -d "6 days" "+%Y%m%d") \
+			date_08=\$(date -d "7 days" "+%Y%m%d") \
+			date_09=\$(date -d "8 days" "+%Y%m%d") \
+			date_10=\$(date -d "9 days" "+%Y%m%d") \
+			date_11=\$(date -d "10 days" "+%Y%m%d") \
+			date_12=\$(date -d "11 days" "+%Y%m%d") \
+			date_13=\$(date -d "12 days" "+%Y%m%d") \
+			date_14=\$(date -d "13 days" "+%Y%m%d")' $i
+			sed -i 's/			//g' $i
+		done
+	else
+		sed -i '1i#\!\/bin\/bash \
+		cd ~\/ztvh \
+		session=\$(<work\/session) \
+		date_01=\$(date "+%Y%m%d") \
+		date_02=\$(date -d "1 day" "+%Y%m%d") \
+		date_03=\$(date -d "2 days" "+%Y%m%d") \
+		date_04=\$(date -d "3 days" "+%Y%m%d") \
+		date_05=\$(date -d "4 days" "+%Y%m%d") \
+		date_06=\$(date -d "5 days" "+%Y%m%d") \
+		date_07=\$(date -d "6 days" "+%Y%m%d") \
+		date_08=\$(date -d "7 days" "+%Y%m%d") \
+		date_09=\$(date -d "8 days" "+%Y%m%d") \
+		date_10=\$(date -d "9 days" "+%Y%m%d") \
+		date_11=\$(date -d "10 days" "+%Y%m%d") \
+		date_12=\$(date -d "11 days" "+%Y%m%d") \
+		date_13=\$(date -d "12 days" "+%Y%m%d") \
+		date_14=\$(date -d "13 days" "+%Y%m%d")' ~/ztvh/epg/scriptbase
+		sed -i 's/			//g' ~/ztvh/epg/scriptbase
+
+		mv scriptbase scriptfile_00
+	fi
+fi
