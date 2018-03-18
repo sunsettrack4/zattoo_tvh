@@ -83,9 +83,10 @@ then
 		echo "DAY 1 - $(date '+%Y%m%d'): EPG manifest file updated!"
 		mv ~/ztvh/epg/$(date '+%Y%m%d')_manifest_new ~/ztvh/epg/$(date '+%Y%m%d')_manifest_old 2> /dev/null
 		sed 's/{"i_url":/\n&/g' ~/ztvh/epg/datafile_1 | sed '1d' | sed 's/}\],"cid".*//g' > ~/ztvh/epg/$(date '+%Y%m%d')_manifest_new
+		sed -i 's/},//g' ~/ztvh/epg/$(date '+%Y%m%d')_manifest_new
 		
 		# Create file checker to download changed/new broadcasts
-		comm -2 -3 <(sort ~/ztvh/epg/$(date +%Y%m%d)_manifest_new) <(sort ~/ztvh/epg/$(date +%Y%m%d)_manifest_old 2> /dev/null) > workfile
+		comm -2 -3 <(sort -u ~/ztvh/epg/$(date +%Y%m%d)_manifest_new) <(sort -u ~/ztvh/epg/$(date +%Y%m%d)_manifest_old 2> /dev/null) > workfile
 		sed -i -e 's/\(.*\)\("id":.*\)/\2/g' -e 's/"id"://g' -e 's/},//g' workfile && cp workfile workfile2
 		sed -i 's/.*/curl -X GET --cookie "\$session" "https:\/\/zattoo.com\/zapi\/program\/details?program_id=&" > epg\/\$date_01\/& 2> \/dev\/null/g' workfile
 		if grep -q "curl" workfile
@@ -94,7 +95,7 @@ then
 		fi
 	
 		# Add commands to file checker to remove deleted broadcasts
-		comm -2 -3 <(sort ~/ztvh/epg/$(date +%Y%m%d)_manifest_old 2> /dev/null) <(sort ~/ztvh/epg/$(date +%Y%m%d)_manifest_new) > workfile
+		comm -2 -3 <(sort -u ~/ztvh/epg/$(date +%Y%m%d)_manifest_old 2> /dev/null) <(sort -u ~/ztvh/epg/$(date +%Y%m%d)_manifest_new) > workfile
 		if [ -s workfile2 ]
 		then
 			sed -i -e 's/.*/sed -i "\/&\/d" workfile/g' -e '1i#\!\/bin\/bash' workfile2
@@ -136,6 +137,7 @@ then
 		echo ""
 		echo "DAY 1 - $(date '+%Y%m%d'): EPG manifest file created!"
 		sed 's/{"i_url":/\n&/g' ~/ztvh/epg/datafile_1 | sed '1d' | sed 's/}\],"cid".*//g' > ~/ztvh/epg/$(date '+%Y%m%d')_manifest_new
+		sed -i 's/},//g' ~/ztvh/epg/$(date '+%Y%m%d')_manifest_new
 		sed 's/"id":/\n&/g' ~/ztvh/epg/datafile_1 > workfile
 		sed -i '/"id":/!d' workfile
 		sed -i 's/,.*//g' workfile
@@ -203,9 +205,10 @@ then
 		echo "DAY 2 - $(date -d '1 day' '+%Y%m%d'): EPG manifest file updated!"
 		mv ~/ztvh/epg/$(date -d '1 day' '+%Y%m%d')_manifest_new ~/ztvh/epg/$(date -d '1 day' '+%Y%m%d')_manifest_old 2> /dev/null
 		sed 's/{"i_url":/\n&/g' ~/ztvh/epg/datafile_2 | sed '1d' | sed 's/}\],"cid".*//g' > ~/ztvh/epg/$(date -d '1 day' '+%Y%m%d')_manifest_new
+		sed -i 's/},//g' ~/ztvh/epg/$(date -d '1 day' '+%Y%m%d')_manifest_new
 		
 		# Create file checker to download changed/new broadcasts
-		comm -2 -3 <(sort ~/ztvh/epg/$(date -d '1 day' '+%Y%m%d')_manifest_new) <(sort ~/ztvh/epg/$(date -d '1 day' '+%Y%m%d')_manifest_old 2> /dev/null) > workfile
+		comm -2 -3 <(sort -u ~/ztvh/epg/$(date -d '1 day' '+%Y%m%d')_manifest_new) <(sort -u ~/ztvh/epg/$(date -d '1 day' '+%Y%m%d')_manifest_old 2> /dev/null) > workfile
 		sed -i -e 's/\(.*\)\("id":.*\)/\2/g' -e 's/"id"://g' -e 's/},//g' workfile && cp workfile workfile2
 		sed -i 's/.*/curl -X GET --cookie "\$session" "https:\/\/zattoo.com\/zapi\/program\/details?program_id=&" > epg\/\$date_02\/& 2> \/dev\/null/g' workfile
 		if grep -q "curl" workfile
@@ -214,7 +217,7 @@ then
 		fi
 	
 		# Add commands to file checker to remove deleted broadcasts
-		comm -2 -3 <(sort ~/ztvh/epg/$(date -d '1 day' '+%Y%m%d')_manifest_old 2> /dev/null) <(sort ~/ztvh/epg/$(date -d '1 day' '+%Y%m%d')_manifest_new) > workfile
+		comm -2 -3 <(sort -u ~/ztvh/epg/$(date -d '1 day' '+%Y%m%d')_manifest_old 2> /dev/null) <(sort -u ~/ztvh/epg/$(date -d '1 day' '+%Y%m%d')_manifest_new) > workfile
 		if [ -s workfile2 ]
 		then
 			sed -i -e 's/.*/sed -i "\/&\/d" workfile/g' -e '1i#\!\/bin\/bash' workfile2
@@ -256,6 +259,7 @@ then
 		echo ""
 		echo "DAY 2 - $(date -d '1 day' '+%Y%m%d'): EPG manifest file created!"
 		sed 's/{"i_url":/\n&/g' ~/ztvh/epg/datafile_2 | sed '1d' | sed 's/}\],"cid".*//g' > ~/ztvh/epg/$(date -d '1 day' '+%Y%m%d')_manifest_new
+		sed -i 's/},//g' ~/ztvh/epg/$(date -d '1 day' '+%Y%m%d')_manifest_new
 		sed 's/"id":/\n&/g' ~/ztvh/epg/datafile_2 > workfile
 		sed -i '/"id":/!d' workfile
 		sed -i 's/,.*//g' workfile
@@ -323,9 +327,10 @@ then
 		echo "DAY 3 - $(date -d '2 days' '+%Y%m%d'): EPG manifest file updated!"
 		mv ~/ztvh/epg/$(date -d '2 days' '+%Y%m%d')_manifest_new ~/ztvh/epg/$(date -d '2 days' '+%Y%m%d')_manifest_old 2> /dev/null
 		sed 's/{"i_url":/\n&/g' ~/ztvh/epg/datafile_3 | sed '1d' | sed 's/}\],"cid".*//g' > ~/ztvh/epg/$(date -d '2 days' '+%Y%m%d')_manifest_new
+		sed -i 's/},//g' ~/ztvh/epg/$(date -d '2 days' '+%Y%m%d')_manifest_new
 		
 		# Create file checker to download changed/new broadcasts
-		comm -2 -3 <(sort ~/ztvh/epg/$(date -d '2 days' '+%Y%m%d')_manifest_new) <(sort ~/ztvh/epg/$(date -d '2 days' '+%Y%m%d')_manifest_old 2> /dev/null) > workfile
+		comm -2 -3 <(sort -u ~/ztvh/epg/$(date -d '2 days' '+%Y%m%d')_manifest_new) <(sort -u ~/ztvh/epg/$(date -d '2 days' '+%Y%m%d')_manifest_old 2> /dev/null) > workfile
 		sed -i -e 's/\(.*\)\("id":.*\)/\2/g' -e 's/"id"://g' -e 's/},//g' workfile && cp workfile workfile2
 		sed -i 's/.*/curl -X GET --cookie "\$session" "https:\/\/zattoo.com\/zapi\/program\/details?program_id=&" > epg\/\$date_03\/& 2> \/dev\/null/g' workfile
 		if grep -q "curl" workfile
@@ -334,7 +339,7 @@ then
 		fi
 	
 		# Add commands to file checker to remove deleted broadcasts
-		comm -2 -3 <(sort ~/ztvh/epg/$(date -d '2 days' '+%Y%m%d')_manifest_old 2> /dev/null) <(sort ~/ztvh/epg/$(date -d '2 days' '+%Y%m%d')_manifest_new) > workfile
+		comm -2 -3 <(sort -u ~/ztvh/epg/$(date -d '2 days' '+%Y%m%d')_manifest_old 2> /dev/null) <(sort -u ~/ztvh/epg/$(date -d '2 days' '+%Y%m%d')_manifest_new) > workfile
 		if [ -s workfile2 ]
 		then
 			sed -i -e 's/.*/sed -i "\/&\/d" workfile/g' -e '1i#\!\/bin\/bash' workfile2
@@ -376,6 +381,7 @@ then
 		echo ""
 		echo "DAY 3 - $(date -d '2 days' '+%Y%m%d'): EPG manifest file created!"
 		sed 's/{"i_url":/\n&/g' ~/ztvh/epg/datafile_3 | sed '1d' | sed 's/}\],"cid".*//g' > ~/ztvh/epg/$(date -d '2 days' '+%Y%m%d')_manifest_new
+		sed -i 's/},//g' ~/ztvh/epg/$(date -d '2 days' '+%Y%m%d')_manifest_new
 		sed 's/"id":/\n&/g' ~/ztvh/epg/datafile_3 > workfile
 		sed -i '/"id":/!d' workfile
 		sed -i 's/,.*//g' workfile
@@ -443,9 +449,10 @@ then
 		echo "DAY 4 - $(date -d '3 days' '+%Y%m%d'): EPG manifest file updated!"
 		mv ~/ztvh/epg/$(date -d '3 days' '+%Y%m%d')_manifest_new ~/ztvh/epg/$(date -d '3 days' '+%Y%m%d')_manifest_old 2> /dev/null
 		sed 's/{"i_url":/\n&/g' ~/ztvh/epg/datafile_4 | sed '1d' | sed 's/}\],"cid".*//g' > ~/ztvh/epg/$(date -d '3 days' '+%Y%m%d')_manifest_new
+		sed -i 's/},//g' ~/ztvh/epg/$(date -d '3 days' '+%Y%m%d')_manifest_new
 		
 		# Create file checker to download changed/new broadcasts
-		comm -2 -3 <(sort ~/ztvh/epg/$(date -d '3 days' '+%Y%m%d')_manifest_new) <(sort ~/ztvh/epg/$(date -d '3 days' '+%Y%m%d')_manifest_old 2> /dev/null) > workfile
+		comm -2 -3 <(sort -u ~/ztvh/epg/$(date -d '3 days' '+%Y%m%d')_manifest_new) <(sort -u ~/ztvh/epg/$(date -d '3 days' '+%Y%m%d')_manifest_old 2> /dev/null) > workfile
 		sed -i -e 's/\(.*\)\("id":.*\)/\2/g' -e 's/"id"://g' -e 's/},//g' workfile && cp workfile workfile2
 		sed -i 's/.*/curl -X GET --cookie "\$session" "https:\/\/zattoo.com\/zapi\/program\/details?program_id=&" > epg\/\$date_04\/& 2> \/dev\/null/g' workfile
 		if grep -q "curl" workfile
@@ -454,7 +461,7 @@ then
 		fi
 	
 		# Add commands to file checker to remove deleted broadcasts
-		comm -2 -3 <(sort ~/ztvh/epg/$(date -d '3 days' '+%Y%m%d')_manifest_old 2> /dev/null) <(sort ~/ztvh/epg/$(date -d '3 days' '+%Y%m%d')_manifest_new) > workfile
+		comm -2 -3 <(sort -u ~/ztvh/epg/$(date -d '3 days' '+%Y%m%d')_manifest_old 2> /dev/null) <(sort -u ~/ztvh/epg/$(date -d '3 days' '+%Y%m%d')_manifest_new) > workfile
 		if [ -s workfile2 ]
 		then
 			sed -i -e 's/.*/sed -i "\/&\/d" workfile/g' -e '1i#\!\/bin\/bash' workfile2
@@ -496,6 +503,7 @@ then
 		echo ""
 		echo "DAY 4 - $(date -d '3 days' '+%Y%m%d'): EPG manifest file created!"
 		sed 's/{"i_url":/\n&/g' ~/ztvh/epg/datafile_4 | sed '1d' | sed 's/}\],"cid".*//g' > ~/ztvh/epg/$(date -d '3 days' '+%Y%m%d')_manifest_new
+		sed -i 's/},//g' ~/ztvh/epg/$(date -d '3 days' '+%Y%m%d')_manifest_new
 		sed 's/"id":/\n&/g' ~/ztvh/epg/datafile_4 > workfile
 		sed -i '/"id":/!d' workfile
 		sed -i 's/,.*//g' workfile
@@ -563,9 +571,10 @@ then
 		echo "DAY 5 - $(date -d '4 days' '+%Y%m%d'): EPG manifest file updated!"
 		mv ~/ztvh/epg/$(date -d '4 days' '+%Y%m%d')_manifest_new ~/ztvh/epg/$(date -d '4 days' '+%Y%m%d')_manifest_old 2> /dev/null
 		sed 's/{"i_url":/\n&/g' ~/ztvh/epg/datafile_5 | sed '1d' | sed 's/}\],"cid".*//g' > ~/ztvh/epg/$(date -d '4 days' '+%Y%m%d')_manifest_new
+		sed -i 's/},//g' ~/ztvh/epg/$(date -d '4 days' '+%Y%m%d')_manifest_new
 		
 		# Create file checker to download changed/new broadcasts
-		comm -2 -3 <(sort ~/ztvh/epg/$(date -d '4 days' '+%Y%m%d')_manifest_new) <(sort ~/ztvh/epg/$(date -d '4 days' '+%Y%m%d')_manifest_old 2> /dev/null) > workfile
+		comm -2 -3 <(sort -u ~/ztvh/epg/$(date -d '4 days' '+%Y%m%d')_manifest_new) <(sort -u ~/ztvh/epg/$(date -d '4 days' '+%Y%m%d')_manifest_old 2> /dev/null) > workfile
 		sed -i -e 's/\(.*\)\("id":.*\)/\2/g' -e 's/"id"://g' -e 's/},//g' workfile && cp workfile workfile2
 		sed -i 's/.*/curl -X GET --cookie "\$session" "https:\/\/zattoo.com\/zapi\/program\/details?program_id=&" > epg\/\$date_05\/& 2> \/dev\/null/g' workfile
 		if grep -q "curl" workfile
@@ -574,7 +583,7 @@ then
 		fi
 	
 		# Add commands to file checker to remove deleted broadcasts
-		comm -2 -3 <(sort ~/ztvh/epg/$(date -d '4 days' '+%Y%m%d')_manifest_old 2> /dev/null) <(sort ~/ztvh/epg/$(date -d '4 days' '+%Y%m%d')_manifest_new) > workfile
+		comm -2 -3 <(sort -u ~/ztvh/epg/$(date -d '4 days' '+%Y%m%d')_manifest_old 2> /dev/null) <(sort -u ~/ztvh/epg/$(date -d '4 days' '+%Y%m%d')_manifest_new) > workfile
 		if [ -s workfile2 ]
 		then
 			sed -i -e 's/.*/sed -i "\/&\/d" workfile/g' -e '1i#\!\/bin\/bash' workfile2
@@ -616,6 +625,7 @@ then
 		echo ""
 		echo "DAY 5 - $(date -d '4 days' '+%Y%m%d'): EPG manifest file created!"
 		sed 's/{"i_url":/\n&/g' ~/ztvh/epg/datafile_5 | sed '1d' | sed 's/}\],"cid".*//g' > ~/ztvh/epg/$(date -d '4 days' '+%Y%m%d')_manifest_new
+		sed -i 's/},//g' ~/ztvh/epg/$(date -d '4 days' '+%Y%m%d')_manifest_new
 		sed 's/"id":/\n&/g' ~/ztvh/epg/datafile_5 > workfile
 		sed -i '/"id":/!d' workfile
 		sed -i 's/,.*//g' workfile
@@ -683,9 +693,10 @@ then
 		echo "DAY 6 - $(date -d '5 days' '+%Y%m%d'): EPG manifest file updated!"
 		mv ~/ztvh/epg/$(date -d '5 days' '+%Y%m%d')_manifest_new ~/ztvh/epg/$(date -d '5 days' '+%Y%m%d')_manifest_old 2> /dev/null
 		sed 's/{"i_url":/\n&/g' ~/ztvh/epg/datafile_6 | sed '1d' | sed 's/}\],"cid".*//g' > ~/ztvh/epg/$(date -d '5 days' '+%Y%m%d')_manifest_new
+		sed -i 's/},//g' ~/ztvh/epg/$(date -d '5 days' '+%Y%m%d')_manifest_new
 		
 		# Create file checker to download changed/new broadcasts
-		comm -2 -3 <(sort ~/ztvh/epg/$(date -d '5 days' '+%Y%m%d')_manifest_new) <(sort ~/ztvh/epg/$(date -d '5 days' '+%Y%m%d')_manifest_old 2> /dev/null) > workfile
+		comm -2 -3 <(sort -u ~/ztvh/epg/$(date -d '5 days' '+%Y%m%d')_manifest_new) <(sort -u ~/ztvh/epg/$(date -d '5 days' '+%Y%m%d')_manifest_old 2> /dev/null) > workfile
 		sed -i -e 's/\(.*\)\("id":.*\)/\2/g' -e 's/"id"://g' -e 's/},//g' workfile && cp workfile workfile2
 		sed -i 's/.*/curl -X GET --cookie "\$session" "https:\/\/zattoo.com\/zapi\/program\/details?program_id=&" > epg\/\$date_06\/& 2> \/dev\/null/g' workfile
 		if grep -q "curl" workfile
@@ -694,7 +705,7 @@ then
 		fi
 	
 		# Add commands to file checker to remove deleted broadcasts
-		comm -2 -3 <(sort ~/ztvh/epg/$(date -d '5 days' '+%Y%m%d')_manifest_old 2> /dev/null) <(sort ~/ztvh/epg/$(date -d '5 days' '+%Y%m%d')_manifest_new) > workfile
+		comm -2 -3 <(sort -u ~/ztvh/epg/$(date -d '5 days' '+%Y%m%d')_manifest_old 2> /dev/null) <(sort -u ~/ztvh/epg/$(date -d '5 days' '+%Y%m%d')_manifest_new) > workfile
 		if [ -s workfile2 ]
 		then
 			sed -i -e 's/.*/sed -i "\/&\/d" workfile/g' -e '1i#\!\/bin\/bash' workfile2
@@ -736,6 +747,7 @@ then
 		echo ""
 		echo "DAY 6 - $(date -d '5 days' '+%Y%m%d'): EPG manifest file created!"
 		sed 's/{"i_url":/\n&/g' ~/ztvh/epg/datafile_6 | sed '1d' | sed 's/}\],"cid".*//g' > ~/ztvh/epg/$(date -d '5 days' '+%Y%m%d')_manifest_new
+		sed -i 's/},//g' ~/ztvh/epg/$(date -d '5 days' '+%Y%m%d')_manifest_new
 		sed 's/"id":/\n&/g' ~/ztvh/epg/datafile_6 > workfile
 		sed -i '/"id":/!d' workfile
 		sed -i 's/,.*//g' workfile
@@ -803,9 +815,10 @@ then
 		echo "DAY 7 - $(date -d '6 days' '+%Y%m%d'): EPG manifest file updated!"
 		mv ~/ztvh/epg/$(date -d '6 days' '+%Y%m%d')_manifest_new ~/ztvh/epg/$(date -d '6 days' '+%Y%m%d')_manifest_old 2> /dev/null
 		sed 's/{"i_url":/\n&/g' ~/ztvh/epg/datafile_7 | sed '1d' | sed 's/}\],"cid".*//g' > ~/ztvh/epg/$(date -d '6 days' '+%Y%m%d')_manifest_new
+		sed -i 's/},//g' ~/ztvh/epg/$(date -d '6 days' '+%Y%m%d')_manifest_new
 		
 		# Create file checker to download changed/new broadcasts
-		comm -2 -3 <(sort ~/ztvh/epg/$(date -d '6 days' '+%Y%m%d')_manifest_new) <(sort ~/ztvh/epg/$(date -d '6 days' '+%Y%m%d')_manifest_old 2> /dev/null) > workfile
+		comm -2 -3 <(sort -u ~/ztvh/epg/$(date -d '6 days' '+%Y%m%d')_manifest_new) <(sort -u ~/ztvh/epg/$(date -d '6 days' '+%Y%m%d')_manifest_old 2> /dev/null) > workfile
 		sed -i -e 's/\(.*\)\("id":.*\)/\2/g' -e 's/"id"://g' -e 's/},//g' workfile && cp workfile workfile2
 		sed -i 's/.*/curl -X GET --cookie "\$session" "https:\/\/zattoo.com\/zapi\/program\/details?program_id=&" > epg\/\$date_07\/& 2> \/dev\/null/g' workfile
 		if grep -q "curl" workfile
@@ -814,7 +827,7 @@ then
 		fi
 	
 		# Add commands to file checker to remove deleted broadcasts
-		comm -2 -3 <(sort ~/ztvh/epg/$(date -d '6 days' '+%Y%m%d')_manifest_old 2> /dev/null) <(sort ~/ztvh/epg/$(date -d '6 days' '+%Y%m%d')_manifest_new) > workfile
+		comm -2 -3 <(sort -u ~/ztvh/epg/$(date -d '6 days' '+%Y%m%d')_manifest_old 2> /dev/null) <(sort -u ~/ztvh/epg/$(date -d '6 days' '+%Y%m%d')_manifest_new) > workfile
 		if [ -s workfile2 ]
 		then
 			sed -i -e 's/.*/sed -i "\/&\/d" workfile/g' -e '1i#\!\/bin\/bash' workfile2
@@ -856,6 +869,7 @@ then
 		echo ""
 		echo "DAY 7 - $(date -d '6 days' '+%Y%m%d'): EPG manifest file created!"
 		sed 's/{"i_url":/\n&/g' ~/ztvh/epg/datafile_7 | sed '1d' | sed 's/}\],"cid".*//g' > ~/ztvh/epg/$(date -d '6 days' '+%Y%m%d')_manifest_new
+		sed -i 's/},//g' ~/ztvh/epg/$(date -d '6 days' '+%Y%m%d')_manifest_new
 		sed 's/"id":/\n&/g' ~/ztvh/epg/datafile_7 > workfile
 		sed -i '/"id":/!d' workfile
 		sed -i 's/,.*//g' workfile
@@ -923,9 +937,10 @@ then
 		echo "DAY 8 - $(date -d '7 days' '+%Y%m%d'): EPG manifest file updated!"
 		mv ~/ztvh/epg/$(date -d '7 days' '+%Y%m%d')_manifest_new ~/ztvh/epg/$(date -d '7 days' '+%Y%m%d')_manifest_old 2> /dev/null
 		sed 's/{"i_url":/\n&/g' ~/ztvh/epg/datafile_8 | sed '1d' | sed 's/}\],"cid".*//g' > ~/ztvh/epg/$(date -d '7 days' '+%Y%m%d')_manifest_new
+		sed -i 's/},//g' ~/ztvh/epg/$(date -d '7 days' '+%Y%m%d')_manifest_new
 		
 		# Create file checker to download changed/new broadcasts
-		comm -2 -3 <(sort ~/ztvh/epg/$(date -d '7 days' '+%Y%m%d')_manifest_new) <(sort ~/ztvh/epg/$(date -d '7 days' '+%Y%m%d')_manifest_old 2> /dev/null) > workfile
+		comm -2 -3 <(sort -u ~/ztvh/epg/$(date -d '7 days' '+%Y%m%d')_manifest_new) <(sort -u ~/ztvh/epg/$(date -d '7 days' '+%Y%m%d')_manifest_old 2> /dev/null) > workfile
 		sed -i -e 's/\(.*\)\("id":.*\)/\2/g' -e 's/"id"://g' -e 's/},//g' workfile && cp workfile workfile2
 		sed -i 's/.*/curl -X GET --cookie "\$session" "https:\/\/zattoo.com\/zapi\/program\/details?program_id=&" > epg\/\$date_08\/& 2> \/dev\/null/g' workfile
 		if grep -q "curl" workfile
@@ -934,7 +949,7 @@ then
 		fi
 	
 		# Add commands to file checker to remove deleted broadcasts
-		comm -2 -3 <(sort ~/ztvh/epg/$(date -d '7 days' '+%Y%m%d')_manifest_old 2> /dev/null) <(sort ~/ztvh/epg/$(date -d '7 days' '+%Y%m%d')_manifest_new) > workfile
+		comm -2 -3 <(sort -u ~/ztvh/epg/$(date -d '7 days' '+%Y%m%d')_manifest_old 2> /dev/null) <(sort -u ~/ztvh/epg/$(date -d '7 days' '+%Y%m%d')_manifest_new) > workfile
 		if [ -s workfile2 ]
 		then
 			sed -i -e 's/.*/sed -i "\/&\/d" workfile/g' -e '1i#\!\/bin\/bash' workfile2
@@ -976,6 +991,7 @@ then
 		echo ""
 		echo "DAY 8 - $(date -d '7 days' '+%Y%m%d'): EPG manifest file created!"
 		sed 's/{"i_url":/\n&/g' ~/ztvh/epg/datafile_8 | sed '1d' | sed 's/}\],"cid".*//g' > ~/ztvh/epg/$(date -d '7 days' '+%Y%m%d')_manifest_new
+		sed -i 's/},//g' ~/ztvh/epg/$(date -d '7 days' '+%Y%m%d')_manifest_new
 		sed 's/"id":/\n&/g' ~/ztvh/epg/datafile_8 > workfile
 		sed -i '/"id":/!d' workfile
 		sed -i 's/,.*//g' workfile
@@ -1043,9 +1059,10 @@ then
 		echo "DAY 9 - $(date -d '8 days' '+%Y%m%d'): EPG manifest file updated!"
 		mv ~/ztvh/epg/$(date -d '8 days' '+%Y%m%d')_manifest_new ~/ztvh/epg/$(date -d '8 days' '+%Y%m%d')_manifest_old 2> /dev/null
 		sed 's/{"i_url":/\n&/g' ~/ztvh/epg/datafile_9 | sed '1d' | sed 's/}\],"cid".*//g' > ~/ztvh/epg/$(date -d '8 days' '+%Y%m%d')_manifest_new
+		sed -i 's/},//g' ~/ztvh/epg/$(date -d '8 days' '+%Y%m%d')_manifest_new
 		
 		# Create file checker to download changed/new broadcasts
-		comm -2 -3 <(sort ~/ztvh/epg/$(date -d '8 days' '+%Y%m%d')_manifest_new) <(sort ~/ztvh/epg/$(date -d '8 days' '+%Y%m%d')_manifest_old 2> /dev/null) > workfile
+		comm -2 -3 <(sort -u ~/ztvh/epg/$(date -d '8 days' '+%Y%m%d')_manifest_new) <(sort -u ~/ztvh/epg/$(date -d '8 days' '+%Y%m%d')_manifest_old 2> /dev/null) > workfile
 		sed -i -e 's/\(.*\)\("id":.*\)/\2/g' -e 's/"id"://g' -e 's/},//g' workfile && cp workfile workfile2
 		sed -i 's/.*/curl -X GET --cookie "\$session" "https:\/\/zattoo.com\/zapi\/program\/details?program_id=&" > epg\/\$date_09\/& 2> \/dev\/null/g' workfile
 		if grep -q "curl" workfile
@@ -1054,7 +1071,7 @@ then
 		fi
 	
 		# Add commands to file checker to remove deleted broadcasts
-		comm -2 -3 <(sort ~/ztvh/epg/$(date -d '8 days' '+%Y%m%d')_manifest_old 2> /dev/null) <(sort ~/ztvh/epg/$(date -d '8 days' '+%Y%m%d')_manifest_new) > workfile
+		comm -2 -3 <(sort -u ~/ztvh/epg/$(date -d '8 days' '+%Y%m%d')_manifest_old 2> /dev/null) <(sort -u ~/ztvh/epg/$(date -d '8 days' '+%Y%m%d')_manifest_new) > workfile
 		if [ -s workfile2 ]
 		then
 			sed -i -e 's/.*/sed -i "\/&\/d" workfile/g' -e '1i#\!\/bin\/bash' workfile2
@@ -1096,6 +1113,7 @@ then
 		echo ""
 		echo "DAY 9 - $(date -d '8 days' '+%Y%m%d'): EPG manifest file created!"
 		sed 's/{"i_url":/\n&/g' ~/ztvh/epg/datafile_9 | sed '1d' | sed 's/}\],"cid".*//g' > ~/ztvh/epg/$(date -d '8 days' '+%Y%m%d')_manifest_new
+		sed -i 's/},//g' ~/ztvh/epg/$(date -d '8 days' '+%Y%m%d')_manifest_new
 		sed 's/"id":/\n&/g' ~/ztvh/epg/datafile_9 > workfile
 		sed -i '/"id":/!d' workfile
 		sed -i 's/,.*//g' workfile
@@ -1163,9 +1181,10 @@ then
 		echo "DAY 10 - $(date -d '9 days' '+%Y%m%d'): EPG manifest file updated!"
 		mv ~/ztvh/epg/$(date -d '9 days' '+%Y%m%d')_manifest_new ~/ztvh/epg/$(date -d '9 days' '+%Y%m%d')_manifest_old 2> /dev/null
 		sed 's/{"i_url":/\n&/g' ~/ztvh/epg/datafile_10 | sed '1d' | sed 's/}\],"cid".*//g' > ~/ztvh/epg/$(date -d '9 days' '+%Y%m%d')_manifest_new
+		sed -i 's/},//g' ~/ztvh/epg/$(date -d '9 days' '+%Y%m%d')_manifest_new
 		
 		# Create file checker to download changed/new broadcasts
-		comm -2 -3 <(sort ~/ztvh/epg/$(date -d '9 days' '+%Y%m%d')_manifest_new) <(sort ~/ztvh/epg/$(date -d '9 days' '+%Y%m%d')_manifest_old 2> /dev/null) > workfile
+		comm -2 -3 <(sort -u ~/ztvh/epg/$(date -d '9 days' '+%Y%m%d')_manifest_new) <(sort -u ~/ztvh/epg/$(date -d '9 days' '+%Y%m%d')_manifest_old 2> /dev/null) > workfile
 		sed -i -e 's/\(.*\)\("id":.*\)/\2/g' -e 's/"id"://g' -e 's/},//g' workfile && cp workfile workfile2
 		sed -i 's/.*/curl -X GET --cookie "\$session" "https:\/\/zattoo.com\/zapi\/program\/details?program_id=&" > epg\/\$date_10\/& 2> \/dev\/null/g' workfile
 		if grep -q "curl" workfile
@@ -1174,7 +1193,7 @@ then
 		fi
 	
 		# Add commands to file checker to remove deleted broadcasts
-		comm -2 -3 <(sort ~/ztvh/epg/$(date -d '9 days' '+%Y%m%d')_manifest_old 2> /dev/null) <(sort ~/ztvh/epg/$(date -d '9 days' '+%Y%m%d')_manifest_new) > workfile
+		comm -2 -3 <(sort -u ~/ztvh/epg/$(date -d '9 days' '+%Y%m%d')_manifest_old 2> /dev/null) <(sort -u ~/ztvh/epg/$(date -d '9 days' '+%Y%m%d')_manifest_new) > workfile
 		if [ -s workfile2 ]
 		then
 			sed -i -e 's/.*/sed -i "\/&\/d" workfile/g' -e '1i#\!\/bin\/bash' workfile2
@@ -1216,6 +1235,7 @@ then
 		echo ""
 		echo "DAY 10 - $(date -d '9 days' '+%Y%m%d'): EPG manifest file created!"
 		sed 's/{"i_url":/\n&/g' ~/ztvh/epg/datafile_10 | sed '1d' | sed 's/}\],"cid".*//g' > ~/ztvh/epg/$(date -d '9 days' '+%Y%m%d')_manifest_new
+		sed -i 's/},//g' ~/ztvh/epg/$(date -d '9 days' '+%Y%m%d')_manifest_new
 		sed 's/"id":/\n&/g' ~/ztvh/epg/datafile_10 > workfile
 		sed -i '/"id":/!d' workfile
 		sed -i 's/,.*//g' workfile
@@ -1283,9 +1303,10 @@ then
 		echo "DAY 11 - $(date -d '10 days' '+%Y%m%d'): EPG manifest file updated!"
 		mv ~/ztvh/epg/$(date -d '10 days' '+%Y%m%d')_manifest_new ~/ztvh/epg/$(date -d '10 days' '+%Y%m%d')_manifest_old 2> /dev/null
 		sed 's/{"i_url":/\n&/g' ~/ztvh/epg/datafile_11 | sed '1d' | sed 's/}\],"cid".*//g' > ~/ztvh/epg/$(date -d '10 days' '+%Y%m%d')_manifest_new
+		sed -i 's/},//g' ~/ztvh/epg/$(date -d '10 days' '+%Y%m%d')_manifest_new
 		
 		# Create file checker to download changed/new broadcasts
-		comm -2 -3 <(sort ~/ztvh/epg/$(date -d '10 days' '+%Y%m%d')_manifest_new) <(sort ~/ztvh/epg/$(date -d '10 days' '+%Y%m%d')_manifest_old 2> /dev/null) > workfile
+		comm -2 -3 <(sort -u ~/ztvh/epg/$(date -d '10 days' '+%Y%m%d')_manifest_new) <(sort -u ~/ztvh/epg/$(date -d '10 days' '+%Y%m%d')_manifest_old 2> /dev/null) > workfile
 		sed -i -e 's/\(.*\)\("id":.*\)/\2/g' -e 's/"id"://g' -e 's/},//g' workfile && cp workfile workfile2
 		sed -i 's/.*/curl -X GET --cookie "\$session" "https:\/\/zattoo.com\/zapi\/program\/details?program_id=&" > epg\/\$date_11\/& 2> \/dev\/null/g' workfile
 		if grep -q "curl" workfile
@@ -1294,7 +1315,7 @@ then
 		fi
 	
 		# Add commands to file checker to remove deleted broadcasts
-		comm -2 -3 <(sort ~/ztvh/epg/$(date -d '10 days' '+%Y%m%d')_manifest_old 2> /dev/null) <(sort ~/ztvh/epg/$(date -d '10 days' '+%Y%m%d')_manifest_new) > workfile
+		comm -2 -3 <(sort -u ~/ztvh/epg/$(date -d '10 days' '+%Y%m%d')_manifest_old 2> /dev/null) <(sort -u ~/ztvh/epg/$(date -d '10 days' '+%Y%m%d')_manifest_new) > workfile
 		if [ -s workfile2 ]
 		then
 			sed -i -e 's/.*/sed -i "\/&\/d" workfile/g' -e '1i#\!\/bin\/bash' workfile2
@@ -1336,6 +1357,7 @@ then
 		echo ""
 		echo "DAY 11 - $(date -d '10 days' '+%Y%m%d'): EPG manifest file created!"
 		sed 's/{"i_url":/\n&/g' ~/ztvh/epg/datafile_11 | sed '1d' | sed 's/}\],"cid".*//g' > ~/ztvh/epg/$(date -d '10 days' '+%Y%m%d')_manifest_new
+		sed -i 's/},//g' ~/ztvh/epg/$(date -d '10 days' '+%Y%m%d')_manifest_new
 		sed 's/"id":/\n&/g' ~/ztvh/epg/datafile_11 > workfile
 		sed -i '/"id":/!d' workfile
 		sed -i 's/,.*//g' workfile
@@ -1403,9 +1425,10 @@ then
 		echo "DAY 12 - $(date -d '11 days' '+%Y%m%d'): EPG manifest file updated!"
 		mv ~/ztvh/epg/$(date -d '11 days' '+%Y%m%d')_manifest_new ~/ztvh/epg/$(date -d '11 days' '+%Y%m%d')_manifest_old 2> /dev/null
 		sed 's/{"i_url":/\n&/g' ~/ztvh/epg/datafile_12 | sed '1d' | sed 's/}\],"cid".*//g' > ~/ztvh/epg/$(date -d '11 days' '+%Y%m%d')_manifest_new
+		sed -i 's/},//g' ~/ztvh/epg/$(date -d '11 days' '+%Y%m%d')_manifest_new
 		
 		# Create file checker to download changed/new broadcasts
-		comm -2 -3 <(sort ~/ztvh/epg/$(date -d '11 days' '+%Y%m%d')_manifest_new) <(sort ~/ztvh/epg/$(date -d '11 days' '+%Y%m%d')_manifest_old 2> /dev/null) > workfile
+		comm -2 -3 <(sort -u ~/ztvh/epg/$(date -d '11 days' '+%Y%m%d')_manifest_new) <(sort -u ~/ztvh/epg/$(date -d '11 days' '+%Y%m%d')_manifest_old 2> /dev/null) > workfile
 		sed -i -e 's/\(.*\)\("id":.*\)/\2/g' -e 's/"id"://g' -e 's/},//g' workfile && cp workfile workfile2
 		sed -i 's/.*/curl -X GET --cookie "\$session" "https:\/\/zattoo.com\/zapi\/program\/details?program_id=&" > epg\/\$date_12\/& 2> \/dev\/null/g' workfile
 		if grep -q "curl" workfile
@@ -1414,7 +1437,7 @@ then
 		fi
 	
 		# Add commands to file checker to remove deleted broadcasts
-		comm -2 -3 <(sort ~/ztvh/epg/$(date -d '11 days' '+%Y%m%d')_manifest_old 2> /dev/null) <(sort ~/ztvh/epg/$(date -d '11 days' '+%Y%m%d')_manifest_new) > workfile
+		comm -2 -3 <(sort -u ~/ztvh/epg/$(date -d '11 days' '+%Y%m%d')_manifest_old 2> /dev/null) <(sort -u ~/ztvh/epg/$(date -d '11 days' '+%Y%m%d')_manifest_new) > workfile
 		if [ -s workfile2 ]
 		then
 			sed -i -e 's/.*/sed -i "\/&\/d" workfile/g' -e '1i#\!\/bin\/bash' workfile2
@@ -1456,6 +1479,7 @@ then
 		echo ""
 		echo "DAY 12 - $(date -d '11 days' '+%Y%m%d'): EPG manifest file created!"
 		sed 's/{"i_url":/\n&/g' ~/ztvh/epg/datafile_12 | sed '1d' | sed 's/}\],"cid".*//g' > ~/ztvh/epg/$(date -d '11 days' '+%Y%m%d')_manifest_new
+		sed -i 's/},//g' ~/ztvh/epg/$(date -d '11 days' '+%Y%m%d')_manifest_new
 		sed 's/"id":/\n&/g' ~/ztvh/epg/datafile_12 > workfile
 		sed -i '/"id":/!d' workfile
 		sed -i 's/,.*//g' workfile
@@ -1523,9 +1547,10 @@ then
 		echo "DAY 13 - $(date -d '12 days' '+%Y%m%d'): EPG manifest file updated!"
 		mv ~/ztvh/epg/$(date -d '12 days' '+%Y%m%d')_manifest_new ~/ztvh/epg/$(date -d '12 days' '+%Y%m%d')_manifest_old 2> /dev/null
 		sed 's/{"i_url":/\n&/g' ~/ztvh/epg/datafile_13 | sed '1d' | sed 's/}\],"cid".*//g' > ~/ztvh/epg/$(date -d '12 days' '+%Y%m%d')_manifest_new
+		sed -i 's/},//g' ~/ztvh/epg/$(date -d '12 days' '+%Y%m%d')_manifest_new
 		
 		# Create file checker to download changed/new broadcasts
-		comm -2 -3 <(sort ~/ztvh/epg/$(date -d '12 days' '+%Y%m%d')_manifest_new) <(sort ~/ztvh/epg/$(date -d '12 days' '+%Y%m%d')_manifest_old 2> /dev/null) > workfile
+		comm -2 -3 <(sort -u ~/ztvh/epg/$(date -d '12 days' '+%Y%m%d')_manifest_new) <(sort -u ~/ztvh/epg/$(date -d '12 days' '+%Y%m%d')_manifest_old 2> /dev/null) > workfile
 		sed -i -e 's/\(.*\)\("id":.*\)/\2/g' -e 's/"id"://g' -e 's/},//g' workfile && cp workfile workfile2
 		sed -i 's/.*/curl -X GET --cookie "\$session" "https:\/\/zattoo.com\/zapi\/program\/details?program_id=&" > epg\/\$date_13\/& 2> \/dev\/null/g' workfile
 		if grep -q "curl" workfile
@@ -1534,7 +1559,7 @@ then
 		fi
 	
 		# Add commands to file checker to remove deleted broadcasts
-		comm -2 -3 <(sort ~/ztvh/epg/$(date -d '12 days' '+%Y%m%d')_manifest_old 2> /dev/null) <(sort ~/ztvh/epg/$(date -d '12 days' '+%Y%m%d')_manifest_new) > workfile
+		comm -2 -3 <(sort -u ~/ztvh/epg/$(date -d '12 days' '+%Y%m%d')_manifest_old 2> /dev/null) <(sort -u ~/ztvh/epg/$(date -d '12 days' '+%Y%m%d')_manifest_new) > workfile
 		if [ -s workfile2 ]
 		then
 			sed -i -e 's/.*/sed -i "\/&\/d" workfile/g' -e '1i#\!\/bin\/bash' workfile2
@@ -1576,6 +1601,7 @@ then
 		echo ""
 		echo "DAY 13 - $(date -d '12 days' '+%Y%m%d'): EPG manifest file created!"
 		sed 's/{"i_url":/\n&/g' ~/ztvh/epg/datafile_13 | sed '1d' | sed 's/}\],"cid".*//g' > ~/ztvh/epg/$(date -d '12 days' '+%Y%m%d')_manifest_new
+		sed -i 's/},//g' ~/ztvh/epg/$(date -d '12 days' '+%Y%m%d')_manifest_new
 		sed 's/"id":/\n&/g' ~/ztvh/epg/datafile_13 > workfile
 		sed -i '/"id":/!d' workfile
 		sed -i 's/,.*//g' workfile
@@ -1643,9 +1669,10 @@ then
 		echo "DAY 14 - $(date -d '13 days' '+%Y%m%d'): EPG manifest file updated!"
 		mv ~/ztvh/epg/$(date -d '13 days' '+%Y%m%d')_manifest_new ~/ztvh/epg/$(date -d '13 days' '+%Y%m%d')_manifest_old 2> /dev/null
 		sed 's/{"i_url":/\n&/g' ~/ztvh/epg/datafile_14 | sed '1d' | sed 's/}\],"cid".*//g' > ~/ztvh/epg/$(date -d '13 days' '+%Y%m%d')_manifest_new
+		sed -i 's/},//g' ~/ztvh/epg/$(date -d '13 days' '+%Y%m%d')_manifest_new
 		
 		# Create file checker to download changed/new broadcasts
-		comm -2 -3 <(sort ~/ztvh/epg/$(date -d '13 days' '+%Y%m%d')_manifest_new) <(sort ~/ztvh/epg/$(date -d '13 days' '+%Y%m%d')_manifest_old 2> /dev/null) > workfile
+		comm -2 -3 <(sort -u ~/ztvh/epg/$(date -d '13 days' '+%Y%m%d')_manifest_new) <(sort -u ~/ztvh/epg/$(date -d '13 days' '+%Y%m%d')_manifest_old 2> /dev/null) > workfile
 		sed -i -e 's/\(.*\)\("id":.*\)/\2/g' -e 's/"id"://g' -e 's/},//g' workfile && cp workfile workfile2
 		sed -i 's/.*/curl -X GET --cookie "\$session" "https:\/\/zattoo.com\/zapi\/program\/details?program_id=&" > epg\/\$date_14\/& 2> \/dev\/null/g' workfile
 		if grep -q "curl" workfile
@@ -1654,7 +1681,7 @@ then
 		fi
 	
 		# Add commands to file checker to remove deleted broadcasts
-		comm -2 -3 <(sort ~/ztvh/epg/$(date -d '13 days' '+%Y%m%d')_manifest_old 2> /dev/null) <(sort ~/ztvh/epg/$(date -d '13 days' '+%Y%m%d')_manifest_new) > workfile
+		comm -2 -3 <(sort -u ~/ztvh/epg/$(date -d '13 days' '+%Y%m%d')_manifest_old 2> /dev/null) <(sort -u ~/ztvh/epg/$(date -d '13 days' '+%Y%m%d')_manifest_new) > workfile
 		if [ -s workfile2 ]
 		then
 			sed -i -e 's/.*/sed -i "\/&\/d" workfile/g' -e '1i#\!\/bin\/bash' workfile2
@@ -1696,6 +1723,7 @@ then
 		echo ""
 		echo "DAY 14 - $(date -d '13 days' '+%Y%m%d'): EPG manifest file created!"
 		sed 's/{"i_url":/\n&/g' ~/ztvh/epg/datafile_14 | sed '1d' | sed 's/}\],"cid".*//g' > ~/ztvh/epg/$(date -d '13 days' '+%Y%m%d')_manifest_new
+		sed -i 's/},//g' ~/ztvh/epg/$(date -d '13 days' '+%Y%m%d')_manifest_new
 		sed 's/"id":/\n&/g' ~/ztvh/epg/datafile_14 > workfile
 		sed -i '/"id":/!d' workfile
 		sed -i 's/,.*//g' workfile
