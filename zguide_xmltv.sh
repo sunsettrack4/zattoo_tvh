@@ -39,8 +39,10 @@ sed -i -e 's/\[>\[//g' -e 's/\]<\]//g' workfile
 #
 
 echo "Moving strings to setup times and channels data..."
+sed -i 's/\("channel_name":.*\)\("cid".*\)\("blackout":.*\)/\2"new_blackout":true,\1/g' workfile
 sed -i 's/,"channel_name".*//g' workfile
 sed -i 's/\(.*\)\("cid":".*\)/\2\1/g' workfile
+sed -i -e '/"new_blackout":true/s/\("cid".*\)\("country":.*\)\("start":.*\)\("image_token":.*\)\("tv_series_id":.*\)\("episode_number":.*\)/\1\3\5\2\4\6/g' -e '/"new_blackout":true/s/\("cid":.*\)\("country":.*\)\("episode_title":.*\)\("recording_eligible":.*\)\("new_blackout":.*\)\("year":.*\)\("id":.*\)\("image_token":.*\)/\1\3\6\4\8\2\5\7/g;' -e '/"new_blackout":true/s/\("cid".*\)\("season_number":.*\)\("image_path":.*\)\("episode_number":.*\)\("categories":.*\)\("country":.*\)\("id":.*\)\("description":.*\)/\1\4\2\7\5\3\6\8/g' -e '/"new_blackout":true/s/\("cid".*\)\("image_path":.*\)\("credits":.*\)\(:{"series_recording_eligible":.*\)\("description":.*\)\("genres":.*\)\("title":.*\)/\1\4\6\2\7\3\5/g' -e '/"new_blackout":true/s/\],:{"series/\]:{"series/g;s/"new_blackout":true//g' workfile
 sed -i '/"blackout":true,/s/\("cid":".*\)\("end":.*\)\("year":.*\)\("blackout":.*\)\("image_path":.*\)/\1\3\2\5/g' workfile
 sed -i -e 's/"tv_series_id":.*"episode_title/"episode_title/g' -e 's/"image_url":.*"year/"year/g' -e 's/"recording_eligible":.*"episode_number/"episode_number/g' workfile
 sed -i -e 's/"series_recording_eligible":false,//g' -e 's/"series_recording_eligible":true,//g' workfile
@@ -58,7 +60,6 @@ sed -i '/"start":/{s/-//g;s/T//g;s/://g;s/Z/ +0000/g;s/"start""/<programme start
 sed -i ':a $!N;s/\n"cid"/ "cid"/;ta P;D' workfile
 sed -i 's/", "cid":"/" channel="/g' workfile
 sed -i '/<programme start/s/,/>/g' workfile
-
 sed -i '/"image_path":/{s/\("image_path":.*\)\("title":.*\)\("credits":\[.*\)\("country":.*\)\("description":.*\)/  \1\n  \2\n  \3\n  \4\n  \5/g;}' workfile
 sed -i '/"episode_title":/{s/\("description":.*\)\("episode_title":.*\)\("image_url":.*\)\("year":.*\)\("recording_eligible":.*\)\("image_token":.*\)\("episode_number:.*\)\("id":.*\)\("genres":\[.*\)/\1\n  \2\n  \4\n  \7\n  \9/g;}' workfile
 sed -i '/"description".*"episode_number":/{s/\("description":.*\)\("episode_title":.*\)\("image_url":.*\)\("year":.*\)\("recording_eligible":.*\)\("episode_number":.*\)\("id":.*\)\("genres":\[.*\)/\1\n  \2\n  \4\n  \6\n  \8/g;}' workfile

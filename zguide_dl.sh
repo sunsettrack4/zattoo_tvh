@@ -1754,6 +1754,7 @@ then
 	rm ~/ztvh/epg/scriptfile_* 2> /dev/null
 	cat ~/ztvh/epg/datafile_* > ~/ztvh/epg/scriptbase
 	sed -i 's/nullcurl/null\ncurl/g' ~/ztvh/epg/scriptbase
+	sed -i 's/nullrm/null\nrm/g' ~/ztvh/epg/scriptbase
 	sort -u ~/ztvh/epg/scriptbase -o ~/ztvh/epg/scriptbase
 	rm ~/ztvh/epg/datafile_*
 	x=$(wc -l < ~/ztvh/epg/scriptbase)

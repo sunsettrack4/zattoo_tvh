@@ -123,6 +123,12 @@ then
 	touch fakefile
 fi
 
+if [ ! -x status.sh ]
+then
+	echo "Missing file: status.sh"
+	touch fakefile
+fi
+
 if [ -e fakefile ]
 then
 	echo "- ERROR: REQUIRED SCRIPT(S) NOT EXISTING IN RELATED DIRECTORY! -"
@@ -548,24 +554,31 @@ do
 
 
 	#
+	# Add progress bar
+	#
+	
+	bash status.sh 2> /dev/null
+	
+
+	#
 	# Collect EPG details
 	#
-
-	if ls ~/ztvh/epg | grep -q "scriptfile" 2> /dev/null
+	
+	if [ -e ~/ztvh/epg/stats ]
 	then
 		echo "Collecting EPG details..."
 		echo "That may take a while..."	&& echo ""
-	fi
-
-
-	for i in {0..7..1}
-	do
-		bash epg/scriptfile_0${i} 2> /dev/null &
-	done
-	wait
 	
-	rm epg/scriptbase 2> /dev/null
-	rm epg/scriptfile_0* 2> /dev/null
+		for i in {0..7..1}
+		do
+			bash epg/scriptfile_0${i} 2> /dev/null &
+		done
+		wait
+	
+		printf "\r- EPG DOWNLOAD FINISHED! -               " && echo "" && echo ""
+		rm epg/scriptbase 2> /dev/null
+		rm epg/scriptfile_0* 2> /dev/null
+	fi
 	
 
 	# 
@@ -626,7 +639,9 @@ bash ~/ztvh/zguide_xmltv.sh
 
 echo "Validating EPG XMLTV file..."
 
-if xmllint --noout ~/ztvh/epg/$(date +%Y%m%d)_zattoo_fullepg.xml | grep -q "parser error" 2> ~/ztvh/errorlog
+xmllint --noout ~/ztvh/epg/$(date +%Y%m%d)_zattoo_fullepg.xml > ~/ztvh/errorlog 2>&1
+
+if grep -q "parser error" ~/ztvh/errorlog
 then
 	echo "- ERROR: XMLTV FILE VALIDATION FAILED! -"
 else
@@ -639,7 +654,7 @@ fi
 # #####################
 
 cd ~/ztvh/work
-rm workfile* powerid 2> /dev/null
+rm workfile* powerid progressbar 2> /dev/null
 rm ~/ztvh/epg/stats2 2> /dev/null
 sort -u ~/ztvh/epg/status -o ~/ztvh/epg/status
 
