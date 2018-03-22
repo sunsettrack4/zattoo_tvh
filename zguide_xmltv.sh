@@ -64,7 +64,7 @@ sed -i '/"image_path":/{s/\("image_path":.*\)\("title":.*\)\("credits":\[.*\)\("
 sed -i '/"episode_title":/{s/\("description":.*\)\("episode_title":.*\)\("image_url":.*\)\("year":.*\)\("recording_eligible":.*\)\("image_token":.*\)\("episode_number:.*\)\("id":.*\)\("genres":\[.*\)/\1\n  \2\n  \4\n  \7\n  \9/g;}' workfile
 sed -i '/"description".*"episode_number":/{s/\("description":.*\)\("episode_title":.*\)\("image_url":.*\)\("year":.*\)\("recording_eligible":.*\)\("episode_number":.*\)\("id":.*\)\("genres":\[.*\)/\1\n  \2\n  \4\n  \6\n  \8/g;}' workfile
 sed -i '/"description".*"episode_number":/{s/\("description":.*\)\("episode_title":.*\)\("year":.*\)\("episode_number".*\)\("id":.*\)\("genres":\[.*\)/\1\n  \2\n  \3\n  \4\n  \6/g;}' workfile
-sed -i -e 's/"image_path":null,//g' -e 's/"episode_number":null,//g' -e 's/"season_number":null,//g' -e 's/"year":null,//g' -e 's/"episode_title":null,//g' -e 's/"credits":\[\],//g' -e 's/"genres":\[\],//g' -e 's/"country":"",//g' -e 's/"description":"",//g' -e '/^\s*$/d' workfile
+sed -i -e 's/"image_path":null,//g' -e 's/"episode_number":null,//g' -e 's/"season_number":null,//g' -e 's/"year":null,//g' -e 's/"episode_title":null,//g' -e 's/"episode_title":"",//g' -e 's/"credits":\[\],//g' -e 's/"genres":\[\],//g' -e 's/"country":"",//g' -e 's/"description":"",//g' -e '/^\s*$/d' workfile
 sed -i 's/<https:\/\/.*>//g' workfile
 
 sed -i '/"image_path"/{s/"image_path":"/<icon src="http:\/\/images.zattic.com\//g;s/,/ \/>/g;s/format_480x360/original/g}' workfile
