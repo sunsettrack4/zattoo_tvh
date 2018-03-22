@@ -302,7 +302,7 @@ do
 	
 	session=$(<session)
 
-	curl -i -X POST -H "Content-Type: application/x-www-form-urlencoded" -H "Accept: application/x-www-form-urlencoded" -v --cookie "$session" --data-urlencode "$(sed '1!d' ~/ztvh/user/userfile)" --data-urlencode "$(sed '2!d' ~/ztvh/user/userfile)" https://zattoo.com/zapi/v2/account/login > login.txt 2> /dev/null
+	curl -i -X POST -H "Content-Type: application/x-www-form-urlencoded" -H "Accept: application/x-www-form-urlencoded" -v --cookie "$session" --data-urlencode "$(sed '2d' ~/ztvh/user/userfile)" --data-urlencode "$(sed '1d' ~/ztvh/user/userfile)" https://zattoo.com/zapi/v2/account/login > login.txt 2> /dev/null
 
 	if grep -q '"success": true' login.txt
 	then

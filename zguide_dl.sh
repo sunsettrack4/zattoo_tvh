@@ -1677,7 +1677,7 @@ then
 		sed -i 's/.*/curl -X GET --cookie "\$session" "https:\/\/zattoo.com\/zapi\/program\/details?program_id=&" > epg\/\$date_14\/& 2> \/dev\/null/g' workfile
 		if grep -q "curl" workfile
 		then 
-			mv workfile > ~/ztvh/epg/filecheck
+			mv workfile ~/ztvh/epg/filecheck
 		fi
 	
 		# Add commands to file checker to remove deleted broadcasts
