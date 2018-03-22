@@ -586,7 +586,11 @@ do
 	#
 
 	cd ~/ztvh
-	bash zguide_fc.sh
+	
+	if [ -e ~/ztvh/epg/stats ]
+	then
+		bash zguide_fc.sh
+	fi
 	
 	
 	#
