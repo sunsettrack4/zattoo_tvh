@@ -24,7 +24,7 @@ The following options are available:
 1) ZATTOO CHANNEL LOGOS (related files saved in "~/ztvh/logos")
     ==> enable / disable the option to grab channel logo images
 2) ZATTOO EPG GRABBER (final XMLTV file saved in "~/ztvh/zattoo_fullepg.xml")
-    ==> enable the option to grab full EPG data and choose the related time period (1-7 days) or
+    ==> enable the option to grab full EPG data and choose the related time period (1-14 days) or
     ==> disable this option
 3) Change streaming quality/bandwidth
     ==> stream your channels in 
