@@ -48,7 +48,7 @@ HOW TO USE THE FILES
    Accept your settings by clicking on "Save" button
    tvHeadend will do a channel scan automatically.
 5) Go to menu option "Configuration/Channel / EPG/EPG Grabber Modules" and enable "External: XMLTV"
-6) Run the command "cat ~/ztvh/zattoo_fullepg.xml | socat - UNIX-CONNECT:~/.hts/tvheadend/epggrab/xmltv.sock"
+6) Run the command "cat /home/<user>/ztvh/zattoo_fullepg.xml | socat - UNIX-CONNECT:/home/<user>/.hts/tvheadend/epggrab/xmltv.sock"
    tvHeadend will process the EPG XMLTV file automatically.
 
 FURTHER SUPPORT
