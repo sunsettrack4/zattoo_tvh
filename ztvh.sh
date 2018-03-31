@@ -648,9 +648,12 @@ xmllint --noout ~/ztvh/epg/$(date +%Y%m%d)_zattoo_fullepg.xml > ~/ztvh/errorlog 
 if grep -q "parser error" ~/ztvh/errorlog
 then
 	echo "- ERROR: XMLTV FILE VALIDATION FAILED! -"
+	rm ~/ztvh/zattoo_fullepg.xml
+	mv ~/ztvh/epg/$(date +%Y%m%d)_zattoo_fullepg.xml ~/ztvh/epg/$(date +%Y%m%d)_zattoo_fullepg_ERROR.xml
 else
 	echo "- XMLTV FILE VALIDATION SUCCEEDED! -" && echo ""
-	rm ~/ztvh/errorlog
+	rm ~/ztvh/epg/$(date +%Y%m%d)_zattoo_fullepg_ERROR.xml 2> /dev/null
+	rm ~/ztvh/errorlog 2> /dev/null
 fi
 
 # #####################
