@@ -34,15 +34,9 @@ then
 	echo "- [EPG DOWNLOADER] INFO: Process interrupted in previous try! -"
 	rm stats2 2> /dev/null
 fi
-if [ -s workfile ]
+if [ -s ~/ztvh/errorlog ]
 then
-	echo "- [XMLTV CREATOR] INFO: Process interrupted in previous try! -"
-	rm workfile workfile2 2> /dev/null
-fi
-if [ -s workfile2 ]
-then
-	echo "- [XMLTV CREATOR] INFO: Process interrupted in previous try! -"
-	rm workfile workfile2 2> /dev/null
+	echo "- [XMLTV CREATOR] INFO: Process failed in previous try! -"
 fi
 
 
