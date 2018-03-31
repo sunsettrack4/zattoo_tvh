@@ -32,7 +32,7 @@ then
 	sed -i 's/{"program"/\n/g' workfile
 	sed -i '1d' workfile
 	sed -e 's/.*"id"://g' -e 's/},.*//g' $(date +%Y%m%d)_manifest_new > manifest_file
-	sed -e '/"id"/!d' -e 's/.*"id"://g' -e 's/,"categories".*//g' workfile > cache_file 
+	sed -e '/"id"/!d' -e 's/.*"id"://g' -e 's/,"categories".*//g' -e 's/,"description".*//g' workfile > cache_file 
 	comm -2 -3 <(sort -u manifest_file) <(sort cache_file) > filecheck
 	if [ -s filecheck ]
 	then
@@ -51,7 +51,7 @@ then
 	sed -i 's/{"program"/\n/g' workfile
 	sed -i '1d' workfile
 	sed -e 's/.*"id"://g' -e 's/},.*//g' $(date -d '1 day' '+%Y%m%d')_manifest_new > manifest_file
-	sed -e '/"id"/!d' -e 's/.*"id"://g' -e 's/,"categories".*//g' workfile > cache_file 
+	sed -e '/"id"/!d' -e 's/.*"id"://g' -e 's/,"categories".*//g' -e 's/,"description".*//g' workfile > cache_file 
 	comm -2 -3 <(sort -u manifest_file) <(sort cache_file) > filecheck
 	if [ -s filecheck ]
 	then
@@ -70,7 +70,7 @@ then
 	sed -i 's/{"program"/\n/g' workfile
 	sed -i '1d' workfile
 	sed -e 's/.*"id"://g' -e 's/},.*//g' $(date -d '2 days' '+%Y%m%d')_manifest_new > manifest_file
-	sed -e '/"id"/!d' -e 's/.*"id"://g' -e 's/,"categories".*//g' workfile > cache_file 
+	sed -e '/"id"/!d' -e 's/.*"id"://g' -e 's/,"categories".*//g' -e 's/,"description".*//g' workfile > cache_file 
 	comm -2 -3 <(sort -u manifest_file) <(sort cache_file) > filecheck
 	if [ -s filecheck ]
 	then
@@ -89,7 +89,7 @@ then
 	sed -i 's/{"program"/\n/g' workfile
 	sed -i '1d' workfile
 	sed -e 's/.*"id"://g' -e 's/},.*//g' $(date -d '3 days' '+%Y%m%d')_manifest_new > manifest_file
-	sed -e '/"id"/!d' -e 's/.*"id"://g' -e 's/,"categories".*//g' workfile > cache_file 
+	sed -e '/"id"/!d' -e 's/.*"id"://g' -e 's/,"categories".*//g' -e 's/,"description".*//g' workfile > cache_file 
 	comm -2 -3 <(sort -u manifest_file) <(sort cache_file) > filecheck
 	if [ -s filecheck ]
 	then
@@ -108,7 +108,7 @@ then
 	sed -i 's/{"program"/\n/g' workfile
 	sed -i '1d' workfile
 	sed -e 's/.*"id"://g' -e 's/},.*//g' $(date -d '4 days' '+%Y%m%d')_manifest_new > manifest_file
-	sed -e '/"id"/!d' -e 's/.*"id"://g' -e 's/,"categories".*//g' workfile > cache_file 
+	sed -e '/"id"/!d' -e 's/.*"id"://g' -e 's/,"categories".*//g' -e 's/,"description".*//g' workfile > cache_file 
 	comm -2 -3 <(sort -u manifest_file) <(sort cache_file) > filecheck
 	if [ -s filecheck ]
 	then
@@ -127,7 +127,7 @@ then
 	sed -i 's/{"program"/\n/g' workfile
 	sed -i '1d' workfile
 	sed -e 's/.*"id"://g' -e 's/},.*//g' $(date -d '5 days' '+%Y%m%d')_manifest_new > manifest_file
-	sed -e '/"id"/!d' -e 's/.*"id"://g' -e 's/,"categories".*//g' workfile > cache_file 
+	sed -e '/"id"/!d' -e 's/.*"id"://g' -e 's/,"categories".*//g' -e 's/,"description".*//g' workfile > cache_file 
 	comm -2 -3 <(sort -u manifest_file) <(sort cache_file) > filecheck
 	if [ -s filecheck ]
 	then
@@ -146,7 +146,7 @@ then
 	sed -i 's/{"program"/\n/g' workfile
 	sed -i '1d' workfile
 	sed -e 's/.*"id"://g' -e 's/},.*//g' $(date -d '6 days' '+%Y%m%d')_manifest_new > manifest_file
-	sed -e '/"id"/!d' -e 's/.*"id"://g' -e 's/,"categories".*//g' workfile > cache_file 
+	sed -e '/"id"/!d' -e 's/.*"id"://g' -e 's/,"categories".*//g' -e 's/,"description".*//g' workfile > cache_file 
 	comm -2 -3 <(sort -u manifest_file) <(sort cache_file) > filecheck
 	if [ -s filecheck ]
 	then
@@ -165,7 +165,7 @@ then
 	sed -i 's/{"program"/\n/g' workfile
 	sed -i '1d' workfile
 	sed -e 's/.*"id"://g' -e 's/},.*//g' $(date -d '7 days' '+%Y%m%d')_manifest_new > manifest_file
-	sed -e '/"id"/!d' -e 's/.*"id"://g' -e 's/,"categories".*//g' workfile > cache_file 
+	sed -e '/"id"/!d' -e 's/.*"id"://g' -e 's/,"categories".*//g' -e 's/,"description".*//g' workfile > cache_file 
 	comm -2 -3 <(sort -u manifest_file) <(sort cache_file) > filecheck
 	if [ -s filecheck ]
 	then
@@ -184,7 +184,7 @@ then
 	sed -i 's/{"program"/\n/g' workfile
 	sed -i '1d' workfile
 	sed -e 's/.*"id"://g' -e 's/},.*//g' $(date -d '8 days' '+%Y%m%d')_manifest_new > manifest_file
-	sed -e '/"id"/!d' -e 's/.*"id"://g' -e 's/,"categories".*//g' workfile > cache_file 
+	sed -e '/"id"/!d' -e 's/.*"id"://g' -e 's/,"categories".*//g' -e 's/,"description".*//g' workfile > cache_file 
 	comm -2 -3 <(sort -u manifest_file) <(sort cache_file) > filecheck
 	if [ -s filecheck ]
 	then
@@ -203,7 +203,7 @@ then
 	sed -i 's/{"program"/\n/g' workfile
 	sed -i '1d' workfile
 	sed -e 's/.*"id"://g' -e 's/},.*//g' $(date -d '9 days' '+%Y%m%d')_manifest_new > manifest_file
-	sed -e '/"id"/!d' -e 's/.*"id"://g' -e 's/,"categories".*//g' workfile > cache_file 
+	sed -e '/"id"/!d' -e 's/.*"id"://g' -e 's/,"categories".*//g' -e 's/,"description".*//g' workfile > cache_file 
 	comm -2 -3 <(sort -u manifest_file) <(sort cache_file) > filecheck
 	if [ -s filecheck ]
 	then
@@ -222,7 +222,7 @@ then
 	sed -i 's/{"program"/\n/g' workfile
 	sed -i '1d' workfile
 	sed -e 's/.*"id"://g' -e 's/},.*//g' $(date -d '10 days' '+%Y%m%d')_manifest_new > manifest_file
-	sed -e '/"id"/!d' -e 's/.*"id"://g' -e 's/,"categories".*//g' workfile > cache_file 
+	sed -e '/"id"/!d' -e 's/.*"id"://g' -e 's/,"categories".*//g' -e 's/,"description".*//g' workfile > cache_file 
 	comm -2 -3 <(sort -u manifest_file) <(sort cache_file) > filecheck
 	if [ -s filecheck ]
 	then
@@ -241,7 +241,7 @@ then
 	sed -i 's/{"program"/\n/g' workfile
 	sed -i '1d' workfile
 	sed -e 's/.*"id"://g' -e 's/},.*//g' $(date -d '11 days' '+%Y%m%d')_manifest_new > manifest_file
-	sed -e '/"id"/!d' -e 's/.*"id"://g' -e 's/,"categories".*//g' workfile > cache_file 
+	sed -e '/"id"/!d' -e 's/.*"id"://g' -e 's/,"categories".*//g' -e 's/,"description".*//g' workfile > cache_file 
 	comm -2 -3 <(sort -u manifest_file) <(sort cache_file) > filecheck
 	if [ -s filecheck ]
 	then
@@ -260,7 +260,7 @@ then
 	sed -i 's/{"program"/\n/g' workfile
 	sed -i '1d' workfile
 	sed -e 's/.*"id"://g' -e 's/},.*//g' $(date -d '12 days' '+%Y%m%d')_manifest_new > manifest_file
-	sed -e '/"id"/!d' -e 's/.*"id"://g' -e 's/,"categories".*//g' workfile > cache_file 
+	sed -e '/"id"/!d' -e 's/.*"id"://g' -e 's/,"categories".*//g' -e 's/,"description".*//g' workfile > cache_file 
 	comm -2 -3 <(sort -u manifest_file) <(sort cache_file) > filecheck
 	if [ -s filecheck ]
 	then
@@ -279,7 +279,7 @@ then
 	sed -i 's/{"program"/\n/g' workfile
 	sed -i '1d' workfile
 	sed -e 's/.*"id"://g' -e 's/},.*//g' $(date -d '13 days' '+%Y%m%d')_manifest_new > manifest_file
-	sed -e '/"id"/!d' -e 's/.*"id"://g' -e 's/,"categories".*//g' workfile > cache_file 
+	sed -e '/"id"/!d' -e 's/.*"id"://g' -e 's/,"categories".*//g' -e 's/,"description".*//g' workfile > cache_file 
 	comm -2 -3 <(sort -u manifest_file) <(sort cache_file) > filecheck
 	if [ -s filecheck ]
 	then

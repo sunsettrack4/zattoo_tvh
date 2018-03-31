@@ -39,6 +39,15 @@ sed -i -e 's/\[>\[//g' -e 's/\]<\]//g' workfile
 #
 
 echo "Moving strings to setup times and channels data..."
+sed -i '/"youth_protection_rating"/s/\("genres":.*\)\("recording_eligible":.*\)\("series_recording_eligible":.*\)\("youth_protection_rating":.*\)\("image_token":.*\)/\1\3\2\5/g' workfile
+sed -i '/"youth_protection_rating"/s/"blackout":true/"youth_blackout":true/g' workfile
+sed -i '/"youth_blackout":true/s/\("series_recording_eligible":.*\)\("episode_number":.*\)\("youth_blackout":.*\)\("success":.*\)/\1"tv_series_id":0000,\2\4/g' workfile
+sed -i '/"youth_protection_rating"/s/\("series_recording_eligible":.*\)\("year":.*\)\("genres":.*\)\("title":.*\)\("start":.*\)\("image_path":.*\)\("credits".*\)\("tv_series_id":.*\)\("country":.*\)/\1\3\6\4\7\9\2\5\8/g' workfile
+sed -i '/"youth_protection_rating"/s/\("series_recording_eligible":.*\)\("episode_title":.*\)\("description":.*\)\("start":.*\)\("cid":.*\)/\1\3\5\2\4/g' workfile
+sed -i '/"youth_protection_rating"/s/\("series_recording_eligible":.*\)\("episode_title":.*\)\("start":.*\)\("youth_protection_rating":.*\)\("tv_series_id":.*\)/\1\3\5\2\4/g' workfile
+sed -i '/"youth_protection_rating"/s/\("series_recording_eligible":.*\)\("episode_number":.*\)\("episode_title":.*\)\("recording_eligible":.*\)\("success":.*\)\("year":.*\)\("id":.*\)\("image_token":.*\)/\1\3\6\4\8\2\5\7/g' workfile
+sed -i '/"youth_protection_rating"/s/\("series_recording_eligible":.*\)\("season_number":.*\)\("episode_number":.*\)\("categories":.*\)\("id":.*\)\("youth_protection_rating":.*\)/\1\3\2\5\4\6/g' workfile
+sed -i '/"youth_protection_rating"/s/},"image_token":/,"image_token":/g;s/","success":/"},"success":/g;s/"youth_protection_rating":.*//g' workfile 
 sed -i 's/\("channel_name":.*\)\("cid".*\)\("blackout":.*\)/\2"new_blackout":true,\1/g' workfile
 sed -i 's/,"channel_name".*//g' workfile
 sed -i 's/\(.*\)\("cid":".*\)/\2\1/g' workfile
@@ -186,7 +195,7 @@ sed -i '/category lang/s/>Fantasy.*/>Science fiction \/ Fantasy \/ Horror<\/cate
 # FINALIZATION: FIX WRONG CHARACTERS, RENAME FILE
 #
 
-sed -i -e 's/\&/\&amp;/g' -e 's/\\"/"/g' workfile2
+sed -i -e 's/\&/\&amp;/g' -e 's/\\"/"/g' -e 's/\\n/ /g' -e 's/\\r//g' -e 's/\\t//g' workfile2
 mv workfile2 ~/ztvh/epg/$(date +%Y%m%d)_zattoo_fullepg.xml && cp ~/ztvh/epg/$(date +%Y%m%d)_zattoo_fullepg.xml ~/ztvh/zattoo_fullepg.xml && rm workfile
 
 echo "- EPG XMLTV FILE CREATED SUCCESSFULLY! -" && echo ""

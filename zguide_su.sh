@@ -173,3 +173,6 @@ then
 	cat workfile >> ~/ztvh/epg/workfile
 	sed -i '$i\ ' ~/ztvh/epg/workfile
 fi
+
+sed -i '/^\s*$/d' ~/ztvh/epg/workfile
+sed -i 's/"success":true}:{"genres":/"success":true}\n:{"genres":/g' ~/ztvh/epg/workfile
