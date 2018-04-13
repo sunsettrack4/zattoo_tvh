@@ -47,7 +47,8 @@ sed -i '/"youth_protection_rating"/s/\("series_recording_eligible":.*\)\("episod
 sed -i '/"youth_protection_rating"/s/\("series_recording_eligible":.*\)\("episode_title":.*\)\("start":.*\)\("youth_protection_rating":.*\)\("tv_series_id":.*\)/\1\3\5\2\4/g' workfile
 sed -i '/"youth_protection_rating"/s/\("series_recording_eligible":.*\)\("episode_number":.*\)\("episode_title":.*\)\("recording_eligible":.*\)\("success":.*\)\("year":.*\)\("id":.*\)\("image_token":.*\)/\1\3\6\4\8\2\5\7/g' workfile
 sed -i '/"youth_protection_rating"/s/\("series_recording_eligible":.*\)\("season_number":.*\)\("episode_number":.*\)\("categories":.*\)\("id":.*\)\("youth_protection_rating":.*\)/\1\3\2\5\4\6/g' workfile
-sed -i '/"youth_protection_rating"/s/},"image_token":/,"image_token":/g;s/","success":/"},"success":/g;s/"youth_protection_rating":.*/\n&/g' workfile 
+sed -i '/"youth_protection_rating"/s/},"image_token":/,"image_token":/g;s/","success":/"},"success":/g;s/"youth_protection_rating":.*/\n&/g' workfile
+sed -i -e '/"genres":\[\].*"categories":\["/s/\(.*\)\("genres":.*\)\("end":.*\)\("categories":.*\)\("channel_name":.*\)/\1\4\3\"categories":null,\5/g' -e '/"categories":null/s/"categories":\["/"genres":\["/g' workfile
 sed -i 's/\(.*\)\("cid":".*\)/\2\1/g' workfile
 sed -i -e 's/"tv_series_id":.*"episode_title/"episode_title/g' -e 's/"image_url":.*"year/"year/g' -e 's/"recording_eligible":.*"episode_number/"episode_number/g' workfile
 sed -i -e 's/"series_recording_eligible":false,//g' -e 's/"series_recording_eligible":true,//g' workfile
@@ -102,6 +103,15 @@ sed -i '$s/.*/&\n<\/tv>/g' workfile2
 #
 
 echo "Converting category strings to DVB format..."
+
+sed -i '/category lang/s/>Filme<.*/>Movie \/ Drama<\/category>/g' workfile2
+sed -i '/category lang/s/>Dokumentationen<.*/>Documentary<\/category>/g' workfile2
+sed -i "/category lang/s/>Kinderprogramm<.*/>Children's \/ Youth programs<\/category>/g" workfile2
+sed -i '/category lang/s/>Sport<.*/>Sports<\/category>/g' workfile2
+sed -i '/category lang/s/>Information<.*/>Magazines \/ Reports \/ Documentary<\/category>/g' workfile2
+sed -i '/category lang/s/>Unterhaltung<.*/>Show \/ Game show<\/category>/g' workfile2
+sed -i '/category lang/s/>Serien<.*/>Movie \/ Drama<\/category>/g' workfile2
+
 sed -i '/category lang/s/>Wirtschaft.*/>Social \/ Political issues \/ Economics<\/category>/g' workfile2
 sed -i '/category lang/s/>Spielshow.*/>Show \/ Game show<\/category>/g' workfile2
 sed -i '/category lang/s/>Wissen.*/>Education \/ Science \/ Factual topics<\/category>/g' workfile2
