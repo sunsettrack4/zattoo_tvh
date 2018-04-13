@@ -39,7 +39,7 @@ sed -i -e 's/\[>\[//g' -e 's/\]<\]//g' workfile
 #
 
 echo "Moving strings to setup times and channels data..."
-sed -i '/"youth_protection_rating"/s/\("genres":.*\)\("recording_eligible":.*\)\("series_recording_eligible":.*\)\("youth_protection_rating":.*\)\("image_token":.*\)/\1\3\2\5/g' workfile
+sed -i '/"youth_protection_rating"/s/\("genres":.*\)\("recording_eligible":.*\)\("series_recording_eligible":.*\)\("youth_protection_rating":.*\)\("image_token":.*\)/\1\3\2\5\4/g' workfile
 sed -i '/"youth_protection_rating"/s/"blackout":true/"youth_blackout":true/g' workfile
 sed -i '/"youth_blackout":true/s/\("series_recording_eligible":.*\)\("episode_number":.*\)\("youth_blackout":.*\)\("success":.*\)/\1"tv_series_id":0000,\2\4/g' workfile
 sed -i '/"youth_protection_rating"/s/\("series_recording_eligible":.*\)\("year":.*\)\("genres":.*\)\("title":.*\)\("start":.*\)\("image_path":.*\)\("credits".*\)\("tv_series_id":.*\)\("country":.*\)/\1\3\6\4\7\9\2\5\8/g' workfile
@@ -47,16 +47,11 @@ sed -i '/"youth_protection_rating"/s/\("series_recording_eligible":.*\)\("episod
 sed -i '/"youth_protection_rating"/s/\("series_recording_eligible":.*\)\("episode_title":.*\)\("start":.*\)\("youth_protection_rating":.*\)\("tv_series_id":.*\)/\1\3\5\2\4/g' workfile
 sed -i '/"youth_protection_rating"/s/\("series_recording_eligible":.*\)\("episode_number":.*\)\("episode_title":.*\)\("recording_eligible":.*\)\("success":.*\)\("year":.*\)\("id":.*\)\("image_token":.*\)/\1\3\6\4\8\2\5\7/g' workfile
 sed -i '/"youth_protection_rating"/s/\("series_recording_eligible":.*\)\("season_number":.*\)\("episode_number":.*\)\("categories":.*\)\("id":.*\)\("youth_protection_rating":.*\)/\1\3\2\5\4\6/g' workfile
-sed -i '/"youth_protection_rating"/s/},"image_token":/,"image_token":/g;s/","success":/"},"success":/g;s/"youth_protection_rating":.*//g' workfile 
-sed -i 's/\("channel_name":.*\)\("cid".*\)\("blackout":.*\)/\2"new_blackout":true,\1/g' workfile
-sed -i 's/,"channel_name".*//g' workfile
+sed -i '/"youth_protection_rating"/s/},"image_token":/,"image_token":/g;s/","success":/"},"success":/g;s/"youth_protection_rating":.*/\n&/g' workfile 
 sed -i 's/\(.*\)\("cid":".*\)/\2\1/g' workfile
-sed -i -e '/"new_blackout":true/s/\("cid".*\)\("country":.*\)\("start":.*\)\("image_token":.*\)\("tv_series_id":.*\)\("episode_number":.*\)/\1\3\5\2\4\6/g' -e '/"new_blackout":true/s/\("cid":.*\)\("country":.*\)\("episode_title":.*\)\("recording_eligible":.*\)\("new_blackout":.*\)\("year":.*\)\("id":.*\)\("image_token":.*\)/\1\3\6\4\8\2\5\7/g;' -e '/"new_blackout":true/s/\("cid".*\)\("season_number":.*\)\("image_path":.*\)\("episode_number":.*\)\("categories":.*\)\("country":.*\)\("id":.*\)\("description":.*\)/\1\4\2\7\5\3\6\8/g' -e '/"new_blackout":true/s/\("cid".*\)\("image_path":.*\)\("credits":.*\)\(:{"series_recording_eligible":.*\)\("description":.*\)\("genres":.*\)\("title":.*\)/\1\4\6\2\7\3\5/g' -e '/"new_blackout":true/s/\],:{"series/\]:{"series/g;s/"new_blackout":true//g' workfile
-sed -i '/"blackout":true,/s/\("cid":".*\)\("end":.*\)\("year":.*\)\("blackout":.*\)\("image_path":.*\)/\1\3\2\5/g' workfile
 sed -i -e 's/"tv_series_id":.*"episode_title/"episode_title/g' -e 's/"image_url":.*"year/"year/g' -e 's/"recording_eligible":.*"episode_number/"episode_number/g' workfile
 sed -i -e 's/"series_recording_eligible":false,//g' -e 's/"series_recording_eligible":true,//g' workfile
 sed -i 's/\(.*\)\("episode_title.*\)\("end":".*\)/\1\3\2/g' workfile
-sed -i 's/\(.*\)\("episode_number.*\)\("end":".*\)/\1\3\2/g' workfile
 sed -i 's/\("cid":".*\)\("start":".*\)\("end":".*\)\("image_path":.*\)/\2\3\n\1\n\4/g' workfile
 
 
@@ -88,8 +83,7 @@ sed -i -e 's/\("episode_title"\)\(.*\)/\1\2\1/g' -e 's/"episode_title":"/<sub-ti
 sed -i '/"episode_number".*"season_number"/{s/,"season_number":/ S/g;s/"episode_number":/&/g;}' workfile
 sed -i -e 's/\("episode_number"\)\(.*\)/\1\2\1/g' -e 's/"episode_number":/<episode-num system="onscreen">E/g' -e 's/,"episode_number"/<\/episode-num>/g' workfile
 sed -i 's/\(.*<episode-num system="onscreen">\)\(E.*\)\( \)\(S.*\)\(<\/episode-num>\)/\1\4\3\2\5/g' workfile
-sed -i -e 's/<programme start=/<\/programme>\n&/g' -e '$s/.*/&\n<\/programme>/g' workfile
-sed -i '1d' workfile
+sed -i -e 's/"youth_protection_rating":null,/<\/programme>/g' -e 's/"youth_protection_rating":"/  <rating system="FSK">\n     <value>/g' -e '/<value>/s/",/<\/value>\n  <\/rating>\n<\/programme>/g' workfile
 
 sed -i '/"cid"/!d' ~/ztvh/work/channels_file
 sed -i 's/\(.*\)\("title":.*\)\("cid":.*\)\("recording":.*\)/\3\n\2/g' ~/ztvh/work/channels_file
