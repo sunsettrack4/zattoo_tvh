@@ -205,7 +205,7 @@ sed -i '/category lang/s/>Fantasy.*/>Science fiction \/ Fantasy \/ Horror<\/cate
 # FINALIZATION: FIX WRONG CHARACTERS, RENAME FILE
 #
 
-sed -i -e 's/\&/\&amp;/g' -e 's/\\"/"/g' -e 's/\\n/ /g' -e 's/\\r//g' -e 's/\\t//g' workfile2
+sed -i -e 's/\&/\&amp;/g' -e 's/\\"/"/g' -e 's/\\n/\n/g' -e 's/\\r//g' -e 's/\\t//g' workfile2
 mv workfile2 ~/ztvh/epg/$(date +%Y%m%d)_zattoo_fullepg.xml && cp ~/ztvh/epg/$(date +%Y%m%d)_zattoo_fullepg.xml ~/ztvh/zattoo_fullepg.xml && rm workfile
 
 echo "- EPG XMLTV FILE CREATED SUCCESSFULLY! -" && echo ""
