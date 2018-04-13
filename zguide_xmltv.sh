@@ -39,6 +39,8 @@ sed -i -e 's/\[>\[//g' -e 's/\]<\]//g' workfile
 #
 
 echo "Moving strings to setup times and channels data..."
+sed -i '/"series_recording_eligible":false.*"xlime_recommendations_possible"/s/\(.*\)\("xlime_recommendations_possible":.*\)\("season_number":.*\)\("episode_number":.*\)\("image_token":.*\)\("categories":.*\)/\1\5\3"tv_series_id":null,\4\6/g' workfile
+sed -i 's/"xlime_recommendations_possible":false,//g' workfile
 sed -i '/"youth_protection_rating"/s/\("genres":.*\)\("recording_eligible":.*\)\("series_recording_eligible":.*\)\("youth_protection_rating":.*\)\("image_token":.*\)/\1\3\2\5\4/g' workfile
 sed -i '/"youth_protection_rating"/s/"blackout":true/"youth_blackout":true/g' workfile
 sed -i '/"youth_blackout":true/s/\("series_recording_eligible":.*\)\("episode_number":.*\)\("youth_blackout":.*\)\("success":.*\)/\1"tv_series_id":0000,\2\4/g' workfile
