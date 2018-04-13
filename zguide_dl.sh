@@ -99,12 +99,15 @@ then
 		comm -2 -3 <(sort -u ~/ztvh/epg/$(date +%Y%m%d)_manifest_old 2> /dev/null) <(sort -u ~/ztvh/epg/$(date +%Y%m%d)_manifest_new) > workfile
 		if [ -s workfile2 ]
 		then
-			sed -i -e 's/.*/sed -i "\/&\/d" workfile/g' -e '1i#\!\/bin\/bash' workfile2
-			bash workfile2
+			sed -i -e 's/\(.*\)\("id":.*\)/\2/g' -e 's/"id"://g' -e 's/},//g' workfile
+			cp workfile2 workfile3
+			cat workfile2 >> workfile3
+			cat workfile >> workfile3
+			sort workfile3 | uniq -u > workfile
+			rm workfile2 workfile3
 		fi
 		if [ -s workfile ]
 		then
-			sed -i -e 's/\(.*\)\("id":.*\)/\2/g' -e 's/"id"://g' -e 's/},//g' workfile
 			sed -i 's/.*/rm epg\/\$date_01\/&/g' workfile
 			if [ -s ~/ztvh/epg/filecheck ]
 			then
@@ -222,12 +225,15 @@ then
 		comm -2 -3 <(sort -u ~/ztvh/epg/$(date -d '1 day' '+%Y%m%d')_manifest_old 2> /dev/null) <(sort -u ~/ztvh/epg/$(date -d '1 day' '+%Y%m%d')_manifest_new) > workfile
 		if [ -s workfile2 ]
 		then
-			sed -i -e 's/.*/sed -i "\/&\/d" workfile/g' -e '1i#\!\/bin\/bash' workfile2
-			bash workfile2
+			sed -i -e 's/\(.*\)\("id":.*\)/\2/g' -e 's/"id"://g' -e 's/},//g' workfile
+			cp workfile2 workfile3
+			cat workfile2 >> workfile3
+			cat workfile >> workfile3
+			sort workfile3 | uniq -u > workfile
+			rm workfile2 workfile3
 		fi
 		if [ -s workfile ]
 		then
-			sed -i -e 's/\(.*\)\("id":.*\)/\2/g' -e 's/"id"://g' -e 's/},//g' workfile
 			sed -i 's/.*/rm epg\/\$date_02\/&/g' workfile
 			if [ -s ~/ztvh/epg/filecheck ]
 			then
@@ -345,12 +351,15 @@ then
 		comm -2 -3 <(sort -u ~/ztvh/epg/$(date -d '2 days' '+%Y%m%d')_manifest_old 2> /dev/null) <(sort -u ~/ztvh/epg/$(date -d '2 days' '+%Y%m%d')_manifest_new) > workfile
 		if [ -s workfile2 ]
 		then
-			sed -i -e 's/.*/sed -i "\/&\/d" workfile/g' -e '1i#\!\/bin\/bash' workfile2
-			bash workfile2
+			sed -i -e 's/\(.*\)\("id":.*\)/\2/g' -e 's/"id"://g' -e 's/},//g' workfile
+			cp workfile2 workfile3
+			cat workfile2 >> workfile3
+			cat workfile >> workfile3
+			sort workfile3 | uniq -u > workfile
+			rm workfile2 workfile3
 		fi
 		if [ -s workfile ]
 		then
-			sed -i -e 's/\(.*\)\("id":.*\)/\2/g' -e 's/"id"://g' -e 's/},//g' workfile
 			sed -i 's/.*/rm epg\/\$date_03\/&/g' workfile
 			if [ -s ~/ztvh/epg/filecheck ]
 			then
@@ -468,12 +477,15 @@ then
 		comm -2 -3 <(sort -u ~/ztvh/epg/$(date -d '3 days' '+%Y%m%d')_manifest_old 2> /dev/null) <(sort -u ~/ztvh/epg/$(date -d '3 days' '+%Y%m%d')_manifest_new) > workfile
 		if [ -s workfile2 ]
 		then
-			sed -i -e 's/.*/sed -i "\/&\/d" workfile/g' -e '1i#\!\/bin\/bash' workfile2
-			bash workfile2
+			sed -i -e 's/\(.*\)\("id":.*\)/\2/g' -e 's/"id"://g' -e 's/},//g' workfile
+			cp workfile2 workfile3
+			cat workfile2 >> workfile3
+			cat workfile >> workfile3
+			sort workfile3 | uniq -u > workfile
+			rm workfile2 workfile3
 		fi
 		if [ -s workfile ]
 		then
-			sed -i -e 's/\(.*\)\("id":.*\)/\2/g' -e 's/"id"://g' -e 's/},//g' workfile
 			sed -i 's/.*/rm epg\/\$date_04\/&/g' workfile
 			if [ -s ~/ztvh/epg/filecheck ]
 			then
@@ -591,12 +603,15 @@ then
 		comm -2 -3 <(sort -u ~/ztvh/epg/$(date -d '4 days' '+%Y%m%d')_manifest_old 2> /dev/null) <(sort -u ~/ztvh/epg/$(date -d '4 days' '+%Y%m%d')_manifest_new) > workfile
 		if [ -s workfile2 ]
 		then
-			sed -i -e 's/.*/sed -i "\/&\/d" workfile/g' -e '1i#\!\/bin\/bash' workfile2
-			bash workfile2
+			sed -i -e 's/\(.*\)\("id":.*\)/\2/g' -e 's/"id"://g' -e 's/},//g' workfile
+			cp workfile2 workfile3
+			cat workfile2 >> workfile3
+			cat workfile >> workfile3
+			sort workfile3 | uniq -u > workfile
+			rm workfile2 workfile3
 		fi
 		if [ -s workfile ]
 		then
-			sed -i -e 's/\(.*\)\("id":.*\)/\2/g' -e 's/"id"://g' -e 's/},//g' workfile
 			sed -i 's/.*/rm epg\/\$date_05\/&/g' workfile
 			if [ -s ~/ztvh/epg/filecheck ]
 			then
@@ -714,12 +729,15 @@ then
 		comm -2 -3 <(sort -u ~/ztvh/epg/$(date -d '5 days' '+%Y%m%d')_manifest_old 2> /dev/null) <(sort -u ~/ztvh/epg/$(date -d '5 days' '+%Y%m%d')_manifest_new) > workfile
 		if [ -s workfile2 ]
 		then
-			sed -i -e 's/.*/sed -i "\/&\/d" workfile/g' -e '1i#\!\/bin\/bash' workfile2
-			bash workfile2
+			sed -i -e 's/\(.*\)\("id":.*\)/\2/g' -e 's/"id"://g' -e 's/},//g' workfile
+			cp workfile2 workfile3
+			cat workfile2 >> workfile3
+			cat workfile >> workfile3
+			sort workfile3 | uniq -u > workfile
+			rm workfile2 workfile3
 		fi
 		if [ -s workfile ]
 		then
-			sed -i -e 's/\(.*\)\("id":.*\)/\2/g' -e 's/"id"://g' -e 's/},//g' workfile
 			sed -i 's/.*/rm epg\/\$date_06\/&/g' workfile
 			if [ -s ~/ztvh/epg/filecheck ]
 			then
@@ -837,12 +855,15 @@ then
 		comm -2 -3 <(sort -u ~/ztvh/epg/$(date -d '6 days' '+%Y%m%d')_manifest_old 2> /dev/null) <(sort -u ~/ztvh/epg/$(date -d '6 days' '+%Y%m%d')_manifest_new) > workfile
 		if [ -s workfile2 ]
 		then
-			sed -i -e 's/.*/sed -i "\/&\/d" workfile/g' -e '1i#\!\/bin\/bash' workfile2
-			bash workfile2
+			sed -i -e 's/\(.*\)\("id":.*\)/\2/g' -e 's/"id"://g' -e 's/},//g' workfile
+			cp workfile2 workfile3
+			cat workfile2 >> workfile3
+			cat workfile >> workfile3
+			sort workfile3 | uniq -u > workfile
+			rm workfile2 workfile3
 		fi
 		if [ -s workfile ]
 		then
-			sed -i -e 's/\(.*\)\("id":.*\)/\2/g' -e 's/"id"://g' -e 's/},//g' workfile
 			sed -i 's/.*/rm epg\/\$date_07\/&/g' workfile
 			if [ -s ~/ztvh/epg/filecheck ]
 			then
@@ -960,12 +981,15 @@ then
 		comm -2 -3 <(sort -u ~/ztvh/epg/$(date -d '7 days' '+%Y%m%d')_manifest_old 2> /dev/null) <(sort -u ~/ztvh/epg/$(date -d '7 days' '+%Y%m%d')_manifest_new) > workfile
 		if [ -s workfile2 ]
 		then
-			sed -i -e 's/.*/sed -i "\/&\/d" workfile/g' -e '1i#\!\/bin\/bash' workfile2
-			bash workfile2
+			sed -i -e 's/\(.*\)\("id":.*\)/\2/g' -e 's/"id"://g' -e 's/},//g' workfile
+			cp workfile2 workfile3
+			cat workfile2 >> workfile3
+			cat workfile >> workfile3
+			sort workfile3 | uniq -u > workfile
+			rm workfile2 workfile3
 		fi
 		if [ -s workfile ]
 		then
-			sed -i -e 's/\(.*\)\("id":.*\)/\2/g' -e 's/"id"://g' -e 's/},//g' workfile
 			sed -i 's/.*/rm epg\/\$date_08\/&/g' workfile
 			if [ -s ~/ztvh/epg/filecheck ]
 			then
@@ -1083,12 +1107,15 @@ then
 		comm -2 -3 <(sort -u ~/ztvh/epg/$(date -d '8 days' '+%Y%m%d')_manifest_old 2> /dev/null) <(sort -u ~/ztvh/epg/$(date -d '8 days' '+%Y%m%d')_manifest_new) > workfile
 		if [ -s workfile2 ]
 		then
-			sed -i -e 's/.*/sed -i "\/&\/d" workfile/g' -e '1i#\!\/bin\/bash' workfile2
-			bash workfile2
+			sed -i -e 's/\(.*\)\("id":.*\)/\2/g' -e 's/"id"://g' -e 's/},//g' workfile
+			cp workfile2 workfile3
+			cat workfile2 >> workfile3
+			cat workfile >> workfile3
+			sort workfile3 | uniq -u > workfile
+			rm workfile2 workfile3
 		fi
 		if [ -s workfile ]
 		then
-			sed -i -e 's/\(.*\)\("id":.*\)/\2/g' -e 's/"id"://g' -e 's/},//g' workfile
 			sed -i 's/.*/rm epg\/\$date_09\/&/g' workfile
 			if [ -s ~/ztvh/epg/filecheck ]
 			then
@@ -1206,12 +1233,15 @@ then
 		comm -2 -3 <(sort -u ~/ztvh/epg/$(date -d '9 days' '+%Y%m%d')_manifest_old 2> /dev/null) <(sort -u ~/ztvh/epg/$(date -d '9 days' '+%Y%m%d')_manifest_new) > workfile
 		if [ -s workfile2 ]
 		then
-			sed -i -e 's/.*/sed -i "\/&\/d" workfile/g' -e '1i#\!\/bin\/bash' workfile2
-			bash workfile2
+			sed -i -e 's/\(.*\)\("id":.*\)/\2/g' -e 's/"id"://g' -e 's/},//g' workfile
+			cp workfile2 workfile3
+			cat workfile2 >> workfile3
+			cat workfile >> workfile3
+			sort workfile3 | uniq -u > workfile
+			rm workfile2 workfile3
 		fi
 		if [ -s workfile ]
 		then
-			sed -i -e 's/\(.*\)\("id":.*\)/\2/g' -e 's/"id"://g' -e 's/},//g' workfile
 			sed -i 's/.*/rm epg\/\$date_10\/&/g' workfile
 			if [ -s ~/ztvh/epg/filecheck ]
 			then
@@ -1329,12 +1359,15 @@ then
 		comm -2 -3 <(sort -u ~/ztvh/epg/$(date -d '10 days' '+%Y%m%d')_manifest_old 2> /dev/null) <(sort -u ~/ztvh/epg/$(date -d '10 days' '+%Y%m%d')_manifest_new) > workfile
 		if [ -s workfile2 ]
 		then
-			sed -i -e 's/.*/sed -i "\/&\/d" workfile/g' -e '1i#\!\/bin\/bash' workfile2
-			bash workfile2
+			sed -i -e 's/\(.*\)\("id":.*\)/\2/g' -e 's/"id"://g' -e 's/},//g' workfile
+			cp workfile2 workfile3
+			cat workfile2 >> workfile3
+			cat workfile >> workfile3
+			sort workfile3 | uniq -u > workfile
+			rm workfile2 workfile3
 		fi
 		if [ -s workfile ]
 		then
-			sed -i -e 's/\(.*\)\("id":.*\)/\2/g' -e 's/"id"://g' -e 's/},//g' workfile
 			sed -i 's/.*/rm epg\/\$date_11\/&/g' workfile
 			if [ -s ~/ztvh/epg/filecheck ]
 			then
@@ -1452,12 +1485,15 @@ then
 		comm -2 -3 <(sort -u ~/ztvh/epg/$(date -d '11 days' '+%Y%m%d')_manifest_old 2> /dev/null) <(sort -u ~/ztvh/epg/$(date -d '11 days' '+%Y%m%d')_manifest_new) > workfile
 		if [ -s workfile2 ]
 		then
-			sed -i -e 's/.*/sed -i "\/&\/d" workfile/g' -e '1i#\!\/bin\/bash' workfile2
-			bash workfile2
+			sed -i -e 's/\(.*\)\("id":.*\)/\2/g' -e 's/"id"://g' -e 's/},//g' workfile
+			cp workfile2 workfile3
+			cat workfile2 >> workfile3
+			cat workfile >> workfile3
+			sort workfile3 | uniq -u > workfile
+			rm workfile2 workfile3
 		fi
 		if [ -s workfile ]
 		then
-			sed -i -e 's/\(.*\)\("id":.*\)/\2/g' -e 's/"id"://g' -e 's/},//g' workfile
 			sed -i 's/.*/rm epg\/\$date_12\/&/g' workfile
 			if [ -s ~/ztvh/epg/filecheck ]
 			then
@@ -1575,12 +1611,15 @@ then
 		comm -2 -3 <(sort -u ~/ztvh/epg/$(date -d '12 days' '+%Y%m%d')_manifest_old 2> /dev/null) <(sort -u ~/ztvh/epg/$(date -d '12 days' '+%Y%m%d')_manifest_new) > workfile
 		if [ -s workfile2 ]
 		then
-			sed -i -e 's/.*/sed -i "\/&\/d" workfile/g' -e '1i#\!\/bin\/bash' workfile2
-			bash workfile2
+			sed -i -e 's/\(.*\)\("id":.*\)/\2/g' -e 's/"id"://g' -e 's/},//g' workfile
+			cp workfile2 workfile3
+			cat workfile2 >> workfile3
+			cat workfile >> workfile3
+			sort workfile3 | uniq -u > workfile
+			rm workfile2 workfile3
 		fi
 		if [ -s workfile ]
 		then
-			sed -i -e 's/\(.*\)\("id":.*\)/\2/g' -e 's/"id"://g' -e 's/},//g' workfile
 			sed -i 's/.*/rm epg\/\$date_13\/&/g' workfile
 			if [ -s ~/ztvh/epg/filecheck ]
 			then
@@ -1698,12 +1737,15 @@ then
 		comm -2 -3 <(sort -u ~/ztvh/epg/$(date -d '13 days' '+%Y%m%d')_manifest_old 2> /dev/null) <(sort -u ~/ztvh/epg/$(date -d '13 days' '+%Y%m%d')_manifest_new) > workfile
 		if [ -s workfile2 ]
 		then
-			sed -i -e 's/.*/sed -i "\/&\/d" workfile/g' -e '1i#\!\/bin\/bash' workfile2
-			bash workfile2
+			sed -i -e 's/\(.*\)\("id":.*\)/\2/g' -e 's/"id"://g' -e 's/},//g' workfile
+			cp workfile2 workfile3
+			cat workfile2 >> workfile3
+			cat workfile >> workfile3
+			sort workfile3 | uniq -u > workfile
+			rm workfile2 workfile3
 		fi
 		if [ -s workfile ]
 		then
-			sed -i -e 's/\(.*\)\("id":.*\)/\2/g' -e 's/"id"://g' -e 's/},//g' workfile
 			sed -i 's/.*/rm epg\/\$date_14\/&/g' workfile
 			if [ -s ~/ztvh/epg/filecheck ]
 			then
