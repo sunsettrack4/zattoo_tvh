@@ -27,7 +27,7 @@ echo ""
 # ##################
 
 #
-# Existance of required programs
+# Existence of required programs
 #
 
 command -v phantomjs >/dev/null 2>&1 || { echo "PhantomJS is required but it's not installed!  Aborting." >&2; exit 1; }
@@ -37,7 +37,7 @@ command -v ffmpeg >/dev/null 2>&1 || { echo "ffmpeg is required for watching Liv
 
 
 #
-# Existance of internet connectivity
+# Existence of internet connectivity
 #
 
 echo "Checking internet connectivity..."
@@ -45,95 +45,149 @@ if ping -q -w 1 -c 1 `ip r | grep default | cut -d ' ' -f 3` > /dev/null 2> /dev
 then :
 else
 	echo "- ERROR: NO INTERNET CONNECTION AVAILABLE! -"
-	exit 0
+	exit 1
 fi
 
 if ping -q -w 1 -c 1 www.zattoo.com > /dev/null 2> /dev/null
 then :
 else
 	echo "- ERROR: ZATTOO WEBSERVICE UNAVAILABLE! -"
-	exit 0
+	exit 1
 fi
-echo ""
 
 
 #
-# Existance of all required scripts and its executable permissions
+# Existence of all required scripts and its executable permissions
 #
+
+echo "Checking file existence and permissions..."
 
 # FOLDER + FILES missing
 
-if cd ~/ztvh 2> /dev/null
+if ls -ld ~/ztvh | grep -q "drwxrwxrwx" 2> /dev/null
 then
-	chmod a+x ~/ztvh
+	cd ~/ztvh
+elif [ -e ~/ztvh ]
+then
+	echo "- ERROR: SCRIPT FOLDER DOES NOT HAVE THE CORRECT PERMISSION VALUES! -"
+	if chmod 0777 ~/ztvh 2> /dev/null
+	then
+		echo "Permission issue fixed, please restart the script to proceed."
+	fi
+	exit 1
 else
 	echo "- ERROR: SCRIPT FOLDER NOT EXISTING IN HOME DIRECTORY! -"
-	exit 0
+	exit 1
 fi
 
 
 # FILES missing
 
-chmod a+x ~/ztvh/*
-
-if [ ! -x ztvh.sh ]
+if [ ! -e ztvh.sh ]
 then
-	echo "Main script should be executed from ztvh folder."
+	echo "- ERROR: MAIN SCRIPT MUST BE LOCATED IN MAIN FOLDER! -"
+	exit 1
+elif [ ! -x ztvh.sh ]
+then
+	echo "- ERROR: MAIN SCRIPT IS NOT EXECUTABLE! -"
+	if chmod 0777 ztvh.sh 2> /dev/null
+	then
+		echo "Permission issue fixed, please restart the script to proceed."
+	fi
+	exit 1
 fi
 
-if [ ! -x save_page.js ]
+if chmod 0777 ~/ztvh/* 2> /dev/null
+then :
+else
+	echo "- WARNING: FILE PERMISSIONS COULD NOT BE SET! -"
+fi
+
+if [ ! -e save_page.js ]
 then
 	echo "Missing file: save_page.js"
 	touch fakefile
+elif [ ! -x save_page.js ]
+then
+	echo "File not executable: savepage.js"
+	touch fakefile
 fi
 
-if [ ! -x zguide_dl.sh ]
+if [ ! -e zguide_dl.sh ]
 then
 	echo "Missing file: zguide_dl.sh"
 	touch fakefile
+elif [ ! -x zguide_dl.sh ]
+then
+	echo "File not executable: zguide_dl.sh"
+	touch fakefile
 fi
 
-if [ ! -x zguide_fc.sh ]
+if [ ! -e zguide_fc.sh ]
 then
 	echo "Missing file: zguide_fc.sh"
 	touch fakefile
+elif [ ! -x zguide_fc.sh ]
+then
+	echo "File not executable: zguide_fc.sh"
+	touch fakefile
 fi
 
-if [ ! -x zguide_pc.sh ]
+if [ ! -e zguide_pc.sh ]
 then
 	echo "Missing file: zguide_pc.sh"
 	touch fakefile
+elif [ ! -x zguide_pc.sh ]
+then
+	echo "File not executable: zguide_pc.sh"
+	touch fakefile
 fi
 
-if [ ! -x zguide_su.sh ]
+if [ ! -e zguide_su.sh ]
 then
 	echo "Missing file: zguide_su.sh"
 	touch fakefile
+elif [ ! -x zguide_su.sh ]
+then
+	echo "File not executable: zguide_su.sh"
+	touch fakefile
 fi
 
-if [ ! -x zguide_xmltv.sh ]
+if [ ! -e zguide_xmltv.sh ]
 then
 	echo "Missing file: zguide_xmltv.sh"
 	touch fakefile
-fi
-
-if [ ! -x pipe.sh ]
+elif [ ! -x zguide_xmltv.sh ]
 then
-	echo "Missing file: pipe.sh"
+	echo "File not executable: zguide_xmltv.sh"
 	touch fakefile
 fi
 
-if [ ! -x status.sh ]
+if [ ! -e pipe.sh ]
+then
+	echo "Missing file: pipe.sh"
+	touch fakefile
+elif [ ! -r pipe.sh ]
+then
+	echo "File not readable: pipe.sh"
+	touch fakefile
+fi
+
+if [ ! -e status.sh ]
 then
 	echo "Missing file: status.sh"
+	touch fakefile
+elif [ ! -x status.sh ]
+then
+	echo "File not executable: status.sh"
 	touch fakefile
 fi
 
 if [ -e fakefile ]
 then
-	echo "- ERROR: REQUIRED SCRIPT(S) NOT EXISTING IN RELATED DIRECTORY! -"
+	echo "- ERROR: FAILED TO LOAD REQUIRED SCRIPT(S)! -"
 	rm fakefile
-	exit 0
+	exit 1
 fi
 
 
@@ -142,6 +196,7 @@ fi
 #
 
 export QT_QPA_PLATFORM=offscreen
+echo ""
 
 
 # ################
@@ -260,18 +315,20 @@ then
 					fi
 				done;;
 			4)	bash ztvh.sh
-				exit 1;;
-			5)	echo "GOODBYE" && exit 1;;
+				exit;;
+			5)	echo "GOODBYE" && exit;;
 			9)	echo "Logging out..."
 				rm channels.m3u chpipe.sh zattoo_fullepg.xml -rf user -rf work -rf epg -rf logos -rf chpipe 2> /dev/null
-				echo "GOODBYE" && exit 1;;
+				echo "GOODBYE" && exit;;
 			esac
 		done
 	fi
 fi
 
 echo "Starting script..." && echo ""
-rm -rf work 2> /dev/null && mkdir work
+rm -rf work 2> /dev/null
+mkdir work
+chmod 0777 work
 
 
 # ###############
@@ -376,7 +433,7 @@ then
 else
 	echo "- ERROR: UNABLE TO FETCH CHANNEL LIST -" && echo ""
 	rm ~/ztvh/channels.m3u powerid login.txt 2> /dev/null
-	exit 0
+	exit 1
 fi
 
 
@@ -408,6 +465,7 @@ elif grep -q "chlogo 1" ~/ztvh/user/options 2> /dev/null
 then 
 	echo "Collecting/updating channel logo images..."
 	mkdir ~/ztvh/logos 2> /dev/null
+	chmod 0777 ~/ztvh/logos
 	sed 's/#EXTINF.*\(tvg-id=".*"\).*\(tvg-logo=".*"\).*/\2 \1/g' ~/ztvh/channels.m3u > workfile
 	sed -i '/pipe/d' workfile
 	sed -i 's/tvg-logo="/curl /g' workfile
@@ -419,7 +477,7 @@ then
 	sed -i 's/tvg-id=".*"/& xyz&/g' ~/ztvh/channels.m3u
 	sed -i 's/xyztvg-id="/tvg-logo="logos\//g' ~/ztvh/channels.m3u
 	sed -i 's/", /.png" group-title="Zattoo", /g' ~/ztvh/channels.m3u
-	chmod a+x ~/ztvh/logos/*
+	chmod 0777 ~/ztvh/logos/*
 	echo "- CHANNEL LOGO IMAGES SAVED! -" && echo ""
 	rm workfile
 fi
@@ -455,6 +513,7 @@ sed -i "s/\/work//g" pipe_workfile
 cat ~/ztvh/pipe.sh >> pipe_workfile
 
 mkdir ~/ztvh/chpipe 2> /dev/null
+chmod 0777 ~/ztvh/chpipe
 sed 's/#EXTM3U/#\!\/bin\/bash/g' ~/ztvh/channels.m3u > workfile
 sed -i '/#EXTINF/{s/.*tvg-id="/ch_id=\$(echo "/g;s/" tvg-logo.*/")/g;s/" group-title.*/")/g;}' workfile
 sed -i '/pipe:\/\//{s/.*chpipe\//sed "s\/CID_CHANNEL\/\$ch_id\/g" ~\/ztvh\/work\/pipe_workfile > ~\/ztvh\/chpipe\//g;}' workfile
@@ -470,7 +529,7 @@ else
 	sed -i '7s/# //g' ~/ztvh/chpipe/*
 fi
 
-chmod a+x ~/ztvh/chpipe/*
+chmod 0777 ~/ztvh/chpipe/*
 echo "- PIPE SCRIPTS CREATED! -" && echo ""
 rm workfile pipe_workfile
 
@@ -505,6 +564,7 @@ fi
 echo "Grabbing EPG data for $(sed '/epgdata/!d;s/epgdata //g;s/-//g;' ~/ztvh/user/options) day(s)!" && echo ""
 
 mkdir ~/ztvh/epg 2> /dev/null
+chmod 0777 ~/ztvh/epg
 
 
 #
