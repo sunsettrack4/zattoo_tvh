@@ -116,9 +116,11 @@ sed -i '/category lang/s/>Wirtschaft.*/>Social \/ Political issues \/ Economics<
 sed -i '/category lang/s/>Spielshow.*/>Show \/ Game show<\/category>/g' workfile2
 sed -i '/category lang/s/>Wissen.*/>Education \/ Science \/ Factual topics<\/category>/g' workfile2
 sed -i '/category lang/s/>Fußball.*/>Football \/ Soccer<\/category>/g' workfile2
+sed -i '/category lang/s/>Handball.*/>Team sports (excluding football)<\/category>/g' workfile2
 sed -i '/category lang/s/>Wintersport.*/>Winter sports<\/category>/g' workfile2
 sed -i '/category lang/s/>Wassersport.*/>Water sport<\/category>/g' workfile2
 sed -i '/category lang/s/>Reality.*/>Soap \/ Melodrama \/ Folkloric<\/category>/g' workfile2
+sed -i '/category lang/s/>Gerichtsshow.*/>Soap \/ Melodrama \/ Folkloric<\/category>/g' workfile2
 sed -i '/category lang/s/>Eishockey.*/>Team sports (excluding football)<\/category>/g' workfile2
 sed -i '/category lang/s/>US-Sport.*/>Sports<\/category>/g' workfile2
 sed -i '/category lang/s/>Boxen.*/>Sports<\/category>/g' workfile2
@@ -163,6 +165,8 @@ sed -i '/category lang/s/>Musikshow.*/>Music \/ Ballet \/ Dance<\/category>/g' w
 sed -i '/category lang/s/>Gesundheit.*/>Fitness and health<\/category>/g' workfile2
 sed -i '/category lang/s/>Gymnastik.*/>Fitness and health<\/category>/g' workfile2
 sed -i '/category lang/s/>Kultur.*/>Arts \/ Culture (without music)<\/category>/g' workfile2
+sed -i '/category lang/s/>Theater.*/>Performing arts<\/category>/g' workfile2
+sed -i '/category lang/s/>Musical.*/>Performing arts<\/category>/g' workfile2
 sed -i "/category lang/s/>Jugend.*/>Children's \/ Youth programs<\/category>/g" workfile2
 sed -i "/category lang/s/>Familie \/ Zeichentrick.*/>Children's \/ Youth programs<\/category>/g" workfile2
 sed -i "/category lang/s/>Familie \/ Kinderserie.*/>Children's \/ Youth programs<\/category>/g" workfile2
