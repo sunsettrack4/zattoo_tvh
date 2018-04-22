@@ -22,73 +22,106 @@
 
 cd ~/ztvh/epg
 
+#
+# EXTRACT REQUIRED DATA
+#
+
+# SET UP DELIMITERS
+printf "\rSetting up delimiters...                             "
+sed -i 's/|/\\u007c/g' workfile
+sed -i 's/":null,"/":null|"/g' workfile
+sed -i 's/","/"|"/g' workfile
+sed -i 's/\],/]|/g' workfile
+sed -i 's/},"success":true}/|,|,|/g' workfile
+sed -i '/</d' workfile
+
+# START/END TIME + CHANNEL ID
+printf "\rCreating strings: Start, End, Channel ID             "
+sed -i 's/\(.*\)\("cid":[^|]*|\)\(.*\)/\2\1|\3/g' workfile
+sed -i 's/\(.*\)\("end":[^|]*|\)\(.*\)/\2\1|\3/g' workfile
+sed -i 's/\(.*\)\("start":[^|]*|\)\(.*\)/\2\1|\3/g' workfile
+sed -i -e 's/"start":"/<programme start="/g' -e 's/"|"end":"/ +0000" end="/g' -e 's/"|"cid":"/ +0000" channel="/g' -e 's/"|:{/">\n:{/g' workfile
+sed -i 's/\([0-9][0-9][0-9][0-9]\)-\([0-2][0-9]\)-\([0-3][0-9]\)T\([0-2][0-9]\):\([0-5][0-9]\):\([0-5][0-9]\)Z/\1\2\3\4\5\6/g' workfile
+
+# IMAGE
+printf "\rCreating strings: Image_URL                          "
+sed -i 's/\(:{.*\)\("image_url":[^|]*|\)\(.*\)/\2\1|\3/g' workfile
+sed -i -e 's/"image_url":null|//g' -e 's/"image_url":"/  <icon src="/g' -e 's/"|:{/" \/>\n:{/g' workfile
+
+# TITLE
+printf "\rCreating strings: Title                              "
+sed -i 's/\(:{.*\)\("title":[^|]*|\)\(.*\)/\2\1|\3/g' workfile
+sed -i -e 's/"title":"/  <title>/g' -e 's/"|:{/<\/title>\n:{/g' workfile 
+
+# COUNTRY
+printf "\rCreating strings: Country                            "
+sed -i 's/\(:{.*\)\("country":[^|]*|\)\(.*\)/\2\1|\3/g' workfile
+sed -i -e 's/"country":""|//g' -e 's/"country":"/  <country>/g' -e 's/"|:{/<\/country>\n:{/g' workfile
+
+# DESCRIPTION
+printf "\rCreating strings: Description                        "
+sed -i 's/\(:{.*\)\("description":[^|]*|\)\(.*\)/\2\1|\3/g' workfile
+sed -i -e 's/"description":""|//g' -e 's/"description":"/  <desc lang="de">/g' -e 's/"|:{/<\/desc>\n:{/g' workfile
+sed -i '/<desc lang="de"/s/"|/",/g' workfile
+
+# SUBTITLE
+printf "\rCreating strings: Sub-Title                          "
+sed -i 's/\(:{.*\)\("episode_title":[^|]*|\)\(.*\)/\2\1|\3/g' workfile
+sed -i -e 's/"episode_title":null|//g' -e 's/"episode_title":""|//g' -e 's/"episode_title":"/  <sub-title>/g' -e 's/"|:{/<\/sub-title>\n:{/g' workfile
+
+# AGE RATING
+printf "\rCreating strings: Age Rating                         "
+sed -i 's/\(:{.*\)\("youth_protection_rating":[^|]*|\)\(.*\)/\2\1|\3/g' workfile
+sed -i -e 's/"youth_protection_rating":null|//g' -e 's/"youth_protection_rating":"/  <rating>\n    <age>/g' -e 's/"|:{/<\/age>\n  <\/rating>\n:{/g' workfile
+
+# CREDITS
+printf "\rCreating strings: Credits                            "
+sed -i 's/\(:{.*\)\("credits":[^]]*\]\)\(.*\)/\2\1|\3/g' workfile
+sed -i -e 's/"credits":\[\]//g' -e 's/{"person":/\n&/g' -e 's/"credits":\[/  <credits>/g' -e 's/}\]:{/},\n  <\/credits>\n:{/g' workfile
+sed -i -e 's/\({"person":"\)\(.*\)\("|"role":"director"},\)/    <director>\2<\/director>/g' workfile
+sed -i -e 's/\({"person":"\)\(.*\)\("|"role":"actor"},\)/    <actor>\2<\/actor>/g' workfile
+
+# GENRE/CATEGORY
+printf "\rCreating strings: Category                           "
+sed -i -e 's/\(:{.*\)\("categories":[^]]*\]\)\(.*\)/\2|\1|\3/g' -e 's/\("categories":.*\)\("genres":[^]]*\]\)\(.*\)/\2|\1|\3/g' -e 's/|:{/|\n:{/g' workfile
+sed -i -e 's/"genres":\[\]|//g' -e 's/"categories":\[\]|//g' workfile
+sed -i -e 's/"genres":\["/  <category lang="de">/g' -e 's/"\]|".*/<\/category>/g' -e 's/"categories":\["/  <category lang="de">/g' -e 's/"\]|/<\/category>/g' workfile
+sed -i '/<category lang="de">/s/"|"/ \/ /g' workfile
+
+# SEASON + EPISODE
+printf "\rCreating strings: Season, Episode                    "
+sed -i -e 's/"episode_number":null|//g' -e 's/"season_number":null|//g' workfile 
+sed -i -e 's/\(:{.*\)\("episode_number":[^,]*,\)\(.*\)/\2\1|\3/g' -e 's/\("episode_number":.*\)\("season_number":[^,]*,\)\(.*\)/\2\1|\3/g' -e 's/\(:{.*\)\("season_number":[^,]*,\)\(.*\)/\2\1|\3/g' -e 's/,:{/,\n:{/g' workfile
+sed -i -e '/"episode_number":/s/|//g' -e '/"season_number":/s/|//g' workfile
+sed -i 's/\("season_number":\)\(.*\)\(,"episode_number":\)\(.*\),/  <episode num="onscreen">S\2 E\4<\/episode>/g' workfile
+sed -i -e 's/\("season_number":\)\(.*\),/  <episode num="onscreen">S\2<\/episode>/g' -e 's/\("episode_number":\)\(.*\),/  <episode num="onscreen">E\2<\/episode>/g' workfile
+
+# YEAR
+printf "\rCreating strings: Date                               "
+sed -i 's/\(:{.*\)\("year":[0-9][0-9][0-9][0-9]\),\(.*\)/\2|\1|\3/g' workfile
+sed -i -e 's/"year":null|//g' -e 's/"year":/  <year>/g' -e 's/|:{/<\/year>\n:{/g' workfile
+
+# END OF PROGRAMME
+printf "\rFinalizing string creation...                        "
+sed -i -e 's/:{.*/<\/programme>/g' -e '/^\s*$/d' workfile
+	
 
 #
 # CONVERT UNICODE CHARACTERS
 #
 
-echo "Converting special Unicode characters..."
+printf "\rConverting special Unicode characters...             "
 sed -i 's/\\u[a-z0-9][a-z0-9][a-z0-9][a-z0-9]/\[>\[&\]<\]/g' workfile
 ascii2uni -a U -q workfile > workfile2
 mv workfile2 workfile
 sed -i -e 's/\[>\[//g' -e 's/\]<\]//g' workfile
-
-
-#
-# MOVEMENT: START TIME, END TIME, CHANNEL ID
-#
-
-echo "Moving strings to setup times and channels data..."
-sed -i 's/\(.*\)\("selective_recall_until":.*\)\("credits":.*\)\("episode_number":.*\)/\1\3"tv_series_id":null,\4/g' workfile
-sed -i '/"series_recording_eligible":false.*"xlime_recommendations_possible"/s/\(.*\)\("xlime_recommendations_possible":.*\)\("season_number":.*\)\("episode_number":.*\)\("image_token":.*\)\("categories":.*\)/\1\5\3"tv_series_id":null,\4\6/g' workfile
-sed -i 's/"xlime_recommendations_possible":false,//g' workfile
-sed -i 's/\("genres":.*\)\("recording_eligible":.*\)\("series_recording_eligible":.*\)\("youth_protection_rating":.*\)\("image_token":.*\)/\1\3\2\5\4/g' workfile
-sed -i '/"blackout":true/s/\("series_recording_eligible":.*\)\("episode_number":.*\)\("blackout":.*\)\("success":.*\)/\1"tv_series_id":0000,\2\4/g' workfile
-sed -i 's/\("series_recording_eligible":.*\)\("year":.*\)\("genres":.*\)\("title":.*\)\("start":.*\)\("image_path":.*\)\("credits".*\)\("tv_series_id":.*\)\("country":.*\)/\1\3\6\4\7\9\2\5\8/g' workfile
-sed -i 's/\("series_recording_eligible":.*\)\("episode_title":.*\)\("description":.*\)\("start":.*\)\("cid":.*\)/\1\3\5\2\4/g' workfile
-sed -i 's/\("series_recording_eligible":.*\)\("episode_title":.*\)\("start":.*\)\("youth_protection_rating":.*\)\("tv_series_id":.*\)/\1\3\5\2\4/g' workfile
-sed -i 's/\("series_recording_eligible":.*\)\("episode_number":.*\)\("episode_title":.*\)\("recording_eligible":.*\)\("success":.*\)\("year":.*\)\("id":.*\)\("image_token":.*\)/\1\3\6\4\8\2\5\7/g' workfile
-sed -i 's/\("series_recording_eligible":.*\)\("season_number":.*\)\("episode_number":.*\)\("categories":.*\)\("id":.*\)\("youth_protection_rating":.*\)/\1\3\2\5\4\6/g' workfile
-sed -i -e 's/},"image_token":/,"image_token":/g' -e 's/","success":/"},"success":/g' -e 's/"youth_protection_rating":.*/\n&/g' workfile
-sed -i -e '/"genres":\[\].*"categories":\["/s/\(.*\)\("genres":.*\)\("end":.*\)\("categories":.*\)\("channel_name":.*\)/\1\4\3\"categories":null,\5/g' -e '/"categories":null/s/"categories":\["/"genres":\["/g' workfile
-sed -i 's/\(.*\)\("cid":".*\)/\2\1/g' workfile
-sed -i -e 's/"tv_series_id":.*"episode_title/"episode_title/g' -e 's/"image_url":.*"year/"year/g' -e 's/"recording_eligible":.*"episode_number/"episode_number/g' workfile
-sed -i -e 's/"series_recording_eligible":false,//g' -e 's/"series_recording_eligible":true,//g' workfile
-sed -i 's/\(.*\)\("episode_title.*\)\("end":".*\)/\1\3\2/g' workfile
-sed -i 's/\("cid":".*\)\("start":".*\)\("end":".*\)\("image_path":.*\)/\2\3\n\1\n\4/g' workfile
-
+	
 
 #
-# CONVERT INTO XMLTV FILE FORMAT
+# ADD CHANNEL LIST AND TV STRING
 #
 
-echo "Converting file into XMLTV file format..."
-sed -i '/"start":/{s/-//g;s/T//g;s/://g;s/Z/ +0000/g;s/"start""/<programme start="/g;s/","end"/" stop=/g;}' workfile
-sed -i ':a $!N;s/\n"cid"/ "cid"/;ta P;D' workfile
-sed -i 's/", "cid":"/" channel="/g' workfile
-sed -i '/<programme start/s/,/>/g' workfile
-sed -i '/"image_path":/{s/\("image_path":.*\)\("title":.*\)\("credits":\[.*\)\("country":.*\)\("description":.*\)/  \1\n  \2\n  \3\n  \4\n  \5/g;}' workfile
-sed -i '/"episode_title":/{s/\("description":.*\)\("episode_title":.*\)\("image_url":.*\)\("year":.*\)\("recording_eligible":.*\)\("image_token":.*\)\("episode_number:.*\)\("id":.*\)\("genres":\[.*\)/\1\n  \2\n  \4\n  \7\n  \9/g;}' workfile
-sed -i '/"description".*"episode_number":/{s/\("description":.*\)\("episode_title":.*\)\("image_url":.*\)\("year":.*\)\("recording_eligible":.*\)\("episode_number":.*\)\("id":.*\)\("genres":\[.*\)/\1\n  \2\n  \4\n  \6\n  \8/g;}' workfile
-sed -i '/"description".*"episode_number":/{s/\("description":.*\)\("episode_title":.*\)\("year":.*\)\("episode_number".*\)\("id":.*\)\("genres":\[.*\)/\1\n  \2\n  \3\n  \4\n  \6/g;}' workfile
-sed -i -e 's/"image_path":null,//g' -e 's/"episode_number":null,//g' -e 's/"season_number":null,//g' -e 's/"year":null,//g' -e 's/"episode_title":null,//g' -e 's/"episode_title":"",//g' -e 's/"credits":\[\],//g' -e 's/"genres":\[\],//g' -e 's/"country":"",//g' -e 's/"description":"",//g' -e '/^\s*$/d' workfile
-sed -i 's/<https:\/\/.*>//g' workfile
-
-sed -i '/"image_path"/{s/"image_path":"/<icon src="http:\/\/images.zattic.com\//g;s/,/ \/>/g;s/format_480x360/original/g}' workfile
-sed -i -e 's/\("title"\)\(.*\)/\1\2\1/g' -e 's/"title":"/<title lang="de">/g' -e 's/","title"/<\/title>/g' workfile
-sed -i -e 's/\("country"\)\(.*\)/\1\2\1/g' -e 's/"country":"/<country>/g' -e 's/","country"/<\/country>/g' workfile
-sed -i -e 's/\("description"\)\(.*\)/\1\2\1/g' -e 's/"description":"/<desc lang="de">/g' -e 's/","description"/<\/desc>/g' workfile
-sed -i -e 's/\("genres"\)\(.*\)/\1\2\1/g' -e 's/"genres":\["/<category lang="de">/g' -e 's/"\],"genres"/<\/category>/g' -e '/<\/category>/s/","/ \/ /g' workfile
-sed -i -e 's/"credits":\[/<credits>\n/g' -e 's/{"person".*/&\n  <\/credits>/g' -e 's/{"person":"/\n     "person":"/g' -e '/"person":"/{s/\}//g;s/\]//g;}' workfile
-sed -i -e '/^\s*$/d' -e '/\"person":"/{s/\("person":"\)\(.*","role":\)\(.*\)/\3\]\2\3\]/g;}' -e 's/","role":"director",\]/<\/director>/g' -e 's/"director",\]/<director>/g' -e 's/","role":"actor",\]/<\/actor>/g' -e 's/"actor",\]/<actor>/g' workfile
-sed -i -e 's/\("year"\)\(.*\)/\1\2\1/g' -e 's/"year":/<date>/g' -e 's/,"year"/<\/date>/g' workfile
-sed -i -e 's/\("episode_title"\)\(.*\)/\1\2\1/g' -e 's/"episode_title":"/<sub-title>/g' -e 's/","episode_title"/<\/sub-title>/g' workfile
-sed -i '/"episode_number".*"season_number"/{s/,"season_number":/ S/g;s/"episode_number":/&/g;}' workfile
-sed -i -e 's/"season_number":/<episode-num system="onscreen">S/g' -e '/<episode-num/s/,/<\/episode-num>/g' workfile
-sed -i -e 's/\("episode_number"\)\(.*\)/\1\2\1/g' -e 's/"episode_number":/<episode-num system="onscreen">E/g' -e 's/,"episode_number"/<\/episode-num>/g' workfile
-sed -i 's/\(.*<episode-num system="onscreen">\)\(E.*\)\( \)\(S.*\)\(<\/episode-num>\)/\1\4\3\2\5/g' workfile
-sed -i -e 's/"youth_protection_rating":null,/<\/programme>/g' -e 's/"youth_protection_rating":"/  <rating system="FSK">\n     <value>/g' -e '/<value>/s/",/<\/value>\n  <\/rating>\n<\/programme>/g' workfile
-
+printf "\rAdding channel list to EPG file...                   "
 sed -i '/"cid"/!d' ~/ztvh/work/channels_file
 sed -i 's/\(.*\)\("title":.*\)\("cid":.*\)\("recording":.*\)/\3\n\2/g' ~/ztvh/work/channels_file
 sed -i '/"cid"/{s/"cid": /<channel id=/g;s/",/">/g;}' ~/ztvh/work/channels_file
@@ -97,6 +130,8 @@ sed -i 's/\\u[a-z0-9][a-z0-9][a-z0-9][a-z0-9]/\[>\[&\]<\]/g' ~/ztvh/work/channel
 ascii2uni -a U -q ~/ztvh/work/channels_file > workfile2 && rm ~/ztvh/work/channels_file
 sed -i -e 's/\[>\[//g' -e 's/\]<\]//g' workfile2
 cat workfile >> workfile2
+
+printf "\rSetting XMLTV file type...                           "
 sed -i '1i<?xml version="1.0" encoding="UTF-8" ?>\n<tv>' workfile2
 sed -i '$s/.*/&\n<\/tv>/g' workfile2
 
@@ -105,7 +140,7 @@ sed -i '$s/.*/&\n<\/tv>/g' workfile2
 # SETUP CATEGORIES
 #
 
-echo "Converting category strings to DVB format..."
+printf "\rConverting category strings to DVB format...         "
 
 sed -i '/category lang/s/>Filme<.*/>Movie \/ Drama<\/category>/g' workfile2
 sed -i '/category lang/s/>Dokumentationen<.*/>Documentary<\/category>/g' workfile2
@@ -206,7 +241,8 @@ sed -i '/category lang/s/>Fantasy.*/>Science fiction \/ Fantasy \/ Horror<\/cate
 # FINALIZATION: FIX WRONG CHARACTERS, RENAME FILE
 #
 
+printf "\rFinalizing XMLTV file creation...                    "
 sed -i -e 's/\&/\&amp;/g' -e 's/\\"/"/g' -e 's/\\n/\n/g' -e 's/\\r//g' -e 's/\\t//g' -e 's/\\\\/\\/g' workfile2
 mv workfile2 ~/ztvh/epg/$(date +%Y%m%d)_zattoo_fullepg.xml && cp ~/ztvh/epg/$(date +%Y%m%d)_zattoo_fullepg.xml ~/ztvh/zattoo_fullepg.xml && rm workfile
 
-echo "- EPG XMLTV FILE CREATED SUCCESSFULLY! -" && echo ""
+printf "\r- EPG XMLTV FILE CREATED SUCCESSFULLY! -             " && echo "" && echo ""

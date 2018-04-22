@@ -635,7 +635,7 @@ do
 		done
 		wait
 	
-		printf "\r- EPG DOWNLOAD FINISHED! -               " && echo "" && echo ""
+		printf "\r- EPG DOWNLOAD FINISHED! -                   " && echo "" && echo ""
 		rm epg/scriptbase 2> /dev/null
 		rm epg/scriptfile_0* 2> /dev/null
 	fi
@@ -684,7 +684,7 @@ rm ~/ztvh/epg/stats2 2> /dev/null
 echo "Creating EPG XMLTV file..."
 echo "That may take a while..." && echo ""
 
-echo "Merging collected EPG details to a single EPG file..."
+printf "\rMerging collected EPG details to a single EPG file..."
 
 bash ~/ztvh/zguide_su.sh
 
