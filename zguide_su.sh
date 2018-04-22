@@ -175,5 +175,4 @@ then
 fi
 
 sed -i '/^\s*$/d' ~/ztvh/epg/workfile
-sed -i 's/"success":true}:{"genres":/"success":true}\n:{"genres":/g' ~/ztvh/epg/workfile
-sed -i 's/"success":true}:{"series_recording_eligible":/"success":true}\n:{"series_recording_eligible":/g' ~/ztvh/epg/workfile
+sed -i 's/"success":true}:{"/"success":true}\n:{"/g' ~/ztvh/epg/workfile
