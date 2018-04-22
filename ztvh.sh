@@ -252,8 +252,20 @@ then
 				echo "chpipe 3" >> user/options
 				echo "    (current: MAXIMUM @ 3-5 Mbit/s"
 			fi
-			echo "[4] Restart script"
-			echo "[5] Exit script"
+			if grep -q "extepg 0" user/options
+			then
+				echo "[4] Enable external EPG file download"
+			elif grep -q "extepg 1" user/options
+			then
+				echo "[4] Disable external EPG file download"
+			else
+				sed -i 's/extepg.*//g' user/options
+				sed -i '/^\s*$/d' user/options
+				echo "extepg 0" >> user/options
+				echo "[4] Enable external EPG file download"
+			fi
+			echo "[5] Restart script"
+			echo "[6] Exit script"
 			echo "[9] Logout from Zattoo and exit script" && echo ""
 			read -p "Number....: " -n1 n && echo ""
 			echo ""
@@ -314,11 +326,19 @@ then
 						sed -i '/^\s*$/d' ~/ztvh/user/options
 					fi
 				done;;
-			4)	bash ztvh.sh
+			4) 	if grep -q "extepg 1" user/options
+				then
+					sed -i 's/extepg 1/extepg 0/g' user/options
+					echo "External EPG file download disabled!" && echo ""
+				else
+					sed -i 's/extepg 0/extepg 1/g' user/options
+					echo "External EPG file download enabled!" && echo ""
+				fi;;
+			5)	bash ztvh.sh
 				exit;;
-			5)	echo "GOODBYE" && exit;;
+			6)	echo "GOODBYE" && exit;;
 			9)	echo "Logging out..."
-				rm channels.m3u chpipe.sh zattoo_fullepg.xml -rf user -rf work -rf epg -rf logos -rf chpipe 2> /dev/null
+				rm channels.m3u chpipe.sh zattoo_fullepg.xml zattoo_ext_fullepg.xml -rf user -rf work -rf epg -rf logos -rf chpipe 2> /dev/null
 				echo "GOODBYE" && exit;;
 			esac
 		done
@@ -428,7 +448,7 @@ then
 	mv workfile2 workfile
 	sed -i -e 's/\[>\[//g' -e 's/\]<\]//g' workfile
 	mv workfile ~/ztvh/channels.m3u
-	rm login.txt userfolder
+	rm userfolder
 	echo "- CHANNEL LIST CREATED! -" && echo ""
 else
 	echo "- ERROR: UNABLE TO FETCH CHANNEL LIST -" && echo ""
@@ -538,6 +558,33 @@ rm workfile pipe_workfile
 # EPG DATA       #
 # ################
 
+if grep -q "extepg 1" ~/ztvh/user/options 2> /dev/null
+then
+	if grep -q '"service_region_country": "CH"' login.txt
+	then
+		printf "\rDownloading EPG XMLTV file from GitHub..."
+		wget https://github.com/sunsettrack4/xmltv_epg/raw/master/zattoo-epg-ch.gz 2> /dev/null
+		if gzip -d zattoo-epg-ch.gz 2> /dev/null && mv zattoo-epg-ch ~/ztvh/zattoo_ext_fullepg.xml
+		then
+			printf "\rDownloading EPG XMLTV file from GitHub... OK!" && echo "" && echo ""
+		else
+			printf "\rDownloading EPG XMLTV file from GitHub... FAILED!" && echo "" && echo ""
+		fi
+	elif grep -q '"service_region_country": "DE"' login.txt
+	then
+		printf "\rDownloading EPG XMLTV file from GitHub..."
+		wget https://github.com/sunsettrack4/xmltv_epg/raw/master/zattoo-epg-de.gz 2> /dev/null 
+		if gzip -d zattoo-epg-de.gz 2> /dev/null && mv zattoo-epg-de ~/ztvh/zattoo_ext_fullepg.xml
+		then
+			printf "\rDownloading EPG XMLTV file from GitHub... OK!" && echo "" && echo ""
+		else
+			printf "\rDownloading EPG XMLTV file from GitHub... FAILED!" && echo "" && echo ""
+		fi
+	else
+		printf "\rExternal EPG file not available for your country!" && echo "" && echo ""
+	fi
+fi
+
 echo "--- ZATTOO EPG GRABBER ---"
 
 until grep -q -E "epgdata [0-9]-|epgdata 1[0-4]-" ~/ztvh/user/options 2> /dev/null
@@ -558,7 +605,18 @@ done
 
 if grep -q "epgdata 0-" ~/ztvh/user/options 2> /dev/null
 then
-	echo "- EPG GRABBER DISABLED! -" && echo "--- DONE ---" && exit 0
+	echo "- EPG GRABBER DISABLED! -" && echo ""
+	
+	# #####################
+	# CLEAN UP WORKFOLDER #
+	# #####################
+
+	cd ~/ztvh/work
+	rm login.txt workfile* powerid progressbar channels_file 2> /dev/null
+	rm ~/ztvh/epg/stats2 2> /dev/null
+
+	echo "--- DONE ---"
+	exit 0
 fi 
 
 echo "Grabbing EPG data for $(sed '/epgdata/!d;s/epgdata //g;s/-//g;' ~/ztvh/user/options) day(s)!" && echo ""
@@ -717,7 +775,7 @@ fi
 # #####################
 
 cd ~/ztvh/work
-rm workfile* powerid progressbar 2> /dev/null
+rm login.txt workfile* powerid progressbar channels_file 2> /dev/null
 rm ~/ztvh/epg/stats2 2> /dev/null
 sort -u ~/ztvh/epg/status -o ~/ztvh/epg/status
 
