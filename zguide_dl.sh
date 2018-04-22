@@ -1813,55 +1813,25 @@ then
 	sed -i 's/nullrm/null\nrm/g' ~/ztvh/epg/scriptbase
 	sort -u ~/ztvh/epg/scriptbase -o ~/ztvh/epg/scriptbase
 	rm ~/ztvh/epg/datafile_*
-	x=$(wc -l < ~/ztvh/epg/scriptbase)
-	y=7
+	
+	sed -i '1i#\!\/bin\/bash \
+	cd ~\/ztvh \
+	session=\$(<work\/session) \
+	date_01=\$(date "+%Y%m%d") \
+	date_02=\$(date -d "1 day" "+%Y%m%d") \
+	date_03=\$(date -d "2 days" "+%Y%m%d") \
+	date_04=\$(date -d "3 days" "+%Y%m%d") \
+	date_05=\$(date -d "4 days" "+%Y%m%d") \
+	date_06=\$(date -d "5 days" "+%Y%m%d") \
+	date_07=\$(date -d "6 days" "+%Y%m%d") \
+	date_08=\$(date -d "7 days" "+%Y%m%d") \
+	date_09=\$(date -d "8 days" "+%Y%m%d") \
+	date_10=\$(date -d "9 days" "+%Y%m%d") \
+	date_11=\$(date -d "10 days" "+%Y%m%d") \
+	date_12=\$(date -d "11 days" "+%Y%m%d") \
+	date_13=\$(date -d "12 days" "+%Y%m%d") \
+	date_14=\$(date -d "13 days" "+%Y%m%d")' ~/ztvh/epg/scriptbase
+	sed -i 's/			//g' ~/ztvh/epg/scriptbase
 
-	if [ "$x" -gt "$y" ]
-	then
-
-		split -d -l $(expr $x / $y) ~/ztvh/epg/scriptbase ~/ztvh/epg/scriptfile_
-
-		for i in ~/ztvh/epg/scriptfile_*
-		do
-			sed -i '1i#\!\/bin\/bash \
-			cd ~\/ztvh \
-			session=\$(<work\/session) \
-			date_01=\$(date "+%Y%m%d") \
-			date_02=\$(date -d "1 day" "+%Y%m%d") \
-			date_03=\$(date -d "2 days" "+%Y%m%d") \
-			date_04=\$(date -d "3 days" "+%Y%m%d") \
-			date_05=\$(date -d "4 days" "+%Y%m%d") \
-			date_06=\$(date -d "5 days" "+%Y%m%d") \
-			date_07=\$(date -d "6 days" "+%Y%m%d") \
-			date_08=\$(date -d "7 days" "+%Y%m%d") \
-			date_09=\$(date -d "8 days" "+%Y%m%d") \
-			date_10=\$(date -d "9 days" "+%Y%m%d") \
-			date_11=\$(date -d "10 days" "+%Y%m%d") \
-			date_12=\$(date -d "11 days" "+%Y%m%d") \
-			date_13=\$(date -d "12 days" "+%Y%m%d") \
-			date_14=\$(date -d "13 days" "+%Y%m%d")' $i
-			sed -i 's/			//g' $i
-		done
-	else
-		sed -i '1i#\!\/bin\/bash \
-		cd ~\/ztvh \
-		session=\$(<work\/session) \
-		date_01=\$(date "+%Y%m%d") \
-		date_02=\$(date -d "1 day" "+%Y%m%d") \
-		date_03=\$(date -d "2 days" "+%Y%m%d") \
-		date_04=\$(date -d "3 days" "+%Y%m%d") \
-		date_05=\$(date -d "4 days" "+%Y%m%d") \
-		date_06=\$(date -d "5 days" "+%Y%m%d") \
-		date_07=\$(date -d "6 days" "+%Y%m%d") \
-		date_08=\$(date -d "7 days" "+%Y%m%d") \
-		date_09=\$(date -d "8 days" "+%Y%m%d") \
-		date_10=\$(date -d "9 days" "+%Y%m%d") \
-		date_11=\$(date -d "10 days" "+%Y%m%d") \
-		date_12=\$(date -d "11 days" "+%Y%m%d") \
-		date_13=\$(date -d "12 days" "+%Y%m%d") \
-		date_14=\$(date -d "13 days" "+%Y%m%d")' ~/ztvh/epg/scriptbase
-		sed -i 's/			//g' ~/ztvh/epg/scriptbase
-
-		mv ~/ztvh/epg/scriptbase ~/ztvh/epg/scriptfile_00
-	fi
+	mv ~/ztvh/epg/scriptbase ~/ztvh/epg/scriptfile_00
 fi

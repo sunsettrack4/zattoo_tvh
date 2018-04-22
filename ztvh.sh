@@ -629,11 +629,7 @@ do
 		echo "Collecting EPG details..."
 		echo "That may take a while..."	&& echo ""
 	
-		for i in {0..7..1}
-		do
-			bash epg/scriptfile_0${i} 2> /dev/null &
-		done
-		wait
+		bash epg/scriptfile_00 2> /dev/null
 	
 		printf "\r- EPG DOWNLOAD FINISHED! -                   " && echo "" && echo ""
 		rm epg/scriptbase 2> /dev/null

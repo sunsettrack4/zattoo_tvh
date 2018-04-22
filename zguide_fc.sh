@@ -29,6 +29,7 @@ if grep -q -E "epgdata [1-9]-|epgdata 1[0-4]-" ~/ztvh/user/options 2> /dev/null
 then
 	rm $(date '+%Y%m%d')/workfile 2> /dev/null
 	cat $(date '+%Y%m%d')/* > workfile
+	sed -i '/</d' workfile
 	sed -i 's/{"program"/\n/g' workfile
 	sed -i '1d' workfile
 	sed -e 's/.*"id"://g' -e 's/},.*//g' $(date +%Y%m%d)_manifest_new > manifest_file
@@ -48,6 +49,7 @@ if grep -q -E "epgdata [2-9]-|epgdata 1[0-4]-" ~/ztvh/user/options 2> /dev/null
 then
 	rm $(date -d '1 day' '+%Y%m%d')/workfile 2> /dev/null
 	cat $(date -d '1 day' '+%Y%m%d')/* > workfile
+	sed -i '/</d' workfile
 	sed -i 's/{"program"/\n/g' workfile
 	sed -i '1d' workfile
 	sed -e 's/.*"id"://g' -e 's/},.*//g' $(date -d '1 day' '+%Y%m%d')_manifest_new > manifest_file
@@ -67,6 +69,7 @@ if grep -q -E "epgdata [3-9]-|epgdata 1[0-4]-" ~/ztvh/user/options 2> /dev/null
 then
 	rm $(date -d '2 days' '+%Y%m%d')/workfile 2> /dev/null
 	cat $(date -d '2 days' '+%Y%m%d')/* > workfile
+	sed -i '/</d' workfile
 	sed -i 's/{"program"/\n/g' workfile
 	sed -i '1d' workfile
 	sed -e 's/.*"id"://g' -e 's/},.*//g' $(date -d '2 days' '+%Y%m%d')_manifest_new > manifest_file
@@ -86,6 +89,7 @@ if grep -q -E "epgdata [4-9]-|epgdata 1[0-4]-" ~/ztvh/user/options 2> /dev/null
 then
 	rm $(date -d '3 days' '+%Y%m%d')/workfile 2> /dev/null
 	cat $(date -d '3 days' '+%Y%m%d')/* > workfile
+	sed -i '/</d' workfile
 	sed -i 's/{"program"/\n/g' workfile
 	sed -i '1d' workfile
 	sed -e 's/.*"id"://g' -e 's/},.*//g' $(date -d '3 days' '+%Y%m%d')_manifest_new > manifest_file
@@ -105,6 +109,7 @@ if grep -q -E "epgdata [5-9]-|epgdata 1[0-4]-" ~/ztvh/user/options 2> /dev/null
 then
 	rm $(date -d '4 days' '+%Y%m%d')/workfile 2> /dev/null
 	cat $(date -d '4 days' '+%Y%m%d')/* > workfile
+	sed -i '/</d' workfile
 	sed -i 's/{"program"/\n/g' workfile
 	sed -i '1d' workfile
 	sed -e 's/.*"id"://g' -e 's/},.*//g' $(date -d '4 days' '+%Y%m%d')_manifest_new > manifest_file
@@ -124,6 +129,7 @@ if grep -q -E "epgdata [6-9]-|epgdata 1[0-4]-" ~/ztvh/user/options 2> /dev/null
 then
 	rm $(date -d '5 days' '+%Y%m%d')/workfile 2> /dev/null
 	cat $(date -d '5 days' '+%Y%m%d')/* > workfile
+	sed -i '/</d' workfile
 	sed -i 's/{"program"/\n/g' workfile
 	sed -i '1d' workfile
 	sed -e 's/.*"id"://g' -e 's/},.*//g' $(date -d '5 days' '+%Y%m%d')_manifest_new > manifest_file
@@ -143,6 +149,7 @@ if grep -q -E "epgdata [7-9]-|epgdata 1[0-4]-" ~/ztvh/user/options 2> /dev/null
 then
 	rm $(date -d '6 days' '+%Y%m%d')/workfile 2> /dev/null
 	cat $(date -d '6 days' '+%Y%m%d')/* > workfile
+	sed -i '/</d' workfile
 	sed -i 's/{"program"/\n/g' workfile
 	sed -i '1d' workfile
 	sed -e 's/.*"id"://g' -e 's/},.*//g' $(date -d '6 days' '+%Y%m%d')_manifest_new > manifest_file
@@ -162,6 +169,7 @@ if grep -q -E "epgdata [8-9]-|epgdata 1[0-4]-" ~/ztvh/user/options 2> /dev/null
 then
 	rm $(date -d '7 days' '+%Y%m%d')/workfile 2> /dev/null
 	cat $(date -d '7 days' '+%Y%m%d')/* > workfile
+	sed -i '/</d' workfile
 	sed -i 's/{"program"/\n/g' workfile
 	sed -i '1d' workfile
 	sed -e 's/.*"id"://g' -e 's/},.*//g' $(date -d '7 days' '+%Y%m%d')_manifest_new > manifest_file
@@ -181,6 +189,7 @@ if grep -q -E "epgdata 9-|epgdata 1[0-4]-" ~/ztvh/user/options 2> /dev/null
 then
 	rm $(date -d '8 days' '+%Y%m%d')/workfile 2> /dev/null
 	cat $(date -d '8 days' '+%Y%m%d')/* > workfile
+	sed -i '/</d' workfile
 	sed -i 's/{"program"/\n/g' workfile
 	sed -i '1d' workfile
 	sed -e 's/.*"id"://g' -e 's/},.*//g' $(date -d '8 days' '+%Y%m%d')_manifest_new > manifest_file
@@ -200,6 +209,7 @@ if grep -q "epgdata 1[0-4]-" ~/ztvh/user/options 2> /dev/null
 then
 	rm $(date -d '9 days' '+%Y%m%d')/workfile 2> /dev/null
 	cat $(date -d '9 days' '+%Y%m%d')/* > workfile
+	sed -i '/</d' workfile
 	sed -i 's/{"program"/\n/g' workfile
 	sed -i '1d' workfile
 	sed -e 's/.*"id"://g' -e 's/},.*//g' $(date -d '9 days' '+%Y%m%d')_manifest_new > manifest_file
@@ -219,6 +229,7 @@ if grep -q "epgdata 1[1-4]-" ~/ztvh/user/options 2> /dev/null
 then
 	rm $(date -d '10 days' '+%Y%m%d')/workfile 2> /dev/null
 	cat $(date -d '10 days' '+%Y%m%d')/* > workfile
+	sed -i '/</d' workfile
 	sed -i 's/{"program"/\n/g' workfile
 	sed -i '1d' workfile
 	sed -e 's/.*"id"://g' -e 's/},.*//g' $(date -d '10 days' '+%Y%m%d')_manifest_new > manifest_file
@@ -238,6 +249,7 @@ if grep -q "epgdata 1[2-4]-" ~/ztvh/user/options 2> /dev/null
 then
 	rm $(date -d '11 days' '+%Y%m%d')/workfile 2> /dev/null
 	cat $(date -d '11 days' '+%Y%m%d')/* > workfile
+	sed -i '/</d' workfile
 	sed -i 's/{"program"/\n/g' workfile
 	sed -i '1d' workfile
 	sed -e 's/.*"id"://g' -e 's/},.*//g' $(date -d '11 days' '+%Y%m%d')_manifest_new > manifest_file
@@ -257,6 +269,7 @@ if grep -q "epgdata 1[3-4]-" ~/ztvh/user/options 2> /dev/null
 then
 	rm $(date -d '12 days' '+%Y%m%d')/workfile 2> /dev/null
 	cat $(date -d '12 days' '+%Y%m%d')/* > workfile
+	sed -i '/</d' workfile
 	sed -i 's/{"program"/\n/g' workfile
 	sed -i '1d' workfile
 	sed -e 's/.*"id"://g' -e 's/},.*//g' $(date -d '12 days' '+%Y%m%d')_manifest_new > manifest_file
@@ -276,6 +289,7 @@ if grep -q "epgdata 14-" ~/ztvh/user/options 2> /dev/null
 then
 	rm $(date -d '13 days' '+%Y%m%d')/workfile 2> /dev/null
 	cat $(date -d '13 days' '+%Y%m%d')/* > workfile
+	sed -i '/</d' workfile
 	sed -i 's/{"program"/\n/g' workfile
 	sed -i '1d' workfile
 	sed -e 's/.*"id"://g' -e 's/},.*//g' $(date -d '13 days' '+%Y%m%d')_manifest_new > manifest_file
