@@ -255,14 +255,11 @@ then
 			if grep -q "extepg 0" user/options
 			then
 				echo "[4] Enable external EPG file download"
-			elif grep -q "extepg 1" user/options
-			then
-				echo "[4] Disable external EPG file download"
 			else
+				echo "[4] Disable external EPG file download"
 				sed -i 's/extepg.*//g' user/options
 				sed -i '/^\s*$/d' user/options
-				echo "extepg 0" >> user/options
-				echo "[4] Enable external EPG file download"
+				echo "extepg 1" >> user/options
 			fi
 			echo "[5] Restart script"
 			echo "[6] Exit script"
@@ -558,32 +555,35 @@ rm workfile pipe_workfile
 # EPG DATA       #
 # ################
 
-if grep -q "extepg 1" ~/ztvh/user/options 2> /dev/null
+echo "--- ZATTOO EPG DOWNLOADER ---"
+
+if grep -q "extepg 0" ~/ztvh/user/options 2> /dev/null
 then
-	if grep -q '"service_region_country": "CH"' login.txt
+	echo "- EPG DOWNLOADER DISABLED! -" && echo ""
+elif grep -q '"service_region_country": "CH"' login.txt
+then
+	printf "\rDownloading EPG XMLTV file from GitHub..."
+	wget https://github.com/sunsettrack4/xmltv_epg/raw/master/zattoo-epg-ch.gz 2> /dev/null
+	if gzip -d zattoo-epg-ch.gz 2> /dev/null && mv zattoo-epg-ch ~/ztvh/zattoo_ext_fullepg.xml
 	then
-		printf "\rDownloading EPG XMLTV file from GitHub..."
-		wget https://github.com/sunsettrack4/xmltv_epg/raw/master/zattoo-epg-ch.gz 2> /dev/null
-		if gzip -d zattoo-epg-ch.gz 2> /dev/null && mv zattoo-epg-ch ~/ztvh/zattoo_ext_fullepg.xml
-		then
-			printf "\rDownloading EPG XMLTV file from GitHub... OK!" && echo "" && echo ""
-		else
-			printf "\rDownloading EPG XMLTV file from GitHub... FAILED!" && echo "" && echo ""
-		fi
-	elif grep -q '"service_region_country": "DE"' login.txt
-	then
-		printf "\rDownloading EPG XMLTV file from GitHub..."
-		wget https://github.com/sunsettrack4/xmltv_epg/raw/master/zattoo-epg-de.gz 2> /dev/null 
-		if gzip -d zattoo-epg-de.gz 2> /dev/null && mv zattoo-epg-de ~/ztvh/zattoo_ext_fullepg.xml
-		then
-			printf "\rDownloading EPG XMLTV file from GitHub... OK!" && echo "" && echo ""
-		else
-			printf "\rDownloading EPG XMLTV file from GitHub... FAILED!" && echo "" && echo ""
-		fi
+		printf "\rDownloading EPG XMLTV file from GitHub... OK!" && echo "" && echo ""
 	else
-		printf "\rExternal EPG file not available for your country!" && echo "" && echo ""
+		printf "\rDownloading EPG XMLTV file from GitHub... FAILED!" && echo "" && echo ""
 	fi
+elif grep -q '"service_region_country": "DE"' login.txt
+then
+	printf "\rDownloading EPG XMLTV file from GitHub..."
+	wget https://github.com/sunsettrack4/xmltv_epg/raw/master/zattoo-epg-de.gz 2> /dev/null 
+	if gzip -d zattoo-epg-de.gz 2> /dev/null && mv zattoo-epg-de ~/ztvh/zattoo_ext_fullepg.xml
+	then
+		printf "\rDownloading EPG XMLTV file from GitHub... OK!" && echo "" && echo ""
+	else
+		printf "\rDownloading EPG XMLTV file from GitHub... FAILED!" && echo "" && echo ""
+	fi
+else
+	printf "\rExternal EPG file not available for your country!" && echo "" && echo ""
 fi
+
 
 echo "--- ZATTOO EPG GRABBER ---"
 
