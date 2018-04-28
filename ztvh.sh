@@ -264,7 +264,7 @@ then
 			echo "[5] Restart script"
 			echo "[6] Exit script"
 			echo "[9] Logout from Zattoo and exit script" && echo ""
-			read -p "Number....: " -n1 n && echo ""
+			read -p "Number....: " -n1 n
 			echo ""
 			case $n in
 			1)	if grep -q "chlogo 1" user/options
@@ -281,7 +281,7 @@ then
 				do
 					echo "Please enter the number of days you want to retrieve the EPG information."
 					echo "[0] - DISABLE /// [1-14] - ENABLE"
-					read -e -p "Number....: " -n2 epgnum && echo ""
+					read -e -p "Number....: " -n2 epgnum
 					sed -i 's/epgdata.*//g' user/options
 					sed -i '/^\s*$/d' user/options
 					echo "epgdata $epgnum-" >> user/options
@@ -306,7 +306,7 @@ then
 					echo "[1] - LOW @ 600 kbit/s"
 					echo "[2] - MEDIUM @ 1,5 Mbit/s"
 					echo "[3] - MAXIMUM @ 3-5 Mbit/s"
-					read -p "Number....: " -n1 pipenum && echo ""
+					read -e -p "Number....: " -n1 pipenum
 					echo "chpipe $pipenum" >> ~/ztvh/user/options
 					if grep -q "chpipe 3" ~/ztvh/user/options 2> /dev/null
 					then
@@ -331,7 +331,7 @@ then
 					sed -i 's/extepg 0/extepg 1/g' user/options
 					echo "External EPG file download enabled!" && echo ""
 				fi;;
-			5)	bash ztvh.sh
+			5)	echo "" && bash ztvh.sh
 				exit;;
 			6)	echo "GOODBYE" && exit;;
 			9)	echo "Logging out..."
@@ -464,7 +464,7 @@ until grep -q -E "chlogo 0|chlogo 1" ~/ztvh/user/options 2> /dev/null
 do
 	echo "Do you want to download and update the channel logo images from Zattoo?"
 	echo "[1] - Yes /// [0] - No"
-	read -p "Number....: " -n1 logonum
+	read -e -p "Number....: " -n1 logonum
 	echo "chlogo $logonum" > ~/ztvh/user/options
 	if grep -q -E "chlogo 0|chlogo 1" ~/ztvh/user/options 2> /dev/null
 	then
@@ -510,7 +510,7 @@ do
 	echo "[1] - LOW @ 600 kbit/s"
 	echo "[2] - MEDIUM @ 1,5 Mbit/s"
 	echo "[3] - MAXIMUM @ 3-5 Mbit/s"
-	read -p "Number....: " -n1 pipenum
+	read -e -p "Number....: " -n1 pipenum
 	echo "chpipe $pipenum" >> ~/ztvh/user/options
 	if grep -q "chpipe [1-3]" ~/ztvh/user/options 2> /dev/null
 	then
@@ -631,16 +631,16 @@ chmod 0777 ~/ztvh/epg
 
 cd ~/ztvh
 bash zguide_pc.sh
-touch ~/ztvh/epg/stats
+touch ~/ztvh/epg/update
 
 
 #
 # Entering loop to keep EPG cache up to date
 #
 
-while [ -e ~/ztvh/epg/stats ]
+while [ -e ~/ztvh/epg/update ]
 do
-	rm ~/ztvh/epg/stats
+	rm ~/ztvh/epg/update ~/ztvh/epg/stats 2> /dev/null
 	cd ~/ztvh/work
 	
 	#
@@ -711,7 +711,7 @@ do
 	# Repeat process: Keep manifest up to date
 	#
 
-	if [ -e ~/ztvh/epg/stats ]
+	if [ -e ~/ztvh/epg/update ]
 	then
 		echo "Checking for updates..."
 	elif [ -e ~/ztvh/epg/stats2 ]

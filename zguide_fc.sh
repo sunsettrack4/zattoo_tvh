@@ -42,6 +42,7 @@ then
 		bash filecheck
 		rm filecheck manifest_file cache_file
 	fi
+	echo "$(date '+%Y%m%d') finished" >> ~/ztvh/epg/status
 fi
 
 # DAY 2
@@ -62,6 +63,7 @@ then
 		bash filecheck
 		rm filecheck manifest_file cache_file
 	fi
+	echo "$(date -d '1 day' '+%Y%m%d') finished" >> ~/ztvh/epg/status
 fi	
 
 # DAY 3
@@ -82,6 +84,7 @@ then
 		bash filecheck
 		rm filecheck manifest_file cache_file
 	fi
+	echo "$(date -d '2 days' '+%Y%m%d') finished" >> ~/ztvh/epg/status
 fi	
 
 # DAY 4
@@ -102,6 +105,7 @@ then
 		bash filecheck
 		rm filecheck manifest_file cache_file
 	fi
+	echo "$(date -d '3 days' '+%Y%m%d') finished" >> ~/ztvh/epg/status
 fi	
 
 # DAY 5
@@ -122,6 +126,7 @@ then
 		bash filecheck
 		rm filecheck manifest_file cache_file
 	fi
+	echo "$(date -d '4 days' '+%Y%m%d') finished" >> ~/ztvh/epg/status
 fi
 
 # DAY 6
@@ -142,6 +147,7 @@ then
 		bash filecheck
 		rm filecheck manifest_file cache_file
 	fi
+	echo "$(date -d '5 days' '+%Y%m%d') finished" >> ~/ztvh/epg/status
 fi	
 
 # DAY 7
@@ -162,6 +168,7 @@ then
 		bash filecheck
 		rm filecheck manifest_file cache_file
 	fi
+	echo "$(date -d '6 days' '+%Y%m%d') finished" >> ~/ztvh/epg/status
 fi	
 
 # DAY 8
@@ -182,6 +189,7 @@ then
 		bash filecheck
 		rm filecheck manifest_file cache_file
 	fi
+	echo "$(date -d '7 days' '+%Y%m%d') finished" >> ~/ztvh/epg/status
 fi	
 
 # DAY 9
@@ -202,6 +210,7 @@ then
 		bash filecheck
 		rm filecheck manifest_file cache_file
 	fi
+	echo "$(date -d '8 days' '+%Y%m%d') finished" >> ~/ztvh/epg/status
 fi	
 
 # DAY 10
@@ -222,6 +231,7 @@ then
 		bash filecheck
 		rm filecheck manifest_file cache_file
 	fi
+	echo "$(date -d '9 days' '+%Y%m%d') finished" >> ~/ztvh/epg/status
 fi	
 
 # DAY 11
@@ -242,6 +252,7 @@ then
 		bash filecheck
 		rm filecheck manifest_file cache_file
 	fi
+	echo "$(date -d '10 days' '+%Y%m%d') finished" >> ~/ztvh/epg/status
 fi	
 
 # DAY 12
@@ -262,6 +273,7 @@ then
 		bash filecheck
 		rm filecheck manifest_file cache_file
 	fi
+	echo "$(date -d '11 days' '+%Y%m%d') finished" >> ~/ztvh/epg/status
 fi	
 
 # DAY 13
@@ -282,6 +294,7 @@ then
 		bash filecheck
 		rm filecheck manifest_file cache_file
 	fi
+	echo "$(date -d '12 days' '+%Y%m%d') finished" >> ~/ztvh/epg/status
 fi	
 
 # DAY 14
@@ -302,6 +315,7 @@ then
 		bash filecheck
 		rm filecheck manifest_file cache_file
 	fi
+	echo "$(date -d '13 days' '+%Y%m%d') finished" >> ~/ztvh/epg/status
 fi	
 
 rm workfile filecheck manifest_file cache_file 2> /dev/null

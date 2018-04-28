@@ -152,6 +152,7 @@ then
 		echo "- COMPLETE DATABASE TO BE SYNCED -"
 		touch ~/ztvh/epg/stats
 		touch ~/ztvh/epg/stats2
+		touch ~/ztvh/epg/update
 		sed -i "s/$(date +%Y%m%d) finished//g" ~/ztvh/epg/status 2> /dev/null
 	fi
 fi
@@ -278,6 +279,7 @@ then
 		echo "- COMPLETE DATABASE TO BE SYNCED -"
 		touch ~/ztvh/epg/stats
 		touch ~/ztvh/epg/stats2
+		touch ~/ztvh/epg/update
 		sed -i "s/$(date -d '1 day' '+%Y%m%d') finished//g" ~/ztvh/epg/status 2> /dev/null
 	fi
 fi
@@ -404,6 +406,7 @@ then
 		echo "- COMPLETE DATABASE TO BE SYNCED -"
 		touch ~/ztvh/epg/stats
 		touch ~/ztvh/epg/stats2
+		touch ~/ztvh/epg/update
 		sed -i "s/$(date -d '2 days' '+%Y%m%d') finished//g" ~/ztvh/epg/status 2> /dev/null
 	fi
 fi
@@ -530,6 +533,7 @@ then
 		echo "- COMPLETE DATABASE TO BE SYNCED -"
 		touch ~/ztvh/epg/stats
 		touch ~/ztvh/epg/stats2
+		touch ~/ztvh/epg/update
 		sed -i "s/$(date -d '3 days' '+%Y%m%d') finished//g" ~/ztvh/epg/status 2> /dev/null
 	fi
 fi
@@ -656,6 +660,7 @@ then
 		echo "- COMPLETE DATABASE TO BE SYNCED -"
 		touch ~/ztvh/epg/stats
 		touch ~/ztvh/epg/stats2
+		touch ~/ztvh/epg/update
 		sed -i "s/$(date -d '4 days' '+%Y%m%d') finished//g" ~/ztvh/epg/status 2> /dev/null
 	fi
 fi
@@ -782,6 +787,7 @@ then
 		echo "- COMPLETE DATABASE TO BE SYNCED -"
 		touch ~/ztvh/epg/stats
 		touch ~/ztvh/epg/stats2
+		touch ~/ztvh/epg/update
 		sed -i "s/$(date -d '5 days' '+%Y%m%d') finished//g" ~/ztvh/epg/status 2> /dev/null
 	fi
 fi
@@ -908,6 +914,7 @@ then
 		echo "- COMPLETE DATABASE TO BE SYNCED -"
 		touch ~/ztvh/epg/stats
 		touch ~/ztvh/epg/stats2
+		touch ~/ztvh/epg/update
 		sed -i "s/$(date -d '6 days' '+%Y%m%d') finished//g" ~/ztvh/epg/status 2> /dev/null
 	fi
 fi
@@ -1034,6 +1041,7 @@ then
 		echo "- COMPLETE DATABASE TO BE SYNCED -"
 		touch ~/ztvh/epg/stats
 		touch ~/ztvh/epg/stats2
+		touch ~/ztvh/epg/update
 		sed -i "s/$(date -d '7 days' '+%Y%m%d') finished//g" ~/ztvh/epg/status 2> /dev/null
 	fi
 fi
@@ -1160,6 +1168,7 @@ then
 		echo "- COMPLETE DATABASE TO BE SYNCED -"
 		touch ~/ztvh/epg/stats
 		touch ~/ztvh/epg/stats2
+		touch ~/ztvh/epg/update
 		sed -i "s/$(date -d '8 days' '+%Y%m%d') finished//g" ~/ztvh/epg/status 2> /dev/null
 	fi
 fi
@@ -1286,6 +1295,7 @@ then
 		echo "- COMPLETE DATABASE TO BE SYNCED -"
 		touch ~/ztvh/epg/stats
 		touch ~/ztvh/epg/stats2
+		touch ~/ztvh/epg/update
 		sed -i "s/$(date -d '9 days' '+%Y%m%d') finished//g" ~/ztvh/epg/status 2> /dev/null
 	fi
 fi
@@ -1412,6 +1422,7 @@ then
 		echo "- COMPLETE DATABASE TO BE SYNCED -"
 		touch ~/ztvh/epg/stats
 		touch ~/ztvh/epg/stats2
+		touch ~/ztvh/epg/update
 		sed -i "s/$(date -d '10 days' '+%Y%m%d') finished//g" ~/ztvh/epg/status 2> /dev/null
 	fi
 fi
@@ -1538,6 +1549,7 @@ then
 		echo "- COMPLETE DATABASE TO BE SYNCED -"
 		touch ~/ztvh/epg/stats
 		touch ~/ztvh/epg/stats2
+		touch ~/ztvh/epg/update
 		sed -i "s/$(date -d '11 days' '+%Y%m%d') finished//g" ~/ztvh/epg/status 2> /dev/null
 	fi
 fi
@@ -1664,6 +1676,7 @@ then
 		echo "- COMPLETE DATABASE TO BE SYNCED -"
 		touch ~/ztvh/epg/stats
 		touch ~/ztvh/epg/stats2
+		touch ~/ztvh/epg/update
 		sed -i "s/$(date -d '12 days' '+%Y%m%d') finished//g" ~/ztvh/epg/status 2> /dev/null
 	fi
 fi
@@ -1790,6 +1803,7 @@ then
 		echo "- COMPLETE DATABASE TO BE SYNCED -"
 		touch ~/ztvh/epg/stats
 		touch ~/ztvh/epg/stats2
+		touch ~/ztvh/epg/update
 		sed -i "s/$(date -d '13 days' '+%Y%m%d') finished//g" ~/ztvh/epg/status 2> /dev/null
 	fi
 fi
