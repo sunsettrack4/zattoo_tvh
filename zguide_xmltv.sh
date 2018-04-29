@@ -33,7 +33,7 @@ sed -i 's/":null,"/":null|"/g' workfile
 sed -i 's/","/"|"/g' workfile
 sed -i 's/\],/]|/g' workfile
 sed -i 's/},"success":true}/|,|,|/g' workfile
-sed -i '/</d' workfile
+sed -i -e 's/</\n</g' -e '/{/!d' -e '/^\s*$/d' workfile
 
 # START/END TIME + CHANNEL ID
 printf "\rCreating strings: Start, End, Channel ID             "
