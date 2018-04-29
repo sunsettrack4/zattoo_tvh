@@ -40,18 +40,18 @@ printf "\rCreating strings: Start, End, Channel ID             "
 sed -i 's/\(.*\)\("cid":[^|]*|\)\(.*\)/\2\1|\3/g' workfile
 sed -i 's/\(.*\)\("end":[^|]*|\)\(.*\)/\2\1|\3/g' workfile
 sed -i 's/\(.*\)\("start":[^|]*|\)\(.*\)/\2\1|\3/g' workfile
-sed -i -e 's/"start":"/<programme start="/g' -e 's/"|"end":"/ +0000" end="/g' -e 's/"|"cid":"/ +0000" channel="/g' -e 's/"|:{/">\n:{/g' workfile
+sed -i -e 's/"start":"/<programme start="/g' -e 's/"|"end":"/ +0000" stop="/g' -e 's/"|"cid":"/ +0000" channel="/g' -e 's/"|:{/">\n:{/g' workfile
 sed -i 's/\([0-9][0-9][0-9][0-9]\)-\([0-2][0-9]\)-\([0-3][0-9]\)T\([0-2][0-9]\):\([0-5][0-9]\):\([0-5][0-9]\)Z/\1\2\3\4\5\6/g' workfile
 
 # IMAGE
 printf "\rCreating strings: Image_URL                          "
 sed -i 's/\(:{.*\)\("image_url":[^|]*|\)\(.*\)/\2\1|\3/g' workfile
-sed -i -e 's/"image_url":null|//g' -e 's/"image_url":"/  <icon src="/g' -e 's/"|:{/" \/>\n:{/g' workfile
+sed -i -e 's/"image_url":null|//g' -e 's/"image_url":"/  <icon src="/g' -e 's/"|:{/" \/>\n:{/g' -e 's/format_480x360.jpg/original.jpg/g' workfile
 
 # TITLE
 printf "\rCreating strings: Title                              "
 sed -i 's/\(:{.*\)\("title":[^|]*|\)\(.*\)/\2\1|\3/g' workfile
-sed -i -e 's/"title":"/  <title>/g' -e 's/"|:{/<\/title>\n:{/g' workfile 
+sed -i -e 's/"title":"/  <title lang="de">/g' -e 's/"|:{/<\/title>\n:{/g' workfile 
 
 # COUNTRY
 printf "\rCreating strings: Country                            "
@@ -72,7 +72,7 @@ sed -i -e 's/"episode_title":null|//g' -e 's/"episode_title":""|//g' -e 's/"epis
 # AGE RATING
 printf "\rCreating strings: Age Rating                         "
 sed -i 's/\(:{.*\)\("youth_protection_rating":[^|]*|\)\(.*\)/\2\1|\3/g' workfile
-sed -i -e 's/"youth_protection_rating":null|//g' -e 's/"youth_protection_rating":"/  <rating>\n    <age>/g' -e 's/"|:{/<\/age>\n  <\/rating>\n:{/g' workfile
+sed -i -e 's/"youth_protection_rating":null|//g' -e 's/"youth_protection_rating":"/  <rating system="FSK">\n    <value>/g' -e 's/"|:{/<\/value>\n  <\/rating>\n:{/g' workfile
 
 # CREDITS
 printf "\rCreating strings: Credits                            "
@@ -93,13 +93,13 @@ printf "\rCreating strings: Season, Episode                    "
 sed -i -e 's/"episode_number":null|//g' -e 's/"season_number":null|//g' workfile 
 sed -i -e 's/\(:{.*\)\("episode_number":[^,]*,\)\(.*\)/\2\1|\3/g' -e 's/\("episode_number":.*\)\("season_number":[^,]*,\)\(.*\)/\2\1|\3/g' -e 's/\(:{.*\)\("season_number":[^,]*,\)\(.*\)/\2\1|\3/g' -e 's/,:{/,\n:{/g' workfile
 sed -i -e '/"episode_number":/s/|//g' -e '/"season_number":/s/|//g' workfile
-sed -i 's/\("season_number":\)\(.*\)\(,"episode_number":\)\(.*\),/  <episode num="onscreen">S\2 E\4<\/episode>/g' workfile
-sed -i -e 's/\("season_number":\)\(.*\),/  <episode num="onscreen">S\2<\/episode>/g' -e 's/\("episode_number":\)\(.*\),/  <episode num="onscreen">E\2<\/episode>/g' workfile
+sed -i 's/\("season_number":\)\(.*\)\(,"episode_number":\)\(.*\),/  <episode-num system="onscreen">S\2 E\4<\/episode-num>/g' workfile
+sed -i -e 's/\("season_number":\)\(.*\),/  <episode-num system="onscreen">S\2<\/episode-num>/g' -e 's/\("episode_number":\)\(.*\),/  <episode-num system="onscreen">E\2<\/episode-num>/g' workfile
 
 # YEAR
 printf "\rCreating strings: Date                               "
 sed -i 's/\(:{.*\)\("year":[0-9][0-9][0-9][0-9]\),\(.*\)/\2|\1|\3/g' workfile
-sed -i -e 's/"year":null|//g' -e 's/"year":/  <year>/g' -e 's/|:{/<\/year>\n:{/g' workfile
+sed -i -e 's/"year":null|//g' -e 's/"year":/  <date>/g' -e 's/|:{/<\/date>\n:{/g' workfile
 
 # END OF PROGRAMME
 printf "\rFinalizing string creation...                        "
