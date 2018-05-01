@@ -89,7 +89,7 @@ then
 		# Create file checker to download changed/new broadcasts
 		comm -2 -3 <(sort -u ~/ztvh/epg/$(date +%Y%m%d)_manifest_new) <(sort -u ~/ztvh/epg/$(date +%Y%m%d)_manifest_old 2> /dev/null) > workfile
 		sed -i -e 's/\(.*\)\("id":.*\)/\2/g' -e 's/"id"://g' -e 's/},//g' workfile && cp workfile workfile2
-		sed -i 's/.*/curl -X GET --cookie "\$session" "https:\/\/zattoo.com\/zapi\/program\/details?program_id=&" | grep "{" > epg\/\$date_01\/& 2> \/dev\/null/g' workfile
+		sed -i 's/.*/curl -X GET --cookie "\$session" "https:\/\/zattoo.com\/zapi\/program\/details?program_id=&" | grep "true}" > epg\/\$date_01\/& 2> \/dev\/null/g' workfile
 		if grep -q "curl" workfile
 		then 
 			mv workfile ~/ztvh/epg/filecheck
@@ -147,7 +147,7 @@ then
 		sed -i 's/,.*//g' workfile
 		sed -i 's/"id"://g' workfile
 		sed -i 's/}.*//g' workfile
-		sed -i 's/.*/curl -X GET --cookie "\$session" "https:\/\/zattoo.com\/zapi\/program\/details?program_id=&" | grep "{" > epg\/\$date_01\/& 2> \/dev\/null/g' workfile
+		sed -i 's/.*/curl -X GET --cookie "\$session" "https:\/\/zattoo.com\/zapi\/program\/details?program_id=&" | grep "true}" > epg\/\$date_01\/& 2> \/dev\/null/g' workfile
 		mv workfile ~/ztvh/epg/datafile_1
 		echo "- COMPLETE DATABASE TO BE SYNCED -"
 		touch ~/ztvh/epg/stats
@@ -216,7 +216,7 @@ then
 		# Create file checker to download changed/new broadcasts
 		comm -2 -3 <(sort -u ~/ztvh/epg/$(date -d '1 day' '+%Y%m%d')_manifest_new) <(sort -u ~/ztvh/epg/$(date -d '1 day' '+%Y%m%d')_manifest_old 2> /dev/null) > workfile
 		sed -i -e 's/\(.*\)\("id":.*\)/\2/g' -e 's/"id"://g' -e 's/},//g' workfile && cp workfile workfile2
-		sed -i 's/.*/curl -X GET --cookie "\$session" "https:\/\/zattoo.com\/zapi\/program\/details?program_id=&" | grep "{" > epg\/\$date_02\/& 2> \/dev\/null/g' workfile
+		sed -i 's/.*/curl -X GET --cookie "\$session" "https:\/\/zattoo.com\/zapi\/program\/details?program_id=&" | grep "true}" > epg\/\$date_02\/& 2> \/dev\/null/g' workfile
 		if grep -q "curl" workfile
 		then 
 			mv workfile ~/ztvh/epg/filecheck
@@ -274,7 +274,7 @@ then
 		sed -i 's/,.*//g' workfile
 		sed -i 's/"id"://g' workfile
 		sed -i 's/}.*//g' workfile
-		sed -i 's/.*/curl -X GET --cookie "\$session" "https:\/\/zattoo.com\/zapi\/program\/details?program_id=&" | grep "{" > epg\/\$date_02\/& 2> \/dev\/null/g' workfile
+		sed -i 's/.*/curl -X GET --cookie "\$session" "https:\/\/zattoo.com\/zapi\/program\/details?program_id=&" | grep "true}" > epg\/\$date_02\/& 2> \/dev\/null/g' workfile
 		mv workfile ~/ztvh/epg/datafile_2
 		echo "- COMPLETE DATABASE TO BE SYNCED -"
 		touch ~/ztvh/epg/stats
@@ -343,7 +343,7 @@ then
 		# Create file checker to download changed/new broadcasts
 		comm -2 -3 <(sort -u ~/ztvh/epg/$(date -d '2 days' '+%Y%m%d')_manifest_new) <(sort -u ~/ztvh/epg/$(date -d '2 days' '+%Y%m%d')_manifest_old 2> /dev/null) > workfile
 		sed -i -e 's/\(.*\)\("id":.*\)/\2/g' -e 's/"id"://g' -e 's/},//g' workfile && cp workfile workfile2
-		sed -i 's/.*/curl -X GET --cookie "\$session" "https:\/\/zattoo.com\/zapi\/program\/details?program_id=&" | grep "{" > epg\/\$date_03\/& 2> \/dev\/null/g' workfile
+		sed -i 's/.*/curl -X GET --cookie "\$session" "https:\/\/zattoo.com\/zapi\/program\/details?program_id=&" | grep "true}" > epg\/\$date_03\/& 2> \/dev\/null/g' workfile
 		if grep -q "curl" workfile
 		then 
 			mv workfile ~/ztvh/epg/filecheck
@@ -401,7 +401,7 @@ then
 		sed -i 's/,.*//g' workfile
 		sed -i 's/"id"://g' workfile
 		sed -i 's/}.*//g' workfile
-		sed -i 's/.*/curl -X GET --cookie "\$session" "https:\/\/zattoo.com\/zapi\/program\/details?program_id=&" | grep "{" > epg\/\$date_03\/& 2> \/dev\/null/g' workfile
+		sed -i 's/.*/curl -X GET --cookie "\$session" "https:\/\/zattoo.com\/zapi\/program\/details?program_id=&" | grep "true}" > epg\/\$date_03\/& 2> \/dev\/null/g' workfile
 		mv workfile ~/ztvh/epg/datafile_3
 		echo "- COMPLETE DATABASE TO BE SYNCED -"
 		touch ~/ztvh/epg/stats
@@ -470,7 +470,7 @@ then
 		# Create file checker to download changed/new broadcasts
 		comm -2 -3 <(sort -u ~/ztvh/epg/$(date -d '3 days' '+%Y%m%d')_manifest_new) <(sort -u ~/ztvh/epg/$(date -d '3 days' '+%Y%m%d')_manifest_old 2> /dev/null) > workfile
 		sed -i -e 's/\(.*\)\("id":.*\)/\2/g' -e 's/"id"://g' -e 's/},//g' workfile && cp workfile workfile2
-		sed -i 's/.*/curl -X GET --cookie "\$session" "https:\/\/zattoo.com\/zapi\/program\/details?program_id=&" | grep "{" > epg\/\$date_04\/& 2> \/dev\/null/g' workfile
+		sed -i 's/.*/curl -X GET --cookie "\$session" "https:\/\/zattoo.com\/zapi\/program\/details?program_id=&" | grep "true}" > epg\/\$date_04\/& 2> \/dev\/null/g' workfile
 		if grep -q "curl" workfile
 		then 
 			mv workfile ~/ztvh/epg/filecheck
@@ -528,7 +528,7 @@ then
 		sed -i 's/,.*//g' workfile
 		sed -i 's/"id"://g' workfile
 		sed -i 's/}.*//g' workfile
-		sed -i 's/.*/curl -X GET --cookie "\$session" "https:\/\/zattoo.com\/zapi\/program\/details?program_id=&" | grep "{" > epg\/\$date_04\/& 2> \/dev\/null/g' workfile
+		sed -i 's/.*/curl -X GET --cookie "\$session" "https:\/\/zattoo.com\/zapi\/program\/details?program_id=&" | grep "true}" > epg\/\$date_04\/& 2> \/dev\/null/g' workfile
 		mv workfile ~/ztvh/epg/datafile_4
 		echo "- COMPLETE DATABASE TO BE SYNCED -"
 		touch ~/ztvh/epg/stats
@@ -597,7 +597,7 @@ then
 		# Create file checker to download changed/new broadcasts
 		comm -2 -3 <(sort -u ~/ztvh/epg/$(date -d '4 days' '+%Y%m%d')_manifest_new) <(sort -u ~/ztvh/epg/$(date -d '4 days' '+%Y%m%d')_manifest_old 2> /dev/null) > workfile
 		sed -i -e 's/\(.*\)\("id":.*\)/\2/g' -e 's/"id"://g' -e 's/},//g' workfile && cp workfile workfile2
-		sed -i 's/.*/curl -X GET --cookie "\$session" "https:\/\/zattoo.com\/zapi\/program\/details?program_id=&" | grep "{" > epg\/\$date_05\/& 2> \/dev\/null/g' workfile
+		sed -i 's/.*/curl -X GET --cookie "\$session" "https:\/\/zattoo.com\/zapi\/program\/details?program_id=&" | grep "true}" > epg\/\$date_05\/& 2> \/dev\/null/g' workfile
 		if grep -q "curl" workfile
 		then 
 			mv workfile ~/ztvh/epg/filecheck
@@ -655,7 +655,7 @@ then
 		sed -i 's/,.*//g' workfile
 		sed -i 's/"id"://g' workfile
 		sed -i 's/}.*//g' workfile
-		sed -i 's/.*/curl -X GET --cookie "\$session" "https:\/\/zattoo.com\/zapi\/program\/details?program_id=&" | grep "{" > epg\/\$date_05\/& 2> \/dev\/null/g' workfile
+		sed -i 's/.*/curl -X GET --cookie "\$session" "https:\/\/zattoo.com\/zapi\/program\/details?program_id=&" | grep "true}" > epg\/\$date_05\/& 2> \/dev\/null/g' workfile
 		mv workfile ~/ztvh/epg/datafile_5
 		echo "- COMPLETE DATABASE TO BE SYNCED -"
 		touch ~/ztvh/epg/stats
@@ -724,7 +724,7 @@ then
 		# Create file checker to download changed/new broadcasts
 		comm -2 -3 <(sort -u ~/ztvh/epg/$(date -d '5 days' '+%Y%m%d')_manifest_new) <(sort -u ~/ztvh/epg/$(date -d '5 days' '+%Y%m%d')_manifest_old 2> /dev/null) > workfile
 		sed -i -e 's/\(.*\)\("id":.*\)/\2/g' -e 's/"id"://g' -e 's/},//g' workfile && cp workfile workfile2
-		sed -i 's/.*/curl -X GET --cookie "\$session" "https:\/\/zattoo.com\/zapi\/program\/details?program_id=&" | grep "{" > epg\/\$date_06\/& 2> \/dev\/null/g' workfile
+		sed -i 's/.*/curl -X GET --cookie "\$session" "https:\/\/zattoo.com\/zapi\/program\/details?program_id=&" | grep "true}" > epg\/\$date_06\/& 2> \/dev\/null/g' workfile
 		if grep -q "curl" workfile
 		then 
 			mv workfile ~/ztvh/epg/filecheck
@@ -782,7 +782,7 @@ then
 		sed -i 's/,.*//g' workfile
 		sed -i 's/"id"://g' workfile
 		sed -i 's/}.*//g' workfile
-		sed -i 's/.*/curl -X GET --cookie "\$session" "https:\/\/zattoo.com\/zapi\/program\/details?program_id=&" | grep "{" > epg\/\$date_06\/& 2> \/dev\/null/g' workfile
+		sed -i 's/.*/curl -X GET --cookie "\$session" "https:\/\/zattoo.com\/zapi\/program\/details?program_id=&" | grep "true}" > epg\/\$date_06\/& 2> \/dev\/null/g' workfile
 		mv workfile ~/ztvh/epg/datafile_6
 		echo "- COMPLETE DATABASE TO BE SYNCED -"
 		touch ~/ztvh/epg/stats
@@ -851,7 +851,7 @@ then
 		# Create file checker to download changed/new broadcasts
 		comm -2 -3 <(sort -u ~/ztvh/epg/$(date -d '6 days' '+%Y%m%d')_manifest_new) <(sort -u ~/ztvh/epg/$(date -d '6 days' '+%Y%m%d')_manifest_old 2> /dev/null) > workfile
 		sed -i -e 's/\(.*\)\("id":.*\)/\2/g' -e 's/"id"://g' -e 's/},//g' workfile && cp workfile workfile2
-		sed -i 's/.*/curl -X GET --cookie "\$session" "https:\/\/zattoo.com\/zapi\/program\/details?program_id=&" | grep "{" > epg\/\$date_07\/& 2> \/dev\/null/g' workfile
+		sed -i 's/.*/curl -X GET --cookie "\$session" "https:\/\/zattoo.com\/zapi\/program\/details?program_id=&" | grep "true}" > epg\/\$date_07\/& 2> \/dev\/null/g' workfile
 		if grep -q "curl" workfile
 		then 
 			mv workfile ~/ztvh/epg/filecheck
@@ -909,7 +909,7 @@ then
 		sed -i 's/,.*//g' workfile
 		sed -i 's/"id"://g' workfile
 		sed -i 's/}.*//g' workfile
-		sed -i 's/.*/curl -X GET --cookie "\$session" "https:\/\/zattoo.com\/zapi\/program\/details?program_id=&" | grep "{" > epg\/\$date_07\/& 2> \/dev\/null/g' workfile
+		sed -i 's/.*/curl -X GET --cookie "\$session" "https:\/\/zattoo.com\/zapi\/program\/details?program_id=&" | grep "true}" > epg\/\$date_07\/& 2> \/dev\/null/g' workfile
 		mv workfile ~/ztvh/epg/datafile_7
 		echo "- COMPLETE DATABASE TO BE SYNCED -"
 		touch ~/ztvh/epg/stats
@@ -978,7 +978,7 @@ then
 		# Create file checker to download changed/new broadcasts
 		comm -2 -3 <(sort -u ~/ztvh/epg/$(date -d '7 days' '+%Y%m%d')_manifest_new) <(sort -u ~/ztvh/epg/$(date -d '7 days' '+%Y%m%d')_manifest_old 2> /dev/null) > workfile
 		sed -i -e 's/\(.*\)\("id":.*\)/\2/g' -e 's/"id"://g' -e 's/},//g' workfile && cp workfile workfile2
-		sed -i 's/.*/curl -X GET --cookie "\$session" "https:\/\/zattoo.com\/zapi\/program\/details?program_id=&" | grep "{" > epg\/\$date_08\/& 2> \/dev\/null/g' workfile
+		sed -i 's/.*/curl -X GET --cookie "\$session" "https:\/\/zattoo.com\/zapi\/program\/details?program_id=&" | grep "true}" > epg\/\$date_08\/& 2> \/dev\/null/g' workfile
 		if grep -q "curl" workfile
 		then 
 			mv workfile ~/ztvh/epg/filecheck
@@ -1036,7 +1036,7 @@ then
 		sed -i 's/,.*//g' workfile
 		sed -i 's/"id"://g' workfile
 		sed -i 's/}.*//g' workfile
-		sed -i 's/.*/curl -X GET --cookie "\$session" "https:\/\/zattoo.com\/zapi\/program\/details?program_id=&" | grep "{" > epg\/\$date_08\/& 2> \/dev\/null/g' workfile
+		sed -i 's/.*/curl -X GET --cookie "\$session" "https:\/\/zattoo.com\/zapi\/program\/details?program_id=&" | grep "true}" > epg\/\$date_08\/& 2> \/dev\/null/g' workfile
 		mv workfile ~/ztvh/epg/datafile_8
 		echo "- COMPLETE DATABASE TO BE SYNCED -"
 		touch ~/ztvh/epg/stats
@@ -1105,7 +1105,7 @@ then
 		# Create file checker to download changed/new broadcasts
 		comm -2 -3 <(sort -u ~/ztvh/epg/$(date -d '8 days' '+%Y%m%d')_manifest_new) <(sort -u ~/ztvh/epg/$(date -d '8 days' '+%Y%m%d')_manifest_old 2> /dev/null) > workfile
 		sed -i -e 's/\(.*\)\("id":.*\)/\2/g' -e 's/"id"://g' -e 's/},//g' workfile && cp workfile workfile2
-		sed -i 's/.*/curl -X GET --cookie "\$session" "https:\/\/zattoo.com\/zapi\/program\/details?program_id=&" | grep "{" > epg\/\$date_09\/& 2> \/dev\/null/g' workfile
+		sed -i 's/.*/curl -X GET --cookie "\$session" "https:\/\/zattoo.com\/zapi\/program\/details?program_id=&" | grep "true}" > epg\/\$date_09\/& 2> \/dev\/null/g' workfile
 		if grep -q "curl" workfile
 		then 
 			mv workfile ~/ztvh/epg/filecheck
@@ -1163,7 +1163,7 @@ then
 		sed -i 's/,.*//g' workfile
 		sed -i 's/"id"://g' workfile
 		sed -i 's/}.*//g' workfile
-		sed -i 's/.*/curl -X GET --cookie "\$session" "https:\/\/zattoo.com\/zapi\/program\/details?program_id=&" | grep "{" > epg\/\$date_09\/& 2> \/dev\/null/g' workfile
+		sed -i 's/.*/curl -X GET --cookie "\$session" "https:\/\/zattoo.com\/zapi\/program\/details?program_id=&" | grep "true}" > epg\/\$date_09\/& 2> \/dev\/null/g' workfile
 		mv workfile ~/ztvh/epg/datafile_9
 		echo "- COMPLETE DATABASE TO BE SYNCED -"
 		touch ~/ztvh/epg/stats
@@ -1232,7 +1232,7 @@ then
 		# Create file checker to download changed/new broadcasts
 		comm -2 -3 <(sort -u ~/ztvh/epg/$(date -d '9 days' '+%Y%m%d')_manifest_new) <(sort -u ~/ztvh/epg/$(date -d '9 days' '+%Y%m%d')_manifest_old 2> /dev/null) > workfile
 		sed -i -e 's/\(.*\)\("id":.*\)/\2/g' -e 's/"id"://g' -e 's/},//g' workfile && cp workfile workfile2
-		sed -i 's/.*/curl -X GET --cookie "\$session" "https:\/\/zattoo.com\/zapi\/program\/details?program_id=&" | grep "{" > epg\/\$date_10\/& 2> \/dev\/null/g' workfile
+		sed -i 's/.*/curl -X GET --cookie "\$session" "https:\/\/zattoo.com\/zapi\/program\/details?program_id=&" | grep "true}" > epg\/\$date_10\/& 2> \/dev\/null/g' workfile
 		if grep -q "curl" workfile
 		then 
 			mv workfile ~/ztvh/epg/filecheck
@@ -1290,7 +1290,7 @@ then
 		sed -i 's/,.*//g' workfile
 		sed -i 's/"id"://g' workfile
 		sed -i 's/}.*//g' workfile
-		sed -i 's/.*/curl -X GET --cookie "\$session" "https:\/\/zattoo.com\/zapi\/program\/details?program_id=&" | grep "{" > epg\/\$date_10\/& 2> \/dev\/null/g' workfile
+		sed -i 's/.*/curl -X GET --cookie "\$session" "https:\/\/zattoo.com\/zapi\/program\/details?program_id=&" | grep "true}" > epg\/\$date_10\/& 2> \/dev\/null/g' workfile
 		mv workfile ~/ztvh/epg/datafile_10
 		echo "- COMPLETE DATABASE TO BE SYNCED -"
 		touch ~/ztvh/epg/stats
@@ -1359,7 +1359,7 @@ then
 		# Create file checker to download changed/new broadcasts
 		comm -2 -3 <(sort -u ~/ztvh/epg/$(date -d '10 days' '+%Y%m%d')_manifest_new) <(sort -u ~/ztvh/epg/$(date -d '10 days' '+%Y%m%d')_manifest_old 2> /dev/null) > workfile
 		sed -i -e 's/\(.*\)\("id":.*\)/\2/g' -e 's/"id"://g' -e 's/},//g' workfile && cp workfile workfile2
-		sed -i 's/.*/curl -X GET --cookie "\$session" "https:\/\/zattoo.com\/zapi\/program\/details?program_id=&" | grep "{" > epg\/\$date_11\/& 2> \/dev\/null/g' workfile
+		sed -i 's/.*/curl -X GET --cookie "\$session" "https:\/\/zattoo.com\/zapi\/program\/details?program_id=&" | grep "true}" > epg\/\$date_11\/& 2> \/dev\/null/g' workfile
 		if grep -q "curl" workfile
 		then 
 			mv workfile ~/ztvh/epg/filecheck
@@ -1417,7 +1417,7 @@ then
 		sed -i 's/,.*//g' workfile
 		sed -i 's/"id"://g' workfile
 		sed -i 's/}.*//g' workfile
-		sed -i 's/.*/curl -X GET --cookie "\$session" "https:\/\/zattoo.com\/zapi\/program\/details?program_id=&" | grep "{" > epg\/\$date_11\/& 2> \/dev\/null/g' workfile
+		sed -i 's/.*/curl -X GET --cookie "\$session" "https:\/\/zattoo.com\/zapi\/program\/details?program_id=&" | grep "true}" > epg\/\$date_11\/& 2> \/dev\/null/g' workfile
 		mv workfile ~/ztvh/epg/datafile_11
 		echo "- COMPLETE DATABASE TO BE SYNCED -"
 		touch ~/ztvh/epg/stats
@@ -1486,7 +1486,7 @@ then
 		# Create file checker to download changed/new broadcasts
 		comm -2 -3 <(sort -u ~/ztvh/epg/$(date -d '11 days' '+%Y%m%d')_manifest_new) <(sort -u ~/ztvh/epg/$(date -d '11 days' '+%Y%m%d')_manifest_old 2> /dev/null) > workfile
 		sed -i -e 's/\(.*\)\("id":.*\)/\2/g' -e 's/"id"://g' -e 's/},//g' workfile && cp workfile workfile2
-		sed -i 's/.*/curl -X GET --cookie "\$session" "https:\/\/zattoo.com\/zapi\/program\/details?program_id=&" | grep "{" > epg\/\$date_12\/& 2> \/dev\/null/g' workfile
+		sed -i 's/.*/curl -X GET --cookie "\$session" "https:\/\/zattoo.com\/zapi\/program\/details?program_id=&" | grep "true}" > epg\/\$date_12\/& 2> \/dev\/null/g' workfile
 		if grep -q "curl" workfile
 		then 
 			mv workfile ~/ztvh/epg/filecheck
@@ -1544,7 +1544,7 @@ then
 		sed -i 's/,.*//g' workfile
 		sed -i 's/"id"://g' workfile
 		sed -i 's/}.*//g' workfile
-		sed -i 's/.*/curl -X GET --cookie "\$session" "https:\/\/zattoo.com\/zapi\/program\/details?program_id=&" | grep "{" > epg\/\$date_12\/& 2> \/dev\/null/g' workfile
+		sed -i 's/.*/curl -X GET --cookie "\$session" "https:\/\/zattoo.com\/zapi\/program\/details?program_id=&" | grep "true}" > epg\/\$date_12\/& 2> \/dev\/null/g' workfile
 		mv workfile ~/ztvh/epg/datafile_12
 		echo "- COMPLETE DATABASE TO BE SYNCED -"
 		touch ~/ztvh/epg/stats
@@ -1613,7 +1613,7 @@ then
 		# Create file checker to download changed/new broadcasts
 		comm -2 -3 <(sort -u ~/ztvh/epg/$(date -d '12 days' '+%Y%m%d')_manifest_new) <(sort -u ~/ztvh/epg/$(date -d '12 days' '+%Y%m%d')_manifest_old 2> /dev/null) > workfile
 		sed -i -e 's/\(.*\)\("id":.*\)/\2/g' -e 's/"id"://g' -e 's/},//g' workfile && cp workfile workfile2
-		sed -i 's/.*/curl -X GET --cookie "\$session" "https:\/\/zattoo.com\/zapi\/program\/details?program_id=&" | grep "{" > epg\/\$date_13\/& 2> \/dev\/null/g' workfile
+		sed -i 's/.*/curl -X GET --cookie "\$session" "https:\/\/zattoo.com\/zapi\/program\/details?program_id=&" | grep "true}" > epg\/\$date_13\/& 2> \/dev\/null/g' workfile
 		if grep -q "curl" workfile
 		then 
 			mv workfile ~/ztvh/epg/filecheck
@@ -1671,7 +1671,7 @@ then
 		sed -i 's/,.*//g' workfile
 		sed -i 's/"id"://g' workfile
 		sed -i 's/}.*//g' workfile
-		sed -i 's/.*/curl -X GET --cookie "\$session" "https:\/\/zattoo.com\/zapi\/program\/details?program_id=&" | grep "{" > epg\/\$date_13\/& 2> \/dev\/null/g' workfile
+		sed -i 's/.*/curl -X GET --cookie "\$session" "https:\/\/zattoo.com\/zapi\/program\/details?program_id=&" | grep "true}" > epg\/\$date_13\/& 2> \/dev\/null/g' workfile
 		mv workfile ~/ztvh/epg/datafile_13
 		echo "- COMPLETE DATABASE TO BE SYNCED -"
 		touch ~/ztvh/epg/stats
@@ -1740,7 +1740,7 @@ then
 		# Create file checker to download changed/new broadcasts
 		comm -2 -3 <(sort -u ~/ztvh/epg/$(date -d '13 days' '+%Y%m%d')_manifest_new) <(sort -u ~/ztvh/epg/$(date -d '13 days' '+%Y%m%d')_manifest_old 2> /dev/null) > workfile
 		sed -i -e 's/\(.*\)\("id":.*\)/\2/g' -e 's/"id"://g' -e 's/},//g' workfile && cp workfile workfile2
-		sed -i 's/.*/curl -X GET --cookie "\$session" "https:\/\/zattoo.com\/zapi\/program\/details?program_id=&" | grep "{" > epg\/\$date_14\/& 2> \/dev\/null/g' workfile
+		sed -i 's/.*/curl -X GET --cookie "\$session" "https:\/\/zattoo.com\/zapi\/program\/details?program_id=&" | grep "true}" > epg\/\$date_14\/& 2> \/dev\/null/g' workfile
 		if grep -q "curl" workfile
 		then 
 			mv workfile ~/ztvh/epg/filecheck
@@ -1798,7 +1798,7 @@ then
 		sed -i 's/,.*//g' workfile
 		sed -i 's/"id"://g' workfile
 		sed -i 's/}.*//g' workfile
-		sed -i 's/.*/curl -X GET --cookie "\$session" "https:\/\/zattoo.com\/zapi\/program\/details?program_id=&" | grep "{" > epg\/\$date_14\/& 2> \/dev\/null/g' workfile
+		sed -i 's/.*/curl -X GET --cookie "\$session" "https:\/\/zattoo.com\/zapi\/program\/details?program_id=&" | grep "true}" > epg\/\$date_14\/& 2> \/dev\/null/g' workfile
 		mv workfile ~/ztvh/epg/datafile_14
 		echo "- COMPLETE DATABASE TO BE SYNCED -"
 		touch ~/ztvh/epg/stats

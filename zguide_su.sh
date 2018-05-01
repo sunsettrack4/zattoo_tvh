@@ -25,8 +25,6 @@ then
 	cd ~/ztvh/epg/$(date '+%Y%m%d')
 	rm workfile 2> /dev/null
 	cat * >> workfile
-	sed -i 's/{"program"/\n/g' workfile
-	sed -i '1d' workfile
 	cat workfile > ~/ztvh/epg/workfile
 	sed -i '$i\ ' ~/ztvh/epg/workfile
 fi
@@ -36,8 +34,6 @@ then
 	cd ~/ztvh/epg/$(date -d '1 day' '+%Y%m%d')
 	rm workfile 2> /dev/null
 	cat * >> workfile
-	sed -i 's/{"program"/\n/g' workfile
-	sed -i '1d' workfile
 	cat workfile >> ~/ztvh/epg/workfile
 	sed -i '$i\ ' ~/ztvh/epg/workfile
 fi
@@ -47,8 +43,6 @@ then
 	cd ~/ztvh/epg/$(date -d '2 days' '+%Y%m%d')
 	rm workfile 2> /dev/null
 	cat * >> workfile
-	sed -i 's/{"program"/\n/g' workfile
-	sed -i '1d' workfile
 	cat workfile >> ~/ztvh/epg/workfile
 	sed -i '$i\ ' ~/ztvh/epg/workfile
 fi
@@ -58,8 +52,6 @@ then
 	cd ~/ztvh/epg/$(date -d '3 days' '+%Y%m%d')
 	rm workfile 2> /dev/null
 	cat * >> workfile
-	sed -i 's/{"program"/\n/g' workfile
-	sed -i '1d' workfile
 	cat workfile >> ~/ztvh/epg/workfile
 	sed -i '$i\ ' ~/ztvh/epg/workfile
 fi
@@ -69,8 +61,6 @@ then
 	cd ~/ztvh/epg/$(date -d '4 days' '+%Y%m%d')
 	rm workfile 2> /dev/null
 	cat * >> workfile
-	sed -i 's/{"program"/\n/g' workfile
-	sed -i '1d' workfile
 	cat workfile >> ~/ztvh/epg/workfile
 	sed -i '$i\ ' ~/ztvh/epg/workfile
 fi
@@ -80,8 +70,6 @@ then
 	cd ~/ztvh/epg/$(date -d '5 days' '+%Y%m%d')
 	rm workfile 2> /dev/null
 	cat * >> workfile
-	sed -i 's/{"program"/\n/g' workfile
-	sed -i '1d' workfile
 	cat workfile >> ~/ztvh/epg/workfile
 	sed -i '$i\ ' ~/ztvh/epg/workfile
 fi
@@ -91,8 +79,6 @@ then
 	cd ~/ztvh/epg/$(date -d '6 days' '+%Y%m%d')
 	rm workfile 2> /dev/null
 	cat * >> workfile
-	sed -i 's/{"program"/\n/g' workfile
-	sed -i '1d' workfile
 	cat workfile >> ~/ztvh/epg/workfile
 	sed -i '$i\ ' ~/ztvh/epg/workfile
 fi
@@ -102,8 +88,6 @@ then
 	cd ~/ztvh/epg/$(date -d '7 days' '+%Y%m%d')
 	rm workfile 2> /dev/null
 	cat * >> workfile
-	sed -i 's/{"program"/\n/g' workfile
-	sed -i '1d' workfile
 	cat workfile >> ~/ztvh/epg/workfile
 	sed -i '$i\ ' ~/ztvh/epg/workfile
 fi
@@ -113,8 +97,6 @@ then
 	cd ~/ztvh/epg/$(date -d '8 days' '+%Y%m%d')
 	rm workfile 2> /dev/null
 	cat * >> workfile
-	sed -i 's/{"program"/\n/g' workfile
-	sed -i '1d' workfile
 	cat workfile >> ~/ztvh/epg/workfile
 	sed -i '$i\ ' ~/ztvh/epg/workfile
 fi
@@ -124,8 +106,6 @@ then
 	cd ~/ztvh/epg/$(date -d '9 days' '+%Y%m%d')
 	rm workfile 2> /dev/null
 	cat * >> workfile
-	sed -i 's/{"program"/\n/g' workfile
-	sed -i '1d' workfile
 	cat workfile >> ~/ztvh/epg/workfile
 	sed -i '$i\ ' ~/ztvh/epg/workfile
 fi
@@ -135,8 +115,6 @@ then
 	cd ~/ztvh/epg/$(date -d '10 days' '+%Y%m%d')
 	rm workfile 2> /dev/null
 	cat * >> workfile
-	sed -i 's/{"program"/\n/g' workfile
-	sed -i '1d' workfile
 	cat workfile >> ~/ztvh/epg/workfile
 	sed -i '$i\ ' ~/ztvh/epg/workfile
 fi
@@ -146,8 +124,6 @@ then
 	cd ~/ztvh/epg/$(date -d '11 days' '+%Y%m%d')
 	rm workfile 2> /dev/null
 	cat * >> workfile
-	sed -i 's/{"program"/\n/g' workfile
-	sed -i '1d' workfile
 	cat workfile >> ~/ztvh/epg/workfile
 	sed -i '$i\ ' ~/ztvh/epg/workfile
 fi
@@ -157,8 +133,6 @@ then
 	cd ~/ztvh/epg/$(date -d '12 days' '+%Y%m%d')
 	rm workfile 2> /dev/null
 	cat * >> workfile
-	sed -i 's/{"program"/\n/g' workfile
-	sed -i '1d' workfile
 	cat workfile >> ~/ztvh/epg/workfile
 	sed -i '$i\ ' ~/ztvh/epg/workfile
 fi
@@ -168,8 +142,6 @@ then
 	cd ~/ztvh/epg/$(date -d '13 days' '+%Y%m%d')
 	rm workfile 2> /dev/null
 	cat * >> workfile
-	sed -i 's/{"program"/\n/g' workfile
-	sed -i '1d' workfile
 	cat workfile >> ~/ztvh/epg/workfile
 	sed -i '$i\ ' ~/ztvh/epg/workfile
 fi
