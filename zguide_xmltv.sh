@@ -31,6 +31,7 @@ printf "\rSetting up delimiters...                             "
 sed -i 's/|/\\u007c/g' workfile
 sed -i 's/":null,"/":null|"/g' workfile
 sed -i 's/","/"|"/g' workfile
+sed -i 's/\[...\]/(...)/g' workfile
 sed -i 's/\],/]|/g' workfile
 sed -i 's/},"success":true}/|,|,|/g' workfile
 sed -i -e 's/{"program"//g' -e '/^\s*$/d' workfile

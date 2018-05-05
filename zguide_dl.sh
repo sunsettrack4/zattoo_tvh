@@ -116,20 +116,17 @@ then
 				echo "- NEW CLOUD FILES TO BE ADDED -"
 				echo "- SYNCED FILES TO BE DELETED -"
 				touch ~/ztvh/epg/stats
-				touch ~/ztvh/epg/stats2
 				sed -i "s/$(date +%Y%m%d) finished//g" ~/ztvh/epg/status 2> /dev/null
 			else
 				mv workfile ~/ztvh/epg/datafile_1
 				echo "- SYNCED FILES TO BE DELETED -"
 				touch ~/ztvh/epg/stats
-				touch ~/ztvh/epg/stats2
 				sed -i "s/$(date +%Y%m%d) finished//g" ~/ztvh/epg/status 2> /dev/null
 			fi
 		elif [ -s ~/ztvh/epg/filecheck ]
 		then
 			echo "- NEW CLOUD FILES TO BE ADDED -"
 			touch ~/ztvh/epg/stats
-			touch ~/ztvh/epg/stats2
 			sed -i "s/$(date +%Y%m%d) finished//g" ~/ztvh/epg/status 2> /dev/null
 			mv ~/ztvh/epg/filecheck ~/ztvh/epg/datafile_1
 		else
@@ -151,7 +148,6 @@ then
 		mv workfile ~/ztvh/epg/datafile_1
 		echo "- COMPLETE DATABASE TO BE SYNCED -"
 		touch ~/ztvh/epg/stats
-		touch ~/ztvh/epg/stats2
 		touch ~/ztvh/epg/update
 		sed -i "s/$(date +%Y%m%d) finished//g" ~/ztvh/epg/status 2> /dev/null
 	fi
@@ -243,20 +239,17 @@ then
 				echo "- NEW CLOUD FILES TO BE ADDED -"
 				echo "- SYNCED FILES TO BE DELETED -"
 				touch ~/ztvh/epg/stats
-				touch ~/ztvh/epg/stats2
 				sed -i "s/$(date -d '1 day' '+%Y%m%d') finished//g" ~/ztvh/epg/status 2> /dev/null
 			else
 				mv workfile ~/ztvh/epg/datafile_2
 				echo "- SYNCED FILES TO BE DELETED -"
 				touch ~/ztvh/epg/stats
-				touch ~/ztvh/epg/stats2
 				sed -i "s/$(date -d '1 day' '+%Y%m%d') finished//g" ~/ztvh/epg/status 2> /dev/null
 			fi
 		elif [ -s ~/ztvh/epg/filecheck ]
 		then
 			echo "- NEW CLOUD FILES TO BE ADDED -"
 			touch ~/ztvh/epg/stats
-			touch ~/ztvh/epg/stats2
 			sed -i "s/$(date -d '1 day' '+%Y%m%d') finished//g" ~/ztvh/epg/status 2> /dev/null
 			mv ~/ztvh/epg/filecheck ~/ztvh/epg/datafile_2
 		else
@@ -278,7 +271,6 @@ then
 		mv workfile ~/ztvh/epg/datafile_2
 		echo "- COMPLETE DATABASE TO BE SYNCED -"
 		touch ~/ztvh/epg/stats
-		touch ~/ztvh/epg/stats2
 		touch ~/ztvh/epg/update
 		sed -i "s/$(date -d '1 day' '+%Y%m%d') finished//g" ~/ztvh/epg/status 2> /dev/null
 	fi
@@ -370,20 +362,17 @@ then
 				echo "- NEW CLOUD FILES TO BE ADDED -"
 				echo "- SYNCED FILES TO BE DELETED -"
 				touch ~/ztvh/epg/stats
-				touch ~/ztvh/epg/stats2
 				sed -i "s/$(date -d '2 days' '+%Y%m%d') finished//g" ~/ztvh/epg/status 2> /dev/null
 			else
 				mv workfile ~/ztvh/epg/datafile_3
 				echo "- SYNCED FILES TO BE DELETED -"
 				touch ~/ztvh/epg/stats
-				touch ~/ztvh/epg/stats2
 				sed -i "s/$(date -d '2 days' '+%Y%m%d') finished//g" ~/ztvh/epg/status 2> /dev/null
 			fi
 		elif [ -s ~/ztvh/epg/filecheck ]
 		then
 			echo "- NEW CLOUD FILES TO BE ADDED -"
 			touch ~/ztvh/epg/stats
-			touch ~/ztvh/epg/stats2
 			sed -i "s/$(date -d '2 days' '+%Y%m%d') finished//g" ~/ztvh/epg/status 2> /dev/null
 			mv ~/ztvh/epg/filecheck ~/ztvh/epg/datafile_3
 		else
@@ -405,7 +394,6 @@ then
 		mv workfile ~/ztvh/epg/datafile_3
 		echo "- COMPLETE DATABASE TO BE SYNCED -"
 		touch ~/ztvh/epg/stats
-		touch ~/ztvh/epg/stats2
 		touch ~/ztvh/epg/update
 		sed -i "s/$(date -d '2 days' '+%Y%m%d') finished//g" ~/ztvh/epg/status 2> /dev/null
 	fi
@@ -497,20 +485,17 @@ then
 				echo "- NEW CLOUD FILES TO BE ADDED -"
 				echo "- SYNCED FILES TO BE DELETED -"
 				touch ~/ztvh/epg/stats
-				touch ~/ztvh/epg/stats2
 				sed -i "s/$(date -d '3 days' '+%Y%m%d') finished//g" ~/ztvh/epg/status 2> /dev/null
 			else
 				mv workfile ~/ztvh/epg/datafile_4
 				echo "- SYNCED FILES TO BE DELETED -"
 				touch ~/ztvh/epg/stats
-				touch ~/ztvh/epg/stats2
 				sed -i "s/$(date -d '3 days' '+%Y%m%d') finished//g" ~/ztvh/epg/status 2> /dev/null
 			fi
 		elif [ -s ~/ztvh/epg/filecheck ]
 		then
 			echo "- NEW CLOUD FILES TO BE ADDED -"
 			touch ~/ztvh/epg/stats
-			touch ~/ztvh/epg/stats2
 			sed -i "s/$(date -d '3 days' '+%Y%m%d') finished//g" ~/ztvh/epg/status 2> /dev/null
 			mv ~/ztvh/epg/filecheck ~/ztvh/epg/datafile_4
 		else
@@ -532,7 +517,6 @@ then
 		mv workfile ~/ztvh/epg/datafile_4
 		echo "- COMPLETE DATABASE TO BE SYNCED -"
 		touch ~/ztvh/epg/stats
-		touch ~/ztvh/epg/stats2
 		touch ~/ztvh/epg/update
 		sed -i "s/$(date -d '3 days' '+%Y%m%d') finished//g" ~/ztvh/epg/status 2> /dev/null
 	fi
@@ -624,20 +608,17 @@ then
 				echo "- NEW CLOUD FILES TO BE ADDED -"
 				echo "- SYNCED FILES TO BE DELETED -"
 				touch ~/ztvh/epg/stats
-				touch ~/ztvh/epg/stats2
 				sed -i "s/$(date -d '4 days' '+%Y%m%d') finished//g" ~/ztvh/epg/status 2> /dev/null
 			else
 				mv workfile ~/ztvh/epg/datafile_5
 				echo "- SYNCED FILES TO BE DELETED -"
 				touch ~/ztvh/epg/stats
-				touch ~/ztvh/epg/stats2
 				sed -i "s/$(date -d '4 days' '+%Y%m%d') finished//g" ~/ztvh/epg/status 2> /dev/null
 			fi
 		elif [ -s ~/ztvh/epg/filecheck ]
 		then
 			echo "- NEW CLOUD FILES TO BE ADDED -"
 			touch ~/ztvh/epg/stats
-			touch ~/ztvh/epg/stats2
 			sed -i "s/$(date -d '4 days' '+%Y%m%d') finished//g" ~/ztvh/epg/status 2> /dev/null
 			mv ~/ztvh/epg/filecheck ~/ztvh/epg/datafile_5
 		else
@@ -659,7 +640,6 @@ then
 		mv workfile ~/ztvh/epg/datafile_5
 		echo "- COMPLETE DATABASE TO BE SYNCED -"
 		touch ~/ztvh/epg/stats
-		touch ~/ztvh/epg/stats2
 		touch ~/ztvh/epg/update
 		sed -i "s/$(date -d '4 days' '+%Y%m%d') finished//g" ~/ztvh/epg/status 2> /dev/null
 	fi
@@ -751,20 +731,17 @@ then
 				echo "- NEW CLOUD FILES TO BE ADDED -"
 				echo "- SYNCED FILES TO BE DELETED -"
 				touch ~/ztvh/epg/stats
-				touch ~/ztvh/epg/stats2
 				sed -i "s/$(date -d '5 days' '+%Y%m%d') finished//g" ~/ztvh/epg/status 2> /dev/null
 			else
 				mv workfile ~/ztvh/epg/datafile_6
 				echo "- SYNCED FILES TO BE DELETED -"
 				touch ~/ztvh/epg/stats
-				touch ~/ztvh/epg/stats2
 				sed -i "s/$(date -d '5 days' '+%Y%m%d') finished//g" ~/ztvh/epg/status 2> /dev/null
 			fi
 		elif [ -s ~/ztvh/epg/filecheck ]
 		then
 			echo "- NEW CLOUD FILES TO BE ADDED -"
 			touch ~/ztvh/epg/stats
-			touch ~/ztvh/epg/stats2
 			sed -i "s/$(date -d '5 days' '+%Y%m%d') finished//g" ~/ztvh/epg/status 2> /dev/null
 			mv ~/ztvh/epg/filecheck ~/ztvh/epg/datafile_6
 		else
@@ -786,7 +763,6 @@ then
 		mv workfile ~/ztvh/epg/datafile_6
 		echo "- COMPLETE DATABASE TO BE SYNCED -"
 		touch ~/ztvh/epg/stats
-		touch ~/ztvh/epg/stats2
 		touch ~/ztvh/epg/update
 		sed -i "s/$(date -d '5 days' '+%Y%m%d') finished//g" ~/ztvh/epg/status 2> /dev/null
 	fi
@@ -878,20 +854,17 @@ then
 				echo "- NEW CLOUD FILES TO BE ADDED -"
 				echo "- SYNCED FILES TO BE DELETED -"
 				touch ~/ztvh/epg/stats
-				touch ~/ztvh/epg/stats2
 				sed -i "s/$(date -d '6 days' '+%Y%m%d') finished//g" ~/ztvh/epg/status 2> /dev/null
 			else
 				mv workfile ~/ztvh/epg/datafile_7
 				echo "- SYNCED FILES TO BE DELETED -"
 				touch ~/ztvh/epg/stats
-				touch ~/ztvh/epg/stats2
 				sed -i "s/$(date -d '6 days' '+%Y%m%d') finished//g" ~/ztvh/epg/status 2> /dev/null
 			fi
 		elif [ -s ~/ztvh/epg/filecheck ]
 		then
 			echo "- NEW CLOUD FILES TO BE ADDED -"
 			touch ~/ztvh/epg/stats
-			touch ~/ztvh/epg/stats2
 			sed -i "s/$(date -d '6 days' '+%Y%m%d') finished//g" ~/ztvh/epg/status 2> /dev/null
 			mv ~/ztvh/epg/filecheck ~/ztvh/epg/datafile_7
 		else
@@ -913,7 +886,6 @@ then
 		mv workfile ~/ztvh/epg/datafile_7
 		echo "- COMPLETE DATABASE TO BE SYNCED -"
 		touch ~/ztvh/epg/stats
-		touch ~/ztvh/epg/stats2
 		touch ~/ztvh/epg/update
 		sed -i "s/$(date -d '6 days' '+%Y%m%d') finished//g" ~/ztvh/epg/status 2> /dev/null
 	fi
@@ -1005,20 +977,17 @@ then
 				echo "- NEW CLOUD FILES TO BE ADDED -"
 				echo "- SYNCED FILES TO BE DELETED -"
 				touch ~/ztvh/epg/stats
-				touch ~/ztvh/epg/stats2
 				sed -i "s/$(date -d '7 days' '+%Y%m%d') finished//g" ~/ztvh/epg/status 2> /dev/null
 			else
 				mv workfile ~/ztvh/epg/datafile_8
 				echo "- SYNCED FILES TO BE DELETED -"
 				touch ~/ztvh/epg/stats
-				touch ~/ztvh/epg/stats2
 				sed -i "s/$(date -d '7 days' '+%Y%m%d') finished//g" ~/ztvh/epg/status 2> /dev/null
 			fi
 		elif [ -s ~/ztvh/epg/filecheck ]
 		then
 			echo "- NEW CLOUD FILES TO BE ADDED -"
 			touch ~/ztvh/epg/stats
-			touch ~/ztvh/epg/stats2
 			sed -i "s/$(date -d '7 days' '+%Y%m%d') finished//g" ~/ztvh/epg/status 2> /dev/null
 			mv ~/ztvh/epg/filecheck ~/ztvh/epg/datafile_8
 		else
@@ -1040,7 +1009,6 @@ then
 		mv workfile ~/ztvh/epg/datafile_8
 		echo "- COMPLETE DATABASE TO BE SYNCED -"
 		touch ~/ztvh/epg/stats
-		touch ~/ztvh/epg/stats2
 		touch ~/ztvh/epg/update
 		sed -i "s/$(date -d '7 days' '+%Y%m%d') finished//g" ~/ztvh/epg/status 2> /dev/null
 	fi
@@ -1132,20 +1100,17 @@ then
 				echo "- NEW CLOUD FILES TO BE ADDED -"
 				echo "- SYNCED FILES TO BE DELETED -"
 				touch ~/ztvh/epg/stats
-				touch ~/ztvh/epg/stats2
 				sed -i "s/$(date -d '8 days' '+%Y%m%d') finished//g" ~/ztvh/epg/status 2> /dev/null
 			else
 				mv workfile ~/ztvh/epg/datafile_9
 				echo "- SYNCED FILES TO BE DELETED -"
 				touch ~/ztvh/epg/stats
-				touch ~/ztvh/epg/stats2
 				sed -i "s/$(date -d '8 days' '+%Y%m%d') finished//g" ~/ztvh/epg/status 2> /dev/null
 			fi
 		elif [ -s ~/ztvh/epg/filecheck ]
 		then
 			echo "- NEW CLOUD FILES TO BE ADDED -"
 			touch ~/ztvh/epg/stats
-			touch ~/ztvh/epg/stats2
 			sed -i "s/$(date -d '8 days' '+%Y%m%d') finished//g" ~/ztvh/epg/status 2> /dev/null
 			mv ~/ztvh/epg/filecheck ~/ztvh/epg/datafile_9
 		else
@@ -1167,7 +1132,6 @@ then
 		mv workfile ~/ztvh/epg/datafile_9
 		echo "- COMPLETE DATABASE TO BE SYNCED -"
 		touch ~/ztvh/epg/stats
-		touch ~/ztvh/epg/stats2
 		touch ~/ztvh/epg/update
 		sed -i "s/$(date -d '8 days' '+%Y%m%d') finished//g" ~/ztvh/epg/status 2> /dev/null
 	fi
@@ -1259,20 +1223,17 @@ then
 				echo "- NEW CLOUD FILES TO BE ADDED -"
 				echo "- SYNCED FILES TO BE DELETED -"
 				touch ~/ztvh/epg/stats
-				touch ~/ztvh/epg/stats2
 				sed -i "s/$(date -d '9 days' '+%Y%m%d') finished//g" ~/ztvh/epg/status 2> /dev/null
 			else
 				mv workfile ~/ztvh/epg/datafile_10
 				echo "- SYNCED FILES TO BE DELETED -"
 				touch ~/ztvh/epg/stats
-				touch ~/ztvh/epg/stats2
 				sed -i "s/$(date -d '9 days' '+%Y%m%d') finished//g" ~/ztvh/epg/status 2> /dev/null
 			fi
 		elif [ -s ~/ztvh/epg/filecheck ]
 		then
 			echo "- NEW CLOUD FILES TO BE ADDED -"
 			touch ~/ztvh/epg/stats
-			touch ~/ztvh/epg/stats2
 			sed -i "s/$(date -d '9 days' '+%Y%m%d') finished//g" ~/ztvh/epg/status 2> /dev/null
 			mv ~/ztvh/epg/filecheck ~/ztvh/epg/datafile_10
 		else
@@ -1294,7 +1255,6 @@ then
 		mv workfile ~/ztvh/epg/datafile_10
 		echo "- COMPLETE DATABASE TO BE SYNCED -"
 		touch ~/ztvh/epg/stats
-		touch ~/ztvh/epg/stats2
 		touch ~/ztvh/epg/update
 		sed -i "s/$(date -d '9 days' '+%Y%m%d') finished//g" ~/ztvh/epg/status 2> /dev/null
 	fi
@@ -1386,20 +1346,17 @@ then
 				echo "- NEW CLOUD FILES TO BE ADDED -"
 				echo "- SYNCED FILES TO BE DELETED -"
 				touch ~/ztvh/epg/stats
-				touch ~/ztvh/epg/stats2
 				sed -i "s/$(date -d '10 days' '+%Y%m%d') finished//g" ~/ztvh/epg/status 2> /dev/null
 			else
 				mv workfile ~/ztvh/epg/datafile_11
 				echo "- SYNCED FILES TO BE DELETED -"
 				touch ~/ztvh/epg/stats
-				touch ~/ztvh/epg/stats2
 				sed -i "s/$(date -d '10 days' '+%Y%m%d') finished//g" ~/ztvh/epg/status 2> /dev/null
 			fi
 		elif [ -s ~/ztvh/epg/filecheck ]
 		then
 			echo "- NEW CLOUD FILES TO BE ADDED -"
 			touch ~/ztvh/epg/stats
-			touch ~/ztvh/epg/stats2
 			sed -i "s/$(date -d '10 days' '+%Y%m%d') finished//g" ~/ztvh/epg/status 2> /dev/null
 			mv ~/ztvh/epg/filecheck ~/ztvh/epg/datafile_11
 		else
@@ -1421,7 +1378,6 @@ then
 		mv workfile ~/ztvh/epg/datafile_11
 		echo "- COMPLETE DATABASE TO BE SYNCED -"
 		touch ~/ztvh/epg/stats
-		touch ~/ztvh/epg/stats2
 		touch ~/ztvh/epg/update
 		sed -i "s/$(date -d '10 days' '+%Y%m%d') finished//g" ~/ztvh/epg/status 2> /dev/null
 	fi
@@ -1513,20 +1469,17 @@ then
 				echo "- NEW CLOUD FILES TO BE ADDED -"
 				echo "- SYNCED FILES TO BE DELETED -"
 				touch ~/ztvh/epg/stats
-				touch ~/ztvh/epg/stats2
 				sed -i "s/$(date -d '11 days' '+%Y%m%d') finished//g" ~/ztvh/epg/status 2> /dev/null
 			else
 				mv workfile ~/ztvh/epg/datafile_12
 				echo "- SYNCED FILES TO BE DELETED -"
 				touch ~/ztvh/epg/stats
-				touch ~/ztvh/epg/stats2
 				sed -i "s/$(date -d '11 days' '+%Y%m%d') finished//g" ~/ztvh/epg/status 2> /dev/null
 			fi
 		elif [ -s ~/ztvh/epg/filecheck ]
 		then
 			echo "- NEW CLOUD FILES TO BE ADDED -"
 			touch ~/ztvh/epg/stats
-			touch ~/ztvh/epg/stats2
 			sed -i "s/$(date -d '11 days' '+%Y%m%d') finished//g" ~/ztvh/epg/status 2> /dev/null
 			mv ~/ztvh/epg/filecheck ~/ztvh/epg/datafile_12
 		else
@@ -1548,7 +1501,6 @@ then
 		mv workfile ~/ztvh/epg/datafile_12
 		echo "- COMPLETE DATABASE TO BE SYNCED -"
 		touch ~/ztvh/epg/stats
-		touch ~/ztvh/epg/stats2
 		touch ~/ztvh/epg/update
 		sed -i "s/$(date -d '11 days' '+%Y%m%d') finished//g" ~/ztvh/epg/status 2> /dev/null
 	fi
@@ -1640,20 +1592,17 @@ then
 				echo "- NEW CLOUD FILES TO BE ADDED -"
 				echo "- SYNCED FILES TO BE DELETED -"
 				touch ~/ztvh/epg/stats
-				touch ~/ztvh/epg/stats2
 				sed -i "s/$(date -d '12 days' '+%Y%m%d') finished//g" ~/ztvh/epg/status 2> /dev/null
 			else
 				mv workfile ~/ztvh/epg/datafile_13
 				echo "- SYNCED FILES TO BE DELETED -"
 				touch ~/ztvh/epg/stats
-				touch ~/ztvh/epg/stats2
 				sed -i "s/$(date -d '12 days' '+%Y%m%d') finished//g" ~/ztvh/epg/status 2> /dev/null
 			fi
 		elif [ -s ~/ztvh/epg/filecheck ]
 		then
 			echo "- NEW CLOUD FILES TO BE ADDED -"
 			touch ~/ztvh/epg/stats
-			touch ~/ztvh/epg/stats2
 			sed -i "s/$(date -d '12 days' '+%Y%m%d') finished//g" ~/ztvh/epg/status 2> /dev/null
 			mv ~/ztvh/epg/filecheck ~/ztvh/epg/datafile_13
 		else
@@ -1675,7 +1624,6 @@ then
 		mv workfile ~/ztvh/epg/datafile_13
 		echo "- COMPLETE DATABASE TO BE SYNCED -"
 		touch ~/ztvh/epg/stats
-		touch ~/ztvh/epg/stats2
 		touch ~/ztvh/epg/update
 		sed -i "s/$(date -d '12 days' '+%Y%m%d') finished//g" ~/ztvh/epg/status 2> /dev/null
 	fi
@@ -1767,20 +1715,17 @@ then
 				echo "- NEW CLOUD FILES TO BE ADDED -"
 				echo "- SYNCED FILES TO BE DELETED -"
 				touch ~/ztvh/epg/stats
-				touch ~/ztvh/epg/stats2
 				sed -i "s/$(date -d '13 days' '+%Y%m%d') finished//g" ~/ztvh/epg/status 2> /dev/null
 			else
 				mv workfile ~/ztvh/epg/datafile_14
 				echo "- SYNCED FILES TO BE DELETED -"
 				touch ~/ztvh/epg/stats
-				touch ~/ztvh/epg/stats2
 				sed -i "s/$(date -d '13 days' '+%Y%m%d') finished//g" ~/ztvh/epg/status 2> /dev/null
 			fi
 		elif [ -s ~/ztvh/epg/filecheck ]
 		then
 			echo "- NEW CLOUD FILES TO BE ADDED -"
 			touch ~/ztvh/epg/stats
-			touch ~/ztvh/epg/stats2
 			sed -i "s/$(date -d '13 days' '+%Y%m%d') finished//g" ~/ztvh/epg/status 2> /dev/null
 			mv ~/ztvh/epg/filecheck ~/ztvh/epg/datafile_14
 		else
@@ -1802,7 +1747,6 @@ then
 		mv workfile ~/ztvh/epg/datafile_14
 		echo "- COMPLETE DATABASE TO BE SYNCED -"
 		touch ~/ztvh/epg/stats
-		touch ~/ztvh/epg/stats2
 		touch ~/ztvh/epg/update
 		sed -i "s/$(date -d '13 days' '+%Y%m%d') finished//g" ~/ztvh/epg/status 2> /dev/null
 	fi

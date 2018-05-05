@@ -613,7 +613,6 @@ then
 
 	cd ~/ztvh/work
 	rm login.txt workfile* powerid progressbar channels_file 2> /dev/null
-	rm ~/ztvh/epg/stats2 2> /dev/null
 
 	echo "--- DONE ---"
 	exit 0
@@ -714,9 +713,9 @@ do
 	if [ -e ~/ztvh/epg/update ]
 	then
 		echo "Checking for updates..."
-	elif [ -e ~/ztvh/epg/stats2 ]
+	elif [ -e ~/ztvh/epg/stats ]
 	then
-		echo "No updates found!" && echo ""
+		echo "Update finished!" && echo ""
 		mv ~/ztvh/epg/$(date +%Y%m%d)_zattoo_fullepg.xml ~/ztvh/epg/$(date +%Y%m%d)_zattoo_fullepg_OLD.xml 2> /dev/null
 	elif [ -e ~/ztvh/epg/$(date +%Y%m%d)_zattoo_fullepg.xml ]
 	then
@@ -728,7 +727,7 @@ do
 	fi
 done
 echo "- EPG FILES COLLECTED SUCCESSFULLY! -" && echo ""
-rm ~/ztvh/epg/stats2 2> /dev/null
+rm ~/ztvh/epg/stats 2> /dev/null
 
 
 # 
@@ -776,7 +775,6 @@ fi
 
 cd ~/ztvh/work
 rm login.txt workfile* powerid progressbar channels_file 2> /dev/null
-rm ~/ztvh/epg/stats2 2> /dev/null
 sort -u ~/ztvh/epg/status -o ~/ztvh/epg/status
 
 echo "--- DONE ---"
