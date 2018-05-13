@@ -211,7 +211,7 @@ then
 		while true
 		do
 			echo "--- OPTIONS MENU ---"
-			until grep -q "chlogo [0-1]" user/options
+			until grep -q "chlogo [0-2]" user/options
 			do
 				sed -i 's/chlogo.*//g' user/options
 				sed -i '/^\s*$/d' user/options
@@ -219,14 +219,20 @@ then
 			done
 			if grep -q "chlogo 1" user/options
 			then
-				echo "[1] Disable ZATTOO CHANNEL LOGOS"
-			elif grep -q "chlogo 0" user/options
+				echo "[1] Change settings for ZATTOO CHANNEL LOGOS"
+				echo "    (current: white logos enabled)"
+			elif grep -q "chlogo 2" user/options
 			then
-				echo "[1] Enable ZATTOO CHANNEL LOGOS"
+				echo "[1] Change settings for ZATTOO CHANNEL LOGOS"
+				echo "    (current: dark logos enabled)"
+			else
+				echo "[1] Change settings for ZATTOO CHANNEL LOGOS"
+				echo "    (current: logo grabber disabled)"
 			fi
 			if grep -q -E "epgdata [1-9]-|epgdata 1[0-4]-" user/options
 			then
-				echo "[2] Change time period for ZATTOO EPG GRABBER (current: $(sed '/epgdata/!d;s/epgdata //g;s/-//g;' ~/ztvh/user/options) day(s))"
+				echo "[2] Change time period for ZATTOO EPG GRABBER"
+				echo "    (current: $(sed '/epgdata/!d;s/epgdata //g;s/-//g;' ~/ztvh/user/options) day(s))"
 			elif grep -q "epgdata 0-" user/options
 			then
 				echo "[2] Enable ZATTOO EPG GRABBER"
@@ -261,6 +267,9 @@ then
 			if grep -q "extepg 0" user/options
 			then
 				echo "[4] Enable external EPG file download"
+			elif grep -q "extepg 1" user/options
+			then
+				echo "[4] Disable external EPG file download"
 			else
 				echo "[4] Disable external EPG file download"
 				sed -i 's/extepg.*//g' user/options
@@ -273,14 +282,30 @@ then
 			read -p "Number....: " -n1 n
 			echo "" && echo ""
 			case $n in
-			1)	if grep -q "chlogo 1" user/options
-				then
-					sed -i 's/chlogo 1/chlogo 0/g' user/options
-					echo "ZATTOO CHANNEL LOGOS disabled!" && echo ""
-				else
-					sed -i 's/chlogo 0/chlogo 1/g' user/options
-					echo "ZATTOO CHANNEL LOGOS enabled!" && echo ""
-				fi;;
+			1)	sed -i '/chlogo/d' ~/ztvh/user/options 2> /dev/null
+				until grep -q -E "chlogo [0-2]" ~/ztvh/user/options 2> /dev/null
+				do
+					echo "--- ZATTOO CHANNEL LOGOS ---"
+					echo "Do you want to download and update the channel logo images from Zattoo?"
+					echo "[0] - No"
+					echo "[1] - Yes (for dark backgrounds)"
+					echo "[2] - Yes (for bright backgrounds)"
+					read -e -p "Number....: " -n1 logonum
+					echo "chlogo $logonum" >> ~/ztvh/user/options
+					if grep -q "chlogo 0" ~/ztvh/user/options 2> /dev/null
+					then
+						echo "ZATTOO CHANNEL LOGOS disabled!" && echo ""
+					elif grep -q "chlogo 1" ~/ztvh/user/options 2> /dev/null
+					then
+						echo "White channel logos for dark backgrounds enabled!" && echo ""
+					elif grep -q "chlogo 2" ~/ztvh/user/options 2> /dev/null
+					then
+						echo "Black channel logos for bright backgrounds enabled!" && echo ""
+					else
+						echo "- ERROR: INVALID VALUE! -" && echo ""
+					fi
+				done
+				echo "Please restart the script to apply the changes!" && echo "";;
 			2)	sed -i 's/epgdata.*//g' user/options
 				sed -i '/^\s*$/d' user/options
 				until grep -q -E "epgdata [0-9]-|epgdata 1[0-4]-" user/options 2> /dev/null
@@ -475,15 +500,22 @@ fi
 
 echo "--- ZATTOO CHANNEL LOGOS ---"
 
-until grep -q -E "chlogo 0|chlogo 1" ~/ztvh/user/options 2> /dev/null
+until grep -q -E "chlogo [0-2]" ~/ztvh/user/options 2> /dev/null
 do
 	echo "Do you want to download and update the channel logo images from Zattoo?"
-	echo "[1] - Yes /// [0] - No"
+	echo "[0] - No"
+	echo "[1] - Yes (for dark backgrounds)"
+	echo "[2] - Yes (for bright backgrounds)"
 	read -e -p "Number....: " -n1 logonum
 	echo "chlogo $logonum" > ~/ztvh/user/options
-	if grep -q -E "chlogo 0|chlogo 1" ~/ztvh/user/options 2> /dev/null
+	if grep -q "chlogo 0" ~/ztvh/user/options 2> /dev/null
+	then :
+	elif grep -q "chlogo 1" ~/ztvh/user/options 2> /dev/null
 	then
-		echo ""
+		echo "White channel logos for dark backgrounds enabled!" && echo ""
+	elif grep -q "chlogo 2" ~/ztvh/user/options 2> /dev/null
+	then
+		echo "Black channel logos for bright backgrounds enabled!" && echo ""
 	else
 		echo "- ERROR: INVALID VALUE! -" && echo ""
 	fi
@@ -500,6 +532,26 @@ then
 	chmod 0777 ~/ztvh/logos
 	sed 's/#EXTINF.*\(tvg-id=".*"\).*\(tvg-logo=".*"\).*/\2 \1/g' ~/ztvh/channels.m3u > workfile
 	sed -i 's/84x48.png/210x120.png/g' workfile
+	sed -i '/pipe/d' workfile
+	sed -i 's/tvg-logo="/curl /g' workfile
+	sed -i 's/" tvg-id="/ > ~\/ztvh\/logos\//g' workfile
+	sed -i 's/" group.*/.png 2> \/dev\/null/g' workfile
+	sed -i 's/#EXTM3U/#\!\/bin\/bash/g' workfile
+	bash workfile
+	sed -i 's/ group-title="Zattoo" tvg-logo=".*",/,/g' ~/ztvh/channels.m3u
+	sed -i 's/tvg-id=".*"/& xyz&/g' ~/ztvh/channels.m3u
+	sed -i 's/xyztvg-id="/tvg-logo="logos\//g' ~/ztvh/channels.m3u
+	sed -i 's/", /.png" group-title="Zattoo", /g' ~/ztvh/channels.m3u
+	chmod 0777 ~/ztvh/logos/*
+	echo "- CHANNEL LOGO IMAGES SAVED! -" && echo ""
+	rm workfile
+elif grep -q "chlogo 2" ~/ztvh/user/options 2> /dev/null
+then 
+	echo "Collecting/updating channel logo images..."
+	mkdir ~/ztvh/logos 2> /dev/null
+	chmod 0777 ~/ztvh/logos
+	sed 's/#EXTINF.*\(tvg-id=".*"\).*\(tvg-logo=".*"\).*/\2 \1/g' ~/ztvh/channels.m3u > workfile
+	sed -i -e 's/84x48.png/210x120.png/g' -e 's/\/black\//\/white\//g' workfile
 	sed -i '/pipe/d' workfile
 	sed -i 's/tvg-logo="/curl /g' workfile
 	sed -i 's/" tvg-id="/ > ~\/ztvh\/logos\//g' workfile
@@ -530,9 +582,21 @@ do
 	echo "[4] - MAXIMUM | 3-8 Mbit/s"
 	read -e -p "Number....: " -n1 pipenum
 	echo "chpipe $pipenum" >> ~/ztvh/user/options
-	if grep -q "chpipe [0-4]" ~/ztvh/user/options 2> /dev/null
+	if grep -q "chpipe 4" ~/ztvh/user/options 2> /dev/null
 	then
-		echo ""
+		echo "Streaming quality set to MAXIMUM" && echo ""
+	elif grep -q "chpipe 3" ~/ztvh/user/options 2> /dev/null
+	then
+		echo "Streaming quality set to HIGH" && echo ""
+	elif grep -q "chpipe 2" ~/ztvh/user/options 2> /dev/null
+	then
+		echo "Streaming quality set to MEDIUM" && echo ""
+	elif grep -q "chpipe 1" ~/ztvh/user/options 2> /dev/null
+	then
+		echo "Streaming quality set to LOW" && echo ""
+	elif grep -q "chpipe 0" ~/ztvh/user/options 2> /dev/null
+	then
+		echo "Streaming quality set to MINIMUM" && echo ""
 	else
 		echo "- ERROR: INVALID VALUE! -" && echo ""
 		sed -i 's/chpipe.*//g' ~/ztvh/user/options
