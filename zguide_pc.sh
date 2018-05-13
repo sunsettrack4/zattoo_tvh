@@ -29,10 +29,10 @@ echo "Checking process status..."
 # First checks: EPG Downloader + XMLTV Creator
 #
 
-if [ -e stats2 ]
+if [ -e stats ]
 then
 	echo "- [EPG DOWNLOADER] INFO: Process interrupted in previous try! -"
-	rm stats2 2> /dev/null
+	rm stats 2> /dev/null
 fi
 if [ -s ~/ztvh/errorlog ]
 then
