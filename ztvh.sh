@@ -484,6 +484,7 @@ then
 	mkdir ~/ztvh/logos 2> /dev/null
 	chmod 0777 ~/ztvh/logos
 	sed 's/#EXTINF.*\(tvg-id=".*"\).*\(tvg-logo=".*"\).*/\2 \1/g' ~/ztvh/channels.m3u > workfile
+	sed -i 's/84x48.png/210x120.png/g' workfile
 	sed -i '/pipe/d' workfile
 	sed -i 's/tvg-logo="/curl /g' workfile
 	sed -i 's/" tvg-id="/ > ~\/ztvh\/logos\//g' workfile
