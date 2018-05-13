@@ -237,20 +237,26 @@ then
 				echo "epgdata 0-" >> user/options
 			fi
 			echo "[3] Change streaming quality/bandwidth"
-			if grep -q "chpipe 3" user/options
+			if grep -q "chpipe 4" user/options
 			then
-				echo "    (current: MAXIMUM @ 3-5 Mbit/s)"
+				echo "    (current: MAXIMUM @ 3-8 Mbit/s)"
+			elif grep -q "chpipe 3" user/options
+			then
+				echo "    (current: HIGH @ 3-5 Mbit/s)"
 			elif grep -q "chpipe 2" user/options
 			then
 				echo "    (current: MEDIUM @ 1,5 Mbit/s)"
 			elif grep -q "chpipe 1" user/options
 			then
-				echo "    (current: LOW @ 600 kbit/s)"
+				echo "    (current: LOW @ 900 kbit/s)"
+			elif grep -q "chpipe 0" user/options
+			then
+				echo "    (current: MINIMUM @ 600 kbit/s)"
 			else
 				sed -i 's/chpipe.*//g' user/options
 				sed -i '/^\s*$/d' user/options
-				echo "chpipe 3" >> user/options
-				echo "    (current: MAXIMUM @ 3-5 Mbit/s"
+				echo "chpipe 4" >> user/options
+				echo "    (current: MAXIMUM @ 3-8 Mbit/s"
 			fi
 			if grep -q "extepg 0" user/options
 			then
@@ -265,7 +271,7 @@ then
 			echo "[6] Exit script"
 			echo "[9] Logout from Zattoo and exit script" && echo ""
 			read -p "Number....: " -n1 n
-			echo ""
+			echo "" && echo ""
 			case $n in
 			1)	if grep -q "chlogo 1" user/options
 				then
@@ -300,28 +306,37 @@ then
 				done;;
 			3)	sed -i 's/chpipe.*//g' user/options
 				sed -i '/^\s*$/d' user/options
-				until grep -q "chpipe [1-3]" user/options 2> /dev/null
+				until grep -q "chpipe [0-4]" user/options 2> /dev/null
 				do
 					echo "Please choose the streaming quality you want to use."
-					echo "[1] - LOW @ 600 kbit/s"
-					echo "[2] - MEDIUM @ 1,5 Mbit/s"
-					echo "[3] - MAXIMUM @ 3-5 Mbit/s"
+					echo "[0] - MINIMUM | 600 kbit/s"
+					echo "[1] - LOW     | 900 kbit/s"
+					echo "[2] - MEDIUM  | 1,5 Mbit/s"
+					echo "[3] - HIGH    | 3-5 Mbit/s"
+					echo "[4] - MAXIMUM | 3-8 Mbit/s"
 					read -e -p "Number....: " -n1 pipenum
 					echo "chpipe $pipenum" >> ~/ztvh/user/options
-					if grep -q "chpipe 3" ~/ztvh/user/options 2> /dev/null
+					if grep -q "chpipe 4" ~/ztvh/user/options 2> /dev/null
 					then
 						echo "Streaming quality set to MAXIMUM" && echo ""
+					elif grep -q "chpipe 3" ~/ztvh/user/options 2> /dev/null
+					then
+						echo "Streaming quality set to HIGH" && echo ""
 					elif grep -q "chpipe 2" ~/ztvh/user/options 2> /dev/null
 					then
 						echo "Streaming quality set to MEDIUM" && echo ""
 					elif grep -q "chpipe 1" ~/ztvh/user/options 2> /dev/null
 					then
 						echo "Streaming quality set to LOW" && echo ""
+					elif grep -q "chpipe 0" ~/ztvh/user/options 2> /dev/null
+					then
+						echo "Streaming quality set to MINIMUM" && echo ""
 					else
 						echo "- ERROR: INVALID VALUE! -" && echo ""
 						sed -i 's/chpipe.*//g' ~/ztvh/user/options
 						sed -i '/^\s*$/d' ~/ztvh/user/options
 					fi
+					echo "Please restart the script to apply the changes!" && echo ""
 				done;;
 			4) 	if grep -q "extepg 1" user/options
 				then
@@ -505,15 +520,17 @@ fi
 # PIPE STREAMS #
 # ##############
 
-until grep -q "chpipe [1-3]" ~/ztvh/user/options 2> /dev/null
+until grep -q "chpipe [0-4]" ~/ztvh/user/options 2> /dev/null
 do
 	echo "Please choose the streaming quality you want to use."
-	echo "[1] - LOW @ 600 kbit/s"
-	echo "[2] - MEDIUM @ 1,5 Mbit/s"
-	echo "[3] - MAXIMUM @ 3-5 Mbit/s"
+	echo "[0] - MINIMUM | 600 kbit/s"
+	echo "[1] - LOW     | 900 kbit/s"
+	echo "[2] - MEDIUM  | 1,5 Mbit/s"
+	echo "[3] - HIGH    | 3-5 Mbit/s"
+	echo "[4] - MAXIMUM | 3-8 Mbit/s"
 	read -e -p "Number....: " -n1 pipenum
 	echo "chpipe $pipenum" >> ~/ztvh/user/options
-	if grep -q "chpipe [1-3]" ~/ztvh/user/options 2> /dev/null
+	if grep -q "chpipe [0-4]" ~/ztvh/user/options 2> /dev/null
 	then
 		echo ""
 	else
@@ -537,14 +554,20 @@ sed -i '/#EXTINF/{s/.*tvg-id="/ch_id=\$(echo "/g;s/" tvg-logo.*/")/g;s/" group-t
 sed -i '/pipe:\/\//{s/.*chpipe\//sed "s\/CID_CHANNEL\/\$ch_id\/g" ~\/ztvh\/work\/pipe_workfile > ~\/ztvh\/chpipe\//g;}' workfile
 bash workfile
 
-if grep -q "chpipe 3" ~/ztvh/user/options
+if grep -q "chpipe 4" ~/ztvh/user/options
 then
 	sed -i '5s/# //g' ~/ztvh/chpipe/*
-elif grep -q "chpipe 2" ~/ztvh/user/options
+elif grep -q "chpipe 3" ~/ztvh/user/options
 then
 	sed -i '6s/# //g' ~/ztvh/chpipe/*
-else
+elif grep -q "chpipe 2" ~/ztvh/user/options
+then
 	sed -i '7s/# //g' ~/ztvh/chpipe/*
+elif grep -q "chpipe 1" ~/ztvh/user/options
+then
+	sed -i '8s/# //g' ~/ztvh/chpipe/*
+else
+	sed -i '9s/# //g' ~/ztvh/chpipe/*
 fi
 
 chmod 0777 ~/ztvh/chpipe/*
