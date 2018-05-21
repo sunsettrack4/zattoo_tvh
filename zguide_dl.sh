@@ -39,7 +39,7 @@ if grep -q -E "epgdata [1-9]-|epgdata 1[0-4]-" ~/ztvh/user/options 2> /dev/null
 then
 	mkdir ~/ztvh/epg/$(date '+%Y%m%d') 2> /dev/null
 	touch ~/ztvh/epg/datafile_1
-	until tr ' ' '\n' < ~/ztvh/epg/datafile_1  | grep '"success":true' | wc -l | grep -q 4 2> /dev/null
+	until tr ' ' '\n' < ~/ztvh/epg/datafile_1  | sed 's/"success":true/\n&/g' | grep '"success":true' | wc -l | grep -q 4 2> /dev/null
 	do
 		date '+%Y-%m-%d 06:00:00' > date0
 		sed -i 's/.*/#\!\/bin\/bash\ndate -d "&" +%s/g' date0
@@ -67,7 +67,7 @@ then
 		curl -X GET --cookie "$session" "https://zattoo.com/zapi/v2/cached/program/power_guide/$powerid?end=$date4&start=$date3" >> ~/ztvh/epg/datafile_1 2> /dev/null
 		rm date*
 	
-		if tr ' ' '\n' < ~/ztvh/epg/datafile_1 | grep '"success":true' | wc -l | grep -q 4 2> /dev/null
+		if tr ' ' '\n' < ~/ztvh/epg/datafile_1 | sed 's/"success":true/\n&/g' | grep '"success":true' | wc -l | grep -q 4 2> /dev/null
 		then :
 		else
 			echo ""
@@ -162,7 +162,7 @@ if grep -q -E "epgdata [2-9]-|epgdata 1[0-4]-" ~/ztvh/user/options 2> /dev/null
 then
 	mkdir ~/ztvh/epg/$(date -d '1 day' '+%Y%m%d') 2> /dev/null
 	touch ~/ztvh/epg/datafile_2
-	until tr ' ' '\n' < ~/ztvh/epg/datafile_2 | grep '"success":true' | wc -l | grep -q 4 2> /dev/null
+	until tr ' ' '\n' < ~/ztvh/epg/datafile_2 | sed 's/"success":true/\n&/g' | grep '"success":true' | wc -l | grep -q 4 2> /dev/null
 	do
 		date -d '1 day' '+%Y-%m-%d 06:00:00' > date0
 		sed -i 's/.*/#\!\/bin\/bash\ndate -d "&" +%s/g' date0
@@ -190,7 +190,7 @@ then
 		curl -X GET --cookie "$session" "https://zattoo.com/zapi/v2/cached/program/power_guide/$powerid?end=$date4&start=$date3" >> ~/ztvh/epg/datafile_2 2> /dev/null
 		rm date*
 	
-		if tr ' ' '\n' < ~/ztvh/epg/datafile_2 | grep '"success":true' | wc -l | grep -q 4 2> /dev/null
+		if tr ' ' '\n' < ~/ztvh/epg/datafile_2 | sed 's/"success":true/\n&/g' | grep '"success":true' | wc -l | grep -q 4 2> /dev/null
 		then :
 		else
 			echo ""
@@ -285,7 +285,7 @@ if grep -q -E "epgdata [3-9]-|epgdata 1[0-4]-" ~/ztvh/user/options 2> /dev/null
 then
 	mkdir ~/ztvh/epg/$(date -d '2 days' '+%Y%m%d') 2> /dev/null
 	touch ~/ztvh/epg/datafile_3
-	until tr ' ' '\n' < ~/ztvh/epg/datafile_3 | grep '"success":true' | wc -l | grep -q 4 2> /dev/null
+	until tr ' ' '\n' < ~/ztvh/epg/datafile_3 | sed 's/"success":true/\n&/g' | grep '"success":true' | wc -l | grep -q 4 2> /dev/null
 	do
 		date -d '2 days' '+%Y-%m-%d 06:00:00' > date0
 		sed -i 's/.*/#\!\/bin\/bash\ndate -d "&" +%s/g' date0
@@ -313,7 +313,7 @@ then
 		curl -X GET --cookie "$session" "https://zattoo.com/zapi/v2/cached/program/power_guide/$powerid?end=$date4&start=$date3" >> ~/ztvh/epg/datafile_3 2> /dev/null
 		rm date*
 		
-		if tr ' ' '\n' < ~/ztvh/epg/datafile_3 | grep '"success":true' | wc -l | grep -q 4 2> /dev/null
+		if tr ' ' '\n' < ~/ztvh/epg/datafile_3 | sed 's/"success":true/\n&/g' | grep '"success":true' | wc -l | grep -q 4 2> /dev/null
 		then :
 		else
 			echo ""
@@ -408,7 +408,7 @@ if grep -q -E "epgdata [4-9]-|epgdata 1[0-4]-" ~/ztvh/user/options 2> /dev/null
 then
 	mkdir ~/ztvh/epg/$(date -d '3 days' '+%Y%m%d') 2> /dev/null
 	touch ~/ztvh/epg/datafile_4
-	until tr ' ' '\n' < ~/ztvh/epg/datafile_4 | grep '"success":true' | wc -l | grep -q 4 2> /dev/null
+	until tr ' ' '\n' < ~/ztvh/epg/datafile_4 | sed 's/"success":true/\n&/g' | grep '"success":true' | wc -l | grep -q 4 2> /dev/null
 	do
 		date -d '3 days' '+%Y-%m-%d 06:00:00' > date0
 		sed -i 's/.*/#\!\/bin\/bash\ndate -d "&" +%s/g' date0
@@ -436,7 +436,7 @@ then
 		curl -X GET --cookie "$session" "https://zattoo.com/zapi/v2/cached/program/power_guide/$powerid?end=$date4&start=$date3" >> ~/ztvh/epg/datafile_4 2> /dev/null
 		rm date*
 		
-		if tr ' ' '\n' < ~/ztvh/epg/datafile_4 | grep '"success":true' | wc -l | grep -q 4 2> /dev/null
+		if tr ' ' '\n' < ~/ztvh/epg/datafile_4 | sed 's/"success":true/\n&/g' | grep '"success":true' | wc -l | grep -q 4 2> /dev/null
 		then :
 		else
 			echo ""
@@ -531,7 +531,7 @@ if grep -q -E "epgdata [5-9]-|epgdata 1[0-4]-" ~/ztvh/user/options 2> /dev/null
 then
 	mkdir ~/ztvh/epg/$(date -d '4 days' '+%Y%m%d') 2> /dev/null
 	touch ~/ztvh/epg/datafile_5
-	until tr ' ' '\n' < ~/ztvh/epg/datafile_5 | grep '"success":true' | wc -l | grep -q 4 2> /dev/null
+	until tr ' ' '\n' < ~/ztvh/epg/datafile_5 | sed 's/"success":true/\n&/g' | grep '"success":true' | wc -l | grep -q 4 2> /dev/null
 	do
 		date -d '4 days' '+%Y-%m-%d 06:00:00' > date0
 		sed -i 's/.*/#\!\/bin\/bash\ndate -d "&" +%s/g' date0
@@ -559,7 +559,7 @@ then
 		curl -X GET --cookie "$session" "https://zattoo.com/zapi/v2/cached/program/power_guide/$powerid?end=$date4&start=$date3" >> ~/ztvh/epg/datafile_5 2> /dev/null
 		rm date*
 		
-		if tr ' ' '\n' < ~/ztvh/epg/datafile_5 | grep '"success":true' | wc -l | grep -q 4 2> /dev/null
+		if tr ' ' '\n' < ~/ztvh/epg/datafile_5 | sed 's/"success":true/\n&/g' | grep '"success":true' | wc -l | grep -q 4 2> /dev/null
 		then :
 		else
 			echo ""
@@ -654,7 +654,7 @@ if grep -q -E "epgdata [6-9]-|epgdata 1[0-4]-" ~/ztvh/user/options 2> /dev/null
 then
 	mkdir ~/ztvh/epg/$(date -d '5 days' '+%Y%m%d') 2> /dev/null
 	touch ~/ztvh/epg/datafile_6
-	until tr ' ' '\n' < ~/ztvh/epg/datafile_6 | grep '"success":true' | wc -l | grep -q 4 2> /dev/null
+	until tr ' ' '\n' < ~/ztvh/epg/datafile_6 | sed 's/"success":true/\n&/g' | grep '"success":true' | wc -l | grep -q 4 2> /dev/null
 	do
 		date -d '5 days' '+%Y-%m-%d 06:00:00' > date0
 		sed -i 's/.*/#\!\/bin\/bash\ndate -d "&" +%s/g' date0
@@ -682,7 +682,7 @@ then
 		curl -X GET --cookie "$session" "https://zattoo.com/zapi/v2/cached/program/power_guide/$powerid?end=$date4&start=$date3" >> ~/ztvh/epg/datafile_6 2> /dev/null
 		rm date*
 		
-		if tr ' ' '\n' < ~/ztvh/epg/datafile_6 | grep '"success":true' | wc -l | grep -q 4 2> /dev/null
+		if tr ' ' '\n' < ~/ztvh/epg/datafile_6 | sed 's/"success":true/\n&/g' | grep '"success":true' | wc -l | grep -q 4 2> /dev/null
 		then :
 		else
 			echo ""
@@ -777,7 +777,7 @@ if grep -q -E "epgdata [7-9]-|epgdata 1[0-4]-" ~/ztvh/user/options 2> /dev/null
 then
 	mkdir ~/ztvh/epg/$(date -d '6 days' '+%Y%m%d') 2> /dev/null
 	touch ~/ztvh/epg/datafile_7
-	until tr ' ' '\n' < ~/ztvh/epg/datafile_7 | grep '"success":true' | wc -l | grep -q 4 2> /dev/null
+	until tr ' ' '\n' < ~/ztvh/epg/datafile_7 | sed 's/"success":true/\n&/g' | grep '"success":true' | wc -l | grep -q 4 2> /dev/null
 	do
 		date -d '6 days' '+%Y-%m-%d 06:00:00' > date0
 		sed -i 's/.*/#\!\/bin\/bash\ndate -d "&" +%s/g' date0
@@ -805,7 +805,7 @@ then
 		curl -X GET --cookie "$session" "https://zattoo.com/zapi/v2/cached/program/power_guide/$powerid?end=$date4&start=$date3" >> ~/ztvh/epg/datafile_7 2> /dev/null
 		rm date*
 		
-		if tr ' ' '\n' < ~/ztvh/epg/datafile_7 | grep '"success":true' | wc -l | grep -q 4 2> /dev/null
+		if tr ' ' '\n' < ~/ztvh/epg/datafile_7 | sed 's/"success":true/\n&/g' | grep '"success":true' | wc -l | grep -q 4 2> /dev/null
 		then :
 		else
 			echo ""
@@ -900,7 +900,7 @@ if grep -q -E "epgdata [8-9]-|epgdata 1[0-4]-" ~/ztvh/user/options 2> /dev/null
 then
 	mkdir ~/ztvh/epg/$(date -d '7 days' '+%Y%m%d') 2> /dev/null
 	touch ~/ztvh/epg/datafile_8
-	until tr ' ' '\n' < ~/ztvh/epg/datafile_8 | grep '"success":true' | wc -l | grep -q 4 2> /dev/null
+	until tr ' ' '\n' < ~/ztvh/epg/datafile_8 | sed 's/"success":true/\n&/g' | grep '"success":true' | wc -l | grep -q 4 2> /dev/null
 	do
 		date -d '7 days' '+%Y-%m-%d 06:00:00' > date0
 		sed -i 's/.*/#\!\/bin\/bash\ndate -d "&" +%s/g' date0
@@ -928,7 +928,7 @@ then
 		curl -X GET --cookie "$session" "https://zattoo.com/zapi/v2/cached/program/power_guide/$powerid?end=$date4&start=$date3" >> ~/ztvh/epg/datafile_8 2> /dev/null
 		rm date*
 		
-		if tr ' ' '\n' < ~/ztvh/epg/datafile_8 | grep '"success":true' | wc -l | grep -q 4 2> /dev/null
+		if tr ' ' '\n' < ~/ztvh/epg/datafile_8 | sed 's/"success":true/\n&/g' | grep '"success":true' | wc -l | grep -q 4 2> /dev/null
 		then :
 		else
 			echo ""
@@ -1023,7 +1023,7 @@ if grep -q -E "epgdata 9-|epgdata 1[0-4]-" ~/ztvh/user/options 2> /dev/null
 then
 	mkdir ~/ztvh/epg/$(date -d '8 days' '+%Y%m%d') 2> /dev/null
 	touch ~/ztvh/epg/datafile_9
-	until tr ' ' '\n' < ~/ztvh/epg/datafile_9 | grep '"success":true' | wc -l | grep -q 4 2> /dev/null
+	until tr ' ' '\n' < ~/ztvh/epg/datafile_9 | sed 's/"success":true/\n&/g' | grep '"success":true' | wc -l | grep -q 4 2> /dev/null
 	do
 		date -d '8 days' '+%Y-%m-%d 06:00:00' > date0
 		sed -i 's/.*/#\!\/bin\/bash\ndate -d "&" +%s/g' date0
@@ -1051,7 +1051,7 @@ then
 		curl -X GET --cookie "$session" "https://zattoo.com/zapi/v2/cached/program/power_guide/$powerid?end=$date4&start=$date3" >> ~/ztvh/epg/datafile_9 2> /dev/null
 		rm date*
 		
-		if tr ' ' '\n' < ~/ztvh/epg/datafile_9 | grep '"success":true' | wc -l | grep -q 4 2> /dev/null
+		if tr ' ' '\n' < ~/ztvh/epg/datafile_9 | sed 's/"success":true/\n&/g' | grep '"success":true' | wc -l | grep -q 4 2> /dev/null
 		then :
 		else
 			echo ""
@@ -1146,7 +1146,7 @@ if grep -q "epgdata 1[0-4]-" ~/ztvh/user/options 2> /dev/null
 then
 	mkdir ~/ztvh/epg/$(date -d '9 days' '+%Y%m%d') 2> /dev/null
 	touch ~/ztvh/epg/datafile_10
-	until tr ' ' '\n' < ~/ztvh/epg/datafile_10 | grep '"success":true' | wc -l | grep -q 4 2> /dev/null
+	until tr ' ' '\n' < ~/ztvh/epg/datafile_10 | sed 's/"success":true/\n&/g' | grep '"success":true' | wc -l | grep -q 4 2> /dev/null
 	do
 		date -d '9 days' '+%Y-%m-%d 06:00:00' > date0
 		sed -i 's/.*/#\!\/bin\/bash\ndate -d "&" +%s/g' date0
@@ -1174,7 +1174,7 @@ then
 		curl -X GET --cookie "$session" "https://zattoo.com/zapi/v2/cached/program/power_guide/$powerid?end=$date4&start=$date3" >> ~/ztvh/epg/datafile_10 2> /dev/null
 		rm date*
 		
-		if tr ' ' '\n' < ~/ztvh/epg/datafile_10 | grep '"success":true' | wc -l | grep -q 4 2> /dev/null
+		if tr ' ' '\n' < ~/ztvh/epg/datafile_10 | sed 's/"success":true/\n&/g' | grep '"success":true' | wc -l | grep -q 4 2> /dev/null
 		then :
 		else
 			echo ""
@@ -1269,7 +1269,7 @@ if grep -q "epgdata 1[1-4]-" ~/ztvh/user/options 2> /dev/null
 then
 	mkdir ~/ztvh/epg/$(date -d '10 days' '+%Y%m%d') 2> /dev/null
 	touch ~/ztvh/epg/datafile_11
-	until tr ' ' '\n' < ~/ztvh/epg/datafile_11 | grep '"success":true' | wc -l | grep -q 4 2> /dev/null
+	until tr ' ' '\n' < ~/ztvh/epg/datafile_11 | sed 's/"success":true/\n&/g' | grep '"success":true' | wc -l | grep -q 4 2> /dev/null
 	do
 		date -d '10 days' '+%Y-%m-%d 06:00:00' > date0
 		sed -i 's/.*/#\!\/bin\/bash\ndate -d "&" +%s/g' date0
@@ -1297,7 +1297,7 @@ then
 		curl -X GET --cookie "$session" "https://zattoo.com/zapi/v2/cached/program/power_guide/$powerid?end=$date4&start=$date3" >> ~/ztvh/epg/datafile_11 2> /dev/null
 		rm date*
 		
-		if tr ' ' '\n' < ~/ztvh/epg/datafile_11 | grep '"success":true' | wc -l | grep -q 4 2> /dev/null
+		if tr ' ' '\n' < ~/ztvh/epg/datafile_11 | sed 's/"success":true/\n&/g' | grep '"success":true' | wc -l | grep -q 4 2> /dev/null
 		then :
 		else
 			echo ""
@@ -1392,7 +1392,7 @@ if grep -q "epgdata 1[2-4]-" ~/ztvh/user/options 2> /dev/null
 then
 	mkdir ~/ztvh/epg/$(date -d '11 days' '+%Y%m%d') 2> /dev/null
 	touch ~/ztvh/epg/datafile_12
-	until tr ' ' '\n' < ~/ztvh/epg/datafile_12 | grep '"success":true' | wc -l | grep -q 4 2> /dev/null
+	until tr ' ' '\n' < ~/ztvh/epg/datafile_12 | sed 's/"success":true/\n&/g' | grep '"success":true' | wc -l | grep -q 4 2> /dev/null
 	do
 		date -d '11 days' '+%Y-%m-%d 06:00:00' > date0
 		sed -i 's/.*/#\!\/bin\/bash\ndate -d "&" +%s/g' date0
@@ -1420,7 +1420,7 @@ then
 		curl -X GET --cookie "$session" "https://zattoo.com/zapi/v2/cached/program/power_guide/$powerid?end=$date4&start=$date3" >> ~/ztvh/epg/datafile_12 2> /dev/null
 		rm date*
 		
-		if tr ' ' '\n' < ~/ztvh/epg/datafile_12 | grep '"success":true' | wc -l | grep -q 4 2> /dev/null
+		if tr ' ' '\n' < ~/ztvh/epg/datafile_12 | sed 's/"success":true/\n&/g' | grep '"success":true' | wc -l | grep -q 4 2> /dev/null
 		then :
 		else
 			echo ""
@@ -1515,7 +1515,7 @@ if grep -q "epgdata 1[3-4]-" ~/ztvh/user/options 2> /dev/null
 then
 	mkdir ~/ztvh/epg/$(date -d '12 days' '+%Y%m%d') 2> /dev/null
 	touch ~/ztvh/epg/datafile_13
-	until tr ' ' '\n' < ~/ztvh/epg/datafile_13 | grep '"success":true' | wc -l | grep -q 4 2> /dev/null
+	until tr ' ' '\n' < ~/ztvh/epg/datafile_13 | sed 's/"success":true/\n&/g' | grep '"success":true' | wc -l | grep -q 4 2> /dev/null
 	do
 		date -d '12 days' '+%Y-%m-%d 06:00:00' > date0
 		sed -i 's/.*/#\!\/bin\/bash\ndate -d "&" +%s/g' date0
@@ -1543,7 +1543,7 @@ then
 		curl -X GET --cookie "$session" "https://zattoo.com/zapi/v2/cached/program/power_guide/$powerid?end=$date4&start=$date3" >> ~/ztvh/epg/datafile_13 2> /dev/null
 		rm date*
 		
-		if tr ' ' '\n' < ~/ztvh/epg/datafile_13 | grep '"success":true' | wc -l | grep -q 4 2> /dev/null
+		if tr ' ' '\n' < ~/ztvh/epg/datafile_13 | sed 's/"success":true/\n&/g' | grep '"success":true' | wc -l | grep -q 4 2> /dev/null
 		then :
 		else
 			echo ""
@@ -1638,7 +1638,7 @@ if grep -q "epgdata 14-" ~/ztvh/user/options 2> /dev/null
 then
 	mkdir ~/ztvh/epg/$(date -d '13 days' '+%Y%m%d') 2> /dev/null
 	touch ~/ztvh/epg/datafile_14
-	until tr ' ' '\n' < ~/ztvh/epg/datafile_14 | grep '"success":true' | wc -l | grep -q 4 2> /dev/null
+	until tr ' ' '\n' < ~/ztvh/epg/datafile_14 | sed 's/"success":true/\n&/g' | grep '"success":true' | wc -l | grep -q 4 2> /dev/null
 	do
 		date -d '13 days' '+%Y-%m-%d 06:00:00' > date0
 		sed -i 's/.*/#\!\/bin\/bash\ndate -d "&" +%s/g' date0
@@ -1666,7 +1666,7 @@ then
 		curl -X GET --cookie "$session" "https://zattoo.com/zapi/v2/cached/program/power_guide/$powerid?end=$date4&start=$date3" >> ~/ztvh/epg/datafile_14 2> /dev/null
 		rm date*
 		
-		if tr ' ' '\n' < ~/ztvh/epg/datafile_14 | grep '"success":true' | wc -l | grep -q 4 2> /dev/null
+		if tr ' ' '\n' < ~/ztvh/epg/datafile_14 | sed 's/"success":true/\n&/g' | grep '"success":true' | wc -l | grep -q 4 2> /dev/null
 		then :
 		else
 			echo ""
