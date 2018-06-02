@@ -28,83 +28,95 @@ cd ~/ztvh/epg
 
 # SET UP DELIMITERS
 printf "\rSetting up delimiters...                             "
+sed -i 's/{"success": true, "programs": //g' workfile
 sed -i 's/|/\\u007c/g' workfile
-sed -i 's/":null,"/":null|"/g' workfile
-sed -i 's/","/"|"/g' workfile
+sed -i 's/": null, "/": null|"/g' workfile
+sed -i 's/, "/|"/g' workfile
 sed -i 's/\[...\]/(...)/g' workfile
-sed -i 's/\],/]|/g' workfile
-sed -i 's/},"success":true}/|,|,|/g' workfile
-sed -i -e 's/{"program"//g' -e '/^\s*$/d' workfile
+sed -i 's/\], "/]|"/g' workfile
+sed -i 's/\]}, "/]}|"/g' workfile
+sed -i 's/}\]}/|&/g' workfile
 
 # START/END TIME + CHANNEL ID
 printf "\rCreating strings: Start, End, Channel ID             "
 sed -i 's/\(.*\)\("cid":[^|]*|\)\(.*\)/\2\1|\3/g' workfile
-sed -i 's/\(.*\)\("end":[^|]*|\)\(.*\)/\2\1|\3/g' workfile
-sed -i 's/\(.*\)\("start":[^|]*|\)\(.*\)/\2\1|\3/g' workfile
-sed -i -e 's/"start":"/<programme start="/g' -e 's/"|"end":"/ +0000" stop="/g' -e 's/"|"cid":"/ +0000" channel="/g' -e 's/"|:{/">\n:{/g' workfile
-sed -i 's/\([0-9][0-9][0-9][0-9]\)-\([0-2][0-9]\)-\([0-3][0-9]\)T\([0-2][0-9]\):\([0-5][0-9]\):\([0-5][0-9]\)Z/\1\2\3\4\5\6/g' workfile
+sed -i 's/\(.*\)\("e":[^|]*|\)\(.*\)/\2\1|\3/g' workfile
+sed -i 's/\(.*\)\("s":[^|]*|\)\(.*\)/\2\1|\3/g' workfile
+
+sed -i -e 's/"s": /#/g' -e 's/|"e": /\n"e": /g' workfile
+while IFS= read -r i; do if [[ $i =~ ^#([0-9]{10})$ ]]; then printf '#%s\n' "start $(date -u -d@"${BASH_REMATCH[1]}" '+%Y%m%d%H%M%S')"; else printf '%s\n' "$i"; fi; done <workfile > convert
+sed -i -e 's/"e": /#/g' -e 's/|"cid": /\n"cid": /g' convert
+while IFS= read -r i; do if [[ $i =~ ^#([0-9]{10})$ ]]; then printf '#%s\n' "end $(date -u -d@"${BASH_REMATCH[1]}" '+%Y%m%d%H%M%S')"; else printf '%s\n' "$i"; fi; done <convert > workfile && rm convert
+
+sed -i 's/\(#start \)\(.*\)/<programme start="\2 +0000" /g' workfile
+sed -i 's/\(#end \)\(.*\)/stop="\2 +0000" /g' workfile
+sed -i ':a $!N;s/\nstop/stop/;ta P;D' workfile
+sed -i 's/\("cid":[^|]*|\)\(.*\)/\1\n\2/g' workfile
+sed -i 's/\("cid": \)\(.*\)|/channel=\2>/g' workfile
+sed -i ':a $!N;s/\nchannel/channel/;ta P;D' workfile
 
 # IMAGE
 printf "\rCreating strings: Image_URL                          "
-sed -i 's/\(:{.*\)\("image_url":[^|]*|\)\(.*\)/\2\1|\3/g' workfile
-sed -i -e 's/"image_url":null|//g' -e 's/"image_url":"/  <icon src="/g' -e 's/"|:{/" \/>\n:{/g' -e 's/format_480x360.jpg/original.jpg/g' workfile
+sed -i 's/\(\[{.*\)\("i_url":[^|]*|\)\(.*\)/\2\1|\3/g' workfile
+sed -i -e 's/"i_url": null|//g' -e 's/"i_url": "/  <icon src="/g' -e 's/"|\[{/" \/>\n[{/g' -e 's/format_480x360.jpg/original.jpg/g' workfile
 
 # TITLE
 printf "\rCreating strings: Title                              "
-sed -i 's/\(:{.*\)\("title":[^|]*|\)\(.*\)/\2\1|\3/g' workfile
-sed -i -e 's/"title":"/  <title lang="de">/g' -e 's/"|:{/<\/title>\n:{/g' workfile 
+sed -i 's/\(\[{.*\)\("t":[^|]*|\)\(.*\)/\2\1|\3/g' workfile
+sed -i -e 's/"t": "/  <title lang="de">/g' -e 's/"|\[{/<\/title>\n[{/g' workfile 
 
 # COUNTRY
 printf "\rCreating strings: Country                            "
-sed -i 's/\(:{.*\)\("country":[^|]*|\)\(.*\)/\2\1|\3/g' workfile
-sed -i -e 's/"country":""|//g' -e 's/"country":"/  <country>/g' -e 's/"|:{/<\/country>\n:{/g' workfile
+sed -i 's/\(\[{.*\)\("country":[^|]*|\)\(.*\)/\2\1|\3/g' workfile
+sed -i -e 's/"country": ""|//g' -e 's/"country": "/  <country>/g' -e 's/"|\[{/<\/country>\n[{/g' workfile
 
 # DESCRIPTION
 printf "\rCreating strings: Description                        "
-sed -i 's/\(:{.*\)\("description":[^|]*|\)\(.*\)/\2\1|\3/g' workfile
-sed -i -e 's/"description":""|//g' -e 's/"description":"/  <desc lang="de">/g' -e 's/"|:{/<\/desc>\n:{/g' workfile
-sed -i '/<desc lang="de"/s/"|/",/g' workfile
+sed -i 's/\(\[{.*\)\("d":[^|]*|\)\(.*\)/\2\1|\3/g' workfile
+sed -i -e 's/"d": ""|//g' -e 's/"d": "/  <desc lang="de">/g' -e 's/"|\[{/<\/desc>\n[{/g' workfile
 
 # SUBTITLE
 printf "\rCreating strings: Sub-Title                          "
-sed -i 's/\(:{.*\)\("episode_title":[^|]*|\)\(.*\)/\2\1|\3/g' workfile
-sed -i -e 's/"episode_title":null|//g' -e 's/"episode_title":""|//g' -e 's/"episode_title":"/  <sub-title>/g' -e 's/"|:{/<\/sub-title>\n:{/g' workfile
+sed -i 's/\(\[{.*\)\("et":[^|]*|\)\(.*\)/\2\1|\3/g' workfile
+sed -i -e 's/"et": null|//g' -e 's/"et": ""|//g' -e 's/"et": "/  <sub-title>/g' -e 's/"|\[{/<\/sub-title>\n[{/g' workfile
 
 # AGE RATING
 printf "\rCreating strings: Age Rating                         "
-sed -i 's/\(:{.*\)\("youth_protection_rating":[^|]*|\)\(.*\)/\2\1|\3/g' workfile
-sed -i -e 's/"youth_protection_rating":null|//g' -e 's/"youth_protection_rating":"/  <rating system="FSK">\n    <value>/g' -e 's/"|:{/<\/value>\n  <\/rating>\n:{/g' workfile
+sed -i 's/\(\[{.*\)\("yp_r":[^|]*|\)\(.*\)/\2\1|\3/g' workfile
+sed -i -e 's/"yp_r": null|//g' -e 's/"yp_r": "/  <rating system="FSK">\n    <value>/g' -e 's/"|\[{/<\/value>\n  <\/rating>\n[{/g' workfile
 
 # CREDITS
 printf "\rCreating strings: Credits                            "
-sed -i 's/\(:{.*\)\("credits":[^]]*\]\)\(.*\)/\2\1|\3/g' workfile
-sed -i -e 's/"credits":\[\]//g' -e 's/{"person":/\n&/g' -e 's/"credits":\[/  <credits>/g' -e 's/}\]:{/},\n  <\/credits>\n:{/g' workfile
-sed -i -e 's/\({"person":"\)\(.*\)\("|"role":"director"},\)/    <director>\2<\/director>/g' workfile
-sed -i -e 's/\({"person":"\)\(.*\)\("|"role":"actor"},\)/    <actor>\2<\/actor>/g' workfile
+sed -i 's/\(\[{.*\)\("cr":[^}]*\}\)\(.*\)/\2\1|\3/g' workfile
+sed -i -e 's/"director": \[\]//g' -e 's/"actor": \[\]//g' -e 's/"cr": {|}//g' -e 's/"\]|}\[{"/"]|}\n[{"/g' -e 's/"\]}\[{"/"]}\n[{"/g' workfile
+sed -i 's/\("cr": \)\(.*\)}/  <credits>\n\2\n  <\/credits>/g' workfile
+sed -i -e 's/{|"actor": \[/{"actor": [/g' -e 's/|"actor": \[/|\n{"actor": [/g' workfile
+
+sed -i '/{"director"/{s/{"director": \["/    <director>/g;s/"|"/<\/director>\n    <director>/g;s/"\]|/<\/director>/g}' workfile
+sed -i '/{"actor"/{s/{"actor": \["/    <actor>/g;s/"|"/<\/actor>\n    <actor>/g;s/"\]/<\/actor>/g}' workfile
 
 # GENRE/CATEGORY
 printf "\rCreating strings: Category                           "
-sed -i -e 's/\(:{.*\)\("categories":[^]]*\]\)\(.*\)/\2|\1|\3/g' -e 's/\("categories":.*\)\("genres":[^]]*\]\)\(.*\)/\2|\1|\3/g' -e 's/|:{/|\n:{/g' workfile
-sed -i -e 's/"genres":\[\]|//g' -e 's/"categories":\[\]|//g' workfile
-sed -i -e 's/"genres":\["/  <category lang="de">/g' -e 's/"\]|".*/<\/category>/g' -e 's/"categories":\["/  <category lang="de">/g' -e 's/"\]|/<\/category>/g' workfile
+sed -i -e 's/\(\[{.*\)\("c":[^]]*\]\)\(.*\)/\2|\1|\3/g' -e 's/\("c":.*\)\("g":[^]]*\]\)\(.*\)/\2|\1|\3/g' -e 's/|\[{/|\n[{/g' workfile
+sed -i -e 's/"g": \[\]|//g' -e 's/"c": \[\]|//g' workfile
+sed -i -e 's/"g": \["/  <category lang="de">/g' -e 's/"\]|".*/<\/category>/g' -e 's/"c": \["/  <category lang="de">/g' -e 's/"\]|/<\/category>/g' workfile
 sed -i '/<category lang="de">/s/"|"/ \/ /g' workfile
 
 # SEASON + EPISODE
 printf "\rCreating strings: Season, Episode                    "
-sed -i -e 's/"episode_number":null|//g' -e 's/"season_number":null|//g' workfile 
-sed -i -e 's/\(:{.*\)\("episode_number":[^,]*,\)\(.*\)/\2\1|\3/g' -e 's/\("episode_number":.*\)\("season_number":[^,]*,\)\(.*\)/\2\1|\3/g' -e 's/\(:{.*\)\("season_number":[^,]*,\)\(.*\)/\2\1|\3/g' -e 's/,:{/,\n:{/g' workfile
-sed -i -e '/"episode_number":/s/|//g' -e '/"season_number":/s/|//g' workfile
-sed -i 's/\("season_number":\)\(.*\)\(,"episode_number":\)\(.*\),/  <episode-num system="onscreen">S\2 E\4<\/episode-num>/g' workfile
-sed -i -e 's/\("season_number":\)\(.*\),/  <episode-num system="onscreen">S\2<\/episode-num>/g' -e 's/\("episode_number":\)\(.*\),/  <episode-num system="onscreen">E\2<\/episode-num>/g' workfile
+sed -i -e 's/"e_no": null|//g' -e 's/"s_no": null|//g' workfile
+sed -i -e 's/\(\[{.*\)\("e_no":[^|]*|\)\(.*\)/\2\1|\3/g' -e 's/\("e_no":.*\)\("s_no":[^|]*|\)\(.*\)/\2\1|\3/g' -e 's/\(\[{.*\)\("s_no":[^|]*|\)\(.*\)/\2\1|\3/g' -e 's/|\[{/|\n[{/g' workfile
+sed -i 's/\("s_no": \)\(.*\)\(|"e_no": \)\(.*\)|/  <episode-num system="onscreen">S\2 E\4<\/episode-num>/g' workfile
+sed -i -e 's/\("s_no": \)\(.*\)|/  <episode-num system="onscreen">S\2<\/episode-num>/g' -e 's/\("e_no": \)\(.*\)|/  <episode-num system="onscreen">E\2<\/episode-num>/g' workfile
 
 # YEAR
 printf "\rCreating strings: Date                               "
-sed -i 's/\(:{.*\)\("year":[0-9][0-9][0-9][0-9]\),\(.*\)/\2|\1|\3/g' workfile
-sed -i -e 's/"year":null|//g' -e 's/"year":/  <date>/g' -e 's/|:{/<\/date>\n:{/g' workfile
+sed -i 's/\(\[{.*\)\("year":[0-9][0-9][0-9][0-9]\)|\(.*\)/\2|\1|\3/g' workfile
+sed -i -e 's/"year":null|//g' -e 's/"year":/  <date>/g' -e 's/|\[{/<\/date>\n[{/g' workfile
 
 # END OF PROGRAMME
 printf "\rFinalizing string creation...                        "
-sed -i -e 's/:{.*/<\/programme>/g' -e '/^\s*$/d' workfile
+sed -i -e 's/\[{.*/<\/programme>/g' -e '/^\s*$/d' workfile
 	
 
 #
