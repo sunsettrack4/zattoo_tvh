@@ -19,7 +19,7 @@
 
 echo "ZattooPLUS for tvheadend"
 echo "(c) 2017-2018 Jan-Luca Neumann"
-echo "Version 0.4.2 2018/05/13"
+echo "Version 0.4.3 2018/06/03"
 echo ""
 
 # ##################
