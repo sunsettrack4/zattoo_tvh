@@ -28,6 +28,12 @@ rm ~/ztvh/epg/filecheck* 2> /dev/null
 session=$(<session)
 powerid=$(<powerid)
 
+if date '+%H%M' | grep -q "235[0-9]"
+then
+	echo "" && echo "Waiting until EPG services are available..."
+	sleep 600s
+fi
+
 echo "" && echo "Checking EPG manifest files..."
 
 
@@ -73,8 +79,8 @@ then
 			echo ""
 			echo "- ERROR: FAILED TO LOAD EPG MAIN FILE! -"
 			echo "DAY 1 - $(date '+%Y%m%d'): Failed to check EPG manifest file!"
-			echo "Retry in 30 secs..." && echo ""
-			sleep 30s
+			echo "Retry in 10 secs..." && echo ""
+			sleep 10s
 		fi
 	done
 	
@@ -196,8 +202,8 @@ then
 			echo ""
 			echo "- ERROR: FAILED TO LOAD EPG MAIN FILE! -"
 			echo "DAY 2 - $(date -d '1 day' '+%Y%m%d'): Failed to check EPG manifest file!"
-			echo "Retry in 30 secs..." && echo ""
-			sleep 30s
+			echo "Retry in 10 secs..." && echo ""
+			sleep 10s
 		fi
 	done
 	
@@ -319,8 +325,8 @@ then
 			echo ""
 			echo "- ERROR: FAILED TO LOAD EPG MAIN FILE! -"
 			echo "DAY 3 - $(date -d '2 days' '+%Y%m%d'): Failed to check EPG manifest file!"
-			echo "Retry in 30 secs..." && echo ""
-			sleep 30s
+			echo "Retry in 10 secs..." && echo ""
+			sleep 10s
 		fi
 	done
 	
@@ -442,8 +448,8 @@ then
 			echo ""
 			echo "- ERROR: FAILED TO LOAD EPG MAIN FILE! -"
 			echo "DAY 4 - $(date -d '3 days' '+%Y%m%d'): Failed to check EPG manifest file!"
-			echo "Retry in 30 secs..." && echo ""
-			sleep 30s
+			echo "Retry in 10 secs..." && echo ""
+			sleep 10s
 		fi
 	done
 	
@@ -565,8 +571,8 @@ then
 			echo ""
 			echo "- ERROR: FAILED TO LOAD EPG MAIN FILE! -"
 			echo "DAY 5 - $(date -d '4 days' '+%Y%m%d'): Failed to check EPG manifest file!"
-			echo "Retry in 30 secs..." && echo ""
-			sleep 30s
+			echo "Retry in 10 secs..." && echo ""
+			sleep 10s
 		fi
 	done
 	
@@ -688,8 +694,8 @@ then
 			echo ""
 			echo "- ERROR: FAILED TO LOAD EPG MAIN FILE! -"
 			echo "DAY 6 - $(date -d '5 days' '+%Y%m%d'): Failed to check EPG manifest file!"
-			echo "Retry in 30 secs..." && echo ""
-			sleep 30s
+			echo "Retry in 10 secs..." && echo ""
+			sleep 10s
 		fi
 	done
 	
@@ -811,8 +817,8 @@ then
 			echo ""
 			echo "- ERROR: FAILED TO LOAD EPG MAIN FILE! -"
 			echo "DAY 7 - $(date -d '6 days' '+%Y%m%d'): Failed to check EPG manifest file!"
-			echo "Retry in 30 secs..." && echo ""
-			sleep 30s
+			echo "Retry in 10 secs..." && echo ""
+			sleep 10s
 		fi
 	done
 	
@@ -934,8 +940,8 @@ then
 			echo ""
 			echo "- ERROR: FAILED TO LOAD EPG MAIN FILE! -"
 			echo "DAY 8 - $(date -d '7 days' '+%Y%m%d'): Failed to check EPG manifest file!"
-			echo "Retry in 30 secs..." && echo ""
-			sleep 30s
+			echo "Retry in 10 secs..." && echo ""
+			sleep 10s
 		fi
 	done
 	
@@ -1057,8 +1063,8 @@ then
 			echo ""
 			echo "- ERROR: FAILED TO LOAD EPG MAIN FILE! -"
 			echo "DAY 9 - $(date -d '8 days' '+%Y%m%d'): Failed to check EPG manifest file!"
-			echo "Retry in 30 secs..." && echo ""
-			sleep 30s
+			echo "Retry in 10 secs..." && echo ""
+			sleep 10s
 		fi
 	done
 	
@@ -1180,8 +1186,8 @@ then
 			echo ""
 			echo "- ERROR: FAILED TO LOAD EPG MAIN FILE! -"
 			echo "DAY 10 - $(date -d '9 days' '+%Y%m%d'): Failed to check EPG manifest file!"
-			echo "Retry in 30 secs..." && echo ""
-			sleep 30s
+			echo "Retry in 10 secs..." && echo ""
+			sleep 10s
 		fi
 	done
 	
@@ -1303,8 +1309,8 @@ then
 			echo ""
 			echo "- ERROR: FAILED TO LOAD EPG MAIN FILE! -"
 			echo "DAY 11 - $(date -d '10 days' '+%Y%m%d'): Failed to check EPG manifest file!"
-			echo "Retry in 30 secs..." && echo ""
-			sleep 30s
+			echo "Retry in 10 secs..." && echo ""
+			sleep 10s
 		fi
 	done
 	
@@ -1426,8 +1432,8 @@ then
 			echo ""
 			echo "- ERROR: FAILED TO LOAD EPG MAIN FILE! -"
 			echo "DAY 12 - $(date -d '11 days' '+%Y%m%d'): Failed to check EPG manifest file!"
-			echo "Retry in 30 secs..." && echo ""
-			sleep 30s
+			echo "Retry in 10 secs..." && echo ""
+			sleep 10s
 		fi
 	done
 	
@@ -1549,8 +1555,8 @@ then
 			echo ""
 			echo "- ERROR: FAILED TO LOAD EPG MAIN FILE! -"
 			echo "DAY 13 - $(date -d '12 days' '+%Y%m%d'): Failed to check EPG manifest file!"
-			echo "Retry in 30 secs..." && echo ""
-			sleep 30s
+			echo "Retry in 10 secs..." && echo ""
+			sleep 10s
 		fi
 	done
 	
@@ -1672,8 +1678,8 @@ then
 			echo ""
 			echo "- ERROR: FAILED TO LOAD EPG MAIN FILE! -"
 			echo "DAY 14 - $(date -d '13 days' '+%Y%m%d'): Failed to check EPG manifest file!"
-			echo "Retry in 30 secs..." && echo ""
-			sleep 30s
+			echo "Retry in 10 secs..." && echo ""
+			sleep 10s
 		fi
 	done
 	
@@ -1770,26 +1776,41 @@ then
 	sed -i 's/nullcurl/null\ncurl/g' ~/ztvh/epg/scriptbase
 	sed -i 's/nullrm/null\nrm/g' ~/ztvh/epg/scriptbase
 	sort -u ~/ztvh/epg/scriptbase -o ~/ztvh/epg/scriptbase
-	rm ~/ztvh/epg/datafile_*
+	rm ~/ztvh/epg/datafile_* ~/ztvh/work/datefile 2> /dev/null
+	
+	echo "$(date '+%Y%m%d')" > ~/ztvh/work/datefile
+	echo "$(date -d '1 day' '+%Y%m%d')" >> ~/ztvh/work/datefile
+	echo "$(date -d '2 days' '+%Y%m%d')" >> ~/ztvh/work/datefile
+	echo "$(date -d '3 days' '+%Y%m%d')" >> ~/ztvh/work/datefile
+	echo "$(date -d '4 days' '+%Y%m%d')" >> ~/ztvh/work/datefile
+	echo "$(date -d '5 days' '+%Y%m%d')" >> ~/ztvh/work/datefile
+	echo "$(date -d '6 days' '+%Y%m%d')" >> ~/ztvh/work/datefile
+	echo "$(date -d '7 days' '+%Y%m%d')" >> ~/ztvh/work/datefile
+	echo "$(date -d '8 days' '+%Y%m%d')" >> ~/ztvh/work/datefile
+	echo "$(date -d '9 days' '+%Y%m%d')" >> ~/ztvh/work/datefile
+	echo "$(date -d '10 days' '+%Y%m%d')" >> ~/ztvh/work/datefile
+	echo "$(date -d '11 days' '+%Y%m%d')" >> ~/ztvh/work/datefile
+	echo "$(date -d '12 days' '+%Y%m%d')" >> ~/ztvh/work/datefile
+	echo "$(date -d '13 days' '+%Y%m%d')" >> ~/ztvh/work/datefile
 	
 	sed -i '1i#\!\/bin\/bash \
 	cd ~\/ztvh \
 	session=\$(<work\/session) \
 	powerid=\$(<work\/powerid) \
-	date_01=\$(date "+%Y%m%d") \
-	date_02=\$(date -d "1 day" "+%Y%m%d") \
-	date_03=\$(date -d "2 days" "+%Y%m%d") \
-	date_04=\$(date -d "3 days" "+%Y%m%d") \
-	date_05=\$(date -d "4 days" "+%Y%m%d") \
-	date_06=\$(date -d "5 days" "+%Y%m%d") \
-	date_07=\$(date -d "6 days" "+%Y%m%d") \
-	date_08=\$(date -d "7 days" "+%Y%m%d") \
-	date_09=\$(date -d "8 days" "+%Y%m%d") \
-	date_10=\$(date -d "9 days" "+%Y%m%d") \
-	date_11=\$(date -d "10 days" "+%Y%m%d") \
-	date_12=\$(date -d "11 days" "+%Y%m%d") \
-	date_13=\$(date -d "12 days" "+%Y%m%d") \
-	date_14=\$(date -d "13 days" "+%Y%m%d")' ~/ztvh/epg/scriptbase
+	date_01=\$(sed -n "1p" work\/datefile) \
+	date_02=\$(sed -n "2p" work\/datefile) \
+	date_03=\$(sed -n "3p" work\/datefile) \
+	date_04=\$(sed -n "4p" work\/datefile) \
+	date_05=\$(sed -n "5p" work\/datefile) \
+	date_06=\$(sed -n "6p" work\/datefile) \
+	date_07=\$(sed -n "7p" work\/datefile) \
+	date_08=\$(sed -n "8p" work\/datefile) \
+	date_09=\$(sed -n "9p" work\/datefile) \
+	date_10=\$(sed -n "10p" work\/datefile) \
+	date_11=\$(sed -n "11p" work\/datefile) \
+	date_12=\$(sed -n "12p" work\/datefile) \
+	date_13=\$(sed -n "13p" work\/datefile) \
+	date_14=\$(sed -n "14p" work\/datefile)' ~/ztvh/epg/scriptbase
 	sed -i 's/			//g' ~/ztvh/epg/scriptbase
 
 	mv ~/ztvh/epg/scriptbase ~/ztvh/epg/scriptfile_00
