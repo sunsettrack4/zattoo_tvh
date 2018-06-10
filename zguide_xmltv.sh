@@ -153,101 +153,104 @@ sed -i '$s/.*/&\n<\/tv>/g' workfile2
 # SETUP CATEGORIES
 #
 
-printf "\rConverting category strings to DVB format...         "
-
-sed -i '/category lang/s/>Filme<.*/>Movie \/ Drama<\/category>/g' workfile2
-sed -i '/category lang/s/>Dokumentationen<.*/>Documentary<\/category>/g' workfile2
-sed -i "/category lang/s/>Kinderprogramm<.*/>Children's \/ Youth programs<\/category>/g" workfile2
-sed -i '/category lang/s/>Sport<.*/>Sports<\/category>/g' workfile2
-sed -i '/category lang/s/>Information<.*/>Magazines \/ Reports \/ Documentary<\/category>/g' workfile2
-sed -i '/category lang/s/>Unterhaltung<.*/>Show \/ Game show<\/category>/g' workfile2
-sed -i '/category lang/s/>Serien<.*/>Movie \/ Drama<\/category>/g' workfile2
-
-sed -i '/category lang/s/>Wirtschaft.*/>Social \/ Political issues \/ Economics<\/category>/g' workfile2
-sed -i '/category lang/s/>Spielshow.*/>Show \/ Game show<\/category>/g' workfile2
-sed -i '/category lang/s/>Wissen.*/>Education \/ Science \/ Factual topics<\/category>/g' workfile2
-sed -i '/category lang/s/>Fußball.*/>Football \/ Soccer<\/category>/g' workfile2
-sed -i '/category lang/s/>Handball.*/>Team sports (excluding football)<\/category>/g' workfile2
-sed -i '/category lang/s/>Wintersport.*/>Winter sports<\/category>/g' workfile2
-sed -i '/category lang/s/>Wassersport.*/>Water sport<\/category>/g' workfile2
-sed -i '/category lang/s/>Reality.*/>Soap \/ Melodrama \/ Folkloric<\/category>/g' workfile2
-sed -i '/category lang/s/>Gerichtsshow.*/>Soap \/ Melodrama \/ Folkloric<\/category>/g' workfile2
-sed -i '/category lang/s/>Eishockey.*/>Team sports (excluding football)<\/category>/g' workfile2
-sed -i '/category lang/s/>US-Sport.*/>Sports<\/category>/g' workfile2
-sed -i '/category lang/s/>Boxen.*/>Sports<\/category>/g' workfile2
-sed -i '/category lang/s/>Golf.*/>Sports<\/category>/g' workfile2
-sed -i '/category lang/s/>Motorsport.*/>Motor sport<\/category>/g' workfile2
-sed -i '/category lang/s/>Radsport.*/>Sports<\/category>/g' workfile2
-sed -i '/category lang/s/>Drama.*/>Movie \/ Drama<\/category>/g' workfile2
-sed -i '/category lang/s/>Kino.*/>Movie \/ Drama<\/category>/g' workfile2
-sed -i '/category lang/s/>Heimat.*/>Movie \/ Drama<\/category>/g' workfile2
-sed -i '/category lang/s/>Tennis.*/>Tennis \/ Squash<\/category>/g' workfile2
-sed -i "/category lang/s/>Humor \/ Kinderserie.*/>Children's \/ Youth programs<\/category>/g" workfile2
-sed -i "/category lang/s/>Humor \/ Familie \/ Kinderserie.*/>Children's \/ Youth programs<\/category>/g" workfile2
-sed -i "/category lang/s/>Humor \/ Familie \/ Jugend.*/>Children's \/ Youth programs<\/category>/g" workfile2
-sed -i "/category lang/s/>Humor \/ Zeichentrick.*/>Children's \/ Youth programs<\/category>/g" workfile2
-sed -i '/category lang/s/>Humor.*/>Comedy<\/category>/g' workfile2
-sed -i "/category lang/s/>Krimi \/ Jugend.*/>Children's \/ Youth programs<\/category>/g" workfile2
-sed -i '/category lang/s/>Krimi.*/>Detective \/ Thriller<\/category>/g' workfile2
-sed -i '/category lang/s/>Reise.*/>Tourism \/ Travel<\/category>/g' workfile2
-sed -i '/category lang/s/>Kochshow.*/>Cooking<\/category>/g' workfile2
-sed -i '/category lang/s/>Nachrichten.*/>News \/ Current affairs<\/category>/g' workfile2
-sed -i '/category lang/s/>Dokumentation.*/>Documentary<\/category>/g' workfile2
-sed -i '/category lang/s/>Homeshopping.*/>Advertisement \/ Shopping<\/category>/g' workfile2
-sed -i '/category lang/s/>Magazin.*/>Magazines \/ Reports \/ Documentary<\/category>/g' workfile2
-sed -i '/category lang/s/>Soap.*/>Soap \/ Melodrama \/ Folkloric<\/category>/g' workfile2
-sed -i '/category lang/s/>Talkshow.*/>Talk show<\/category>/g' workfile2
-sed -i '/category lang/s/>Geschichte.*/>Documentary<\/category>/g' workfile2
-sed -i '/category lang/s/>Zeichentrick.*/>Cartoons \/ Puppets<\/category>/g' workfile2
-sed -i "/category lang/s/>Kinderserie.*/>Children's \/ Youth programs<\/category>/g" workfile2
-sed -i "/category lang/s/>Kindershow.*/>Children's \/ Youth programs<\/category>/g" workfile2
-sed -i "/category lang/s/>Kinderfilm.*/>Children's \/ Youth programs<\/category>/g" workfile2
-sed -i "/category lang/s/>Kindernachrichten.*/>Children's \/ Youth programs<\/category>/g" workfile2
-sed -i "/category lang/s/>Abenteuer \/ Zeichentrick.*/>Children's \/ Youth programs<\/category>/g" workfile2
-sed -i "/category lang/s/>Abenteuer \/ Kinderserie.*/>Children's \/ Youth programs<\/category>/g" workfile2
-sed -i '/category lang/s/>Abenteuer.*/>Adventure \/ Western \/ War<\/category>/g' workfile2
-sed -i '/category lang/s/>Krankenhaus.*/>Medicine \/ Physiology \/ Psychology<\/category>/g' workfile2
-sed -i "/category lang/s/>Mystery \& Horror \/ Jugend.*.*/>Children's \/ Youth programs<\/category>/g" workfile2
-sed -i '/category lang/s/>Mystery.*/>Science fiction \/ Fantasy \/ Horror<\/category>/g' workfile2
-sed -i "/category lang/s/>Comedy \/ Kinderserie.*/>Children's \/ Youth programs<\/category>/g" workfile2
-sed -i '/category lang/s/>Comedy.*/>Comedy<\/category>/g' workfile2
-sed -i '/category lang/s/>Musikshow \/ Kochshow.*/>Show \/ Game show<\/category>/g' workfile2
-sed -i '/category lang/s/>Musikshow.*/>Music \/ Ballet \/ Dance<\/category>/g' workfile2
-sed -i '/category lang/s/>Gesundheit.*/>Fitness and health<\/category>/g' workfile2
-sed -i '/category lang/s/>Gymnastik.*/>Fitness and health<\/category>/g' workfile2
-sed -i '/category lang/s/>Kultur.*/>Arts \/ Culture (without music)<\/category>/g' workfile2
-sed -i '/category lang/s/>Theater.*/>Performing arts<\/category>/g' workfile2
-sed -i '/category lang/s/>Musical.*/>Performing arts<\/category>/g' workfile2
-sed -i "/category lang/s/>Jugend.*/>Children's \/ Youth programs<\/category>/g" workfile2
-sed -i "/category lang/s/>Familie \/ Zeichentrick.*/>Children's \/ Youth programs<\/category>/g" workfile2
-sed -i "/category lang/s/>Familie \/ Kinderserie.*/>Children's \/ Youth programs<\/category>/g" workfile2
-sed -i '/category lang/s/>Familie \/ Soap.*/>Soap \/ Melodrama \/ Folkloric<\/category>/g' workfile2
-sed -i '/category lang/s/>Familie \/ Reality.*/>Soap \/ Melodrama \/ Folkloric<\/category>/g' workfile2
-sed -i '/category lang/s/>Familie \/ Drama.*/>Movie \/ Drama<\/category>/g' workfile2
-sed -i "/category lang/s/>Familie \/ Jugend.*/>Children's \/ Youth programs<\/category>/g" workfile2
-sed -i "/category lang/s/>Familie \/ Abenteuer.*/>Children's \/ Youth programs<\/category>/g" workfile2
-sed -i '/category lang/s/>Familie.*/>Soap \/ Melodrama \/ Folkloric<\/category>/g' workfile2
-sed -i '/category lang/s/>Erotik.*/>Adult movie \/ Drama<\/category>/g' workfile2
-sed -i '/category lang/s/>Romantik \& Liebe \/ Erotik.*/>Adult movie \/ Drama<\/category>/g' workfile2
-sed -i '/category lang/s/>Romantik \& Liebe.*/>Romance<\/category>/g' workfile2
-sed -i '/category lang/s/>Politik.*/>Social \/ Political issues \/ Economics<\/category>/g' workfile2
-sed -i '/category lang/s/>Natur.*/>Nature \/ Animals \/ Environment<\/category>/g' workfile2
-sed -i '/category lang/s/>Science Fiction.*/>Science fiction \/ Fantasy \/ Horror<\/category>/g' workfile2
-sed -i '/category lang/s/>Action \/ Science Fiction.*/>Science fiction \/ Fantasy \/ Horror<\/category>/g' workfile2
-sed -i '/category lang/s/>Action.*/>Adventure \/ Western \/ War<\/category>/g' workfile2
-sed -i '/category lang/s/>Ratgeber.*/>Magazines \/ Reports \/ Documentary<\/category>/g' workfile2
-sed -i '/category lang/s/>Thriller.*/>Detective \/ Thriller<\/category>/g' workfile2
-sed -i '/category lang/s/>Western.*/>Adventure \/ Western \/ War<\/category>/g' workfile2
-sed -i '/category lang/s/>Extremsport.*/>Martial Sports<\/category>/g' workfile2
-sed -i '/category lang/s/>Volleyball.*/>Team Sports (excluding football)<\/category>/g' workfile2
-sed -i '/category lang/s/>Reportage.*/>Magazines \/ Reports \/ Documentary<\/category>/g' workfile2
-sed -i '/category lang/s/>Musikclips.*/>Music \/ Ballet \/ Dance<\/category>/g' workfile2
-sed -i '/category lang/s/>Klassische Musik.*/>Music \/ Ballet \/ Dance<\/category>/g' workfile2
-sed -i '/category lang/s/>Volksmusik.*/>Music \/ Ballet \/ Dance<\/category>/g' workfile2
-sed -i '/category lang/s/>Pop \& Rock.*/>Music \/ Ballet \/ Dance<\/category>/g' workfile2
-sed -i '/category lang/s/>Motor \& Verkehr.*/>Motoring<\/category>/g' workfile2
-sed -i "/category lang/s/>Fantasy \/ Kinderserie.*/>Children's \/ Youth programs<\/category>/g" workfile2
-sed -i '/category lang/s/>Fantasy.*/>Science fiction \/ Fantasy \/ Horror<\/category>/g' workfile2
+if grep -q '"language": "de", ' ~/ztvh/work/login.txt
+then
+	printf "\rConverting category strings to DVB format...         "
+	
+	sed -i '/category lang/s/>Filme<.*/>Movie \/ Drama<\/category>/g' workfile2
+	sed -i '/category lang/s/>Dokumentationen<.*/>Documentary<\/category>/g' workfile2
+	sed -i "/category lang/s/>Kinderprogramm<.*/>Children's \/ Youth programs<\/category>/g" workfile2
+	sed -i '/category lang/s/>Sport<.*/>Sports<\/category>/g' workfile2
+	sed -i '/category lang/s/>Information<.*/>Magazines \/ Reports \/ Documentary<\/category>/g' workfile2
+	sed -i '/category lang/s/>Unterhaltung<.*/>Show \/ Game show<\/category>/g' workfile2
+	sed -i '/category lang/s/>Serien<.*/>Movie \/ Drama<\/category>/g' workfile2
+	
+	sed -i '/category lang/s/>Wirtschaft.*/>Social \/ Political issues \/ Economics<\/category>/g' workfile2
+	sed -i '/category lang/s/>Spielshow.*/>Show \/ Game show<\/category>/g' workfile2
+	sed -i '/category lang/s/>Wissen.*/>Education \/ Science \/ Factual topics<\/category>/g' workfile2
+	sed -i '/category lang/s/>Fußball.*/>Football \/ Soccer<\/category>/g' workfile2
+	sed -i '/category lang/s/>Handball.*/>Team sports (excluding football)<\/category>/g' workfile2
+	sed -i '/category lang/s/>Wintersport.*/>Winter sports<\/category>/g' workfile2
+	sed -i '/category lang/s/>Wassersport.*/>Water sport<\/category>/g' workfile2
+	sed -i '/category lang/s/>Reality.*/>Soap \/ Melodrama \/ Folkloric<\/category>/g' workfile2
+	sed -i '/category lang/s/>Gerichtsshow.*/>Soap \/ Melodrama \/ Folkloric<\/category>/g' workfile2
+	sed -i '/category lang/s/>Eishockey.*/>Team sports (excluding football)<\/category>/g' workfile2
+	sed -i '/category lang/s/>US-Sport.*/>Sports<\/category>/g' workfile2
+	sed -i '/category lang/s/>Boxen.*/>Sports<\/category>/g' workfile2
+	sed -i '/category lang/s/>Golf.*/>Sports<\/category>/g' workfile2
+	sed -i '/category lang/s/>Motorsport.*/>Motor sport<\/category>/g' workfile2
+	sed -i '/category lang/s/>Radsport.*/>Sports<\/category>/g' workfile2
+	sed -i '/category lang/s/>Drama.*/>Movie \/ Drama<\/category>/g' workfile2
+	sed -i '/category lang/s/>Kino.*/>Movie \/ Drama<\/category>/g' workfile2
+	sed -i '/category lang/s/>Heimat.*/>Movie \/ Drama<\/category>/g' workfile2
+	sed -i '/category lang/s/>Tennis.*/>Tennis \/ Squash<\/category>/g' workfile2
+	sed -i "/category lang/s/>Humor \/ Kinderserie.*/>Children's \/ Youth programs<\/category>/g" workfile2
+	sed -i "/category lang/s/>Humor \/ Familie \/ Kinderserie.*/>Children's \/ Youth programs<\/category>/g" workfile2
+	sed -i "/category lang/s/>Humor \/ Familie \/ Jugend.*/>Children's \/ Youth programs<\/category>/g" workfile2
+	sed -i "/category lang/s/>Humor \/ Zeichentrick.*/>Children's \/ Youth programs<\/category>/g" workfile2
+	sed -i '/category lang/s/>Humor.*/>Comedy<\/category>/g' workfile2
+	sed -i "/category lang/s/>Krimi \/ Jugend.*/>Children's \/ Youth programs<\/category>/g" workfile2
+	sed -i '/category lang/s/>Krimi.*/>Detective \/ Thriller<\/category>/g' workfile2
+	sed -i '/category lang/s/>Reise.*/>Tourism \/ Travel<\/category>/g' workfile2
+	sed -i '/category lang/s/>Kochshow.*/>Cooking<\/category>/g' workfile2
+	sed -i '/category lang/s/>Nachrichten.*/>News \/ Current affairs<\/category>/g' workfile2
+	sed -i '/category lang/s/>Dokumentation.*/>Documentary<\/category>/g' workfile2
+	sed -i '/category lang/s/>Homeshopping.*/>Advertisement \/ Shopping<\/category>/g' workfile2
+	sed -i '/category lang/s/>Magazin.*/>Magazines \/ Reports \/ Documentary<\/category>/g' workfile2
+	sed -i '/category lang/s/>Soap.*/>Soap \/ Melodrama \/ Folkloric<\/category>/g' workfile2
+	sed -i '/category lang/s/>Talkshow.*/>Talk show<\/category>/g' workfile2
+	sed -i '/category lang/s/>Geschichte.*/>Documentary<\/category>/g' workfile2
+	sed -i '/category lang/s/>Zeichentrick.*/>Cartoons \/ Puppets<\/category>/g' workfile2
+	sed -i "/category lang/s/>Kinderserie.*/>Children's \/ Youth programs<\/category>/g" workfile2
+	sed -i "/category lang/s/>Kindershow.*/>Children's \/ Youth programs<\/category>/g" workfile2
+	sed -i "/category lang/s/>Kinderfilm.*/>Children's \/ Youth programs<\/category>/g" workfile2
+	sed -i "/category lang/s/>Kindernachrichten.*/>Children's \/ Youth programs<\/category>/g" workfile2
+	sed -i "/category lang/s/>Abenteuer \/ Zeichentrick.*/>Children's \/ Youth programs<\/category>/g" workfile2
+	sed -i "/category lang/s/>Abenteuer \/ Kinderserie.*/>Children's \/ Youth programs<\/category>/g" workfile2
+	sed -i '/category lang/s/>Abenteuer.*/>Adventure \/ Western \/ War<\/category>/g' workfile2
+	sed -i '/category lang/s/>Krankenhaus.*/>Medicine \/ Physiology \/ Psychology<\/category>/g' workfile2
+	sed -i "/category lang/s/>Mystery \& Horror \/ Jugend.*.*/>Children's \/ Youth programs<\/category>/g" workfile2
+	sed -i '/category lang/s/>Mystery.*/>Science fiction \/ Fantasy \/ Horror<\/category>/g' workfile2
+	sed -i "/category lang/s/>Comedy \/ Kinderserie.*/>Children's \/ Youth programs<\/category>/g" workfile2
+	sed -i '/category lang/s/>Comedy.*/>Comedy<\/category>/g' workfile2
+	sed -i '/category lang/s/>Musikshow \/ Kochshow.*/>Show \/ Game show<\/category>/g' workfile2
+	sed -i '/category lang/s/>Musikshow.*/>Music \/ Ballet \/ Dance<\/category>/g' workfile2
+	sed -i '/category lang/s/>Gesundheit.*/>Fitness and health<\/category>/g' workfile2
+	sed -i '/category lang/s/>Gymnastik.*/>Fitness and health<\/category>/g' workfile2
+	sed -i '/category lang/s/>Kultur.*/>Arts \/ Culture (without music)<\/category>/g' workfile2
+	sed -i '/category lang/s/>Theater.*/>Performing arts<\/category>/g' workfile2
+	sed -i '/category lang/s/>Musical.*/>Performing arts<\/category>/g' workfile2
+	sed -i "/category lang/s/>Jugend.*/>Children's \/ Youth programs<\/category>/g" workfile2
+	sed -i "/category lang/s/>Familie \/ Zeichentrick.*/>Children's \/ Youth programs<\/category>/g" workfile2
+	sed -i "/category lang/s/>Familie \/ Kinderserie.*/>Children's \/ Youth programs<\/category>/g" workfile2
+	sed -i '/category lang/s/>Familie \/ Soap.*/>Soap \/ Melodrama \/ Folkloric<\/category>/g' workfile2
+	sed -i '/category lang/s/>Familie \/ Reality.*/>Soap \/ Melodrama \/ Folkloric<\/category>/g' workfile2
+	sed -i '/category lang/s/>Familie \/ Drama.*/>Movie \/ Drama<\/category>/g' workfile2
+	sed -i "/category lang/s/>Familie \/ Jugend.*/>Children's \/ Youth programs<\/category>/g" workfile2
+	sed -i "/category lang/s/>Familie \/ Abenteuer.*/>Children's \/ Youth programs<\/category>/g" workfile2
+	sed -i '/category lang/s/>Familie.*/>Soap \/ Melodrama \/ Folkloric<\/category>/g' workfile2
+	sed -i '/category lang/s/>Erotik.*/>Adult movie \/ Drama<\/category>/g' workfile2
+	sed -i '/category lang/s/>Romantik \& Liebe \/ Erotik.*/>Adult movie \/ Drama<\/category>/g' workfile2
+	sed -i '/category lang/s/>Romantik \& Liebe.*/>Romance<\/category>/g' workfile2
+	sed -i '/category lang/s/>Politik.*/>Social \/ Political issues \/ Economics<\/category>/g' workfile2
+	sed -i '/category lang/s/>Natur.*/>Nature \/ Animals \/ Environment<\/category>/g' workfile2
+	sed -i '/category lang/s/>Science Fiction.*/>Science fiction \/ Fantasy \/ Horror<\/category>/g' workfile2
+	sed -i '/category lang/s/>Action \/ Science Fiction.*/>Science fiction \/ Fantasy \/ Horror<\/category>/g' workfile2
+	sed -i '/category lang/s/>Action.*/>Adventure \/ Western \/ War<\/category>/g' workfile2
+	sed -i '/category lang/s/>Ratgeber.*/>Magazines \/ Reports \/ Documentary<\/category>/g' workfile2
+	sed -i '/category lang/s/>Thriller.*/>Detective \/ Thriller<\/category>/g' workfile2
+	sed -i '/category lang/s/>Western.*/>Adventure \/ Western \/ War<\/category>/g' workfile2
+	sed -i '/category lang/s/>Extremsport.*/>Martial Sports<\/category>/g' workfile2
+	sed -i '/category lang/s/>Volleyball.*/>Team Sports (excluding football)<\/category>/g' workfile2
+	sed -i '/category lang/s/>Reportage.*/>Magazines \/ Reports \/ Documentary<\/category>/g' workfile2
+	sed -i '/category lang/s/>Musikclips.*/>Music \/ Ballet \/ Dance<\/category>/g' workfile2
+	sed -i '/category lang/s/>Klassische Musik.*/>Music \/ Ballet \/ Dance<\/category>/g' workfile2
+	sed -i '/category lang/s/>Volksmusik.*/>Music \/ Ballet \/ Dance<\/category>/g' workfile2
+	sed -i '/category lang/s/>Pop \& Rock.*/>Music \/ Ballet \/ Dance<\/category>/g' workfile2
+	sed -i '/category lang/s/>Motor \& Verkehr.*/>Motoring<\/category>/g' workfile2
+	sed -i "/category lang/s/>Fantasy \/ Kinderserie.*/>Children's \/ Youth programs<\/category>/g" workfile2
+	sed -i '/category lang/s/>Fantasy.*/>Science fiction \/ Fantasy \/ Horror<\/category>/g' workfile2
+fi
 
 
 #
