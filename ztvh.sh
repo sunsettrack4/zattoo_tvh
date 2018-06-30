@@ -30,6 +30,7 @@ echo ""
 # Existence of required programs
 #
 
+command -v curl >/dev/null 2>&1 || { echo "curl is required but it's not installed! Aborting." >&2; exit 1; }
 command -v phantomjs >/dev/null 2>&1 || { echo "PhantomJS is required but it's not installed!  Aborting." >&2; exit 1; }
 command -v uni2ascii >/dev/null 2>&1 || { echo "uni2ascii is required but it's not installed!  Aborting." >&2; exit 1; }
 command -v xmllint >/dev/null 2>&1 || { echo "libxml2-utils is required but it's not installed!  Aborting." >&2; exit 1; }

@@ -42,7 +42,7 @@ then
 		cat $(date '+%Y%m%d')/* > workfile
 		sed -e 's/.*"id"://g' -e 's/},.*//g' $(date +%Y%m%d)_manifest_new > manifest_file
 		sed 's/\(.*"id": \)\([0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]\)\(,.*\)/\2/g' workfile > cache_file 
-		comm -2 -3 <(sort -u manifest_file) <(sort cache_file) > filecheck
+		comm -2 -3 <(sort -u manifest_file) <(sort -u cache_file) > filecheck
 		if [ -s filecheck ]
 		then
 			printf "\rChecking cache for missing EPG files... (DAY 1 IN PROGRESS) "
@@ -78,7 +78,7 @@ then
 		cat $(date -d '1 day' '+%Y%m%d')/* > workfile
 		sed -e 's/.*"id"://g' -e 's/},.*//g' $(date -d '1 day' '+%Y%m%d')_manifest_new > manifest_file
 		sed 's/\(.*"id": \)\([0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]\)\(,.*\)/\2/g' workfile > cache_file
-		comm -2 -3 <(sort -u manifest_file) <(sort cache_file) > filecheck
+		comm -2 -3 <(sort -u manifest_file) <(sort -u cache_file) > filecheck
 		if [ -s filecheck ]
 		then
 			printf "\rChecking cache for missing EPG files... (DAY 2 IN PROGRESS) "
@@ -114,7 +114,7 @@ then
 		cat $(date -d '2 days' '+%Y%m%d')/* > workfile
 		sed -e 's/.*"id"://g' -e 's/},.*//g' $(date -d '2 days' '+%Y%m%d')_manifest_new > manifest_file
 		sed 's/\(.*"id": \)\([0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]\)\(,.*\)/\2/g' workfile > cache_file 
-		comm -2 -3 <(sort -u manifest_file) <(sort cache_file) > filecheck
+		comm -2 -3 <(sort -u manifest_file) <(sort -u cache_file) > filecheck
 		if [ -s filecheck ]
 		then
 			printf "\rChecking cache for missing EPG files... (DAY 3 IN PROGRESS) "
@@ -150,7 +150,7 @@ then
 		cat $(date -d '3 days' '+%Y%m%d')/* > workfile
 		sed -e 's/.*"id"://g' -e 's/},.*//g' $(date -d '3 days' '+%Y%m%d')_manifest_new > manifest_file
 		sed 's/\(.*"id": \)\([0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]\)\(,.*\)/\2/g' workfile > cache_file 
-		comm -2 -3 <(sort -u manifest_file) <(sort cache_file) > filecheck
+		comm -2 -3 <(sort -u manifest_file) <(sort -u cache_file) > filecheck
 		if [ -s filecheck ]
 		then
 			printf "\rChecking cache for missing EPG files... (DAY 4 IN PROGRESS) "
@@ -186,7 +186,7 @@ then
 		cat $(date -d '4 days' '+%Y%m%d')/* > workfile
 		sed -e 's/.*"id"://g' -e 's/},.*//g' $(date -d '4 days' '+%Y%m%d')_manifest_new > manifest_file
 		sed 's/\(.*"id": \)\([0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]\)\(,.*\)/\2/g' workfile > cache_file
-		comm -2 -3 <(sort -u manifest_file) <(sort cache_file) > filecheck
+		comm -2 -3 <(sort -u manifest_file) <(sort -u cache_file) > filecheck
 		if [ -s filecheck ]
 		then
 			printf "\rChecking cache for missing EPG files... (DAY 5 IN PROGRESS) "
@@ -222,7 +222,7 @@ then
 		cat $(date -d '5 days' '+%Y%m%d')/* > workfile
 		sed -e 's/.*"id"://g' -e 's/},.*//g' $(date -d '5 days' '+%Y%m%d')_manifest_new > manifest_file
 		sed 's/\(.*"id": \)\([0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]\)\(,.*\)/\2/g' workfile > cache_file  
-		comm -2 -3 <(sort -u manifest_file) <(sort cache_file) > filecheck
+		comm -2 -3 <(sort -u manifest_file) <(sort -u cache_file) > filecheck
 		if [ -s filecheck ]
 		then
 			printf "\rChecking cache for missing EPG files... (DAY 6 IN PROGRESS) "
@@ -258,7 +258,7 @@ then
 		cat $(date -d '6 days' '+%Y%m%d')/* > workfile
 		sed -e 's/.*"id"://g' -e 's/},.*//g' $(date -d '6 days' '+%Y%m%d')_manifest_new > manifest_file
 		sed 's/\(.*"id": \)\([0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]\)\(,.*\)/\2/g' workfile > cache_file 
-		comm -2 -3 <(sort -u manifest_file) <(sort cache_file) > filecheck
+		comm -2 -3 <(sort -u manifest_file) <(sort -u cache_file) > filecheck
 		if [ -s filecheck ]
 		then
 			printf "\rChecking cache for missing EPG files... (DAY 7 IN PROGRESS) "
@@ -294,7 +294,7 @@ then
 		cat $(date -d '7 days' '+%Y%m%d')/* > workfile
 		sed -e 's/.*"id"://g' -e 's/},.*//g' $(date -d '7 days' '+%Y%m%d')_manifest_new > manifest_file
 		sed 's/\(.*"id": \)\([0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]\)\(,.*\)/\2/g' workfile > cache_file  
-		comm -2 -3 <(sort -u manifest_file) <(sort cache_file) > filecheck
+		comm -2 -3 <(sort -u manifest_file) <(sort -u cache_file) > filecheck
 		if [ -s filecheck ]
 		then
 			printf "\rChecking cache for missing EPG files... (DAY 8 IN PROGRESS) "
@@ -330,7 +330,7 @@ then
 		cat $(date -d '8 days' '+%Y%m%d')/* > workfile
 		sed -e 's/.*"id"://g' -e 's/},.*//g' $(date -d '8 days' '+%Y%m%d')_manifest_new > manifest_file
 		sed 's/\(.*"id": \)\([0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]\)\(,.*\)/\2/g' workfile > cache_file
-		comm -2 -3 <(sort -u manifest_file) <(sort cache_file) > filecheck
+		comm -2 -3 <(sort -u manifest_file) <(sort -u cache_file) > filecheck
 		if [ -s filecheck ]
 		then
 			printf "\rChecking cache for missing EPG files... (DAY 9 IN PROGRESS) "
@@ -366,7 +366,7 @@ then
 		cat $(date -d '9 days' '+%Y%m%d')/* > workfile
 		sed -e 's/.*"id"://g' -e 's/},.*//g' $(date -d '9 days' '+%Y%m%d')_manifest_new > manifest_file
 		sed 's/\(.*"id": \)\([0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]\)\(,.*\)/\2/g' workfile > cache_file  
-		comm -2 -3 <(sort -u manifest_file) <(sort cache_file) > filecheck
+		comm -2 -3 <(sort -u manifest_file) <(sort -u cache_file) > filecheck
 		if [ -s filecheck ]
 		then
 			printf "\rChecking cache for missing EPG files... (DAY 10 IN PROGRESS)"
@@ -402,7 +402,7 @@ then
 		cat $(date -d '10 days' '+%Y%m%d')/* > workfile
 		sed -e 's/.*"id"://g' -e 's/},.*//g' $(date -d '10 days' '+%Y%m%d')_manifest_new > manifest_file
 		sed 's/\(.*"id": \)\([0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]\)\(,.*\)/\2/g' workfile > cache_file
-		comm -2 -3 <(sort -u manifest_file) <(sort cache_file) > filecheck
+		comm -2 -3 <(sort -u manifest_file) <(sort -u cache_file) > filecheck
 		if [ -s filecheck ]
 		then
 			printf "\rChecking cache for missing EPG files... (DAY 11 IN PROGRESS)"
@@ -438,7 +438,7 @@ then
 		cat $(date -d '11 days' '+%Y%m%d')/* > workfile
 		sed -e 's/.*"id"://g' -e 's/},.*//g' $(date -d '11 days' '+%Y%m%d')_manifest_new > manifest_file
 		sed 's/\(.*"id": \)\([0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]\)\(,.*\)/\2/g' workfile > cache_file 
-		comm -2 -3 <(sort -u manifest_file) <(sort cache_file) > filecheck
+		comm -2 -3 <(sort -u manifest_file) <(sort -u cache_file) > filecheck
 		if [ -s filecheck ]
 		then
 			printf "\rChecking cache for missing EPG files... (DAY 12 IN PROGRESS)"
@@ -474,7 +474,7 @@ then
 		cat $(date -d '12 days' '+%Y%m%d')/* > workfile
 		sed -e 's/.*"id"://g' -e 's/},.*//g' $(date -d '12 days' '+%Y%m%d')_manifest_new > manifest_file
 		sed 's/\(.*"id": \)\([0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]\)\(,.*\)/\2/g' workfile > cache_file 
-		comm -2 -3 <(sort -u manifest_file) <(sort cache_file) > filecheck
+		comm -2 -3 <(sort -u manifest_file) <(sort -u cache_file) > filecheck
 		if [ -s filecheck ]
 		then
 			printf "\rChecking cache for missing EPG files... (DAY 13 IN PROGRESS)"
@@ -510,7 +510,7 @@ then
 		cat $(date -d '13 days' '+%Y%m%d')/* > workfile
 		sed -e 's/.*"id"://g' -e 's/},.*//g' $(date -d '13 days' '+%Y%m%d')_manifest_new > manifest_file
 		sed 's/\(.*"id": \)\([0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]\)\(,.*\)/\2/g' workfile > cache_file 
-		comm -2 -3 <(sort -u manifest_file) <(sort cache_file) > filecheck
+		comm -2 -3 <(sort -u manifest_file) <(sort -u cache_file) > filecheck
 		if [ -s filecheck ]
 		then
 			printf "\rChecking cache for missing EPG files... (DAY 14 IN PROGRESS)"
