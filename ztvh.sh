@@ -376,7 +376,7 @@ then
 				exit;;
 			6)	echo "GOODBYE" && exit;;
 			9)	echo "Logging out..."
-				rm channels.m3u chpipe.sh zattoo_fullepg.xml zattoo_ext_fullepg.xml -rf user -rf work -rf epg -rf logos -rf chpipe 2> /dev/null
+				rm channels.m3u favorites.m3u chpipe.sh zattoo_fullepg.xml zattoo_ext_fullepg.xml -rf user -rf work -rf epg -rf logos -rf chpipe 2> /dev/null
 				echo "GOODBYE" && exit;;
 			esac
 		done
@@ -492,6 +492,40 @@ else
 	echo "- ERROR: UNABLE TO FETCH CHANNEL LIST -" && echo ""
 	rm ~/ztvh/channels.m3u powerid login.txt 2> /dev/null
 	exit 1
+fi
+
+
+# ###############
+# FAVORITES     #
+# ###############
+
+echo "Fetching favorites..."
+curl -X GET --cookie "$session" https://zattoo.com/zapi/channels/favorites > favorites_file 2> /dev/null
+
+if grep -q '"success": true' favorites_file 2> /dev/null
+then
+	if grep -q '{"favorites": \["' favorites_file 2> /dev/null
+	then
+		sed -i -e 's/.*\["/"/g' -e 's/", "/"\n"/g' -e 's/"\].*/"/g' favorites_file
+		sed ':a $!N;s/\npipe:\/\//pipe:\/\//;ta P;D' ~/ztvh/channels.m3u > workfile
+		
+		sed -i -e 's/.*/grep tvg-id=& workfile >> favorites.m3u/g' -e '1i#\!\/bin\/bash\n' favorites_file
+		sed -i -e "s/tvg-id/'tvg-id/g" -e "s/ workfile/' workfile/g" favorites_file
+		bash favorites_file 2> /dev/null
+		
+		sed -i -e 's/pipe:\/\/.*/\n&/g' -e '1i#EXTM3U' favorites.m3u
+		sed -i 's/group-title="Zattoo"/group-title="Favorites"/g' favorites.m3u
+		mv favorites.m3u ~/ztvh/favorites.m3u
+		echo "- FAVORITES LIST CREATED! -" && echo ""
+		rm favorites_file workfile 2> /dev/null
+	elif grep -q '{"favorites": \[\]' favorites_file 2> /dev/null
+	then
+		echo "- NO FAVORITES FOUND! -" && echo ""
+		rm favorites_file ~/ztvh/favorites.m3u 2> /dev/null
+	fi
+else
+	echo "- ERROR: UNABLE TO FETCH FAVORITES -" && echo ""
+	rm favorites_file 2> /dev/null
 fi
 
 
