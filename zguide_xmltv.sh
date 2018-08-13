@@ -180,6 +180,7 @@ then
 	sed -i '/category lang/s/>Golf.*/>Sports<\/category>/g' workfile2
 	sed -i '/category lang/s/>Motorsport.*/>Motor sport<\/category>/g' workfile2
 	sed -i '/category lang/s/>Radsport.*/>Sports<\/category>/g' workfile2
+	sed -i '/category lang/s/>Leichtathletik.*/>Athletics<\/category>/g' workfile2
 	sed -i '/category lang/s/>Drama.*/>Movie \/ Drama<\/category>/g' workfile2
 	sed -i '/category lang/s/>Kino.*/>Movie \/ Drama<\/category>/g' workfile2
 	sed -i '/category lang/s/>Heimat.*/>Movie \/ Drama<\/category>/g' workfile2
@@ -259,6 +260,10 @@ fi
 
 printf "\rFinalizing XMLTV file creation...                    "
 sed -i -e 's/\&/\&amp;/g' -e 's/\\"/"/g' -e 's/\\n/\n/g' -e 's/\\r//g' -e 's/\\t//g' -e 's/\\\\/\\/g' workfile2
+while grep -q "<desc.*<http" workfile2
+do
+	sed -i "s/\(.*\)<http.*>\(.*\)\(<\/desc>\)/\1\2\3/g" workfile2
+done
 mv workfile2 ~/ztvh/epg/$(date +%Y%m%d)_zattoo_fullepg.xml && cp ~/ztvh/epg/$(date +%Y%m%d)_zattoo_fullepg.xml ~/ztvh/zattoo_fullepg.xml && rm workfile
 
 printf "\r- EPG XMLTV FILE CREATED SUCCESSFULLY! -             " && echo "" && echo ""

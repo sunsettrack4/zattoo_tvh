@@ -38,16 +38,16 @@ then
 			echo "loop 1" > stats2
 		fi
 		printf "\rChecking cache for missing EPG files... (DAY 1)             "
-		rm $(date '+%Y%m%d')/workfile 2> /dev/null
-		cat $(date '+%Y%m%d')/* > workfile
-		sed -e 's/.*"id"://g' -e 's/},.*//g' $(date +%Y%m%d)_manifest_new > manifest_file
+		rm $(sed -n "1p" ~/ztvh/work/datefile)/workfile 2> /dev/null
+		cat $(sed -n "1p" ~/ztvh/work/datefile)/* > workfile
+		sed -e 's/.*"id"://g' -e 's/},.*//g' $(sed -n "1p" ~/ztvh/work/datefile)_manifest_new > manifest_file
 		sed 's/\(.*"id": \)\([0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]\)\(,.*\)/\2/g' workfile > cache_file 
 		comm -2 -3 <(sort -u manifest_file) <(sort -u cache_file) > filecheck
 		if [ -s filecheck ]
 		then
 			printf "\rChecking cache for missing EPG files... (DAY 1 IN PROGRESS) "
 			sed -i 's/.*/curl -X GET --cookie "\$session" "https:\/\/zattoo.com\/zapi\/v2\/cached\/program\/power_details\/$powerid?program_ids=&" | grep ": true, " > \$date\/& 2> \/dev\/null/g' filecheck
-			sed -i "1i #\!\/bin\/bash\nsession=\$(<~\/ztvh\/work\/session)\npowerid=\$(<~\/ztvh\/work\/powerid)\ndate=\$(date +%Y%m%d)" filecheck
+			sed -i "1i #\!\/bin\/bash\nsession=\$(<~\/ztvh\/work\/session)\npowerid=\$(<~\/ztvh\/work\/powerid)\ndate=\$(sed -n '1p' ~\/ztvh\/work\/datefile)" filecheck
 			bash filecheck 2> /dev/null
 			rm filecheck manifest_file cache_file
 		else
@@ -55,7 +55,7 @@ then
 			rm filecheck manifest_file cache_file
 		fi
 	done
-	echo "$(date '+%Y%m%d') finished" >> ~/ztvh/epg/status
+	echo "$(sed -n '1p' ~/ztvh/work/datefile) finished" >> ~/ztvh/epg/status
 	rm stats2 2> /dev/null
 fi
 
@@ -74,16 +74,16 @@ then
 			echo "loop 1" > stats2
 		fi
 		printf "\rChecking cache for missing EPG files... (DAY 2)             "
-		rm $(date -d '1 day' '+%Y%m%d')/workfile 2> /dev/null
-		cat $(date -d '1 day' '+%Y%m%d')/* > workfile
-		sed -e 's/.*"id"://g' -e 's/},.*//g' $(date -d '1 day' '+%Y%m%d')_manifest_new > manifest_file
+		rm $(sed -n "2p" ~/ztvh/work/datefile)/workfile 2> /dev/null
+		cat $(sed -n "2p" ~/ztvh/work/datefile)/* > workfile
+		sed -e 's/.*"id"://g' -e 's/},.*//g' $(sed -n "2p" ~/ztvh/work/datefile)_manifest_new > manifest_file
 		sed 's/\(.*"id": \)\([0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]\)\(,.*\)/\2/g' workfile > cache_file
 		comm -2 -3 <(sort -u manifest_file) <(sort -u cache_file) > filecheck
 		if [ -s filecheck ]
 		then
 			printf "\rChecking cache for missing EPG files... (DAY 2 IN PROGRESS) "
 			sed -i 's/.*/curl -X GET --cookie "\$session" "https:\/\/zattoo.com\/zapi\/v2\/cached\/program\/power_details\/$powerid?program_ids=&" | grep ": true, " > \$date\/& 2> \/dev\/null/g' filecheck
-			sed -i "1i #\!\/bin\/bash\nsession=\$(<~\/ztvh\/work\/session)\npowerid=\$(<~\/ztvh\/work\/powerid)\ndate=\$(date -d '1 day' '+%Y%m%d')" filecheck
+			sed -i "1i #\!\/bin\/bash\nsession=\$(<~\/ztvh\/work\/session)\npowerid=\$(<~\/ztvh\/work\/powerid)\ndate=\$(sed -n '2p' ~\/ztvh\/work\/datefile)" filecheck
 			bash filecheck 2> /dev/null
 			rm filecheck manifest_file cache_file
 		else
@@ -91,7 +91,7 @@ then
 			rm filecheck manifest_file cache_file
 		fi
 	done
-	echo "$(date -d '1 day' '+%Y%m%d') finished" >> ~/ztvh/epg/status
+	echo "$(sed -n '2p' ~/ztvh/work/datefile) finished" >> ~/ztvh/epg/status
 	rm stats2 2> /dev/null
 fi	
 
@@ -110,16 +110,16 @@ then
 			echo "loop 1" > stats2
 		fi
 		printf "\rChecking cache for missing EPG files... (DAY 3)             "
-		rm $(date -d '2 days' '+%Y%m%d')/workfile 2> /dev/null
-		cat $(date -d '2 days' '+%Y%m%d')/* > workfile
-		sed -e 's/.*"id"://g' -e 's/},.*//g' $(date -d '2 days' '+%Y%m%d')_manifest_new > manifest_file
+		rm $(sed -n "3p" ~/ztvh/work/datefile)/workfile 2> /dev/null
+		cat $(sed -n "3p" ~/ztvh/work/datefile)/* > workfile
+		sed -e 's/.*"id"://g' -e 's/},.*//g' $(sed -n "3p" ~/ztvh/work/datefile)_manifest_new > manifest_file
 		sed 's/\(.*"id": \)\([0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]\)\(,.*\)/\2/g' workfile > cache_file 
 		comm -2 -3 <(sort -u manifest_file) <(sort -u cache_file) > filecheck
 		if [ -s filecheck ]
 		then
 			printf "\rChecking cache for missing EPG files... (DAY 3 IN PROGRESS) "
 			sed -i 's/.*/curl -X GET --cookie "\$session" "https:\/\/zattoo.com\/zapi\/v2\/cached\/program\/power_details\/$powerid?program_ids=&" | grep ": true, " > \$date\/& 2> \/dev\/null/g' filecheck
-			sed -i "1i #\!\/bin\/bash\nsession=\$(<~\/ztvh\/work\/session)\npowerid=\$(<~\/ztvh\/work\/powerid)\ndate=\$(date -d '2 days' '+%Y%m%d')" filecheck
+			sed -i "1i #\!\/bin\/bash\nsession=\$(<~\/ztvh\/work\/session)\npowerid=\$(<~\/ztvh\/work\/powerid)\ndate=\$(sed -n '3p' ~\/ztvh\/work\/datefile)" filecheck
 			bash filecheck 2> /dev/null
 			rm filecheck manifest_file cache_file
 		else
@@ -127,7 +127,7 @@ then
 			rm filecheck manifest_file cache_file
 		fi
 	done
-	echo "$(date -d '2 days' '+%Y%m%d') finished" >> ~/ztvh/epg/status
+	echo "$(sed -n '3p' ~/ztvh/work/datefile) finished" >> ~/ztvh/epg/status
 	rm stats2 2> /dev/null
 fi	
 
@@ -146,16 +146,16 @@ then
 			echo "loop 1" > stats2
 		fi
 		printf "\rChecking cache for missing EPG files... (DAY 4)             "
-		rm $(date -d '3 days' '+%Y%m%d')/workfile 2> /dev/null
-		cat $(date -d '3 days' '+%Y%m%d')/* > workfile
-		sed -e 's/.*"id"://g' -e 's/},.*//g' $(date -d '3 days' '+%Y%m%d')_manifest_new > manifest_file
+		rm $(sed -n "4p" ~/ztvh/work/datefile)/workfile 2> /dev/null
+		cat $(sed -n "4p" ~/ztvh/work/datefile)/* > workfile
+		sed -e 's/.*"id"://g' -e 's/},.*//g' $(sed -n "4p" ~/ztvh/work/datefile)_manifest_new > manifest_file
 		sed 's/\(.*"id": \)\([0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]\)\(,.*\)/\2/g' workfile > cache_file 
 		comm -2 -3 <(sort -u manifest_file) <(sort -u cache_file) > filecheck
 		if [ -s filecheck ]
 		then
 			printf "\rChecking cache for missing EPG files... (DAY 4 IN PROGRESS) "
 			sed -i 's/.*/curl -X GET --cookie "\$session" "https:\/\/zattoo.com\/zapi\/v2\/cached\/program\/power_details\/$powerid?program_ids=&" | grep ": true, " > \$date\/& 2> \/dev\/null/g' filecheck
-			sed -i "1i #\!\/bin\/bash\nsession=\$(<~\/ztvh\/work\/session)\npowerid=\$(<~\/ztvh\/work\/powerid)\ndate=\$(date -d '3 days' '+%Y%m%d')" filecheck
+			sed -i "1i #\!\/bin\/bash\nsession=\$(<~\/ztvh\/work\/session)\npowerid=\$(<~\/ztvh\/work\/powerid)\ndate=\$(sed -n '4p' ~\/ztvh\/work\/datefile)" filecheck
 			bash filecheck 2> /dev/null
 			rm filecheck manifest_file cache_file
 		else
@@ -163,7 +163,7 @@ then
 			rm filecheck manifest_file cache_file
 		fi
 	done
-	echo "$(date -d '3 days' '+%Y%m%d') finished" >> ~/ztvh/epg/status
+	echo "$(sed -n '4p' ~/ztvh/work/datefile) finished" >> ~/ztvh/epg/status
 	rm stats2 2> /dev/null
 fi	
 
@@ -182,16 +182,16 @@ then
 			echo "loop 1" > stats2
 		fi
 		printf "\rChecking cache for missing EPG files... (DAY 5)             "
-		rm $(date -d '4 days' '+%Y%m%d')/workfile 2> /dev/null
-		cat $(date -d '4 days' '+%Y%m%d')/* > workfile
-		sed -e 's/.*"id"://g' -e 's/},.*//g' $(date -d '4 days' '+%Y%m%d')_manifest_new > manifest_file
+		rm $(sed -n "5p" ~/ztvh/work/datefile)/workfile 2> /dev/null
+		cat $(sed -n "5p" ~/ztvh/work/datefile)/* > workfile
+		sed -e 's/.*"id"://g' -e 's/},.*//g' $(sed -n "5p" ~/ztvh/work/datefile)_manifest_new > manifest_file
 		sed 's/\(.*"id": \)\([0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]\)\(,.*\)/\2/g' workfile > cache_file
 		comm -2 -3 <(sort -u manifest_file) <(sort -u cache_file) > filecheck
 		if [ -s filecheck ]
 		then
 			printf "\rChecking cache for missing EPG files... (DAY 5 IN PROGRESS) "
 			sed -i 's/.*/curl -X GET --cookie "\$session" "https:\/\/zattoo.com\/zapi\/v2\/cached\/program\/power_details\/$powerid?program_ids=&" | grep ": true, " > \$date\/& 2> \/dev\/null/g' filecheck
-			sed -i "1i #\!\/bin\/bash\nsession=\$(<~\/ztvh\/work\/session)\npowerid=\$(<~\/ztvh\/work\/powerid)\ndate=\$(date -d '4 days' '+%Y%m%d')" filecheck
+			sed -i "1i #\!\/bin\/bash\nsession=\$(<~\/ztvh\/work\/session)\npowerid=\$(<~\/ztvh\/work\/powerid)\ndate=\$(sed -n '5p' ~\/ztvh\/work\/datefile)" filecheck
 			bash filecheck 2> /dev/null
 			rm filecheck manifest_file cache_file
 		else
@@ -199,7 +199,7 @@ then
 			rm filecheck manifest_file cache_file
 		fi
 	done
-	echo "$(date -d '4 days' '+%Y%m%d') finished" >> ~/ztvh/epg/status
+	echo "$(sed -n '5p' ~/ztvh/work/datefile) finished" >> ~/ztvh/epg/status
 	rm stats2 2> /dev/null
 fi
 
@@ -218,16 +218,16 @@ then
 			echo "loop 1" > stats2
 		fi
 		printf "\rChecking cache for missing EPG files... (DAY 6)             "
-		rm $(date -d '5 days' '+%Y%m%d')/workfile 2> /dev/null
-		cat $(date -d '5 days' '+%Y%m%d')/* > workfile
-		sed -e 's/.*"id"://g' -e 's/},.*//g' $(date -d '5 days' '+%Y%m%d')_manifest_new > manifest_file
+		rm $(sed -n "6p" ~/ztvh/work/datefile)/workfile 2> /dev/null
+		cat $(sed -n "6p" ~/ztvh/work/datefile)/* > workfile
+		sed -e 's/.*"id"://g' -e 's/},.*//g' $(sed -n "6p" ~/ztvh/work/datefile)_manifest_new > manifest_file
 		sed 's/\(.*"id": \)\([0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]\)\(,.*\)/\2/g' workfile > cache_file  
 		comm -2 -3 <(sort -u manifest_file) <(sort -u cache_file) > filecheck
 		if [ -s filecheck ]
 		then
 			printf "\rChecking cache for missing EPG files... (DAY 6 IN PROGRESS) "
 			sed -i 's/.*/curl -X GET --cookie "\$session" "https:\/\/zattoo.com\/zapi\/v2\/cached\/program\/power_details\/$powerid?program_ids=&" | grep ": true, " > \$date\/& 2> \/dev\/null/g' filecheck
-			sed -i "1i #\!\/bin\/bash\nsession=\$(<~\/ztvh\/work\/session)\npowerid=\$(<~\/ztvh\/work\/powerid)\ndate=\$(date -d '5 days' '+%Y%m%d')" filecheck
+			sed -i "1i #\!\/bin\/bash\nsession=\$(<~\/ztvh\/work\/session)\npowerid=\$(<~\/ztvh\/work\/powerid)\ndate=\$(sed -n '6p' ~\/ztvh\/work\/datefile)" filecheck
 			bash filecheck 2> /dev/null
 			rm filecheck manifest_file cache_file
 		else
@@ -235,7 +235,7 @@ then
 			rm filecheck manifest_file cache_file
 		fi
 	done
-	echo "$(date -d '5 days' '+%Y%m%d') finished" >> ~/ztvh/epg/status
+	echo "$(sed -n '6p' ~/ztvh/work/datefile) finished" >> ~/ztvh/epg/status
 	rm stats2 2> /dev/null
 fi	
 
@@ -254,16 +254,16 @@ then
 			echo "loop 1" > stats2
 		fi
 		printf "\rChecking cache for missing EPG files... (DAY 7)             "
-		rm $(date -d '6 days' '+%Y%m%d')/workfile 2> /dev/null
-		cat $(date -d '6 days' '+%Y%m%d')/* > workfile
-		sed -e 's/.*"id"://g' -e 's/},.*//g' $(date -d '6 days' '+%Y%m%d')_manifest_new > manifest_file
+		rm $(sed -n "7p" ~/ztvh/work/datefile)/workfile 2> /dev/null
+		cat $(sed -n "7p" ~/ztvh/work/datefile)/* > workfile
+		sed -e 's/.*"id"://g' -e 's/},.*//g' $(sed -n "7p" ~/ztvh/work/datefile)_manifest_new > manifest_file
 		sed 's/\(.*"id": \)\([0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]\)\(,.*\)/\2/g' workfile > cache_file 
 		comm -2 -3 <(sort -u manifest_file) <(sort -u cache_file) > filecheck
 		if [ -s filecheck ]
 		then
 			printf "\rChecking cache for missing EPG files... (DAY 7 IN PROGRESS) "
 			sed -i 's/.*/curl -X GET --cookie "\$session" "https:\/\/zattoo.com\/zapi\/v2\/cached\/program\/power_details\/$powerid?program_ids=&" | grep ": true, " > \$date\/& 2> \/dev\/null/g' filecheck
-			sed -i "1i #\!\/bin\/bash\nsession=\$(<~\/ztvh\/work\/session)\npowerid=\$(<~\/ztvh\/work\/powerid)\ndate=\$(date -d '6 days' '+%Y%m%d')" filecheck
+			sed -i "1i #\!\/bin\/bash\nsession=\$(<~\/ztvh\/work\/session)\npowerid=\$(<~\/ztvh\/work\/powerid)\ndate=\$(sed -n '7p' ~\/ztvh\/work\/datefile)" filecheck
 			bash filecheck 2> /dev/null
 			rm filecheck manifest_file cache_file
 		else
@@ -271,7 +271,7 @@ then
 			rm filecheck manifest_file cache_file
 		fi
 	done
-	echo "$(date -d '6 days' '+%Y%m%d') finished" >> ~/ztvh/epg/status
+	echo "$(sed -n '7p' ~/ztvh/work/datefile) finished" >> ~/ztvh/epg/status
 	rm stats2 2> /dev/null
 fi	
 
@@ -290,16 +290,16 @@ then
 			echo "loop 1" > stats2
 		fi
 		printf "\rChecking cache for missing EPG files... (DAY 8)             "
-		rm $(date -d '7 days' '+%Y%m%d')/workfile 2> /dev/null
-		cat $(date -d '7 days' '+%Y%m%d')/* > workfile
-		sed -e 's/.*"id"://g' -e 's/},.*//g' $(date -d '7 days' '+%Y%m%d')_manifest_new > manifest_file
+		rm $(sed -n "8p" ~/ztvh/work/datefile)/workfile 2> /dev/null
+		cat $(sed -n "8p" ~/ztvh/work/datefile)/* > workfile
+		sed -e 's/.*"id"://g' -e 's/},.*//g' $(sed -n "8p" ~/ztvh/work/datefile)_manifest_new > manifest_file
 		sed 's/\(.*"id": \)\([0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]\)\(,.*\)/\2/g' workfile > cache_file  
 		comm -2 -3 <(sort -u manifest_file) <(sort -u cache_file) > filecheck
 		if [ -s filecheck ]
 		then
 			printf "\rChecking cache for missing EPG files... (DAY 8 IN PROGRESS) "
 			sed -i 's/.*/curl -X GET --cookie "\$session" "https:\/\/zattoo.com\/zapi\/v2\/cached\/program\/power_details\/$powerid?program_ids=&" | grep ": true, " > \$date\/& 2> \/dev\/null/g' filecheck
-			sed -i "1i #\!\/bin\/bash\nsession=\$(<~\/ztvh\/work\/session)\npowerid=\$(<~\/ztvh\/work\/powerid)\ndate=\$(date -d '7 days' '+%Y%m%d')" filecheck
+			sed -i "1i #\!\/bin\/bash\nsession=\$(<~\/ztvh\/work\/session)\npowerid=\$(<~\/ztvh\/work\/powerid)\ndate=\$(sed -n '8p' ~\/ztvh\/work\/datefile)" filecheck
 			bash filecheck 2> /dev/null
 			rm filecheck manifest_file cache_file
 		else
@@ -307,7 +307,7 @@ then
 			rm filecheck manifest_file cache_file
 		fi
 	done
-	echo "$(date -d '7 days' '+%Y%m%d') finished" >> ~/ztvh/epg/status
+	echo "$(sed -n '8p' ~/ztvh/work/datefile) finished" >> ~/ztvh/epg/status
 	rm stats2 2> /dev/null
 fi	
 
@@ -326,16 +326,16 @@ then
 			echo "loop 1" > stats2
 		fi
 		printf "\rChecking cache for missing EPG files... (DAY 9)             "
-		rm $(date -d '8 days' '+%Y%m%d')/workfile 2> /dev/null
-		cat $(date -d '8 days' '+%Y%m%d')/* > workfile
-		sed -e 's/.*"id"://g' -e 's/},.*//g' $(date -d '8 days' '+%Y%m%d')_manifest_new > manifest_file
+		rm $(sed -n "9p" ~/ztvh/work/datefile)/workfile 2> /dev/null
+		cat $(sed -n "9p" ~/ztvh/work/datefile)/* > workfile
+		sed -e 's/.*"id"://g' -e 's/},.*//g' $(sed -n "9p" ~/ztvh/work/datefile)_manifest_new > manifest_file
 		sed 's/\(.*"id": \)\([0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]\)\(,.*\)/\2/g' workfile > cache_file
 		comm -2 -3 <(sort -u manifest_file) <(sort -u cache_file) > filecheck
 		if [ -s filecheck ]
 		then
 			printf "\rChecking cache for missing EPG files... (DAY 9 IN PROGRESS) "
 			sed -i 's/.*/curl -X GET --cookie "\$session" "https:\/\/zattoo.com\/zapi\/v2\/cached\/program\/power_details\/$powerid?program_ids=&" | grep ": true, " > \$date\/& 2> \/dev\/null/g' filecheck
-			sed -i "1i #\!\/bin\/bash\nsession=\$(<~\/ztvh\/work\/session)\npowerid=\$(<~\/ztvh\/work\/powerid)\ndate=\$(date -d '8 days' '+%Y%m%d')" filecheck
+			sed -i "1i #\!\/bin\/bash\nsession=\$(<~\/ztvh\/work\/session)\npowerid=\$(<~\/ztvh\/work\/powerid)\ndate=\$(sed -n '9p' ~\/ztvh\/work\/datefile)" filecheck
 			bash filecheck 2> /dev/null
 			rm filecheck manifest_file cache_file
 		else
@@ -343,7 +343,7 @@ then
 			rm filecheck manifest_file cache_file
 		fi
 	done
-	echo "$(date -d '8 days' '+%Y%m%d') finished" >> ~/ztvh/epg/status
+	echo "$(sed -n '9p' ~/ztvh/work/datefile) finished" >> ~/ztvh/epg/status
 	rm stats2 2> /dev/null
 fi	
 
@@ -362,16 +362,16 @@ then
 			echo "loop 1" > stats2
 		fi
 		printf "\rChecking cache for missing EPG files... (DAY 10)            "
-		rm $(date -d '9 days' '+%Y%m%d')/workfile 2> /dev/null
-		cat $(date -d '9 days' '+%Y%m%d')/* > workfile
-		sed -e 's/.*"id"://g' -e 's/},.*//g' $(date -d '9 days' '+%Y%m%d')_manifest_new > manifest_file
+		rm $(sed -n "10p" ~/ztvh/work/datefile)/workfile 2> /dev/null
+		cat $(sed -n "10p" ~/ztvh/work/datefile)/* > workfile
+		sed -e 's/.*"id"://g' -e 's/},.*//g' $(sed -n "10p" ~/ztvh/work/datefile)_manifest_new > manifest_file
 		sed 's/\(.*"id": \)\([0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]\)\(,.*\)/\2/g' workfile > cache_file  
 		comm -2 -3 <(sort -u manifest_file) <(sort -u cache_file) > filecheck
 		if [ -s filecheck ]
 		then
 			printf "\rChecking cache for missing EPG files... (DAY 10 IN PROGRESS)"
 			sed -i 's/.*/curl -X GET --cookie "\$session" "https:\/\/zattoo.com\/zapi\/v2\/cached\/program\/power_details\/$powerid?program_ids=&" | grep ": true, " > \$date\/& 2> \/dev\/null/g' filecheck
-			sed -i "1i #\!\/bin\/bash\nsession=\$(<~\/ztvh\/work\/session)\npowerid=\$(<~\/ztvh\/work\/powerid)\ndate=\$(date -d '9 days' '+%Y%m%d')" filecheck
+			sed -i "1i #\!\/bin\/bash\nsession=\$(<~\/ztvh\/work\/session)\npowerid=\$(<~\/ztvh\/work\/powerid)\ndate=\$(sed -n '10p' ~\/ztvh\/work\/datefile)" filecheck
 			bash filecheck 2> /dev/null
 			rm filecheck manifest_file cache_file
 		else
@@ -379,7 +379,7 @@ then
 			rm filecheck manifest_file cache_file
 		fi
 	done
-	echo "$(date -d '9 days' '+%Y%m%d') finished" >> ~/ztvh/epg/status
+	echo "$(sed -n '10p' ~/ztvh/work/datefile) finished" >> ~/ztvh/epg/status
 	rm stats2 2> /dev/null
 fi	
 
@@ -398,16 +398,16 @@ then
 			echo "loop 1" > stats2
 		fi
 		printf "\rChecking cache for missing EPG files... (DAY 11)            "
-		rm $(date -d '10 days' '+%Y%m%d')/workfile 2> /dev/null
-		cat $(date -d '10 days' '+%Y%m%d')/* > workfile
-		sed -e 's/.*"id"://g' -e 's/},.*//g' $(date -d '10 days' '+%Y%m%d')_manifest_new > manifest_file
+		rm $(sed -n "11p" ~/ztvh/work/datefile)/workfile 2> /dev/null
+		cat $(sed -n "11p" ~/ztvh/work/datefile)/* > workfile
+		sed -e 's/.*"id"://g' -e 's/},.*//g' $(sed -n "11p" ~/ztvh/work/datefile)_manifest_new > manifest_file
 		sed 's/\(.*"id": \)\([0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]\)\(,.*\)/\2/g' workfile > cache_file
 		comm -2 -3 <(sort -u manifest_file) <(sort -u cache_file) > filecheck
 		if [ -s filecheck ]
 		then
 			printf "\rChecking cache for missing EPG files... (DAY 11 IN PROGRESS)"
 			sed -i 's/.*/curl -X GET --cookie "\$session" "https:\/\/zattoo.com\/zapi\/v2\/cached\/program\/power_details\/$powerid?program_ids=&" | grep ": true, " > \$date\/& 2> \/dev\/null/g' filecheck
-			sed -i "1i #\!\/bin\/bash\nsession=\$(<~\/ztvh\/work\/session)\npowerid=\$(<~\/ztvh\/work\/powerid)\ndate=\$(date -d '10 days' '+%Y%m%d')" filecheck
+			sed -i "1i #\!\/bin\/bash\nsession=\$(<~\/ztvh\/work\/session)\npowerid=\$(<~\/ztvh\/work\/powerid)\ndate=\$(sed -n '11p' ~\/ztvh\/work\/datefile)" filecheck
 			bash filecheck 2> /dev/null
 			rm filecheck manifest_file cache_file
 		else
@@ -415,7 +415,7 @@ then
 			rm filecheck manifest_file cache_file
 		fi
 	done
-	echo "$(date -d '10 days' '+%Y%m%d') finished" >> ~/ztvh/epg/status
+	echo "$(sed -n '11p' ~/ztvh/work/datefile) finished" >> ~/ztvh/epg/status
 	rm stats2 2> /dev/null
 fi	
 
@@ -434,16 +434,16 @@ then
 			echo "loop 1" > stats2
 		fi
 		printf "\rChecking cache for missing EPG files... (DAY 12)            "
-		rm $(date -d '11 days' '+%Y%m%d')/workfile 2> /dev/null
-		cat $(date -d '11 days' '+%Y%m%d')/* > workfile
-		sed -e 's/.*"id"://g' -e 's/},.*//g' $(date -d '11 days' '+%Y%m%d')_manifest_new > manifest_file
+		rm $(sed -n "12p" ~/ztvh/work/datefile)/workfile 2> /dev/null
+		cat $(sed -n "12p" ~/ztvh/work/datefile)/* > workfile
+		sed -e 's/.*"id"://g' -e 's/},.*//g' $(sed -n "12p" ~/ztvh/work/datefile)_manifest_new > manifest_file
 		sed 's/\(.*"id": \)\([0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]\)\(,.*\)/\2/g' workfile > cache_file 
 		comm -2 -3 <(sort -u manifest_file) <(sort -u cache_file) > filecheck
 		if [ -s filecheck ]
 		then
 			printf "\rChecking cache for missing EPG files... (DAY 12 IN PROGRESS)"
 			sed -i 's/.*/curl -X GET --cookie "\$session" "https:\/\/zattoo.com\/zapi\/v2\/cached\/program\/power_details\/$powerid?program_ids=&" | grep ": true, " > \$date\/& 2> \/dev\/null/g' filecheck
-			sed -i "1i #\!\/bin\/bash\nsession=\$(<~\/ztvh\/work\/session)\npowerid=\$(<~\/ztvh\/work\/powerid)\ndate=\$(date -d '11 days' '+%Y%m%d')" filecheck
+			sed -i "1i #\!\/bin\/bash\nsession=\$(<~\/ztvh\/work\/session)\npowerid=\$(<~\/ztvh\/work\/powerid)\ndate=\$(sed -n '12p' ~\/ztvh\/work\/datefile)" filecheck
 			bash filecheck 2> /dev/null
 			rm filecheck manifest_file cache_file
 		else
@@ -451,7 +451,7 @@ then
 			rm filecheck manifest_file cache_file
 		fi
 	done
-	echo "$(date -d '11 days' '+%Y%m%d') finished" >> ~/ztvh/epg/status
+	echo "$(sed -n '12p' ~/ztvh/work/datefile) finished" >> ~/ztvh/epg/status
 	rm stats2 2> /dev/null
 fi	
 
@@ -470,16 +470,16 @@ then
 			echo "loop 1" > stats2
 		fi
 		printf "\rChecking cache for missing EPG files... (DAY 13)            "
-		rm $(date -d '12 days' '+%Y%m%d')/workfile 2> /dev/null
-		cat $(date -d '12 days' '+%Y%m%d')/* > workfile
-		sed -e 's/.*"id"://g' -e 's/},.*//g' $(date -d '12 days' '+%Y%m%d')_manifest_new > manifest_file
+		rm $(sed -n "13p" ~/ztvh/work/datefile)/workfile 2> /dev/null
+		cat $(sed -n "13p" ~/ztvh/work/datefile)/* > workfile
+		sed -e 's/.*"id"://g' -e 's/},.*//g' $(sed -n "13p" ~/ztvh/work/datefile)_manifest_new > manifest_file
 		sed 's/\(.*"id": \)\([0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]\)\(,.*\)/\2/g' workfile > cache_file 
 		comm -2 -3 <(sort -u manifest_file) <(sort -u cache_file) > filecheck
 		if [ -s filecheck ]
 		then
 			printf "\rChecking cache for missing EPG files... (DAY 13 IN PROGRESS)"
 			sed -i 's/.*/curl -X GET --cookie "\$session" "https:\/\/zattoo.com\/zapi\/v2\/cached\/program\/power_details\/$powerid?program_ids=&" | grep ": true, " > \$date\/& 2> \/dev\/null/g' filecheck
-			sed -i "1i #\!\/bin\/bash\nsession=\$(<~\/ztvh\/work\/session)\npowerid=\$(<~\/ztvh\/work\/powerid)\ndate=\$(date -d '12 days' '+%Y%m%d')" filecheck
+			sed -i "1i #\!\/bin\/bash\nsession=\$(<~\/ztvh\/work\/session)\npowerid=\$(<~\/ztvh\/work\/powerid)\ndate=\$(sed -n '13p' ~\/ztvh\/work\/datefile)" filecheck
 			bash filecheck 2> /dev/null
 			rm filecheck manifest_file cache_file
 		else
@@ -487,7 +487,7 @@ then
 			rm filecheck manifest_file cache_file
 		fi
 	done
-	echo "$(date -d '12 days' '+%Y%m%d') finished" >> ~/ztvh/epg/status
+	echo "$(sed -n '13p' ~/ztvh/work/datefile) finished" >> ~/ztvh/epg/status
 	rm stats2 2> /dev/null
 fi	
 
@@ -506,16 +506,16 @@ then
 			echo "loop 1" > stats2
 		fi
 		printf "\rChecking cache for missing EPG files... (DAY 14)            "
-		rm $(date -d '13 days' '+%Y%m%d')/workfile 2> /dev/null
-		cat $(date -d '13 days' '+%Y%m%d')/* > workfile
-		sed -e 's/.*"id"://g' -e 's/},.*//g' $(date -d '13 days' '+%Y%m%d')_manifest_new > manifest_file
+		rm $(sed -n "14p" ~/ztvh/work/datefile)/workfile 2> /dev/null
+		cat $(sed -n "14p" ~/ztvh/work/datefile)/* > workfile
+		sed -e 's/.*"id"://g' -e 's/},.*//g' $(sed -n "14p" ~/ztvh/work/datefile)_manifest_new > manifest_file
 		sed 's/\(.*"id": \)\([0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]\)\(,.*\)/\2/g' workfile > cache_file 
 		comm -2 -3 <(sort -u manifest_file) <(sort -u cache_file) > filecheck
 		if [ -s filecheck ]
 		then
 			printf "\rChecking cache for missing EPG files... (DAY 14 IN PROGRESS)"
 			sed -i 's/.*/curl -X GET --cookie "\$session" "https:\/\/zattoo.com\/zapi\/v2\/cached\/program\/power_details\/$powerid?program_ids=&" | grep ": true, " > \$date\/& 2> \/dev\/null/g' filecheck
-			sed -i "1i #\!\/bin\/bash\nsession=\$(<~\/ztvh\/work\/session)\npowerid=\$(<~\/ztvh\/work\/powerid)\ndate=\$(date -d '13 days' '+%Y%m%d')" filecheck
+			sed -i "1i #\!\/bin\/bash\nsession=\$(<~\/ztvh\/work\/session)\npowerid=\$(<~\/ztvh\/work\/powerid)\ndate=\$(sed -n '14p' ~\/ztvh\/work\/datefile)" filecheck
 			bash filecheck 2> /dev/null
 			rm filecheck manifest_file cache_file
 		else
@@ -523,7 +523,7 @@ then
 			rm filecheck manifest_file cache_file
 		fi
 	done
-	echo "$(date -d '13 days' '+%Y%m%d') finished" >> ~/ztvh/epg/status
+	echo "$(sed -n '14p' ~/ztvh/work/datefile) finished" >> ~/ztvh/epg/status
 	rm stats2 2> /dev/null
 fi	
 

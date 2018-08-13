@@ -814,7 +814,6 @@ do
 		printf "\r- EPG DOWNLOAD FINISHED! -                   " && echo "" && echo ""
 		rm epg/scriptbase 2> /dev/null
 		rm epg/scriptfile_0* 2> /dev/null
-		rm work/datefile 2> /dev/null
 	fi
 	
 
@@ -827,6 +826,7 @@ do
 	if [ -e ~/ztvh/epg/stats ]
 	then
 		bash zguide_fc.sh
+		rm work/datefile 2> /dev/null
 	fi
 	
 	

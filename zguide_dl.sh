@@ -114,6 +114,7 @@ then
 		fi
 		if [ -s workfile ]
 		then
+			sed -i -e 's/\(.*\)\("id":.*\)/\2/g' -e 's/"id"://g' -e 's/},//g' workfile
 			sed -i 's/.*/rm epg\/\$date_01\/&/g' workfile
 			if [ -s ~/ztvh/epg/filecheck ]
 			then
@@ -237,6 +238,7 @@ then
 		fi
 		if [ -s workfile ]
 		then
+			sed -i -e 's/\(.*\)\("id":.*\)/\2/g' -e 's/"id"://g' -e 's/},//g' workfile
 			sed -i 's/.*/rm epg\/\$date_02\/&/g' workfile
 			if [ -s ~/ztvh/epg/filecheck ]
 			then
@@ -360,6 +362,7 @@ then
 		fi
 		if [ -s workfile ]
 		then
+			sed -i -e 's/\(.*\)\("id":.*\)/\2/g' -e 's/"id"://g' -e 's/},//g' workfile
 			sed -i 's/.*/rm epg\/\$date_03\/&/g' workfile
 			if [ -s ~/ztvh/epg/filecheck ]
 			then
@@ -483,6 +486,7 @@ then
 		fi
 		if [ -s workfile ]
 		then
+			sed -i -e 's/\(.*\)\("id":.*\)/\2/g' -e 's/"id"://g' -e 's/},//g' workfile
 			sed -i 's/.*/rm epg\/\$date_04\/&/g' workfile
 			if [ -s ~/ztvh/epg/filecheck ]
 			then
@@ -606,6 +610,7 @@ then
 		fi
 		if [ -s workfile ]
 		then
+			sed -i -e 's/\(.*\)\("id":.*\)/\2/g' -e 's/"id"://g' -e 's/},//g' workfile
 			sed -i 's/.*/rm epg\/\$date_05\/&/g' workfile
 			if [ -s ~/ztvh/epg/filecheck ]
 			then
@@ -729,6 +734,7 @@ then
 		fi
 		if [ -s workfile ]
 		then
+			sed -i -e 's/\(.*\)\("id":.*\)/\2/g' -e 's/"id"://g' -e 's/},//g' workfile
 			sed -i 's/.*/rm epg\/\$date_06\/&/g' workfile
 			if [ -s ~/ztvh/epg/filecheck ]
 			then
@@ -852,6 +858,7 @@ then
 		fi
 		if [ -s workfile ]
 		then
+			sed -i -e 's/\(.*\)\("id":.*\)/\2/g' -e 's/"id"://g' -e 's/},//g' workfile
 			sed -i 's/.*/rm epg\/\$date_07\/&/g' workfile
 			if [ -s ~/ztvh/epg/filecheck ]
 			then
@@ -975,6 +982,7 @@ then
 		fi
 		if [ -s workfile ]
 		then
+			sed -i -e 's/\(.*\)\("id":.*\)/\2/g' -e 's/"id"://g' -e 's/},//g' workfile
 			sed -i 's/.*/rm epg\/\$date_08\/&/g' workfile
 			if [ -s ~/ztvh/epg/filecheck ]
 			then
@@ -1098,6 +1106,7 @@ then
 		fi
 		if [ -s workfile ]
 		then
+			sed -i -e 's/\(.*\)\("id":.*\)/\2/g' -e 's/"id"://g' -e 's/},//g' workfile
 			sed -i 's/.*/rm epg\/\$date_09\/&/g' workfile
 			if [ -s ~/ztvh/epg/filecheck ]
 			then
@@ -1221,6 +1230,7 @@ then
 		fi
 		if [ -s workfile ]
 		then
+			sed -i -e 's/\(.*\)\("id":.*\)/\2/g' -e 's/"id"://g' -e 's/},//g' workfile
 			sed -i 's/.*/rm epg\/\$date_10\/&/g' workfile
 			if [ -s ~/ztvh/epg/filecheck ]
 			then
@@ -1344,6 +1354,7 @@ then
 		fi
 		if [ -s workfile ]
 		then
+			sed -i -e 's/\(.*\)\("id":.*\)/\2/g' -e 's/"id"://g' -e 's/},//g' workfile
 			sed -i 's/.*/rm epg\/\$date_11\/&/g' workfile
 			if [ -s ~/ztvh/epg/filecheck ]
 			then
@@ -1467,6 +1478,7 @@ then
 		fi
 		if [ -s workfile ]
 		then
+			sed -i -e 's/\(.*\)\("id":.*\)/\2/g' -e 's/"id"://g' -e 's/},//g' workfile
 			sed -i 's/.*/rm epg\/\$date_12\/&/g' workfile
 			if [ -s ~/ztvh/epg/filecheck ]
 			then
@@ -1590,6 +1602,7 @@ then
 		fi
 		if [ -s workfile ]
 		then
+			sed -i -e 's/\(.*\)\("id":.*\)/\2/g' -e 's/"id"://g' -e 's/},//g' workfile
 			sed -i 's/.*/rm epg\/\$date_13\/&/g' workfile
 			if [ -s ~/ztvh/epg/filecheck ]
 			then
@@ -1713,6 +1726,7 @@ then
 		fi
 		if [ -s workfile ]
 		then
+			sed -i -e 's/\(.*\)\("id":.*\)/\2/g' -e 's/"id"://g' -e 's/},//g' workfile
 			sed -i 's/.*/rm epg\/\$date_14\/&/g' workfile
 			if [ -s ~/ztvh/epg/filecheck ]
 			then
