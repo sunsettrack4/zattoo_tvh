@@ -457,10 +457,11 @@ then
 	sed -i '/"drm_required"/s/\("drm_required": true, \)\("logo_black_84": ".*\)\("logo_white_42": ".*\)\("logo_white_84": ".*\)\("availability": "available", \)\("level": ".*\)\("logo_token": ".*\)\("logo_black_42": ".*\)\(}.*\)/\1\4\8, \2\6\3\5\7\9/g' workfile
 	sed -i '/"drm_required"/s/\("drm_required": true, \)\("logo_white_84": ".*\)\(}\], "recommendations": .*\)\(, "logo_black_84": ".*\)/\2\4\3},/g' workfile
 	sed -i -e '/"drm_required"/s/"drm_required": true, //g' -e '/"recommendations"/s/, }, //g' -e '/"logo_token"/s/, },/},/g' workfile
-	sed -i ':a $!N;s/\n"logo_white_84"/ "logo_white_84"/;ta P;D' workfile
+	sed -i ':a $!N;s/\n"logo_black_84"/ "logo_black_84"/;ta P;D' workfile
 	sed -i '/level/!d' workfile
 	sed -i 's/}.*//g' workfile
 	sed -i 's/"sharing".*"cid"/"cid"/g' workfile
+	sed -i 's/", "stream_types".*"level": "[a-z]d//g' workfile
 	sed -i 's/"recording".*"logo_black_84": "/"logo_black_84": "http:\/\/images.zattic.com/g' workfile
 	sed -i 's/"level".*"title"/"title"/g' workfile
 	sed -i 's/, "logo_white_42".*//g' workfile
