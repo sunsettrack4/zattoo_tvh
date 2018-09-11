@@ -394,7 +394,7 @@ chmod 0777 work
 # ###############
 
 cd work
-phantomjs ~/ztvh/save_page.js https://zattoo.com/login > cookie_list
+phantomjs -platform offscreen ~/ztvh/save_page.js https://zattoo.com/login > cookie_list
 grep "beaker.session.id" cookie_list > session
 
 # retrieve user data
