@@ -222,6 +222,16 @@ fi
 #	touch fakefile
 # fi
 
+# if [ ! -e txt.sh ]
+# then
+#	printf "\rMissing file: txt.sh\n"
+#	touch fakefile
+# elif [ ! -x txt.sh ]
+# then
+#	printf "\rFile not executable: txt.sh\n"
+#	touch fakefile
+# fi
+
 if [ -e fakefile ]
 then
 	printf "\r- ERROR: FAILED TO LOAD REQUIRED SCRIPT(S)! -\n"
@@ -368,9 +378,26 @@ do
 				fi
 			fi
 			
+			rm fakefile 2> /dev/null
+			touch fakefile
+			
 			until grep -q "beaker.session.id" cookie_list
 			do
+				if grep 'TRY' fakefile | wc -l | grep -q 3 2> /dev/null
+				then
+					if grep -q "insecure=true" ~/ztvh/user/userfile
+					then
+						dialog --backtitle "[L41F0] [INSECURE] ZATTOO UNLIMITED BETA > LOGIN" --title "[3] FATAL ERROR" --infobox "Service unavailable! Please try again later!" 5 50
+					else
+						dialog --backtitle "[L41F0] ZATTOO UNLIMITED BETA > LOGIN" --title "[3] FATAL ERROR" --infobox "Service unavailable! Please try again later!" 5 50
+					fi
+					sleep 2s
+					exit 1
+				fi
+				
+				echo "TRY" >> fakefile
 				sleep 1s
+				
 				if grep -q "insecure=true" ~/ztvh/user/userfile
 				then 
 					dialog --backtitle "[L41D0] [INSECURE] ZATTOO UNLIMITED BETA > LOGIN" --infobox "Waiting for required cookie data." 3 50
@@ -418,7 +445,7 @@ do
 			then
 				dialog --backtitle "[L41F0] [INSECURE] ZATTOO UNLIMITED BETA > LOGIN" --title "[2] FATAL ERROR" --infobox "Service unavailable! Please try again later!" 5 50
 			else
-				dialog --backtitle "[L41F0] ZATTOO UNLIMITED BETA > LOGIN" --title "FATAL ERROR" --infobox "Service unavailable! Please try again later!" 5 50
+				dialog --backtitle "[L41F0] ZATTOO UNLIMITED BETA > LOGIN" --title "[2] FATAL ERROR" --infobox "Service unavailable! Please try again later!" 5 50
 			fi
 			sleep 2s
 			exit 1
@@ -497,7 +524,7 @@ do
 							echo "1" > value
 						fi
 						
-						until echo "$provider" | grep -q '.*[.][a-z][a-z]'
+						until echo "$provider" | grep -q -E ".de|.ch|.com|.tv|.cc"
 						do
 							sed -i '/provider/d' ~/ztvh/user/userfile
 							provider=$(dialog --backtitle "[L11E0] ZATTOO UNLIMITED BETA > PROVIDER" --title "PROVIDER" --inputbox "PROVIDER invalid! | Syntax: domain.xxx\nPlease enter the domain of your IPTV provider,\ne.g. '1und1.tv', 'tvonline.ewe.de' ..." 9 50 3>&1 1>&2 2>&3 3>&-)
@@ -561,10 +588,24 @@ do
 									dialog --backtitle "[L11C0] ZATTOO UNLIMITED BETA > PROVIDER" --infobox "Waiting for required cookie data" 3 50
 								fi
 								
+								rm fakefile 2> /dev/null
+								touch fakefile
+								
 								until grep -q "beaker.session.id" cookie_list
 								do
-									if grep -q "uuid" cookie_list
+									if grep 'TRY' fakefile | wc -l | grep -q 3 2> /dev/null
 									then
+										if grep -q "1" value
+										then
+											echo "beaker.session.id=dummy1" > cookie_list
+											echo "MENU" > value
+										else
+											echo "beaker.session.id=dummy2" > cookie_list
+											echo "2" > value
+										fi
+									elif grep -q "uuid" cookie_list
+									then
+										echo "TRY" >> fakefile
 										sleep 1s
 										if grep -q "insecure=true" ~/ztvh/user/userfile
 										then 
@@ -603,10 +644,17 @@ do
 										echo "beaker.session.id=dummy" > cookie_list
 									fi
 								done
-								if grep -q "beaker.session.id=dummy" cookie_list
+								
+								if grep -q "beaker.session.id=dummy[1-2]" cookie_list
+								then
+									dialog --backtitle "[L11F0] ZATTOO UNLIMITED BETA > PROVIDER" --title "[7] ERROR" --msgbox "Failed to load Session ID!" 5 50
+								elif grep -q "beaker.session.id=dummy" cookie_list
 								then
 									sed -i "/beaker.session.id/d" cookie_list
+								else
+									rm fakefile 2> /dev/null
 								fi
+								
 							elif ! grep -q "www." ~/ztvh/work/save_page.js
 							then
 								sed -i "s/https:\/\//&www./g" ~/ztvh/work/save_page.js
@@ -642,10 +690,24 @@ do
 									dialog --backtitle "[L11D0] ZATTOO UNLIMITED BETA > PROVIDER" --infobox "Waiting for required cookie data" 3 50
 								fi
 								
+								rm fakefile 2> /dev/null
+								touch fakefile
+								
 								until grep -q "beaker.session.id" cookie_list
 								do
-									if grep -q "uuid" cookie_list
+									if grep 'TRY' fakefile | wc -l | grep -q 3 2> /dev/null
 									then
+										if grep -q "1" value
+										then
+											echo "beaker.session.id=dummy1" > cookie_list
+											echo "MENU" > value
+										else
+											echo "beaker.session.id=dummy2" > cookie_list
+											echo "2" > value
+										fi
+									elif grep -q "uuid" cookie_list
+									then
+										echo "TRY" >> fakefile
 										sleep 1s
 										if grep -q "insecure=true" ~/ztvh/user/userfile
 										then 
@@ -684,10 +746,17 @@ do
 										echo "beaker.session.id=dummy" > cookie_list
 									fi
 								done
-								if grep -q "beaker.session.id=dummy" cookie_list
+								
+								if grep -q "beaker.session.id=dummy[1-2]" cookie_list
+								then
+									dialog --backtitle "[L11F0] ZATTOO UNLIMITED BETA > PROVIDER" --title "[8] ERROR" --msgbox "Failed to load Session ID!" 5 50
+								elif grep -q "beaker.session.id=dummy" cookie_list
 								then
 									sed -i "/beaker.session.id/d" cookie_list
+								else
+									rm fakefile 2> /dev/null
 								fi
+								
 							elif echo "$provider" | grep -q "www."
 							then
 								if curl -v --silent https://$provider/ 2>&1 | grep -q -E "server certificate verification failed|SSL certificate problem" 2> /dev/null
@@ -783,6 +852,11 @@ do
 								fi
 							fi
 						fi
+					fi
+					
+					if grep -q "beaker.session.id=dummy2" cookie_list 2> /dev/null
+					then
+						sed -i "/beaker.session.id/d" cookie_list 2> /dev/null
 					fi
 				done
 				grep "beaker.session.id" cookie_list > ~/ztvh/user/session
