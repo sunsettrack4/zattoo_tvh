@@ -79,6 +79,7 @@ printf "\rCreating strings: Start, End, Channel ID...          "
 sed -i 's/\(.*\)\("cid":[^|]*|\)\(.*\)/\2\1|\3/g' workfile
 sed -i 's/\(.*\)\("e":[^|]*|\)\(.*\)/\2\1|\3/g' workfile
 sed -i 's/\(.*\)\("s":[^|]*|\)\(.*\)/\2\1|\3/g' workfile
+sed -i '$s/.*/&\n/g' workfile
 
 sed -i -e 's/"s":/#/g' -e 's/|"e":/\n"e":/g' workfile
 while IFS= read -r i; do if [[ $i =~ ^#([0-9]{10})$ ]]; then printf '#%s\n' "start $(date -u -d@"${BASH_REMATCH[1]}" '+%Y%m%d%H%M%S')"; else printf '%s\n' "$i"; fi; done <workfile > convert
@@ -120,31 +121,30 @@ sed -i -e 's/\[{.*/<\/programme>/g' -e '/^\s*$/d' workfile
 	
 
 #
+# ADD CHANNEL LIST AND TV STRING
+#
+
+printf "\rAdding channel list to EPG file...                   "
+sed 's/\(.*\)\("title": "[^"]*", \)\(.*\)/\2\1\3/g' ~/ztvh/work/epg_channels_file > workfile2
+sed -i 's/\(.*\)\("cid": "[^"]*", \)\(.*\)/\2\1\3/g' workfile2
+sed -i -e 's/\("cid": "[^"]*", \)\("title": "[^"]*", \)\(.*\)/\1\2-END-/g' -e  '/"level": "/d' workfile2
+sed -i 's/"cid": "/<channel id="/g;s/", "title": "/">\n  <display-name lang="de">/g;s/", -END-/<\/display-name>\n<\/channel>/g' workfile2
+cat workfile >> workfile2 && mv workfile2 workfile
+
+printf "\rSetting XMLTV file type...                           "
+sed -i '1i<?xml version="1.0" encoding="UTF-8" ?>\n<\!-- EPG XMLTV FILE CREATED BY ZATTOO UNLIMITED - (c) 2017-2018 Jan-Luca Neumann -->\n<tv>' workfile
+sed -i "s/<tv>/<\!-- created on $(date) -->\n&/g" workfile
+sed -i '$s/.*/&\n<\/tv>/g' workfile
+
+
+#
 # CONVERT UNICODE CHARACTERS
 #
 
 printf "\rConverting special Unicode characters...             "
 sed -i 's/\\u[a-z0-9][a-z0-9][a-z0-9][a-z0-9]/\[>\[&\]<\]/g' workfile
 ascii2uni -a U -q workfile > workfile2
-mv workfile2 workfile
-sed -i -e 's/\[>\[//g' -e 's/\]<\]//g' workfile
-	
-
-#
-# ADD CHANNEL LIST AND TV STRING
-#
-
-printf "\rAdding channel list to EPG file...                   "
-sed '/EXTINF/s/.*tvg-id="/<channel id="/g' ~/ztvh/channels.m3u > workfile2
-sed -i '/<channel id=/s/" group-title=".*, /">\n  <display-name lang="de">/g' workfile2
-sed -i '/<display-name/s/.*/&<\/display-name>\n<\/channel>/g' workfile2
-sed -i -e '/pipe:\/\//d' -e '/EXTM3U/d' workfile2
-cat workfile >> workfile2
-
-printf "\rSetting XMLTV file type...                           "
-sed -i '1i<?xml version="1.0" encoding="UTF-8" ?>\n<\!-- EPG XMLTV FILE CREATED BY ZATTOO UNLIMITED - (c) 2017-2018 Jan-Luca Neumann -->\n<tv>' workfile2
-sed -i "s/<tv>/<\!-- created on $(date) -->\n&/g" workfile2
-sed -i '$s/.*/&\n<\/tv>/g' workfile2
+sed -i -e 's/\[>\[//g' -e 's/\]<\]//g' workfile2
 
 
 #

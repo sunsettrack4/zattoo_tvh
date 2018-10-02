@@ -21,7 +21,7 @@ clear
 echo "                                                                        "
 echo "ZattooUNLIMITED for VLC and tvheadend                                   "
 echo "(c) 2017-2018 Jan-Luca Neumann                        I             +   "
-echo "Script v0.4.8 | Zattoo v2.12.6                  I    I         +        "
+echo "Script v0.4.8 2018/10/02 | Zattoo v2.12.6       I    I         +        "
 echo "                                                 I  I             +     "
 echo "                                                  II                    "
 echo "ZZZZZZZZZ       AA     TTTTTTTTTT TTTTTTTTTT    888888        888888    "
@@ -33,10 +33,8 @@ echo "  ZZ        AA      AA     TT         TT     88        88  88        88 "
 echo " ZZ         AA      AA     TT         TT      88      88    88      88  "
 echo "ZZZZZZZZZ  AA        AA    TT         TT        888888        888888    "
 echo ""
-echo "                                                      ~ SERVER EDITION ~"
-printf "Starting script..."
-sleep 2s
-
+echo "                                                      ~ WATCH YOU WANT ~"
+echo ""
 
 # ##################
 # CHECK CONDITIONS #
@@ -51,7 +49,10 @@ command -v curl >/dev/null 2>&1 || { echo "curl is required but it's not install
 command -v phantomjs >/dev/null 2>&1 || { echo "PhantomJS is required but it's not installed!  Aborting." >&2; exit 1; }
 command -v uni2ascii >/dev/null 2>&1 || { echo "uni2ascii is required but it's not installed!  Aborting." >&2; exit 1; }
 command -v xmllint >/dev/null 2>&1 || { echo "libxml2-utils is required but it's not installed!  Aborting." >&2; exit 1; }
-command -v ffmpeg >/dev/null 2>&1 || { echo "ffmpeg is required for watching Live TV but it's not installed!" && echo ""; }
+command -v ffmpeg >/dev/null 2>&1 || { echo "ffmpeg is required for watching Live TV but it's not installed!" && sleep 1s; }
+command -v vlc >/dev/null 2>&1 || { echo "VLC is required but for watching Live TV on desktop but it's not installed!" && sleep 1s; }
+printf "Starting script..."
+sleep 2s
 
 
 #
@@ -202,15 +203,15 @@ then
 	touch fakefile
 fi
 
-# if [ ! -e live.sh ]
-# then
-#	printf "\rMissing file: live.sh\n"
-#	touch fakefile
-# elif [ ! -x live.sh ]
-# then
-#	printf "\rFile not executable: live.sh\n"
-#	touch fakefile
-# fi
+if [ ! -e live.sh ]
+then
+	printf "\rMissing file: live.sh\n"
+	touch fakefile
+elif [ ! -x live.sh ]
+then
+	printf "\rFile not executable: live.sh\n"
+	touch fakefile
+fi
 
 # if [ ! -e recordings.sh ]
 # then
@@ -341,6 +342,7 @@ do
 					rm fakefile
 				else
 					rm fakefile
+					clear
 					exit 0
 				fi;;
 			2) 	dialog --backtitle "[L42W0] ZATTOO UNLIMITED BETA > LOGOUT" --title "LOGOUT" --infobox "Logging out..." 3 40
@@ -355,6 +357,7 @@ do
 			
 			if [ -e fakefile ]
 			then
+				clear
 				exit 1
 			fi
 		elif grep -q '403 Forbidden' login.txt
@@ -468,7 +471,7 @@ do
 
 		echo "2>value" >> menu
 		
-		if grep -q "MENU" value
+		if grep -q "MENU" value 2> /dev/null
 		then
 			rm cookie_list ~/ztvh/user/userfile 2> /dev/null
 			bash menu
@@ -498,7 +501,7 @@ do
 			# L1100 PROVIDER CHECK
 			#
 			
-			if grep -q -E "1|2" value
+			if grep -q -E "1|2" value 2> /dev/null
 			then
 				until grep -q "beaker.session.id" cookie_list 2> /dev/null
 				do
@@ -524,7 +527,7 @@ do
 							echo "1" > value
 						fi
 						
-						until echo "$provider" | grep -q -E ".de|.ch|.com|.tv|.cc"
+						until echo "$provider" | grep -q ".*[.][cdnt][ceov]"
 						do
 							sed -i '/provider/d' ~/ztvh/user/userfile
 							provider=$(dialog --backtitle "[L11E0] ZATTOO UNLIMITED BETA > PROVIDER" --title "PROVIDER" --inputbox "PROVIDER invalid! | Syntax: domain.xxx\nPlease enter the domain of your IPTV provider,\ne.g. '1und1.tv', 'tvonline.ewe.de' ..." 9 50 3>&1 1>&2 2>&3 3>&-)
@@ -867,7 +870,7 @@ do
 		# L2100 ZATTOO EMAIL ADDRESS
 		#
 		
-		if grep -q "1" value
+		if grep -q "1" value 2> /dev/null
 		then
 			sed -i "s/provider=www.zattoo.com/provider=zattoo.com/g" ~/ztvh/user/userfile 2> /dev/null
 			sed -i "s/https:\/\/www.zattoo.com/https:\/\/zattoo.com/g" ~/ztvh/work/save_page.js 2> /dev/null
@@ -919,7 +922,7 @@ do
 		# L2200 RESELLER LOGIN
 		#
 		
-		elif grep -q "2" value
+		elif grep -q "2" value 2> /dev/null
 		then
 			sed -i "/login=/d" ~/ztvh/user/userfile 2> /dev/null
 			
@@ -975,7 +978,7 @@ do
 		# L3100 ZATTOO PASSWORD
 		#
 		
-		if grep -q "PASSI" value
+		if grep -q "PASSI" value 2> /dev/null
 		then
 			
 			if grep -q "insecure=true" ~/ztvh/user/userfile
@@ -1029,7 +1032,7 @@ do
 		# L3200 RESELLER PASSWORD
 		#
 		
-		elif grep -q "PASS-II" value
+		elif grep -q "PASS-II" value 2> /dev/null
 		then
 			if grep -q "insecure=true" ~/ztvh/user/userfile
 			then
@@ -1080,7 +1083,7 @@ do
 		fi
 	fi
 
-	if grep -q "ID-ENTERED" value
+	if grep -q "ID-ENTERED" value 2> /dev/null
 	then
 		if grep -q "insecure=true" ~/ztvh/user/userfile
 		then
@@ -1089,7 +1092,7 @@ do
 			dialog --backtitle "[L4W00] ZATTOO UNLIMITED BETA > LOGIN" --title "LOGIN" --infobox "Login to webservice..." 3 40
 		fi
 	
-		while grep -q "ID-ENTERED" value
+		while grep -q "ID-ENTERED" value 2> /dev/null
 		do
 			session=$(<~/ztvh/user/session)
 			provider=$(sed "2,5d;s/provider=//g" ~/ztvh/user/userfile)
@@ -1223,7 +1226,7 @@ then
 	
 	# SPLIT INTO MAIN LINE + QUALITY LEVEL(S)
 	sed -i 's/"qualities": \[{/\n{/g' workfile
-	sed -i 's/}, {/},\n{/g' workfile
+	sed -i 's/}, {/},\n{/g' workfile && cp workfile epg_channels_file
 	
 	# DELETE SUBSCRIBABLE QUALITY STRINGS
 	sed -i '/"availability": "subscribable"/d' workfile
@@ -1496,13 +1499,19 @@ then
 		# M1000 MENU OVERLAY
 		if grep -q "insecure=true" ~/ztvh/user/userfile
 		then
-			echo 'dialog --backtitle "[M1000] ZATTOO UNLIMITED BETA * SERVER EDITION" --title "MAIN MENU - INSECURE MODE" --menu "Welcome to Zattoo Unlimited! :)\n(c) 2017-2018 Jan-Luca Neumann\n\nIf you like this script, please support my work:\nhttps://paypal.me/sunsettrack4\n\nPlease choose a feature:" 18 55 10 \' > menu
+			echo 'dialog --backtitle "[M1000] ZATTOO UNLIMITED BETA" --title "MAIN MENU - INSECURE MODE" --menu "Welcome to Zattoo Unlimited! :)\n(c) 2017-2018 Jan-Luca Neumann\n\nIf you like this script, please support my work:\nhttps://paypal.me/sunsettrack4\n\nPlease choose a feature:" 18 55 10 \' > menu
 		else
-			echo 'dialog --backtitle "[M1000] ZATTOO UNLIMITED BETA * SERVER EDITION" --title "MAIN MENU" --menu "Welcome to Zattoo Unlimited! :)\n(c) 2017-2018 Jan-Luca Neumann\n\nIf you like this script, please support my work:\nhttps://paypal.me/sunsettrack4\n\nPlease choose a feature:" 18 55 10 \' > menu
+			echo 'dialog --backtitle "[M1000] ZATTOO UNLIMITED BETA" --title "MAIN MENU" --menu "Welcome to Zattoo Unlimited! :)\n(c) 2017-2018 Jan-Luca Neumann\n\nIf you like this script, please support my work:\nhttps://paypal.me/sunsettrack4\n\nPlease choose a feature:" 18 55 10 \' > menu
 		fi
 		
 		# M1100 LIVE TV VIEWER
-		# echo '	1 "LIVE TV VIEWER" \' >> menu
+		if command -v ffmpeg >/dev/null
+		then
+			if command -v vlc >/dev/null
+			then
+				echo '	1 "LIVE TV" \' >> menu
+			fi
+		fi
 		
 		# M1200 PVR VIEWER
 		# echo '	2 "PVR VIEWER" \' >> menu
@@ -1538,23 +1547,23 @@ then
 			# M1100 LIVE TV VIEWER
 			#
 			
-			# if grep -q "1" value
-			# then
-			#	echo "M1100" > value
-			#	
-			#	while grep -q "M1100" value
-			#	do
-			#	bash ~/ztvh/live.sh
-			#	
-			#	#
-			#	# M11X0 EXIT
-			#	#
-			#	
-			#	if [ ! -s value ]
-			#	then
-			#		echo "M1000" > value
-			#	fi
-			#	done
+			if grep -q "1" value
+			then
+				echo "M1100" > value
+				
+				while grep -q "M1100" value
+				do
+				bash ~/ztvh/live.sh
+				
+				#
+				# M11X0 EXIT
+				#
+				
+				if [ ! -s value ]
+				then
+					echo "M1000" > value
+				fi
+				done
 			
 			#
 			# M1200 PVR VIEWER
@@ -1599,6 +1608,8 @@ then
 			#		echo "M1000" > value
 			#	fi
 			#	done
+			
+			fi
 			
 			#
 			# M1400 SETTINGS
@@ -1781,10 +1792,10 @@ then
 				# M1440 STREAMING QUALITY
 				if grep -q "chpipe 4" ~/ztvh/user/options
 				then
-					echo '	4 "STREAMING QUALITY (MAXIMUM @ 3-8 Mbit/s)" \' >> menu
+					echo '	4 "STREAMING QUALITY (MAXIMUM @ 5-8 Mbit/s)" \' >> menu
 				elif grep -q "chpipe 3" ~/ztvh/user/options
 				then
-					echo '	4 "STREAMING QUALITY (HIGH @ 3-5 Mbit/s)" \' >> menu
+					echo '	4 "STREAMING QUALITY (HIGH @ 3 Mbit/s)" \' >> menu
 				elif grep -q "chpipe 2" ~/ztvh/user/options
 				then
 					echo '	4 "STREAMING QUALITY (MEDIUM @ 1,5 Mbit/s)" \' >> menu
@@ -2010,10 +2021,10 @@ then
 						echo '	3 "MEDIUM  | 1,5 Mbit/s" \' >> menu
 						
 						# M1444 HIGH
-						echo '	4 "HIGH    | 3-5 Mbit/s" \' >> menu
+						echo '	4 "HIGH    | 3 Mbit/s" \' >> menu
 						
 						# M1445 MINIMUM
-						echo '	5 "MAXIMUM | 3-8 Mbit/s" \' >> menu
+						echo '	5 "MAXIMUM | 5-8 Mbit/s" \' >> menu
 						
 						echo "2>value" >> menu
 			
