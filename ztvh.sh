@@ -21,7 +21,7 @@ clear
 echo "                                                                        "
 echo "ZattooUNLIMITED for VLC and tvheadend                                   "
 echo "(c) 2017-2018 Jan-Luca Neumann                        I             +   "
-echo "Script v0.4.8 2018/10/02 | Zattoo v2.12.6       I    I         +        "
+echo "Script v0.4.8 2018/10/03 | Zattoo v2.12.7       I    I         +        "
 echo "                                                 I  I             +     "
 echo "                                                  II                    "
 echo "ZZZZZZZZZ       AA     TTTTTTTTTT TTTTTTTTTT    888888        888888    "
@@ -1404,6 +1404,7 @@ bash workfile
 sed 's/#EXTM3U/#\!\/bin\/bash/g' ~/ztvh/channels.m3u > workfile
 sed -i '/#EXTINF/{s/.*", /ch_name=\$(echo "/g;s/.*/&")/g;}' workfile
 sed -i '/pipe:\/\//{s/.*chpipe\//sed -i "s\/CHANNEL_NAME\/\$ch_name\/g" ~\/ztvh\/chpipe\//g;}' workfile
+sed -i -e '/ch_name=/s/\//\\&/g' -e '/ch_name=/s/\&/\\\&/g' workfile
 bash workfile 
 
 if grep -q "chpipe 4" ~/ztvh/user/options 2> /dev/null
@@ -2199,7 +2200,7 @@ clear
 
 echo "ZattooUNLIMITED for VLC and tvheadend"
 echo "(c) 2017-2018 Jan-Luca Neumann"
-echo "Script v0.4.8 | Zattoo v2.12.6"
+echo "Script v0.4.8 | Zattoo v2.12.7"
 echo ""
 echo "=== GRABBER STARTUP ==="
 echo ""
