@@ -21,7 +21,7 @@ clear
 echo "                                                                        "
 echo "ZattooUNLIMITED for VLC and tvheadend                                   "
 echo "(c) 2017-2018 Jan-Luca Neumann                        I             +   "
-echo "Script v0.4.8 2018/10/03 | Zattoo v2.12.7       I    I         +        "
+echo "Script v0.4.8 2018/10/07 | Zattoo v2.12.7       I    I         +        "
 echo "                                                 I  I             +     "
 echo "                                                  II                    "
 echo "ZZZZZZZZZ       AA     TTTTTTTTTT TTTTTTTTTT    888888        888888    "
@@ -213,15 +213,15 @@ then
 	touch fakefile
 fi
 
-# if [ ! -e recordings.sh ]
-# then
-#	printf "\rMissing file: recordings.sh\n"
-#	touch fakefile
-# elif [ ! -x recordings.sh ]
-# then
-#	printf "\rFile not executable: recordings.sh\n"
-#	touch fakefile
-# fi
+if [ ! -e recordings.sh ]
+then
+	printf "\rMissing file: recordings.sh\n"
+	touch fakefile
+elif [ ! -x recordings.sh ]
+then
+	printf "\rFile not executable: recordings.sh\n"
+	touch fakefile
+fi
 
 # if [ ! -e txt.sh ]
 # then
@@ -1500,25 +1500,37 @@ then
 		# M1000 MENU OVERLAY
 		if grep -q "insecure=true" ~/ztvh/user/userfile
 		then
-			echo 'dialog --backtitle "[M1000] ZATTOO UNLIMITED BETA" --title "MAIN MENU - INSECURE MODE" --menu "Welcome to Zattoo Unlimited! :)\n(c) 2017-2018 Jan-Luca Neumann\n\nIf you like this script, please support my work:\nhttps://paypal.me/sunsettrack4\n\nPlease choose a feature:" 18 55 10 \' > menu
+			echo 'dialog --backtitle "[M1000] ZATTOO UNLIMITED BETA" --title "MAIN MENU - INSECURE MODE" --menu "Welcome to Zattoo Unlimited! :)\n(c) 2017-2018 Jan-Luca Neumann\n\nIf you like this script, please support my work:\nhttps://paypal.me/sunsettrack4\n\nPlease choose a feature:" 19 55 10 \' > menu
 		else
-			echo 'dialog --backtitle "[M1000] ZATTOO UNLIMITED BETA" --title "MAIN MENU" --menu "Welcome to Zattoo Unlimited! :)\n(c) 2017-2018 Jan-Luca Neumann\n\nIf you like this script, please support my work:\nhttps://paypal.me/sunsettrack4\n\nPlease choose a feature:" 18 55 10 \' > menu
+			echo 'dialog --backtitle "[M1000] ZATTOO UNLIMITED BETA" --title "MAIN MENU" --menu "Welcome to Zattoo Unlimited! :)\n(c) 2017-2018 Jan-Luca Neumann\n\nIf you like this script, please support my work:\nhttps://paypal.me/sunsettrack4\n\nPlease choose a feature:" 19 55 10 \' > menu
 		fi
 		
-		# M1100 LIVE TV VIEWER
-		if command -v ffmpeg >/dev/null
-		then
-			if command -v vlc >/dev/null
+		# M1100 LIVE TV
+		if xset q &>/dev/null
+		then 
+			if command -v ffmpeg >/dev/null
 			then
-				echo '	1 "LIVE TV" \' >> menu
+				if command -v vlc >/dev/null
+				then
+					echo '	1 "LIVE TV" \' >> menu
+				fi
 			fi
 		fi
 		
-		# M1200 PVR VIEWER
-		# echo '	2 "PVR VIEWER" \' >> menu
+		# M1200 PVR CLOUD
+		if xset q &>/dev/null
+		then
+			if command -v ffmpeg >/dev/null
+			then
+				if command -v vlc >/dev/null
+				then
+					echo '	2 "PVR CLOUD" \' >> menu
+				fi
+			fi
+		fi
 		
-		# M1300 TELETEXT VIEWER
-		# echo '	3 "TELETEXT VIEWER" \' >> menu
+		# M1300 TELETEXT
+		# echo '	3 "TELETEXT" \' >> menu
 		
 		# M1400 SETTINGS
 		echo '	4 "SETTINGS" \' >> menu
@@ -1545,7 +1557,7 @@ then
 		fi
 		
 			#
-			# M1100 LIVE TV VIEWER
+			# M1100 LIVE TV
 			#
 			
 			if grep -q "1" value
@@ -1567,29 +1579,29 @@ then
 				done
 			
 			#
-			# M1200 PVR VIEWER
+			# M1200 PVR CLOUD
 			#
 			
-			# elif grep -q "2" value
-			# then
-			#	echo "M1200" > value
-			#	
-			#	while grep -q "M1200" value
-			#	do
-			#	bash ~/ztvh/recordings.sh
-			#	
-			#	#
-			#	# M12X0 EXIT
-			#	#
-			#	
-			#	if [ ! -s value ]
-			#	then
-			#		echo "M1000" > value
-			#	fi
-			#	done
+			elif grep -q "2" value
+			then
+				echo "M1200" > value
+				
+				while grep -q "M1200" value
+				do
+				bash ~/ztvh/recordings.sh
+				
+				#
+				# M12X0 EXIT
+				#
+				
+				if [ ! -s value ]
+				then
+					echo "M1000" > value
+				fi
+				done
 			
 			#
-			# M1300 TELETEXT VIEWER
+			# M1300 TELETEXT
 			#
 			
 			# elif grep -q "3" value
