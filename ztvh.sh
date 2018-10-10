@@ -21,7 +21,7 @@ clear
 echo "                                                                        "
 echo "ZattooUNLIMITED for VLC and tvheadend                                   "
 echo "(c) 2017-2018 Jan-Luca Neumann                        I             +   "
-echo "Script v0.4.8 2018/10/07 | Zattoo v2.12.7       I    I         +        "
+echo "Script v0.4.8 2018/10/10 | Zattoo v2.12.7       I    I         +        "
 echo "                                                 I  I             +     "
 echo "                                                  II                    "
 echo "ZZZZZZZZZ       AA     TTTTTTTTTT TTTTTTTTTT    888888        888888    "
@@ -370,14 +370,32 @@ do
 				
 				if phantomjs -platform offscreen --ignore-ssl-errors=true ~/ztvh/work/save_page.js https://$provider/login > cookie_list | grep -q "This application failed to start"
 				then
-					phantomjs --ignore-ssl-errors=true ~/ztvh/work/save_page.js https://$provider/login > cookie_list 2> /dev/null
+					if phantomjs --ignore-ssl-errors=true ~/ztvh/work/save_page.js https://$provider/login > cookie_list | grep -q "This application failed to start"
+					then
+						export QT_QPA_PLATFORM=phantom
+						if phantomjs -platform phantom --ignore-ssl-errors=true ~/ztvh/work/save_page.js https://$provider/login > cookie_list | grep -q "This application failed to start"
+						then
+							dialog --backtitle "[L41F0] [INSECURE] ZATTOO UNLIMITED BETA > LOGIN" --title "FATAL ERROR [1]" --infobox "PhantomJS failed to start!" 3 40
+							sleep 2s
+							exit 1
+						fi
+					fi
 				fi
 			else
 				dialog --backtitle "[L41C0] ZATTOO UNLIMITED BETA > LOGIN" --title "LOGIN" --infobox "Login to webservice..." 3 40
 				
 				if phantomjs -platform offscreen ~/ztvh/work/save_page.js https://$provider/login > cookie_list | grep -q "This application failed to start"
 				then
-					phantomjs ~/ztvh/work/save_page.js https://$provider/login > cookie_list 2> /dev/null
+					if phantomjs ~/ztvh/work/save_page.js https://$provider/login > cookie_list | grep -q "This application failed to start"
+					then
+						export QT_QPA_PLATFORM=phantom
+						if phantomjs -platform phantom ~/ztvh/work/save_page.js https://$provider/login > cookie_list | grep -q "This application failed to start"
+						then
+							dialog --backtitle "[L41F0] ZATTOO UNLIMITED BETA > LOGIN" --title "FATAL ERROR [1]" --infobox "PhantomJS failed to start!" 3 40
+							sleep 2s
+							exit 1
+						fi
+					fi
 				fi
 			fi
 			
@@ -390,9 +408,9 @@ do
 				then
 					if grep -q "insecure=true" ~/ztvh/user/userfile
 					then
-						dialog --backtitle "[L41F0] [INSECURE] ZATTOO UNLIMITED BETA > LOGIN" --title "[3] FATAL ERROR" --infobox "Service unavailable! Please try again later!" 5 50
+						dialog --backtitle "[L41F0] [INSECURE] ZATTOO UNLIMITED BETA > LOGIN" --title "[2] FATAL ERROR" --infobox "Service unavailable! Please try again later!" 5 50
 					else
-						dialog --backtitle "[L41F0] ZATTOO UNLIMITED BETA > LOGIN" --title "[3] FATAL ERROR" --infobox "Service unavailable! Please try again later!" 5 50
+						dialog --backtitle "[L41F0] ZATTOO UNLIMITED BETA > LOGIN" --title "[2] FATAL ERROR" --infobox "Service unavailable! Please try again later!" 5 50
 					fi
 					sleep 2s
 					exit 1
@@ -426,12 +444,29 @@ do
 				then
 					if phantomjs -platform offscreen --ignore-ssl-errors=true ~/ztvh/work/save_page.js https://$provider/login > cookie_list | grep -q "This application failed to start"
 					then
-						phantomjs --ignore-ssl-errors=true ~/ztvh/work/save_page.js https://$provider/login > cookie_list 2> /dev/null
+						if phantomjs --ignore-ssl-errors=true ~/ztvh/work/save_page.js https://$provider/login > cookie_list | grep -q "This application failed to start"
+						then
+							export QT_QPA_PLATFORM=phantom
+							if phantomjs -platform phantom --ignore-ssl-errors=true ~/ztvh/work/save_page.js https://$provider/login > cookie_list | grep -q "This application failed to start"
+							then
+								dialog --backtitle "[L41F0] [INSECURE] ZATTOO UNLIMITED BETA > LOGIN" --title "FATAL ERROR [3]" --infobox "PhantomJS failed to start!" 3 50
+								exit 1
+							fi
+						fi
 					fi
 				else
 					if phantomjs -platform offscreen ~/ztvh/work/save_page.js https://$provider/login > cookie_list | grep -q "This application failed to start"
 					then
-						phantomjs ~/ztvh/work/save_page.js https://$provider/login > cookie_list 2> /dev/null
+						if phantomjs ~/ztvh/work/save_page.js https://$provider/login > cookie_list | grep -q "This application failed to start"
+						then
+							export QT_QPA_PLATFORM=phantom
+							if phantomjs -platform phantom ~/ztvh/work/save_page.js https://$provider/login > cookie_list | grep -q "This application failed to start"
+							then
+								dialog --backtitle "[L41F0] ZATTOO UNLIMITED BETA > LOGIN" --title "FATAL ERROR [3]" --infobox "PhantomJS failed to start!" 3 50
+								sleep 2s
+								exit 1
+							fi
+						fi
 					fi
 				fi
 			done
@@ -440,15 +475,15 @@ do
 		elif curl -v --silent https://$provider/ 2>&1 | grep -q -E "server certificate verification failed|SSL certificate problem" 2> /dev/null
 		then
 			echo "insecure=ask" >> ~/ztvh/user/userfile
-			dialog --backtitle "[L41F0] ZATTOO UNLIMITED BETA > LOGIN" --title "[1] FATAL ERROR" --infobox "Server certificate verification failed!" 3 50
+			dialog --backtitle "[L41F0] ZATTOO UNLIMITED BETA > LOGIN" --title "[4] FATAL ERROR" --infobox "Server certificate verification failed!" 3 50
 			sleep 2s
 			exit 1
 		else
 			if grep -q "insecure=true" ~/ztvh/user/userfile
 			then
-				dialog --backtitle "[L41F0] [INSECURE] ZATTOO UNLIMITED BETA > LOGIN" --title "[2] FATAL ERROR" --infobox "Service unavailable! Please try again later!" 5 50
+				dialog --backtitle "[L41F0] [INSECURE] ZATTOO UNLIMITED BETA > LOGIN" --title "[5] FATAL ERROR" --infobox "Service unavailable! Please try again later!" 5 50
 			else
-				dialog --backtitle "[L41F0] ZATTOO UNLIMITED BETA > LOGIN" --title "[2] FATAL ERROR" --infobox "Service unavailable! Please try again later!" 5 50
+				dialog --backtitle "[L41F0] ZATTOO UNLIMITED BETA > LOGIN" --title "[5] FATAL ERROR" --infobox "Service unavailable! Please try again later!" 5 50
 			fi
 			sleep 2s
 			exit 1
@@ -571,12 +606,30 @@ do
 						then
 							if phantomjs -platform offscreen --ignore-ssl-errors=true ~/ztvh/work/save_page.js https://$provider/login > cookie_list | grep -q "This application failed to start"
 							then
-								phantomjs --ignore-ssl-errors=true ~/ztvh/work/save_page.js https://$provider/login > cookie_list 2> /dev/null
+								if phantomjs --ignore-ssl-errors=true ~/ztvh/work/save_page.js https://$provider/login > cookie_list | grep -q "This application failed to start"
+								then
+									export QT_QPA_PLATFORM=phantom
+									if phantomjs -platform phantom --ignore-ssl-errors=true ~/ztvh/work/save_page.js https://$provider/login > cookie_list | grep -q "This application failed to start"
+									then
+										dialog --backtitle "[L11F0] [INSECURE] ZATTOO UNLIMITED BETA > PROVIDER" --title "[1] FATAL ERROR" --infobox "PhantomJS failed to start!" 3 50
+										sleep 2s
+										exit 1
+									fi
+								fi
 							fi
 						else
 							if phantomjs -platform offscreen ~/ztvh/work/save_page.js https://$provider/login > cookie_list | grep -q "This application failed to start"
 							then
-								phantomjs ~/ztvh/work/save_page.js https://$provider/login > cookie_list 2> /dev/null
+								if phantomjs ~/ztvh/work/save_page.js https://$provider/login > cookie_list | grep -q "This application failed to start"
+								then
+									export QT_QPA_PLATFORM=phantom
+									if phantomjs -platform phantom ~/ztvh/work/save_page.js https://$provider/login > cookie_list | grep -q "This application failed to start"
+									then
+										dialog --backtitle "[L11F0] ZATTOO UNLIMITED BETA > PROVIDER" --title "[1] FATAL ERROR" --infobox "PhantomJS failed to start!" 3 50
+										sleep 2s
+										exit 1
+									fi
+								fi
 							fi
 						fi
 						
@@ -635,12 +688,30 @@ do
 										then
 											if phantomjs -platform offscreen --ignore-ssl-errors=true ~/ztvh/work/save_page.js https://$provider/login > cookie_list | grep -q "This application failed to start"
 											then
-												phantomjs --ignore-ssl-errors=true ~/ztvh/work/save_page.js https://$provider/login > cookie_list 2> /dev/null
+												if phantomjs --ignore-ssl-errors=true ~/ztvh/work/save_page.js https://$provider/login > cookie_list | grep -q "This application failed to start"
+												then
+													export QT_QPA_PLATFORM=phantom 
+													if phantomjs -platform phantom --ignore-ssl-errors=true ~/ztvh/work/save_page.js https://$provider/login > cookie_list | grep -q "This application failed to start"
+													then
+														dialog --backtitle "[L11F0] [INSECURE] ZATTOO UNLIMITED BETA > PROVIDER" --title "[2] FATAL ERROR" --infobox "PhantomJS failed to start!" 3 50
+														sleep 2s
+														exit 1
+													fi
+												fi
 											fi
 										else
 											if phantomjs -platform offscreen ~/ztvh/work/save_page.js https://$provider/login > cookie_list | grep -q "This application failed to start"
 											then
-												phantomjs ~/ztvh/work/save_page.js https://$provider/login > cookie_list 2> /dev/null
+												if phantomjs ~/ztvh/work/save_page.js https://$provider/login > cookie_list 2> /dev/null | grep -q "This application failed to start"
+												then
+													export QT_QPA_PLATFORM=phantom 
+													if phantomjs -platform phantom ~/ztvh/work/save_page.js https://$provider/login > cookie_list | grep -q "This application failed to start"
+													then
+														dialog --backtitle "[L11F0] ZATTOO UNLIMITED BETA > PROVIDER" --title "[2] FATAL ERROR" --infobox "PhantomJS failed to start!" 3 50
+														sleep 2s
+														exit 1
+													fi
+												fi
 											fi
 										fi
 									else
@@ -650,7 +721,7 @@ do
 								
 								if grep -q "beaker.session.id=dummy[1-2]" cookie_list
 								then
-									dialog --backtitle "[L11F0] ZATTOO UNLIMITED BETA > PROVIDER" --title "[7] ERROR" --msgbox "Failed to load Session ID!" 5 50
+									dialog --backtitle "[L11E0] ZATTOO UNLIMITED BETA > PROVIDER" --title "[1] ERROR" --msgbox "Failed to load Session ID!" 5 50
 								elif grep -q "beaker.session.id=dummy" cookie_list
 								then
 									sed -i "/beaker.session.id/d" cookie_list
@@ -669,14 +740,32 @@ do
 									
 									if phantomjs -platform offscreen --ignore-ssl-errors=true ~/ztvh/work/save_page.js https://www.$provider/login > cookie_list | grep -q "This application failed to start"
 									then
-										phantomjs --ignore-ssl-errors=true ~/ztvh/work/save_page.js https://www.$provider/login > cookie_list 2> /dev/null
+										if phantomjs --ignore-ssl-errors=true ~/ztvh/work/save_page.js https://www.$provider/login > cookie_list | grep -q "This application failed to start"
+										then
+											export QT_QPA_PLATFORM=phantom 
+											if phantomjs -platform phantom --ignore-ssl-errors=true ~/ztvh/work/save_page.js https://www.$provider/login > cookie_list | grep -q "This application failed to start"
+											then
+												dialog --backtitle "[L11F0] [INSECURE] ZATTOO UNLIMITED BETA > PROVIDER" --title "[3] FATAL ERROR" --infobox "PhantomJS failed to start!" 3 50
+												sleep 2s
+												exit 1
+											fi
+										fi
 									fi
 								else
 									dialog --backtitle "[L11R0] ZATTOO UNLIMITED BETA > PROVIDER" --infobox "Checking availability of chosen provider..." 3 50
 									
 									if phantomjs -platform offscreen ~/ztvh/work/save_page.js https://www.$provider/login > cookie_list | grep -q "This application failed to start"
 									then
-										phantomjs ~/ztvh/work/save_page.js https://www.$provider/login > cookie_list 2> /dev/null
+										if phantomjs ~/ztvh/work/save_page.js https://www.$provider/login > cookie_list | grep -q "This application failed to start"
+										then
+											export QT_QPA_PLATFORM=phantom 
+											if phantomjs -platform phantom ~/ztvh/work/save_page.js https://www.$provider/login > cookie_list | grep -q "This application failed to start"
+											then
+												dialog --backtitle "[L11F0] ZATTOO UNLIMITED BETA > PROVIDER" --title "[3] FATAL ERROR" --infobox "PhantomJS failed to start!" 3 50
+												sleep 2s
+												exit 1
+											fi
+										fi
 									fi
 								fi
 							fi
@@ -737,12 +826,30 @@ do
 										then
 											if phantomjs -platform offscreen --ignore-ssl-errors=true ~/ztvh/work/save_page.js https://www.$provider/login > cookie_list | grep -q "This application failed to start"
 											then
-												phantomjs --ignore-ssl-errors=true ~/ztvh/work/save_page.js https://www.$provider/login > cookie_list 2> /dev/null
+												if phantomjs --ignore-ssl-errors=true ~/ztvh/work/save_page.js https://www.$provider/login > cookie_list | grep -q "This application failed to start"
+												then
+													export QT_QPA_PLATFORM=phantom 
+													if phantomjs -platform phantom --ignore-ssl-errors=true ~/ztvh/work/save_page.js https://www.$provider/login > cookie_list | grep -q "This application failed to start"
+													then
+														dialog --backtitle "[L11F0] [INSECURE] ZATTOO UNLIMITED BETA > PROVIDER" --title "[4] FATAL ERROR" --infobox "PhantomJS failed to start!" 3 50
+														sleep 2s
+														exit 1
+													fi
+												fi
 											fi
 										else
 											if phantomjs -platform offscreen ~/ztvh/work/save_page.js https://www.$provider/login > cookie_list | grep -q "This application failed to start"
 											then
-												phantomjs ~/ztvh/work/save_page.js https://www.$provider/login > cookie_list 2> /dev/null
+												if phantomjs ~/ztvh/work/save_page.js https://www.$provider/login > cookie_list | grep -q "This application failed to start"
+												then
+													export QT_QPA_PLATFORM=phantom 
+													if phantomjs -platform phantom ~/ztvh/work/save_page.js https://www.$provider/login > cookie_list | grep -q "This application failed to start"
+													then
+														dialog --backtitle "[L11F0] ZATTOO UNLIMITED BETA > PROVIDER" --title "[4] FATAL ERROR" --infobox "PhantomJS failed to start!" 3 50
+														sleep 2s
+														exit 1
+													fi
+												fi
 											fi
 										fi
 									else
@@ -752,7 +859,7 @@ do
 								
 								if grep -q "beaker.session.id=dummy[1-2]" cookie_list
 								then
-									dialog --backtitle "[L11F0] ZATTOO UNLIMITED BETA > PROVIDER" --title "[8] ERROR" --msgbox "Failed to load Session ID!" 5 50
+									dialog --backtitle "[L11E0] ZATTOO UNLIMITED BETA > PROVIDER" --title "[2] ERROR" --msgbox "Failed to load Session ID!" 5 50
 								elif grep -q "beaker.session.id=dummy" cookie_list
 								then
 									sed -i "/beaker.session.id/d" cookie_list
@@ -764,41 +871,9 @@ do
 							then
 								if curl -v --silent https://$provider/ 2>&1 | grep -q -E "server certificate verification failed|SSL certificate problem" 2> /dev/null
 								then
-									dialog --backtitle "[L11E0] ZATTOO UNLIMITED BETA > PROVIDER" --title "[1] ERROR" --infobox "Server certificate verification failed!" 3 50
-									sleep 2s
-									echo "insecure=ask" >> ~/ztvh/user/userfile
-									
-									if grep -q "1" value
-									then
-										echo "beaker.session.id=dummy" > cookie_list
-										echo "MENU" > value
-									else
-										echo "2" > value
-									fi
-								elif ! ping -q -w 1 -c 1 `ip r | grep default | cut -d ' ' -f 3` > /dev/null 2> /dev/null
-								then
-									dialog --backtitle "[L11F0] ZATTOO UNLIMITED BETA > PROVIDER" --title "[1] FATAL ERROR" --msgbox "Internet connection unavailable! Please retry later!" 5 60
-									exit 1
-								else
-									dialog --backtitle "[L11F0] ZATTOO UNLIMITED BETA > PROVIDER" --title "[2] ERROR" --msgbox "Service unavailable!" 5 50
-									
-									if grep -q "1" value
-									then
-										echo "beaker.session.id=dummy" > cookie_list
-										echo "MENU" > value
-									else
-										echo "2" > value
-									fi
-								fi
-							elif echo "$(<~/ztvh/user/userfile)" | grep -q "www."
-							then
-								if curl -v --silent https://www.$provider/ 2>&1 | grep -q -E "server certificate verification failed|SSL certificate problem" 2> /dev/null
-								then
 									dialog --backtitle "[L11E0] ZATTOO UNLIMITED BETA > PROVIDER" --title "[3] ERROR" --infobox "Server certificate verification failed!" 3 50
 									sleep 2s
 									echo "insecure=ask" >> ~/ztvh/user/userfile
-									sed -i "s/www.//g" ~/ztvh/user/userfile
-									sed -i "s/www.//g" ~/ztvh/work/save_page.js
 									
 									if grep -q "1" value
 									then
@@ -809,7 +884,7 @@ do
 									fi
 								elif ! ping -q -w 1 -c 1 `ip r | grep default | cut -d ' ' -f 3` > /dev/null 2> /dev/null
 								then
-									dialog --backtitle "[L11F0] ZATTOO UNLIMITED BETA > PROVIDER" --title "[2] FATAL ERROR" --msgbox "Internet connection unavailable! Please retry later!" 5 60
+									dialog --backtitle "[L11F0] ZATTOO UNLIMITED BETA > PROVIDER" --title "[5] FATAL ERROR" --msgbox "Internet connection unavailable! Please retry later!" 5 60
 									exit 1
 								else
 									dialog --backtitle "[L11E0] ZATTOO UNLIMITED BETA > PROVIDER" --title "[4] ERROR" --msgbox "Service unavailable!" 5 50
@@ -822,8 +897,9 @@ do
 										echo "2" > value
 									fi
 								fi
-							else
-								if curl -v --silent https://$provider/ 2>&1 | grep -q -E "server certificate verification failed|SSL certificate problem" 2> /dev/null
+							elif echo "$(<~/ztvh/user/userfile)" | grep -q "www."
+							then
+								if curl -v --silent https://www.$provider/ 2>&1 | grep -q -E "server certificate verification failed|SSL certificate problem" 2> /dev/null
 								then
 									dialog --backtitle "[L11E0] ZATTOO UNLIMITED BETA > PROVIDER" --title "[5] ERROR" --infobox "Server certificate verification failed!" 3 50
 									sleep 2s
@@ -840,10 +916,41 @@ do
 									fi
 								elif ! ping -q -w 1 -c 1 `ip r | grep default | cut -d ' ' -f 3` > /dev/null 2> /dev/null
 								then
-									dialog --backtitle "[L11F0] ZATTOO UNLIMITED BETA > PROVIDER" --title "[3] FATAL ERROR" --msgbox "Internet connection unavailable! Please retry later!" 5 60
+									dialog --backtitle "[L11F0] ZATTOO UNLIMITED BETA > PROVIDER" --title "[6] FATAL ERROR" --msgbox "Internet connection unavailable! Please retry later!" 5 60
 									exit 1
 								else
 									dialog --backtitle "[L11E0] ZATTOO UNLIMITED BETA > PROVIDER" --title "[6] ERROR" --msgbox "Service unavailable!" 5 50
+									
+									if grep -q "1" value
+									then
+										echo "beaker.session.id=dummy" > cookie_list
+										echo "MENU" > value
+									else
+										echo "2" > value
+									fi
+								fi
+							else
+								if curl -v --silent https://$provider/ 2>&1 | grep -q -E "server certificate verification failed|SSL certificate problem" 2> /dev/null
+								then
+									dialog --backtitle "[L11E0] ZATTOO UNLIMITED BETA > PROVIDER" --title "[7] ERROR" --infobox "Server certificate verification failed!" 3 50
+									sleep 2s
+									echo "insecure=ask" >> ~/ztvh/user/userfile
+									sed -i "s/www.//g" ~/ztvh/user/userfile
+									sed -i "s/www.//g" ~/ztvh/work/save_page.js
+									
+									if grep -q "1" value
+									then
+										echo "beaker.session.id=dummy" > cookie_list
+										echo "MENU" > value
+									else
+										echo "2" > value
+									fi
+								elif ! ping -q -w 1 -c 1 `ip r | grep default | cut -d ' ' -f 3` > /dev/null 2> /dev/null
+								then
+									dialog --backtitle "[L11F0] ZATTOO UNLIMITED BETA > PROVIDER" --title "[7] FATAL ERROR" --msgbox "Internet connection unavailable! Please retry later!" 5 60
+									exit 1
+								else
+									dialog --backtitle "[L11E0] ZATTOO UNLIMITED BETA > PROVIDER" --title "[8] ERROR" --msgbox "Service unavailable!" 5 50
 									
 									if grep -q "1" value
 									then
