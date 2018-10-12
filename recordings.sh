@@ -161,7 +161,7 @@ then
 			grep -E "8000.m3u8|5000.m3u8|3000.m3u8|2999.m3u8|1500.m3u8" work/broadcast_list | sed "2,5d" > work/final_broadcast
 		elif grep -q "chpipe 3" user/options
 		then
-			grep -E "5000.m3u8|3000.m3u8|2999.m3u8|1500.m3u8" work/broadcast_list | sed "2,4d" > work/final_broadcast
+			grep -E "3000.m3u8|2999.m3u8|1500.m3u8" work/broadcast_list | sed "2,3d" > work/final_broadcast
 		elif grep -q "chpipe 2" user/options
 		then
 			grep "1500.m3u8" work/broadcast_list > work/final_broadcast

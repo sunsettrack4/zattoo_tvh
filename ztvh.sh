@@ -21,7 +21,7 @@ clear
 echo "                                                                        "
 echo "ZattooUNLIMITED for VLC and tvheadend                                   "
 echo "(c) 2017-2018 Jan-Luca Neumann                        I             +   "
-echo "Script v0.4.8 2018/10/10 | Zattoo v2.12.7       I    I         +        "
+echo "Script v0.4.8 2018/10/12 | Zattoo v2.12.7       I    I         +        "
 echo "                                                 I  I             +     "
 echo "                                                  II                    "
 echo "ZZZZZZZZZ       AA     TTTTTTTTTT TTTTTTTTTT    888888        888888    "
@@ -562,7 +562,7 @@ do
 							echo "1" > value
 						fi
 						
-						until echo "$provider" | grep -q ".*[.][cdnt][ceov]"
+						until echo "$provider" | grep -q ".*[.][cdnt][cehov]"
 						do
 							sed -i '/provider/d' ~/ztvh/user/userfile
 							provider=$(dialog --backtitle "[L11E0] ZATTOO UNLIMITED BETA > PROVIDER" --title "PROVIDER" --inputbox "PROVIDER invalid! | Syntax: domain.xxx\nPlease enter the domain of your IPTV provider,\ne.g. '1und1.tv', 'tvonline.ewe.de' ..." 9 50 3>&1 1>&2 2>&3 3>&-)
