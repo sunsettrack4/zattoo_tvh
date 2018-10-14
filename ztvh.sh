@@ -21,7 +21,7 @@ clear
 echo "                                                                        "
 echo "ZattooUNLIMITED for VLC and tvheadend                                   "
 echo "(c) 2017-2018 Jan-Luca Neumann                        I             +   "
-echo "Script v0.4.8 2018/10/12 | Zattoo v2.12.7       I    I         +        "
+echo "Script v0.4.8 2018/10/14 | Zattoo v2.12.7       I    I         +        "
 echo "                                                 I  I             +     "
 echo "                                                  II                    "
 echo "ZZZZZZZZZ       AA     TTTTTTTTTT TTTTTTTTTT    888888        888888    "
@@ -1691,7 +1691,7 @@ then
 			
 			elif grep -q "2" value
 			then
-				echo "M1200" > value
+				echo "M1200U" > value
 				
 				while grep -q "M1200" value
 				do
