@@ -70,9 +70,10 @@ sed -i 's/,"/|"/g' workfile
 sed -i 's/\[...\]/(...)/g' workfile
 sed -i 's/\],"/]|"/g' workfile
 sed -i 's/\]},"/]}|"/g' workfile
-sed -i 's/}\]}/|&/g' workfile
+sed -i 's/}\]}/||/g' workfile
 sed -i 's/},/|/g' workfile
 sed -i 's/}\]/|/g' workfile
+sed -i "s/.*/&|/g" workfile
 
 # START/END TIME + CHANNEL ID
 printf "\rCreating strings: Start, End, Channel ID...          "

@@ -35,7 +35,8 @@ sed -i 's/, "/|"/g' workfile
 sed -i 's/\[...\]/(...)/g' workfile
 sed -i 's/\], "/]|"/g' workfile
 sed -i 's/\]}, "/]}|"/g' workfile
-sed -i 's/}\]}/|&/g' workfile
+sed -i 's/}\]}/||/g' workfile
+sed -i "s/.*/&|/g" workfile
 
 # START/END TIME + CHANNEL ID
 printf "\rCreating strings: Start, End, Channel ID             "
@@ -112,8 +113,8 @@ sed -i -e 's/\("s_no": \)\(.*\)|/  <episode-num system="onscreen">S\2<\/episode-
 
 # YEAR
 printf "\rCreating strings: Date                               "
-sed -i 's/\(\[{.*\)\("year":[0-9][0-9][0-9][0-9]\)|\(.*\)/\2|\1|\3/g' workfile
-sed -i -e 's/"year":null|//g' -e 's/"year":/  <date>/g' -e 's/|\[{/<\/date>\n[{/g' workfile
+sed -i 's/\(\[{.*\)\("year": [0-9][0-9][0-9][0-9]\)|\(.*\)/\2|\1|\3/g' workfile
+sed -i -e 's/"year": null|//g' -e 's/"year": /  <date>/g' -e 's/|\[{/<\/date>\n[{/g' workfile
 
 # END OF PROGRAMME
 printf "\rFinalizing string creation...                        "

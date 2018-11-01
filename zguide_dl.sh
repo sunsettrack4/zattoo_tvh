@@ -108,7 +108,7 @@ then
 		
 		# Create file checker to download changed/new broadcasts
 		comm -2 -3 <(sort -u ~/ztvh/epg/$(date +%Y%m%d)_manifest_new) <(sort -u ~/ztvh/epg/$(date +%Y%m%d)_manifest_old 2> /dev/null) > workfile
-		sed -i -e 's/\(.*\)\("id":.*\)/\2/g' -e 's/"id"://g' -e 's/},//g' workfile && cp workfile workfile2
+		sed -i 's/\(.*"id":\)\([0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]\)\(,.*\)/\2/g' workfile && cp workfile workfile2
 		sed -i 's/.*/curl -X GET --cookie "\$session" "https:\/\/\$provider\/zapi\/v2\/cached\/program\/power_details\/$powerid?program_ids=&" | grep ": true, " > epg\/\$date_01\/& 2> \/dev\/null/g' workfile
 		if grep -q "curl" workfile
 		then 
@@ -119,7 +119,7 @@ then
 		comm -2 -3 <(sort -u ~/ztvh/epg/$(date +%Y%m%d)_manifest_old 2> /dev/null) <(sort -u ~/ztvh/epg/$(date +%Y%m%d)_manifest_new) > workfile
 		if [ -s workfile2 ]
 		then
-			sed -i -e 's/\(.*\)\("id":.*\)/\2/g' -e 's/"id"://g' -e 's/},//g' workfile
+			sed -i 's/\(.*"id":\)\([0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]\)\(,.*\)/\2/g' workfile
 			cp workfile2 workfile3
 			cat workfile2 >> workfile3
 			cat workfile >> workfile3
@@ -128,7 +128,7 @@ then
 		fi
 		if [ -s workfile ]
 		then
-			sed -i -e 's/\(.*\)\("id":.*\)/\2/g' -e 's/"id"://g' -e 's/},//g' workfile
+			sed -i 's/\(.*"id":\)\([0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]\)\(,.*\)/\2/g' workfile
 			sed -i 's/.*/rm epg\/\$date_01\/&/g' workfile
 			if [ -s ~/ztvh/epg/filecheck ]
 			then
@@ -245,7 +245,7 @@ then
 		
 		# Create file checker to download changed/new broadcasts
 		comm -2 -3 <(sort -u ~/ztvh/epg/$(date -d '1 day' '+%Y%m%d')_manifest_new) <(sort -u ~/ztvh/epg/$(date -d '1 day' '+%Y%m%d')_manifest_old 2> /dev/null) > workfile
-		sed -i -e 's/\(.*\)\("id":.*\)/\2/g' -e 's/"id"://g' -e 's/},//g' workfile && cp workfile workfile2
+		sed -i 's/\(.*"id":\)\([0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]\)\(,.*\)/\2/g' workfile && cp workfile workfile2
 		sed -i 's/.*/curl -X GET --cookie "\$session" "https:\/\/\$provider\/zapi\/v2\/cached\/program\/power_details\/$powerid?program_ids=&" | grep ": true, " > epg\/\$date_02\/& 2> \/dev\/null/g' workfile
 		if grep -q "curl" workfile
 		then 
@@ -256,7 +256,7 @@ then
 		comm -2 -3 <(sort -u ~/ztvh/epg/$(date -d '1 day' '+%Y%m%d')_manifest_old 2> /dev/null) <(sort -u ~/ztvh/epg/$(date -d '1 day' '+%Y%m%d')_manifest_new) > workfile
 		if [ -s workfile2 ]
 		then
-			sed -i -e 's/\(.*\)\("id":.*\)/\2/g' -e 's/"id"://g' -e 's/},//g' workfile
+			sed -i 's/\(.*"id":\)\([0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]\)\(,.*\)/\2/g' workfile
 			cp workfile2 workfile3
 			cat workfile2 >> workfile3
 			cat workfile >> workfile3
@@ -265,7 +265,7 @@ then
 		fi
 		if [ -s workfile ]
 		then
-			sed -i -e 's/\(.*\)\("id":.*\)/\2/g' -e 's/"id"://g' -e 's/},//g' workfile
+			sed -i 's/\(.*"id":\)\([0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]\)\(,.*\)/\2/g' workfile
 			sed -i 's/.*/rm epg\/\$date_02\/&/g' workfile
 			if [ -s ~/ztvh/epg/filecheck ]
 			then
@@ -382,7 +382,7 @@ then
 		
 		# Create file checker to download changed/new broadcasts
 		comm -2 -3 <(sort -u ~/ztvh/epg/$(date -d '2 days' '+%Y%m%d')_manifest_new) <(sort -u ~/ztvh/epg/$(date -d '2 days' '+%Y%m%d')_manifest_old 2> /dev/null) > workfile
-		sed -i -e 's/\(.*\)\("id":.*\)/\2/g' -e 's/"id"://g' -e 's/},//g' workfile && cp workfile workfile2
+		sed -i 's/\(.*"id":\)\([0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]\)\(,.*\)/\2/g' workfile && cp workfile workfile2
 		sed -i 's/.*/curl -X GET --cookie "\$session" "https:\/\/\$provider\/zapi\/v2\/cached\/program\/power_details\/$powerid?program_ids=&" | grep ": true, " > epg\/\$date_03\/& 2> \/dev\/null/g' workfile
 		if grep -q "curl" workfile
 		then 
@@ -393,7 +393,7 @@ then
 		comm -2 -3 <(sort -u ~/ztvh/epg/$(date -d '2 days' '+%Y%m%d')_manifest_old 2> /dev/null) <(sort -u ~/ztvh/epg/$(date -d '2 days' '+%Y%m%d')_manifest_new) > workfile
 		if [ -s workfile2 ]
 		then
-			sed -i -e 's/\(.*\)\("id":.*\)/\2/g' -e 's/"id"://g' -e 's/},//g' workfile
+			sed -i 's/\(.*"id":\)\([0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]\)\(,.*\)/\2/g' workfile
 			cp workfile2 workfile3
 			cat workfile2 >> workfile3
 			cat workfile >> workfile3
@@ -402,7 +402,7 @@ then
 		fi
 		if [ -s workfile ]
 		then
-			sed -i -e 's/\(.*\)\("id":.*\)/\2/g' -e 's/"id"://g' -e 's/},//g' workfile
+			sed -i 's/\(.*"id":\)\([0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]\)\(,.*\)/\2/g' workfile
 			sed -i 's/.*/rm epg\/\$date_03\/&/g' workfile
 			if [ -s ~/ztvh/epg/filecheck ]
 			then
@@ -519,7 +519,7 @@ then
 		
 		# Create file checker to download changed/new broadcasts
 		comm -2 -3 <(sort -u ~/ztvh/epg/$(date -d '3 days' '+%Y%m%d')_manifest_new) <(sort -u ~/ztvh/epg/$(date -d '3 days' '+%Y%m%d')_manifest_old 2> /dev/null) > workfile
-		sed -i -e 's/\(.*\)\("id":.*\)/\2/g' -e 's/"id"://g' -e 's/},//g' workfile && cp workfile workfile2
+		sed -i 's/\(.*"id":\)\([0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]\)\(,.*\)/\2/g' workfile && cp workfile workfile2
 		sed -i 's/.*/curl -X GET --cookie "\$session" "https:\/\/\$provider\/zapi\/v2\/cached\/program\/power_details\/$powerid?program_ids=&" | grep ": true, " > epg\/\$date_04\/& 2> \/dev\/null/g' workfile
 		if grep -q "curl" workfile
 		then 
@@ -530,7 +530,7 @@ then
 		comm -2 -3 <(sort -u ~/ztvh/epg/$(date -d '3 days' '+%Y%m%d')_manifest_old 2> /dev/null) <(sort -u ~/ztvh/epg/$(date -d '3 days' '+%Y%m%d')_manifest_new) > workfile
 		if [ -s workfile2 ]
 		then
-			sed -i -e 's/\(.*\)\("id":.*\)/\2/g' -e 's/"id"://g' -e 's/},//g' workfile
+			sed -i 's/\(.*"id":\)\([0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]\)\(,.*\)/\2/g' workfile
 			cp workfile2 workfile3
 			cat workfile2 >> workfile3
 			cat workfile >> workfile3
@@ -539,7 +539,7 @@ then
 		fi
 		if [ -s workfile ]
 		then
-			sed -i -e 's/\(.*\)\("id":.*\)/\2/g' -e 's/"id"://g' -e 's/},//g' workfile
+			sed -i 's/\(.*"id":\)\([0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]\)\(,.*\)/\2/g' workfile
 			sed -i 's/.*/rm epg\/\$date_04\/&/g' workfile
 			if [ -s ~/ztvh/epg/filecheck ]
 			then
@@ -656,7 +656,7 @@ then
 		
 		# Create file checker to download changed/new broadcasts
 		comm -2 -3 <(sort -u ~/ztvh/epg/$(date -d '4 days' '+%Y%m%d')_manifest_new) <(sort -u ~/ztvh/epg/$(date -d '4 days' '+%Y%m%d')_manifest_old 2> /dev/null) > workfile
-		sed -i -e 's/\(.*\)\("id":.*\)/\2/g' -e 's/"id"://g' -e 's/},//g' workfile && cp workfile workfile2
+		sed -i 's/\(.*"id":\)\([0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]\)\(,.*\)/\2/g' workfile && cp workfile workfile2
 		sed -i 's/.*/curl -X GET --cookie "\$session" "https:\/\/\$provider\/zapi\/v2\/cached\/program\/power_details\/$powerid?program_ids=&" | grep ": true, " > epg\/\$date_05\/& 2> \/dev\/null/g' workfile
 		if grep -q "curl" workfile
 		then 
@@ -667,7 +667,7 @@ then
 		comm -2 -3 <(sort -u ~/ztvh/epg/$(date -d '4 days' '+%Y%m%d')_manifest_old 2> /dev/null) <(sort -u ~/ztvh/epg/$(date -d '4 days' '+%Y%m%d')_manifest_new) > workfile
 		if [ -s workfile2 ]
 		then
-			sed -i -e 's/\(.*\)\("id":.*\)/\2/g' -e 's/"id"://g' -e 's/},//g' workfile
+			sed -i 's/\(.*"id":\)\([0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]\)\(,.*\)/\2/g' workfile
 			cp workfile2 workfile3
 			cat workfile2 >> workfile3
 			cat workfile >> workfile3
@@ -676,7 +676,7 @@ then
 		fi
 		if [ -s workfile ]
 		then
-			sed -i -e 's/\(.*\)\("id":.*\)/\2/g' -e 's/"id"://g' -e 's/},//g' workfile
+			sed -i 's/\(.*"id":\)\([0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]\)\(,.*\)/\2/g' workfile
 			sed -i 's/.*/rm epg\/\$date_05\/&/g' workfile
 			if [ -s ~/ztvh/epg/filecheck ]
 			then
@@ -793,7 +793,7 @@ then
 		
 		# Create file checker to download changed/new broadcasts
 		comm -2 -3 <(sort -u ~/ztvh/epg/$(date -d '5 days' '+%Y%m%d')_manifest_new) <(sort -u ~/ztvh/epg/$(date -d '5 days' '+%Y%m%d')_manifest_old 2> /dev/null) > workfile
-		sed -i -e 's/\(.*\)\("id":.*\)/\2/g' -e 's/"id"://g' -e 's/},//g' workfile && cp workfile workfile2
+		sed -i 's/\(.*"id":\)\([0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]\)\(,.*\)/\2/g' workfile && cp workfile workfile2
 		sed -i 's/.*/curl -X GET --cookie "\$session" "https:\/\/\$provider\/zapi\/v2\/cached\/program\/power_details\/$powerid?program_ids=&" | grep ": true, " > epg\/\$date_06\/& 2> \/dev\/null/g' workfile
 		if grep -q "curl" workfile
 		then 
@@ -804,7 +804,7 @@ then
 		comm -2 -3 <(sort -u ~/ztvh/epg/$(date -d '5 days' '+%Y%m%d')_manifest_old 2> /dev/null) <(sort -u ~/ztvh/epg/$(date -d '5 days' '+%Y%m%d')_manifest_new) > workfile
 		if [ -s workfile2 ]
 		then
-			sed -i -e 's/\(.*\)\("id":.*\)/\2/g' -e 's/"id"://g' -e 's/},//g' workfile
+			sed -i 's/\(.*"id":\)\([0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]\)\(,.*\)/\2/g' workfile
 			cp workfile2 workfile3
 			cat workfile2 >> workfile3
 			cat workfile >> workfile3
@@ -813,7 +813,7 @@ then
 		fi
 		if [ -s workfile ]
 		then
-			sed -i -e 's/\(.*\)\("id":.*\)/\2/g' -e 's/"id"://g' -e 's/},//g' workfile
+			sed -i 's/\(.*"id":\)\([0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]\)\(,.*\)/\2/g' workfile
 			sed -i 's/.*/rm epg\/\$date_06\/&/g' workfile
 			if [ -s ~/ztvh/epg/filecheck ]
 			then
@@ -930,7 +930,7 @@ then
 		
 		# Create file checker to download changed/new broadcasts
 		comm -2 -3 <(sort -u ~/ztvh/epg/$(date -d '6 days' '+%Y%m%d')_manifest_new) <(sort -u ~/ztvh/epg/$(date -d '6 days' '+%Y%m%d')_manifest_old 2> /dev/null) > workfile
-		sed -i -e 's/\(.*\)\("id":.*\)/\2/g' -e 's/"id"://g' -e 's/},//g' workfile && cp workfile workfile2
+		sed -i 's/\(.*"id":\)\([0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]\)\(,.*\)/\2/g' workfile && cp workfile workfile2
 		sed -i 's/.*/curl -X GET --cookie "\$session" "https:\/\/\$provider\/zapi\/v2\/cached\/program\/power_details\/$powerid?program_ids=&" | grep ": true, " > epg\/\$date_07\/& 2> \/dev\/null/g' workfile
 		if grep -q "curl" workfile
 		then 
@@ -941,7 +941,7 @@ then
 		comm -2 -3 <(sort -u ~/ztvh/epg/$(date -d '6 days' '+%Y%m%d')_manifest_old 2> /dev/null) <(sort -u ~/ztvh/epg/$(date -d '6 days' '+%Y%m%d')_manifest_new) > workfile
 		if [ -s workfile2 ]
 		then
-			sed -i -e 's/\(.*\)\("id":.*\)/\2/g' -e 's/"id"://g' -e 's/},//g' workfile
+			sed -i 's/\(.*"id":\)\([0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]\)\(,.*\)/\2/g' workfile
 			cp workfile2 workfile3
 			cat workfile2 >> workfile3
 			cat workfile >> workfile3
@@ -950,7 +950,7 @@ then
 		fi
 		if [ -s workfile ]
 		then
-			sed -i -e 's/\(.*\)\("id":.*\)/\2/g' -e 's/"id"://g' -e 's/},//g' workfile
+			sed -i 's/\(.*"id":\)\([0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]\)\(,.*\)/\2/g' workfile
 			sed -i 's/.*/rm epg\/\$date_07\/&/g' workfile
 			if [ -s ~/ztvh/epg/filecheck ]
 			then
@@ -1067,7 +1067,7 @@ then
 		
 		# Create file checker to download changed/new broadcasts
 		comm -2 -3 <(sort -u ~/ztvh/epg/$(date -d '7 days' '+%Y%m%d')_manifest_new) <(sort -u ~/ztvh/epg/$(date -d '7 days' '+%Y%m%d')_manifest_old 2> /dev/null) > workfile
-		sed -i -e 's/\(.*\)\("id":.*\)/\2/g' -e 's/"id"://g' -e 's/},//g' workfile && cp workfile workfile2
+		sed -i 's/\(.*"id":\)\([0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]\)\(,.*\)/\2/g' workfile && cp workfile workfile2
 		sed -i 's/.*/curl -X GET --cookie "\$session" "https:\/\/\$provider\/zapi\/v2\/cached\/program\/power_details\/$powerid?program_ids=&" | grep ": true, " > epg\/\$date_08\/& 2> \/dev\/null/g' workfile
 		if grep -q "curl" workfile
 		then 
@@ -1078,7 +1078,7 @@ then
 		comm -2 -3 <(sort -u ~/ztvh/epg/$(date -d '7 days' '+%Y%m%d')_manifest_old 2> /dev/null) <(sort -u ~/ztvh/epg/$(date -d '7 days' '+%Y%m%d')_manifest_new) > workfile
 		if [ -s workfile2 ]
 		then
-			sed -i -e 's/\(.*\)\("id":.*\)/\2/g' -e 's/"id"://g' -e 's/},//g' workfile
+			sed -i 's/\(.*"id":\)\([0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]\)\(,.*\)/\2/g' workfile
 			cp workfile2 workfile3
 			cat workfile2 >> workfile3
 			cat workfile >> workfile3
@@ -1087,7 +1087,7 @@ then
 		fi
 		if [ -s workfile ]
 		then
-			sed -i -e 's/\(.*\)\("id":.*\)/\2/g' -e 's/"id"://g' -e 's/},//g' workfile
+			sed -i 's/\(.*"id":\)\([0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]\)\(,.*\)/\2/g' workfile
 			sed -i 's/.*/rm epg\/\$date_08\/&/g' workfile
 			if [ -s ~/ztvh/epg/filecheck ]
 			then
@@ -1204,7 +1204,7 @@ then
 		
 		# Create file checker to download changed/new broadcasts
 		comm -2 -3 <(sort -u ~/ztvh/epg/$(date -d '8 days' '+%Y%m%d')_manifest_new) <(sort -u ~/ztvh/epg/$(date -d '8 days' '+%Y%m%d')_manifest_old 2> /dev/null) > workfile
-		sed -i -e 's/\(.*\)\("id":.*\)/\2/g' -e 's/"id"://g' -e 's/},//g' workfile && cp workfile workfile2
+		sed -i 's/\(.*"id":\)\([0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]\)\(,.*\)/\2/g' workfile && cp workfile workfile2
 		sed -i 's/.*/curl -X GET --cookie "\$session" "https:\/\/\$provider\/zapi\/v2\/cached\/program\/power_details\/$powerid?program_ids=&" | grep ": true, " > epg\/\$date_09\/& 2> \/dev\/null/g' workfile
 		if grep -q "curl" workfile
 		then 
@@ -1215,7 +1215,7 @@ then
 		comm -2 -3 <(sort -u ~/ztvh/epg/$(date -d '8 days' '+%Y%m%d')_manifest_old 2> /dev/null) <(sort -u ~/ztvh/epg/$(date -d '8 days' '+%Y%m%d')_manifest_new) > workfile
 		if [ -s workfile2 ]
 		then
-			sed -i -e 's/\(.*\)\("id":.*\)/\2/g' -e 's/"id"://g' -e 's/},//g' workfile
+			sed -i 's/\(.*"id":\)\([0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]\)\(,.*\)/\2/g' workfile
 			cp workfile2 workfile3
 			cat workfile2 >> workfile3
 			cat workfile >> workfile3
@@ -1224,7 +1224,7 @@ then
 		fi
 		if [ -s workfile ]
 		then
-			sed -i -e 's/\(.*\)\("id":.*\)/\2/g' -e 's/"id"://g' -e 's/},//g' workfile
+			sed -i 's/\(.*"id":\)\([0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]\)\(,.*\)/\2/g' workfile
 			sed -i 's/.*/rm epg\/\$date_09\/&/g' workfile
 			if [ -s ~/ztvh/epg/filecheck ]
 			then
@@ -1341,7 +1341,7 @@ then
 		
 		# Create file checker to download changed/new broadcasts
 		comm -2 -3 <(sort -u ~/ztvh/epg/$(date -d '9 days' '+%Y%m%d')_manifest_new) <(sort -u ~/ztvh/epg/$(date -d '9 days' '+%Y%m%d')_manifest_old 2> /dev/null) > workfile
-		sed -i -e 's/\(.*\)\("id":.*\)/\2/g' -e 's/"id"://g' -e 's/},//g' workfile && cp workfile workfile2
+		sed -i 's/\(.*"id":\)\([0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]\)\(,.*\)/\2/g' workfile && cp workfile workfile2
 		sed -i 's/.*/curl -X GET --cookie "\$session" "https:\/\/\$provider\/zapi\/v2\/cached\/program\/power_details\/$powerid?program_ids=&" | grep ": true, " > epg\/\$date_10\/& 2> \/dev\/null/g' workfile
 		if grep -q "curl" workfile
 		then 
@@ -1352,7 +1352,7 @@ then
 		comm -2 -3 <(sort -u ~/ztvh/epg/$(date -d '9 days' '+%Y%m%d')_manifest_old 2> /dev/null) <(sort -u ~/ztvh/epg/$(date -d '9 days' '+%Y%m%d')_manifest_new) > workfile
 		if [ -s workfile2 ]
 		then
-			sed -i -e 's/\(.*\)\("id":.*\)/\2/g' -e 's/"id"://g' -e 's/},//g' workfile
+			sed -i 's/\(.*"id":\)\([0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]\)\(,.*\)/\2/g' workfile
 			cp workfile2 workfile3
 			cat workfile2 >> workfile3
 			cat workfile >> workfile3
@@ -1361,7 +1361,7 @@ then
 		fi
 		if [ -s workfile ]
 		then
-			sed -i -e 's/\(.*\)\("id":.*\)/\2/g' -e 's/"id"://g' -e 's/},//g' workfile
+			sed -i 's/\(.*"id":\)\([0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]\)\(,.*\)/\2/g' workfile
 			sed -i 's/.*/rm epg\/\$date_10\/&/g' workfile
 			if [ -s ~/ztvh/epg/filecheck ]
 			then
@@ -1478,7 +1478,7 @@ then
 		
 		# Create file checker to download changed/new broadcasts
 		comm -2 -3 <(sort -u ~/ztvh/epg/$(date -d '10 days' '+%Y%m%d')_manifest_new) <(sort -u ~/ztvh/epg/$(date -d '10 days' '+%Y%m%d')_manifest_old 2> /dev/null) > workfile
-		sed -i -e 's/\(.*\)\("id":.*\)/\2/g' -e 's/"id"://g' -e 's/},//g' workfile && cp workfile workfile2
+		sed -i 's/\(.*"id":\)\([0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]\)\(,.*\)/\2/g' workfile && cp workfile workfile2
 		sed -i 's/.*/curl -X GET --cookie "\$session" "https:\/\/\$provider\/zapi\/v2\/cached\/program\/power_details\/$powerid?program_ids=&" | grep ": true, " > epg\/\$date_11\/& 2> \/dev\/null/g' workfile
 		if grep -q "curl" workfile
 		then 
@@ -1489,7 +1489,7 @@ then
 		comm -2 -3 <(sort -u ~/ztvh/epg/$(date -d '10 days' '+%Y%m%d')_manifest_old 2> /dev/null) <(sort -u ~/ztvh/epg/$(date -d '10 days' '+%Y%m%d')_manifest_new) > workfile
 		if [ -s workfile2 ]
 		then
-			sed -i -e 's/\(.*\)\("id":.*\)/\2/g' -e 's/"id"://g' -e 's/},//g' workfile
+			sed -i 's/\(.*"id":\)\([0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]\)\(,.*\)/\2/g' workfile
 			cp workfile2 workfile3
 			cat workfile2 >> workfile3
 			cat workfile >> workfile3
@@ -1498,7 +1498,7 @@ then
 		fi
 		if [ -s workfile ]
 		then
-			sed -i -e 's/\(.*\)\("id":.*\)/\2/g' -e 's/"id"://g' -e 's/},//g' workfile
+			sed -i 's/\(.*"id":\)\([0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]\)\(,.*\)/\2/g' workfile
 			sed -i 's/.*/rm epg\/\$date_11\/&/g' workfile
 			if [ -s ~/ztvh/epg/filecheck ]
 			then
@@ -1615,7 +1615,7 @@ then
 		
 		# Create file checker to download changed/new broadcasts
 		comm -2 -3 <(sort -u ~/ztvh/epg/$(date -d '11 days' '+%Y%m%d')_manifest_new) <(sort -u ~/ztvh/epg/$(date -d '11 days' '+%Y%m%d')_manifest_old 2> /dev/null) > workfile
-		sed -i -e 's/\(.*\)\("id":.*\)/\2/g' -e 's/"id"://g' -e 's/},//g' workfile && cp workfile workfile2
+		sed -i 's/\(.*"id":\)\([0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]\)\(,.*\)/\2/g' workfile && cp workfile workfile2
 		sed -i 's/.*/curl -X GET --cookie "\$session" "https:\/\/\$provider\/zapi\/v2\/cached\/program\/power_details\/$powerid?program_ids=&" | grep ": true, " > epg\/\$date_12\/& 2> \/dev\/null/g' workfile
 		if grep -q "curl" workfile
 		then 
@@ -1626,7 +1626,7 @@ then
 		comm -2 -3 <(sort -u ~/ztvh/epg/$(date -d '11 days' '+%Y%m%d')_manifest_old 2> /dev/null) <(sort -u ~/ztvh/epg/$(date -d '11 days' '+%Y%m%d')_manifest_new) > workfile
 		if [ -s workfile2 ]
 		then
-			sed -i -e 's/\(.*\)\("id":.*\)/\2/g' -e 's/"id"://g' -e 's/},//g' workfile
+			sed -i 's/\(.*"id":\)\([0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]\)\(,.*\)/\2/g' workfile
 			cp workfile2 workfile3
 			cat workfile2 >> workfile3
 			cat workfile >> workfile3
@@ -1635,7 +1635,7 @@ then
 		fi
 		if [ -s workfile ]
 		then
-			sed -i -e 's/\(.*\)\("id":.*\)/\2/g' -e 's/"id"://g' -e 's/},//g' workfile
+			sed -i 's/\(.*"id":\)\([0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]\)\(,.*\)/\2/g' workfile
 			sed -i 's/.*/rm epg\/\$date_12\/&/g' workfile
 			if [ -s ~/ztvh/epg/filecheck ]
 			then
@@ -1752,7 +1752,7 @@ then
 		
 		# Create file checker to download changed/new broadcasts
 		comm -2 -3 <(sort -u ~/ztvh/epg/$(date -d '12 days' '+%Y%m%d')_manifest_new) <(sort -u ~/ztvh/epg/$(date -d '12 days' '+%Y%m%d')_manifest_old 2> /dev/null) > workfile
-		sed -i -e 's/\(.*\)\("id":.*\)/\2/g' -e 's/"id"://g' -e 's/},//g' workfile && cp workfile workfile2
+		sed -i 's/\(.*"id":\)\([0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]\)\(,.*\)/\2/g' workfile && cp workfile workfile2
 		sed -i 's/.*/curl -X GET --cookie "\$session" "https:\/\/\$provider\/zapi\/v2\/cached\/program\/power_details\/$powerid?program_ids=&" | grep ": true, " > epg\/\$date_13\/& 2> \/dev\/null/g' workfile
 		if grep -q "curl" workfile
 		then 
@@ -1763,7 +1763,7 @@ then
 		comm -2 -3 <(sort -u ~/ztvh/epg/$(date -d '12 days' '+%Y%m%d')_manifest_old 2> /dev/null) <(sort -u ~/ztvh/epg/$(date -d '12 days' '+%Y%m%d')_manifest_new) > workfile
 		if [ -s workfile2 ]
 		then
-			sed -i -e 's/\(.*\)\("id":.*\)/\2/g' -e 's/"id"://g' -e 's/},//g' workfile
+			sed -i 's/\(.*"id":\)\([0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]\)\(,.*\)/\2/g' workfile
 			cp workfile2 workfile3
 			cat workfile2 >> workfile3
 			cat workfile >> workfile3
@@ -1772,7 +1772,7 @@ then
 		fi
 		if [ -s workfile ]
 		then
-			sed -i -e 's/\(.*\)\("id":.*\)/\2/g' -e 's/"id"://g' -e 's/},//g' workfile
+			sed -i 's/\(.*"id":\)\([0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]\)\(,.*\)/\2/g' workfile
 			sed -i 's/.*/rm epg\/\$date_13\/&/g' workfile
 			if [ -s ~/ztvh/epg/filecheck ]
 			then
@@ -1889,7 +1889,7 @@ then
 		
 		# Create file checker to download changed/new broadcasts
 		comm -2 -3 <(sort -u ~/ztvh/epg/$(date -d '13 days' '+%Y%m%d')_manifest_new) <(sort -u ~/ztvh/epg/$(date -d '13 days' '+%Y%m%d')_manifest_old 2> /dev/null) > workfile
-		sed -i -e 's/\(.*\)\("id":.*\)/\2/g' -e 's/"id"://g' -e 's/},//g' workfile && cp workfile workfile2
+		sed -i 's/\(.*"id":\)\([0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]\)\(,.*\)/\2/g' workfile && cp workfile workfile2
 		sed -i 's/.*/curl -X GET --cookie "\$session" "https:\/\/\$provider\/zapi\/v2\/cached\/program\/power_details\/$powerid?program_ids=&" | grep ": true, " > epg\/\$date_14\/& 2> \/dev\/null/g' workfile
 		if grep -q "curl" workfile
 		then 
@@ -1900,7 +1900,7 @@ then
 		comm -2 -3 <(sort -u ~/ztvh/epg/$(date -d '13 days' '+%Y%m%d')_manifest_old 2> /dev/null) <(sort -u ~/ztvh/epg/$(date -d '13 days' '+%Y%m%d')_manifest_new) > workfile
 		if [ -s workfile2 ]
 		then
-			sed -i -e 's/\(.*\)\("id":.*\)/\2/g' -e 's/"id"://g' -e 's/},//g' workfile
+			sed -i 's/\(.*"id":\)\([0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]\)\(,.*\)/\2/g' workfile
 			cp workfile2 workfile3
 			cat workfile2 >> workfile3
 			cat workfile >> workfile3
@@ -1909,7 +1909,7 @@ then
 		fi
 		if [ -s workfile ]
 		then
-			sed -i -e 's/\(.*\)\("id":.*\)/\2/g' -e 's/"id"://g' -e 's/},//g' workfile
+			sed -i 's/\(.*"id":\)\([0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]\)\(,.*\)/\2/g' workfile
 			sed -i 's/.*/rm epg\/\$date_14\/&/g' workfile
 			if [ -s ~/ztvh/epg/filecheck ]
 			then

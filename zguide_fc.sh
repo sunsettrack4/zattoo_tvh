@@ -42,7 +42,7 @@ then
 		printf "\rChecking cache for missing EPG files... (DAY 1)             "
 		rm $(sed -n "1p" ~/ztvh/work/datefile)/workfile 2> /dev/null
 		cat $(sed -n "1p" ~/ztvh/work/datefile)/* > workfile
-		sed -e 's/.*"id"://g' -e 's/},.*//g' $(sed -n "1p" ~/ztvh/work/datefile)_manifest_new > manifest_file
+		sed 's/\(.*"id":\)\([0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]\)\(,.*\)/\2/g' $(sed -n "1p" ~/ztvh/work/datefile)_manifest_new > manifest_file
 		sed 's/\(.*"id": \)\([0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]\)\(,.*\)/\2/g' workfile > cache_file 
 		comm -2 -3 <(sort -u manifest_file) <(sort -u cache_file) > filecheck
 		if [ -s filecheck ]
@@ -84,7 +84,7 @@ then
 		printf "\rChecking cache for missing EPG files... (DAY 2)             "
 		rm $(sed -n "2p" ~/ztvh/work/datefile)/workfile 2> /dev/null
 		cat $(sed -n "2p" ~/ztvh/work/datefile)/* > workfile
-		sed -e 's/.*"id"://g' -e 's/},.*//g' $(sed -n "2p" ~/ztvh/work/datefile)_manifest_new > manifest_file
+		sed 's/\(.*"id":\)\([0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]\)\(,.*\)/\2/g' $(sed -n "2p" ~/ztvh/work/datefile)_manifest_new > manifest_file
 		sed 's/\(.*"id": \)\([0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]\)\(,.*\)/\2/g' workfile > cache_file
 		comm -2 -3 <(sort -u manifest_file) <(sort -u cache_file) > filecheck
 		if [ -s filecheck ]
@@ -126,7 +126,7 @@ then
 		printf "\rChecking cache for missing EPG files... (DAY 3)             "
 		rm $(sed -n "3p" ~/ztvh/work/datefile)/workfile 2> /dev/null
 		cat $(sed -n "3p" ~/ztvh/work/datefile)/* > workfile
-		sed -e 's/.*"id"://g' -e 's/},.*//g' $(sed -n "3p" ~/ztvh/work/datefile)_manifest_new > manifest_file
+		sed 's/\(.*"id":\)\([0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]\)\(,.*\)/\2/g' $(sed -n "3p" ~/ztvh/work/datefile)_manifest_new > manifest_file
 		sed 's/\(.*"id": \)\([0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]\)\(,.*\)/\2/g' workfile > cache_file 
 		comm -2 -3 <(sort -u manifest_file) <(sort -u cache_file) > filecheck
 		if [ -s filecheck ]
@@ -168,7 +168,7 @@ then
 		printf "\rChecking cache for missing EPG files... (DAY 4)             "
 		rm $(sed -n "4p" ~/ztvh/work/datefile)/workfile 2> /dev/null
 		cat $(sed -n "4p" ~/ztvh/work/datefile)/* > workfile
-		sed -e 's/.*"id"://g' -e 's/},.*//g' $(sed -n "4p" ~/ztvh/work/datefile)_manifest_new > manifest_file
+		sed 's/\(.*"id":\)\([0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]\)\(,.*\)/\2/g' $(sed -n "4p" ~/ztvh/work/datefile)_manifest_new > manifest_file
 		sed 's/\(.*"id": \)\([0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]\)\(,.*\)/\2/g' workfile > cache_file 
 		comm -2 -3 <(sort -u manifest_file) <(sort -u cache_file) > filecheck
 		if [ -s filecheck ]
@@ -210,7 +210,7 @@ then
 		printf "\rChecking cache for missing EPG files... (DAY 5)             "
 		rm $(sed -n "5p" ~/ztvh/work/datefile)/workfile 2> /dev/null
 		cat $(sed -n "5p" ~/ztvh/work/datefile)/* > workfile
-		sed -e 's/.*"id"://g' -e 's/},.*//g' $(sed -n "5p" ~/ztvh/work/datefile)_manifest_new > manifest_file
+		sed 's/\(.*"id":\)\([0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]\)\(,.*\)/\2/g' $(sed -n "5p" ~/ztvh/work/datefile)_manifest_new > manifest_file
 		sed 's/\(.*"id": \)\([0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]\)\(,.*\)/\2/g' workfile > cache_file
 		comm -2 -3 <(sort -u manifest_file) <(sort -u cache_file) > filecheck
 		if [ -s filecheck ]
@@ -252,7 +252,7 @@ then
 		printf "\rChecking cache for missing EPG files... (DAY 6)             "
 		rm $(sed -n "6p" ~/ztvh/work/datefile)/workfile 2> /dev/null
 		cat $(sed -n "6p" ~/ztvh/work/datefile)/* > workfile
-		sed -e 's/.*"id"://g' -e 's/},.*//g' $(sed -n "6p" ~/ztvh/work/datefile)_manifest_new > manifest_file
+		sed 's/\(.*"id":\)\([0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]\)\(,.*\)/\2/g' $(sed -n "6p" ~/ztvh/work/datefile)_manifest_new > manifest_file
 		sed 's/\(.*"id": \)\([0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]\)\(,.*\)/\2/g' workfile > cache_file  
 		comm -2 -3 <(sort -u manifest_file) <(sort -u cache_file) > filecheck
 		if [ -s filecheck ]
@@ -294,7 +294,7 @@ then
 		printf "\rChecking cache for missing EPG files... (DAY 7)             "
 		rm $(sed -n "7p" ~/ztvh/work/datefile)/workfile 2> /dev/null
 		cat $(sed -n "7p" ~/ztvh/work/datefile)/* > workfile
-		sed -e 's/.*"id"://g' -e 's/},.*//g' $(sed -n "7p" ~/ztvh/work/datefile)_manifest_new > manifest_file
+		sed 's/\(.*"id":\)\([0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]\)\(,.*\)/\2/g' $(sed -n "7p" ~/ztvh/work/datefile)_manifest_new > manifest_file
 		sed 's/\(.*"id": \)\([0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]\)\(,.*\)/\2/g' workfile > cache_file 
 		comm -2 -3 <(sort -u manifest_file) <(sort -u cache_file) > filecheck
 		if [ -s filecheck ]
@@ -336,7 +336,7 @@ then
 		printf "\rChecking cache for missing EPG files... (DAY 8)             "
 		rm $(sed -n "8p" ~/ztvh/work/datefile)/workfile 2> /dev/null
 		cat $(sed -n "8p" ~/ztvh/work/datefile)/* > workfile
-		sed -e 's/.*"id"://g' -e 's/},.*//g' $(sed -n "8p" ~/ztvh/work/datefile)_manifest_new > manifest_file
+		sed 's/\(.*"id":\)\([0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]\)\(,.*\)/\2/g' $(sed -n "8p" ~/ztvh/work/datefile)_manifest_new > manifest_file
 		sed 's/\(.*"id": \)\([0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]\)\(,.*\)/\2/g' workfile > cache_file  
 		comm -2 -3 <(sort -u manifest_file) <(sort -u cache_file) > filecheck
 		if [ -s filecheck ]
@@ -378,7 +378,7 @@ then
 		printf "\rChecking cache for missing EPG files... (DAY 9)             "
 		rm $(sed -n "9p" ~/ztvh/work/datefile)/workfile 2> /dev/null
 		cat $(sed -n "9p" ~/ztvh/work/datefile)/* > workfile
-		sed -e 's/.*"id"://g' -e 's/},.*//g' $(sed -n "9p" ~/ztvh/work/datefile)_manifest_new > manifest_file
+		sed 's/\(.*"id":\)\([0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]\)\(,.*\)/\2/g' $(sed -n "9p" ~/ztvh/work/datefile)_manifest_new > manifest_file
 		sed 's/\(.*"id": \)\([0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]\)\(,.*\)/\2/g' workfile > cache_file
 		comm -2 -3 <(sort -u manifest_file) <(sort -u cache_file) > filecheck
 		if [ -s filecheck ]
@@ -420,7 +420,7 @@ then
 		printf "\rChecking cache for missing EPG files... (DAY 10)            "
 		rm $(sed -n "10p" ~/ztvh/work/datefile)/workfile 2> /dev/null
 		cat $(sed -n "10p" ~/ztvh/work/datefile)/* > workfile
-		sed -e 's/.*"id"://g' -e 's/},.*//g' $(sed -n "10p" ~/ztvh/work/datefile)_manifest_new > manifest_file
+		sed 's/\(.*"id":\)\([0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]\)\(,.*\)/\2/g' $(sed -n "10p" ~/ztvh/work/datefile)_manifest_new > manifest_file
 		sed 's/\(.*"id": \)\([0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]\)\(,.*\)/\2/g' workfile > cache_file  
 		comm -2 -3 <(sort -u manifest_file) <(sort -u cache_file) > filecheck
 		if [ -s filecheck ]
@@ -462,7 +462,7 @@ then
 		printf "\rChecking cache for missing EPG files... (DAY 11)            "
 		rm $(sed -n "11p" ~/ztvh/work/datefile)/workfile 2> /dev/null
 		cat $(sed -n "11p" ~/ztvh/work/datefile)/* > workfile
-		sed -e 's/.*"id"://g' -e 's/},.*//g' $(sed -n "11p" ~/ztvh/work/datefile)_manifest_new > manifest_file
+		sed 's/\(.*"id":\)\([0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]\)\(,.*\)/\2/g' $(sed -n "11p" ~/ztvh/work/datefile)_manifest_new > manifest_file
 		sed 's/\(.*"id": \)\([0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]\)\(,.*\)/\2/g' workfile > cache_file
 		comm -2 -3 <(sort -u manifest_file) <(sort -u cache_file) > filecheck
 		if [ -s filecheck ]
@@ -504,7 +504,7 @@ then
 		printf "\rChecking cache for missing EPG files... (DAY 12)            "
 		rm $(sed -n "12p" ~/ztvh/work/datefile)/workfile 2> /dev/null
 		cat $(sed -n "12p" ~/ztvh/work/datefile)/* > workfile
-		sed -e 's/.*"id"://g' -e 's/},.*//g' $(sed -n "12p" ~/ztvh/work/datefile)_manifest_new > manifest_file
+		sed 's/\(.*"id":\)\([0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]\)\(,.*\)/\2/g' $(sed -n "12p" ~/ztvh/work/datefile)_manifest_new > manifest_file
 		sed 's/\(.*"id": \)\([0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]\)\(,.*\)/\2/g' workfile > cache_file 
 		comm -2 -3 <(sort -u manifest_file) <(sort -u cache_file) > filecheck
 		if [ -s filecheck ]
@@ -546,7 +546,7 @@ then
 		printf "\rChecking cache for missing EPG files... (DAY 13)            "
 		rm $(sed -n "13p" ~/ztvh/work/datefile)/workfile 2> /dev/null
 		cat $(sed -n "13p" ~/ztvh/work/datefile)/* > workfile
-		sed -e 's/.*"id"://g' -e 's/},.*//g' $(sed -n "13p" ~/ztvh/work/datefile)_manifest_new > manifest_file
+		sed 's/\(.*"id":\)\([0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]\)\(,.*\)/\2/g' $(sed -n "13p" ~/ztvh/work/datefile)_manifest_new > manifest_file
 		sed 's/\(.*"id": \)\([0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]\)\(,.*\)/\2/g' workfile > cache_file 
 		comm -2 -3 <(sort -u manifest_file) <(sort -u cache_file) > filecheck
 		if [ -s filecheck ]
@@ -588,7 +588,7 @@ then
 		printf "\rChecking cache for missing EPG files... (DAY 14)            "
 		rm $(sed -n "14p" ~/ztvh/work/datefile)/workfile 2> /dev/null
 		cat $(sed -n "14p" ~/ztvh/work/datefile)/* > workfile
-		sed -e 's/.*"id"://g' -e 's/},.*//g' $(sed -n "14p" ~/ztvh/work/datefile)_manifest_new > manifest_file
+		sed 's/\(.*"id":\)\([0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]\)\(,.*\)/\2/g' $(sed -n "14p" ~/ztvh/work/datefile)_manifest_new > manifest_file
 		sed 's/\(.*"id": \)\([0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]\)\(,.*\)/\2/g' workfile > cache_file 
 		comm -2 -3 <(sort -u manifest_file) <(sort -u cache_file) > filecheck
 		if [ -s filecheck ]
