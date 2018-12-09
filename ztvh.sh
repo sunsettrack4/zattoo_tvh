@@ -21,7 +21,7 @@ clear
 echo "                                                                        "
 echo "ZattooUNLIMITED for VLC and tvheadend                                   "
 echo "(c) 2017-2018 Jan-Luca Neumann                        I             +   "
-echo "Script v0.4.8 2018/10/31 | Zattoo v2.12.8       I    I         +        "
+echo "Script v0.4.9 2018/12/09 | Zattoo v2.12.9       I    I         +        "
 echo "                                                 I  I             +     "
 echo "                                                  II                    "
 echo "ZZZZZZZZZ       AA     TTTTTTTTTT TTTTTTTTTT    888888        888888    "
@@ -1625,15 +1625,9 @@ then
 		fi
 		
 		# M1200 PVR CLOUD
-		if xset q &>/dev/null
+		if command -v ffmpeg >/dev/null
 		then
-			if command -v ffmpeg >/dev/null
-			then
-				if command -v vlc >/dev/null
-				then
-					echo '	2 "PVR CLOUD" \' >> menu
-				fi
-			fi
+			echo '	2 "PVR CLOUD" \' >> menu
 		fi
 		
 		# M1300 TELETEXT
@@ -2319,7 +2313,7 @@ clear
 
 echo "ZattooUNLIMITED for VLC and tvheadend"
 echo "(c) 2017-2018 Jan-Luca Neumann"
-echo "Script v0.4.8 | Zattoo v2.12.8"
+echo "Script v0.4.9 | Zattoo v2.12.9"
 echo ""
 echo "=== GRABBER STARTUP ==="
 echo ""
