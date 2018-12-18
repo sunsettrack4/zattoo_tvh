@@ -7,7 +7,7 @@ The created files will be processed by tvHeadend; the channels can be played bac
 
 HOW TO USE THIS SCRIPT
 Supported platforms: any Linux-based OS, e.g. Ubuntu, Debian
-Additional applications required: phantomjs, uni2ascii, libxml2-utils, ffmpeg
+Additional applications required: phantomjs, uni2ascii, libxml2-utils, ffmpeg, socat, iputils-ping, vlc, curl, dialog
 
 Instructions:
 1) Create a directory called "ztvh" in your home folder
@@ -38,7 +38,7 @@ The following options are available:
 
 
 HOW TO USE THE FILES
-1) Open the tvHeadend webpage - go to menu option "Configuration/DVB inputs/Networks"
+1) Open the tvHeadend webpage - go to menu option "Configuration" > "DVB inputs" > "Networks"
 2) Click on "Add" button to add a new IPTV source
 3) Choose "IPTV Automatic Network" and enter a network name
 4) Fill in the fields as follows:
@@ -47,8 +47,9 @@ HOW TO USE THE FILES
     "Icon base URL" = file:///home/<user>/ztvh      <== enter your PC username instead of "<user>"
    Accept your settings by clicking on "Save" button
    tvHeadend will do a channel scan automatically.
-5) Go to menu option "Configuration/Channel / EPG/EPG Grabber Modules" and enable "External: XMLTV"
-6) Run the command "cat /home/<user>/ztvh/zattoo_fullepg.xml | socat - UNIX-CONNECT:/home/<user>/.hts/tvheadend/epggrab/xmltv.sock"
+5) Go to menu option "Configuration" > "Channel/EPG" > "EPG Grabber Modules" and enable "External: XMLTV"
+6) Go to menu option "Configuration" > "Channel/EPG" > "Channel" > "Map services" > "Map all services" and map the services
+7) Run the command "cat /home/<user>/ztvh/zattoo_fullepg.xml | socat - UNIX-CONNECT:/home/<user>/.hts/tvheadend/epggrab/xmltv.sock"
    tvHeadend will process the EPG XMLTV file automatically.
 
 FURTHER SUPPORT
