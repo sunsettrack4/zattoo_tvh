@@ -424,9 +424,9 @@ then
 		fi
 		
 		cd ~/ztvh
+		sleep 3s
 		echo "M1200" > work/value
 		rm work/output
-		sleep 3s
 	fi
 elif grep -q "M1200U" work/value
 then
