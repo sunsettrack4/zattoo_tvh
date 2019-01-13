@@ -411,6 +411,7 @@ then
 				fi
 			else
 				ffmpeg -loglevel fatal -i "$(<~/ztvh/work/broadcast)/$(<~/ztvh/work/final_broadcast)" -vcodec copy -acodec copy -f mpegts -tune zerolatency -preset normal $(grep "recfolder" ~/ztvh/user/options | sed "s/recfolder=//g")/zattoo_rec_$(sed -n "$(<~/ztvh\/work\/value)p" ~/ztvh/work/recordings_list).ts & disown
+				sed -n "$(<~/ztvh\/work\/value)p" ~/ztvh/work/recordings_full >$(grep "recfolder" ~/ztvh/user/options | sed "s/recfolder=//g")/zattoo_rec_$(sed -n "$(<~/ztvh\/work\/value)p" ~/ztvh/work/recordings_list).info
 			
 				cd ~/ztvh
 			

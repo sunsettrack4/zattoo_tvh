@@ -74,7 +74,7 @@ fi
 
 # FOLDER + FILES missing
 
-if ls -ld ~/ztvh | grep -q "drwxrwxrwx" 2> /dev/null
+if ls -ld ~/ztvh | grep -q "[dl]rwxrwxrwx" 2> /dev/null
 then
 	cd ~/ztvh
 elif [ -e ~/ztvh ]
