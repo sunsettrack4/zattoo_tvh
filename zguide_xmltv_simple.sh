@@ -75,6 +75,13 @@ sed -i 's/},/|/g' workfile
 sed -i 's/}\]/|/g' workfile
 sed -i "s/.*/&|/g" workfile
 
+# SET UP CHANNEL ORDER
+printf "\rSetting up channel order..."
+sed 's/\(.*\)\("s":[^|]*|\)\(.*\)/\2\1\2\3/g' workfile > workfile_chorder
+sed -i 's/\(.*\)\("cid":[^|]*|\)\(.*\)/\2\1\2\3/g' workfile_chorder
+sort -u workfile_chorder > workfile && rm workfile_chorder
+sed -i 's/.*\[{/[{/g' workfile
+
 # START/END TIME + CHANNEL ID
 printf "\rCreating strings: Start, End, Channel ID...          "
 sed -i 's/\(.*\)\("cid":[^|]*|\)\(.*\)/\2\1|\3/g' workfile

@@ -38,6 +38,13 @@ sed -i 's/\]}, "/]}|"/g' workfile
 sed -i 's/}\]}/||/g' workfile
 sed -i "s/.*/&|/g" workfile
 
+# SET UP CHANNEL ORDER
+printf "\rSetting up channel order..."
+sed 's/\(.*\)\("s":[^|]*|\)\(.*\)/\2\1\2\3/g' workfile > workfile_chorder
+sed -i 's/\(.*\)\("cid":[^|]*|\)\(.*\)/\2\1\2\3/g' workfile_chorder
+sort -u workfile_chorder > workfile && rm workfile_chorder
+sed -i 's/.*\[{/[{/g' workfile
+
 # START/END TIME + CHANNEL ID
 printf "\rCreating strings: Start, End, Channel ID             "
 sed -i 's/\(.*\)\("cid":[^|]*|\)\(.*\)/\2\1|\3/g' workfile
@@ -67,25 +74,15 @@ printf "\rCreating strings: Title                              "
 sed -i 's/\(\[{.*\)\("t":[^|]*|\)\(.*\)/\2\1|\3/g' workfile
 sed -i -e 's/"t": "/  <title lang="de">/g' -e 's/"|\[{/<\/title>\n[{/g' workfile 
 
-# COUNTRY
-printf "\rCreating strings: Country                            "
-sed -i 's/\(\[{.*\)\("country":[^|]*|\)\(.*\)/\2\1|\3/g' workfile
-sed -i -e 's/"country": ""|//g' -e 's/"country": "/  <country>/g' -e 's/"|\[{/<\/country>\n[{/g' workfile
-
-# DESCRIPTION
-printf "\rCreating strings: Description                        "
-sed -i 's/\(\[{.*\)\("d":[^|]*|\)\(.*\)/\2\1|\3/g' workfile
-sed -i -e 's/"d": ""|//g' -e 's/"d": "/  <desc lang="de">/g' -e 's/"|\[{/<\/desc>\n[{/g' workfile
-
 # SUBTITLE
 printf "\rCreating strings: Sub-Title                          "
 sed -i 's/\(\[{.*\)\("et":[^|]*|\)\(.*\)/\2\1|\3/g' workfile
 sed -i -e 's/"et": null|//g' -e 's/"et": ""|//g' -e 's/"et": "/  <sub-title>/g' -e 's/"|\[{/<\/sub-title>\n[{/g' workfile
 
-# AGE RATING
-printf "\rCreating strings: Age Rating                         "
-sed -i 's/\(\[{.*\)\("yp_r":[^|]*|\)\(.*\)/\2\1|\3/g' workfile
-sed -i -e 's/"yp_r": null|//g' -e 's/"yp_r": "/  <rating system="FSK">\n    <value>/g' -e 's/"|\[{/<\/value>\n  <\/rating>\n[{/g' workfile
+# DESCRIPTION
+printf "\rCreating strings: Description                        "
+sed -i 's/\(\[{.*\)\("d":[^|]*|\)\(.*\)/\2\1|\3/g' workfile
+sed -i -e 's/"d": ""|//g' -e 's/"d": "/  <desc lang="de">/g' -e 's/"|\[{/<\/desc>\n[{/g' workfile
 
 # CREDITS
 printf "\rCreating strings: Credits                            "
@@ -96,6 +93,16 @@ sed -i -e 's/{|"actor": \[/{"actor": [/g' -e 's/|"actor": \[/|\n{"actor": [/g' w
 
 sed -i '/{"director"/{s/{"director": \["/    <director>/g;s/"|"/<\/director>\n    <director>/g;s/"\]|/<\/director>/g}' workfile
 sed -i '/{"actor"/{s/{"actor": \["/    <actor>/g;s/"|"/<\/actor>\n    <actor>/g;s/"\]/<\/actor>/g}' workfile
+
+# YEAR
+printf "\rCreating strings: Date                               "
+sed -i 's/\(\[{.*\)\("year": [0-9][0-9][0-9][0-9]\)|\(.*\)/\2|\1|\3/g' workfile
+sed -i -e 's/"year": null|//g' -e 's/"year": /  <date>/g' -e 's/|\[{/<\/date>\n[{/g' workfile
+
+# COUNTRY
+printf "\rCreating strings: Country                            "
+sed -i 's/\(\[{.*\)\("country":[^|]*|\)\(.*\)/\2\1|\3/g' workfile
+sed -i -e 's/"country": ""|//g' -e 's/"country": "/  <country>/g' -e 's/"|\[{/<\/country>\n[{/g' workfile
 
 # GENRE/CATEGORY
 printf "\rCreating strings: Category                           "
@@ -111,10 +118,10 @@ sed -i -e 's/\(\[{.*\)\("e_no":[^|]*|\)\(.*\)/\2\1|\3/g' -e 's/\("e_no":.*\)\("s
 sed -i 's/\("s_no": \)\(.*\)\(|"e_no": \)\(.*\)|/  <episode-num system="onscreen">S\2 E\4<\/episode-num>/g' workfile
 sed -i -e 's/\("s_no": \)\(.*\)|/  <episode-num system="onscreen">S\2<\/episode-num>/g' -e 's/\("e_no": \)\(.*\)|/  <episode-num system="onscreen">E\2<\/episode-num>/g' workfile
 
-# YEAR
-printf "\rCreating strings: Date                               "
-sed -i 's/\(\[{.*\)\("year": [0-9][0-9][0-9][0-9]\)|\(.*\)/\2|\1|\3/g' workfile
-sed -i -e 's/"year": null|//g' -e 's/"year": /  <date>/g' -e 's/|\[{/<\/date>\n[{/g' workfile
+# AGE RATING
+printf "\rCreating strings: Age Rating                         "
+sed -i 's/\(\[{.*\)\("yp_r":[^|]*|\)\(.*\)/\2\1|\3/g' workfile
+sed -i -e 's/"yp_r": null|//g' -e 's/"yp_r": "/  <rating system="FSK">\n    <value>/g' -e 's/"|\[{/<\/value>\n  <\/rating>\n[{/g' workfile
 
 # END OF PROGRAMME
 printf "\rFinalizing string creation...                        "
