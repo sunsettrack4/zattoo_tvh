@@ -368,15 +368,17 @@ do
 			then
 				dialog --backtitle "[L41C0] [INSECURE] ZATTOO UNLIMITED BETA > LOGIN" --title "LOGIN" --infobox "Login to webservice..." 3 40
 				
-				if phantomjs -platform offscreen --ignore-ssl-errors=true ~/ztvh/work/save_page.js https://$provider/login > cookie_list | grep -q "This application failed to start"
+				if phantomjs -platform offscreen --ignore-ssl-errors=true ~/ztvh/work/save_page.js https://$provider/login 2>&1 >cookie_list | grep -q "This application failed to start"
 				then
-					if phantomjs --ignore-ssl-errors=true ~/ztvh/work/save_page.js https://$provider/login > cookie_list | grep -q "This application failed to start"
+					if phantomjs --ignore-ssl-errors=true ~/ztvh/work/save_page.js https://$provider/login 2>&1 >cookie_list | grep -q "This application failed to start"
 					then
 						export QT_QPA_PLATFORM=phantom
-						if phantomjs -platform phantom --ignore-ssl-errors=true ~/ztvh/work/save_page.js https://$provider/login > cookie_list | grep -q "This application failed to start"
+						if phantomjs -platform phantom --ignore-ssl-errors=true ~/ztvh/work/save_page.js https://$provider/login 2>&1 >cookie_list | grep -q "This application failed to start"
 						then
 							dialog --backtitle "[L41F0] [INSECURE] ZATTOO UNLIMITED BETA > LOGIN" --title "FATAL ERROR [1]" --infobox "PhantomJS failed to start!" 3 40
 							sleep 2s
+							clear
+							echo "ERROR: PhantomJS failed to start - script stopped."
 							exit 1
 						fi
 					fi
@@ -384,15 +386,17 @@ do
 			else
 				dialog --backtitle "[L41C0] ZATTOO UNLIMITED BETA > LOGIN" --title "LOGIN" --infobox "Login to webservice..." 3 40
 				
-				if phantomjs -platform offscreen ~/ztvh/work/save_page.js https://$provider/login > cookie_list | grep -q "This application failed to start"
+				if phantomjs -platform offscreen ~/ztvh/work/save_page.js https://$provider/login 2>&1 >cookie_list | grep -q "This application failed to start"
 				then
-					if phantomjs ~/ztvh/work/save_page.js https://$provider/login > cookie_list | grep -q "This application failed to start"
+					if phantomjs ~/ztvh/work/save_page.js https://$provider/login 2>&1 >cookie_list | grep -q "This application failed to start"
 					then
 						export QT_QPA_PLATFORM=phantom
-						if phantomjs -platform phantom ~/ztvh/work/save_page.js https://$provider/login > cookie_list | grep -q "This application failed to start"
+						if phantomjs -platform phantom ~/ztvh/work/save_page.js https://$provider/login 2>&1 >cookie_list | grep -q "This application failed to start"
 						then
 							dialog --backtitle "[L41F0] ZATTOO UNLIMITED BETA > LOGIN" --title "FATAL ERROR [1]" --infobox "PhantomJS failed to start!" 3 40
 							sleep 2s
+							clear
+							echo "ERROR: PhantomJS failed to start - script stopped."
 							exit 1
 						fi
 					fi
@@ -442,28 +446,32 @@ do
 									
 				if grep -q "insecure=true" ~/ztvh/user/userfile
 				then
-					if phantomjs -platform offscreen --ignore-ssl-errors=true ~/ztvh/work/save_page.js https://$provider/login > cookie_list | grep -q "This application failed to start"
+					if phantomjs -platform offscreen --ignore-ssl-errors=true ~/ztvh/work/save_page.js https://$provider/login 2>&1 >cookie_list | grep -q "This application failed to start"
 					then
-						if phantomjs --ignore-ssl-errors=true ~/ztvh/work/save_page.js https://$provider/login > cookie_list | grep -q "This application failed to start"
+						if phantomjs --ignore-ssl-errors=true ~/ztvh/work/save_page.js https://$provider/login 2>&1 >cookie_list | grep -q "This application failed to start"
 						then
 							export QT_QPA_PLATFORM=phantom
-							if phantomjs -platform phantom --ignore-ssl-errors=true ~/ztvh/work/save_page.js https://$provider/login > cookie_list | grep -q "This application failed to start"
+							if phantomjs -platform phantom --ignore-ssl-errors=true ~/ztvh/work/save_page.js https://$provider/login 2>&1 >cookie_list | grep -q "This application failed to start"
 							then
 								dialog --backtitle "[L41F0] [INSECURE] ZATTOO UNLIMITED BETA > LOGIN" --title "FATAL ERROR [3]" --infobox "PhantomJS failed to start!" 3 50
+								clear
+								echo "ERROR: PhantomJS failed to start - script stopped."
 								exit 1
 							fi
 						fi
 					fi
 				else
-					if phantomjs -platform offscreen ~/ztvh/work/save_page.js https://$provider/login > cookie_list | grep -q "This application failed to start"
+					if phantomjs -platform offscreen ~/ztvh/work/save_page.js https://$provider/login 2>&1 >cookie_list | grep -q "This application failed to start"
 					then
-						if phantomjs ~/ztvh/work/save_page.js https://$provider/login > cookie_list | grep -q "This application failed to start"
+						if phantomjs ~/ztvh/work/save_page.js https://$provider/login 2>&1 >cookie_list | grep -q "This application failed to start"
 						then
 							export QT_QPA_PLATFORM=phantom
-							if phantomjs -platform phantom ~/ztvh/work/save_page.js https://$provider/login > cookie_list | grep -q "This application failed to start"
+							if phantomjs -platform phantom ~/ztvh/work/save_page.js https://$provider/login 2>&1 >cookie_list | grep -q "This application failed to start"
 							then
 								dialog --backtitle "[L41F0] ZATTOO UNLIMITED BETA > LOGIN" --title "FATAL ERROR [3]" --infobox "PhantomJS failed to start!" 3 50
 								sleep 2s
+								clear
+								echo "ERROR: PhantomJS failed to start - script stopped."
 								exit 1
 							fi
 						fi
@@ -604,29 +612,33 @@ do
 						
 						if grep -q "insecure=true" ~/ztvh/user/userfile 2> /dev/null
 						then
-							if phantomjs -platform offscreen --ignore-ssl-errors=true ~/ztvh/work/save_page.js https://$provider/login > cookie_list | grep -q "This application failed to start"
+							if phantomjs -platform offscreen --ignore-ssl-errors=true ~/ztvh/work/save_page.js https://$provider/login 2>&1 >cookie_list | grep -q "This application failed to start"
 							then
-								if phantomjs --ignore-ssl-errors=true ~/ztvh/work/save_page.js https://$provider/login > cookie_list | grep -q "This application failed to start"
+								if phantomjs --ignore-ssl-errors=true ~/ztvh/work/save_page.js https://$provider/login 2>&1 >cookie_list | grep -q "This application failed to start"
 								then
 									export QT_QPA_PLATFORM=phantom
-									if phantomjs -platform phantom --ignore-ssl-errors=true ~/ztvh/work/save_page.js https://$provider/login > cookie_list | grep -q "This application failed to start"
+									if phantomjs -platform phantom --ignore-ssl-errors=true ~/ztvh/work/save_page.js https://$provider/login 2>&1 >cookie_list | grep -q "This application failed to start"
 									then
 										dialog --backtitle "[L11F0] [INSECURE] ZATTOO UNLIMITED BETA > PROVIDER" --title "[1] FATAL ERROR" --infobox "PhantomJS failed to start!" 3 50
 										sleep 2s
+										clear
+										echo "ERROR: PhantomJS failed to start - script stopped."
 										exit 1
 									fi
 								fi
 							fi
 						else
-							if phantomjs -platform offscreen ~/ztvh/work/save_page.js https://$provider/login > cookie_list | grep -q "This application failed to start"
+							if phantomjs -platform offscreen ~/ztvh/work/save_page.js https://$provider/login 2>&1 >cookie_list | grep -q "This application failed to start"
 							then
-								if phantomjs ~/ztvh/work/save_page.js https://$provider/login > cookie_list | grep -q "This application failed to start"
+								if phantomjs ~/ztvh/work/save_page.js https://$provider/login 2>&1 >cookie_list | grep -q "This application failed to start"
 								then
 									export QT_QPA_PLATFORM=phantom
-									if phantomjs -platform phantom ~/ztvh/work/save_page.js https://$provider/login > cookie_list | grep -q "This application failed to start"
+									if phantomjs -platform phantom ~/ztvh/work/save_page.js https://$provider/login 2>&1 >cookie_list | grep -q "This application failed to start"
 									then
 										dialog --backtitle "[L11F0] ZATTOO UNLIMITED BETA > PROVIDER" --title "[1] FATAL ERROR" --infobox "PhantomJS failed to start!" 3 50
 										sleep 2s
+										clear
+										echo "ERROR: PhantomJS failed to start - script stopped."
 										exit 1
 									fi
 								fi
@@ -686,29 +698,33 @@ do
 										
 										if grep -q "insecure=true" ~/ztvh/user/userfile
 										then
-											if phantomjs -platform offscreen --ignore-ssl-errors=true ~/ztvh/work/save_page.js https://$provider/login > cookie_list | grep -q "This application failed to start"
+											if phantomjs -platform offscreen --ignore-ssl-errors=true ~/ztvh/work/save_page.js https://$provider/login 2>&1 >cookie_list | grep -q "This application failed to start"
 											then
-												if phantomjs --ignore-ssl-errors=true ~/ztvh/work/save_page.js https://$provider/login > cookie_list | grep -q "This application failed to start"
+												if phantomjs --ignore-ssl-errors=true ~/ztvh/work/save_page.js https://$provider/login 2>&1 >cookie_list | grep -q "This application failed to start"
 												then
 													export QT_QPA_PLATFORM=phantom 
-													if phantomjs -platform phantom --ignore-ssl-errors=true ~/ztvh/work/save_page.js https://$provider/login > cookie_list | grep -q "This application failed to start"
+													if phantomjs -platform phantom --ignore-ssl-errors=true ~/ztvh/work/save_page.js https://$provider/login 2>&1 >cookie_list | grep -q "This application failed to start"
 													then
 														dialog --backtitle "[L11F0] [INSECURE] ZATTOO UNLIMITED BETA > PROVIDER" --title "[2] FATAL ERROR" --infobox "PhantomJS failed to start!" 3 50
 														sleep 2s
+														clear
+														echo "ERROR: PhantomJS failed to start - script stopped."
 														exit 1
 													fi
 												fi
 											fi
 										else
-											if phantomjs -platform offscreen ~/ztvh/work/save_page.js https://$provider/login > cookie_list | grep -q "This application failed to start"
+											if phantomjs -platform offscreen ~/ztvh/work/save_page.js https://$provider/login 2>&1 >cookie_list | grep -q "This application failed to start"
 											then
-												if phantomjs ~/ztvh/work/save_page.js https://$provider/login > cookie_list 2> /dev/null | grep -q "This application failed to start"
+												if phantomjs ~/ztvh/work/save_page.js https://$provider/login 2>&1 >cookie_list | grep -q "This application failed to start"
 												then
 													export QT_QPA_PLATFORM=phantom 
-													if phantomjs -platform phantom ~/ztvh/work/save_page.js https://$provider/login > cookie_list | grep -q "This application failed to start"
+													if phantomjs -platform phantom ~/ztvh/work/save_page.js https://$provider/login 2>&1 >cookie_list | grep -q "This application failed to start"
 													then
 														dialog --backtitle "[L11F0] ZATTOO UNLIMITED BETA > PROVIDER" --title "[2] FATAL ERROR" --infobox "PhantomJS failed to start!" 3 50
 														sleep 2s
+														clear
+														echo "ERROR: PhantomJS failed to start - script stopped."
 														exit 1
 													fi
 												fi
@@ -738,15 +754,17 @@ do
 								then
 									dialog --backtitle "[L11R0] [INSECURE] ZATTOO UNLIMITED BETA > PROVIDER" --infobox "Checking availability of chosen provider..." 3 50
 									
-									if phantomjs -platform offscreen --ignore-ssl-errors=true ~/ztvh/work/save_page.js https://www.$provider/login > cookie_list | grep -q "This application failed to start"
+									if phantomjs -platform offscreen --ignore-ssl-errors=true ~/ztvh/work/save_page.js https://www.$provider/login 2>&1 >cookie_list | grep -q "This application failed to start"
 									then
-										if phantomjs --ignore-ssl-errors=true ~/ztvh/work/save_page.js https://www.$provider/login > cookie_list | grep -q "This application failed to start"
+										if phantomjs --ignore-ssl-errors=true ~/ztvh/work/save_page.js https://www.$provider/login 2>&1 >cookie_list | grep -q "This application failed to start"
 										then
 											export QT_QPA_PLATFORM=phantom 
-											if phantomjs -platform phantom --ignore-ssl-errors=true ~/ztvh/work/save_page.js https://www.$provider/login > cookie_list | grep -q "This application failed to start"
+											if phantomjs -platform phantom --ignore-ssl-errors=true ~/ztvh/work/save_page.js https://www.$provider/login 2>&1 >cookie_list | grep -q "This application failed to start"
 											then
 												dialog --backtitle "[L11F0] [INSECURE] ZATTOO UNLIMITED BETA > PROVIDER" --title "[3] FATAL ERROR" --infobox "PhantomJS failed to start!" 3 50
 												sleep 2s
+												clear
+												echo "ERROR: PhantomJS failed to start - script stopped."
 												exit 1
 											fi
 										fi
@@ -754,15 +772,17 @@ do
 								else
 									dialog --backtitle "[L11R0] ZATTOO UNLIMITED BETA > PROVIDER" --infobox "Checking availability of chosen provider..." 3 50
 									
-									if phantomjs -platform offscreen ~/ztvh/work/save_page.js https://www.$provider/login > cookie_list | grep -q "This application failed to start"
+									if phantomjs -platform offscreen ~/ztvh/work/save_page.js https://www.$provider/login 2>&1 >cookie_list | grep -q "This application failed to start"
 									then
-										if phantomjs ~/ztvh/work/save_page.js https://www.$provider/login > cookie_list | grep -q "This application failed to start"
+										if phantomjs ~/ztvh/work/save_page.js https://www.$provider/login 2>&1 >cookie_list | grep -q "This application failed to start"
 										then
 											export QT_QPA_PLATFORM=phantom 
-											if phantomjs -platform phantom ~/ztvh/work/save_page.js https://www.$provider/login > cookie_list | grep -q "This application failed to start"
+											if phantomjs -platform phantom ~/ztvh/work/save_page.js https://www.$provider/login 2>&1 >cookie_list | grep -q "This application failed to start"
 											then
 												dialog --backtitle "[L11F0] ZATTOO UNLIMITED BETA > PROVIDER" --title "[3] FATAL ERROR" --infobox "PhantomJS failed to start!" 3 50
 												sleep 2s
+												clear
+												echo "ERROR: PhantomJS failed to start - script stopped."
 												exit 1
 											fi
 										fi
@@ -824,29 +844,33 @@ do
 										
 										if grep -q "insecure=true" ~/ztvh/user/userfile
 										then
-											if phantomjs -platform offscreen --ignore-ssl-errors=true ~/ztvh/work/save_page.js https://www.$provider/login > cookie_list | grep -q "This application failed to start"
+											if phantomjs -platform offscreen --ignore-ssl-errors=true ~/ztvh/work/save_page.js https://www.$provider/login 2>&1 >cookie_list | grep -q "This application failed to start"
 											then
-												if phantomjs --ignore-ssl-errors=true ~/ztvh/work/save_page.js https://www.$provider/login > cookie_list | grep -q "This application failed to start"
+												if phantomjs --ignore-ssl-errors=true ~/ztvh/work/save_page.js https://www.$provider/login 2>&1 >cookie_list | grep -q "This application failed to start"
 												then
 													export QT_QPA_PLATFORM=phantom 
-													if phantomjs -platform phantom --ignore-ssl-errors=true ~/ztvh/work/save_page.js https://www.$provider/login > cookie_list | grep -q "This application failed to start"
+													if phantomjs -platform phantom --ignore-ssl-errors=true ~/ztvh/work/save_page.js https://www.$provider/login 2>&1 >cookie_list | grep -q "This application failed to start"
 													then
 														dialog --backtitle "[L11F0] [INSECURE] ZATTOO UNLIMITED BETA > PROVIDER" --title "[4] FATAL ERROR" --infobox "PhantomJS failed to start!" 3 50
 														sleep 2s
+														clear
+														echo "ERROR: PhantomJS failed to start - script stopped."
 														exit 1
 													fi
 												fi
 											fi
 										else
-											if phantomjs -platform offscreen ~/ztvh/work/save_page.js https://www.$provider/login > cookie_list | grep -q "This application failed to start"
+											if phantomjs -platform offscreen ~/ztvh/work/save_page.js https://www.$provider/login 2>&1 >cookie_list | grep -q "This application failed to start"
 											then
-												if phantomjs ~/ztvh/work/save_page.js https://www.$provider/login > cookie_list | grep -q "This application failed to start"
+												if phantomjs ~/ztvh/work/save_page.js https://www.$provider/login 2>&1 >cookie_list | grep -q "This application failed to start"
 												then
 													export QT_QPA_PLATFORM=phantom 
-													if phantomjs -platform phantom ~/ztvh/work/save_page.js https://www.$provider/login > cookie_list | grep -q "This application failed to start"
+													if phantomjs -platform phantom ~/ztvh/work/save_page.js https://www.$provider/login 2>&1 >cookie_list | grep -q "This application failed to start"
 													then
 														dialog --backtitle "[L11F0] ZATTOO UNLIMITED BETA > PROVIDER" --title "[4] FATAL ERROR" --infobox "PhantomJS failed to start!" 3 50
 														sleep 2s
+														clear
+														echo "ERROR: PhantomJS failed to start - script stopped."
 														exit 1
 													fi
 												fi
