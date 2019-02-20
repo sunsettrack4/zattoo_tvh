@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#      Copyright (C) 2017-2018 Jan-Luca Neumann
+#      Copyright (C) 2017-2019 Jan-Luca Neumann
 #      https://github.com/sunsettrack4/zattoo_tvh/
 #
 #  This Program is free software; you can redistribute it and/or modify

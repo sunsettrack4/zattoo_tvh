@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#      Copyright (C) 2017-2018 Jan-Luca Neumann
+#      Copyright (C) 2017-2019 Jan-Luca Neumann
 #      https://github.com/sunsettrack4/zattoo_tvh/
 #
 #  This Program is free software; you can redistribute it and/or modify
@@ -20,8 +20,8 @@ clear
 
 echo "                                                                        "
 echo "ZattooUNLIMITED for VLC and tvheadend                                   "
-echo "(c) 2017-2018 Jan-Luca Neumann                        I             +   "
-echo "Script v0.5.0 2018/12/16 | Zattoo v2.12.9       I    I         +        "
+echo "(c) 2017-2019 Jan-Luca Neumann                        I             +   "
+echo "Script v0.5.1 2019/02/20 | Zattoo v2.13.0       I    I         +        "
 echo "                                                 I  I             +     "
 echo "                                                  II                    "
 echo "ZZZZZZZZZ       AA     TTTTTTTTTT TTTTTTTTTT    888888        888888    "
@@ -2336,8 +2336,8 @@ fi
 clear
 
 echo "ZattooUNLIMITED for VLC and tvheadend"
-echo "(c) 2017-2018 Jan-Luca Neumann"
-echo "Script v0.5.0 | Zattoo v2.12.9"
+echo "(c) 2017-2019 Jan-Luca Neumann"
+echo "Script v0.5.1 | Zattoo v2.13.0"
 echo ""
 echo "=== GRABBER STARTUP ==="
 echo ""
