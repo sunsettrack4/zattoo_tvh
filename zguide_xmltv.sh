@@ -115,8 +115,10 @@ sed -i '/<category lang="de">/s/"|"/ \/ /g' workfile
 printf "\rCreating strings: Season, Episode                    "
 sed -i -e 's/"e_no": null|//g' -e 's/"s_no": null|//g' workfile
 sed -i -e 's/\(\[{.*\)\("e_no":[^|]*|\)\(.*\)/\2\1|\3/g' -e 's/\("e_no":.*\)\("s_no":[^|]*|\)\(.*\)/\2\1|\3/g' -e 's/\(\[{.*\)\("s_no":[^|]*|\)\(.*\)/\2\1|\3/g' -e 's/|\[{/|\n[{/g' workfile
-sed -i 's/\("s_no": \)\(.*\)\(|"e_no": \)\(.*\)|/  <episode-num system="onscreen">S\2 E\4<\/episode-num>/g' workfile
-sed -i -e 's/\("s_no": \)\(.*\)|/  <episode-num system="onscreen">S\2<\/episode-num>/g' -e 's/\("e_no": \)\(.*\)|/  <episode-num system="onscreen">E\2<\/episode-num>/g' workfile
+sed -i 's/\("s_no": \)\(.*\)\(|"e_no": \)\(.*\)|/  <episode-num system="xmltv_ns">SERIESNUMBER\2 . SERIESEPISODENUMBER\4 . <\/episode-num>/g' workfile
+sed -i -e 's/\("s_no": \)\(.*\)|/  <episode-num system="xmltv_ns">SERIESNUMBER\2 . SERIESEPISODENUMBER1 . <\/episode-num>/g' -e 's/\("e_no": \)\(.*\)|/  <episode-num system="xmltv_ns">SERIESNUMBER1 . SERIESEPISODENUMBER\2 . <\/episode-num>/g' workfile
+perl -i -pe 's/SERIESEPISODENUMBER(\d+)/$1 - 1/ge' workfile
+perl -i -pe 's/SERIESNUMBER(\d+)/$1 - 1/ge' workfile
 
 # AGE RATING
 printf "\rCreating strings: Age Rating                         "

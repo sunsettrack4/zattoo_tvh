@@ -49,6 +49,7 @@ command -v curl >/dev/null 2>&1 || { echo "curl is required but it's not install
 command -v phantomjs >/dev/null 2>&1 || { echo "PhantomJS is required but it's not installed!  Aborting." >&2; exit 1; }
 command -v uni2ascii >/dev/null 2>&1 || { echo "uni2ascii is required but it's not installed!  Aborting." >&2; exit 1; }
 command -v xmllint >/dev/null 2>&1 || { echo "libxml2-utils is required but it's not installed!  Aborting." >&2; exit 1; }
+command -v perl >/dev/null 2>&1 || { echo "perl is required but it's not installed!  Aborting." >&2; exit 1; }
 command -v ffmpeg >/dev/null 2>&1 || { echo "ffmpeg is required for watching Live TV but it's not installed!" && sleep 1s; }
 command -v vlc >/dev/null 2>&1 || { echo "VLC is required but for watching Live TV on desktop but it's not installed!" && sleep 1s; }
 printf "Starting script..."
