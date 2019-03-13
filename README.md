@@ -26,7 +26,7 @@ Please run the commands below to setup the script. "Sudo" is not required on use
 
 ```bash
 # Install all recommended applications to setup the ztvh environment completely:
-sudo apt-get install phantomjs uni2ascii libxml2-utils ffmpeg vlc socat iputils-ping crontab curl wget unzip dialog
+sudo apt-get install phantomjs uni2ascii libxml2-utils ffmpeg vlc socat iputils-ping crontab curl wget unzip perl dialog
 
 # Create a directory called "ztvh" in your home folder:
 mkdir ~/ztvh
