@@ -142,7 +142,7 @@ sed -i 's/"cid": "/<channel id="/g;s/", "title": "/">\n  <display-name lang="de"
 cat workfile >> workfile2 && mv workfile2 workfile
 
 printf "\rSetting XMLTV file type...                           "
-sed -i '1i<?xml version="1.0" encoding="UTF-8" ?>\n<\!-- EPG XMLTV FILE CREATED BY ZATTOO UNLIMITED - (c) 2017-2018 Jan-Luca Neumann -->\n<tv>' workfile
+sed -i '1i<?xml version="1.0" encoding="UTF-8" ?>\n<\!-- EPG XMLTV FILE CREATED BY ZATTOO UNLIMITED - (c) 2017-2019 Jan-Luca Neumann -->\n<tv>' workfile
 sed -i "s/<tv>/<\!-- created on $(date) -->\n&/g" workfile
 sed -i '$s/.*/&\n<\/tv>/g' workfile
 
