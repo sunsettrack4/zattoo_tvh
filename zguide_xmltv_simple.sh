@@ -105,6 +105,8 @@ sed -i ':a $!N;s/\nchannel/channel/;ta P;D' workfile
 printf "\rCreating strings: Image_URL                          "
 sed -i 's/\(\[{.*\)\("i_url":[^|]*|\)\(.*\)/\2\1|\3/g' workfile
 sed -i -e 's/"i_url":null|//g' -e 's/"i_url":"/  <icon src="/g' -e 's/"|\[{/" \/>\n[{/g' -e 's/format_480x360.jpg/original.jpg/g' workfile
+sed -i '/<icon src/s/http:\/\/images.zattic.com\/system\/images\//https:\/\/images.zattic.com\/cms\//g' workfile
+sed -i 's/\(  <icon src="https:\/\/images.zattic.com\/cms\/\)\([a-z0-9][a-z0-9][a-z0-9][a-z0-9]\)\/\([a-z0-9][a-z0-9][a-z0-9][a-z0-9]\)\/\([a-z0-9][a-z0-9][a-z0-9][a-z0-9]\)\/\([a-z0-9][a-z0-9][a-z0-9][a-z0-9]\)\/\([a-z0-9][a-z0-9][a-z0-9][a-z0-9]\)\(\/original.jpg.*\)/\1\2\3\4\5\6\7/g' workfile
 
 # TITLE
 printf "\rCreating strings: Title                              "
