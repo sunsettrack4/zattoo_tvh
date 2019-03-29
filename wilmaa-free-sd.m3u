@@ -47,7 +47,7 @@ https://streams.wilmaa.com/m3u8/get?channelId=tv_25_hd&profile=8
 https://streams.wilmaa.com/m3u8/get?channelId=4_plus_hd&profile=8
 #EXTINF:0001 tvg-id="5plus.ch" group-title="Unterhaltung" tvg-logo="https://resources.wilmaa.com/logos/single/dark/center/360x120px/5_plus_hd.png", 5+ HD
 https://streams.wilmaa.com/m3u8/get?channelId=5_plus_hd&profile=8
-#EXTINF:0001 tvg-id="6plus.ch" group-title="Unterhaltung" tvg-logo="https://resources.wilmaa.com/logos/single/dark/center/360x120px/6_plus_hd.png", 6+ HD
+#EXTINF:0001 tvg-id="6_plus_hd" group-title="Unterhaltung" tvg-logo="https://resources.wilmaa.com/logos/single/dark/center/360x120px/6_plus_hd.png", 6+ HD
 https://streams.wilmaa.com/m3u8/get?channelId=6_plus_hd&profile=8
 #EXTINF:0001 tvg-id="Swiss1.ch" group-title="Unterhaltung" tvg-logo="http://images.zattic.com/logos/471b7f8156e98681f378/black/210x120.png", SWISS 1 HD
 https://streams.wilmaa.com/m3u8/get?channelId=swiss1_tv_hd&profile=8
