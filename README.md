@@ -32,13 +32,13 @@ sudo apt-get install phantomjs uni2ascii libxml2-utils ffmpeg vlc socat iputils-
 mkdir ~/ztvh
 
 # Download the .zip file and extract the files into the "ztvh" folder:
-wget https://github.com/sunsettrack4/zattoo_tvh/archive/v0.5.2.zip
+wget https://github.com/sunsettrack4/zattoo_tvh/archive/v0.5.3.zip
 
 # Unzip the file:
-unzip v0.5.2.zip
+unzip v0.5.3.zip
 
 # Move all script files to the created ztvh folder
-mv ~/zattoo_tvh-0.5.2/* ~/ztvh/
+mv ~/zattoo_tvh-0.5.3/* ~/ztvh/
 
 # Set system-wide permissions to the folder and its related files
 sudo chmod 0777 ~/ztvh
