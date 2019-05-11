@@ -21,7 +21,7 @@ clear
 echo "                                                                        "
 echo "ZattooUNLIMITED for VLC and tvheadend                                   "
 echo "(c) 2017-2019 Jan-Luca Neumann                        I             +   "
-echo "Script v0.5.3 2019/04/13 | Zattoo v2.13.1       I    I         +        "
+echo "Script v0.5.4 2019/05/11 | Zattoo v2.13.1       I    I         +        "
 echo "                                                 I  I             +     "
 echo "                                                  II                    "
 echo "ZZZZZZZZZ       AA     TTTTTTTTTT TTTTTTTTTT    888888        888888    "
@@ -52,6 +52,17 @@ command -v xmllint >/dev/null 2>&1 || { echo "libxml2-utils is required but it's
 command -v perl >/dev/null 2>&1 || { echo "perl is required but it's not installed!  Aborting." >&2; exit 1; }
 command -v ffmpeg >/dev/null 2>&1 || { echo "ffmpeg is required for watching Live TV but it's not installed!" && sleep 1s; }
 command -v vlc >/dev/null 2>&1 || { echo "VLC is required but for watching Live TV on desktop but it's not installed!" && sleep 1s; }
+command -v perldoc >/dev/null 2>&1 || { printf "\nperl-doc is required but it's not installed!" >&2; ERROR2="true"; }
+command -v cpan >/dev/null 2>&1 || { printf "\ncpan is required but it's not installed!" >&2; ERROR2="true"; }
+
+if command -v perldoc >/dev/null
+then
+	perldoc -l JSON >/dev/null 2>&1 || { printf "\nJSON module for perl is requried but not installed!" >&2; ERROR2="true"; }
+	perldoc -l utf8 >/dev/null 2>&1 || { printf "\nuft8 module for perl is requried but not installed!" >&2; ERROR2="true"; }
+else
+	ERROR2="true"
+fi
+
 printf "Starting script..."
 sleep 2s
 
@@ -184,16 +195,6 @@ then
 	touch fakefile
 fi
 
-if [ ! -e pipe.sh ]
-then
-	printf "\rMissing file: pipe.sh\n"
-	touch fakefile
-elif [ ! -r pipe.sh ]
-then
-	printf "\rFile not readable: pipe.sh\n"
-	touch fakefile
-fi
-
 if [ ! -e status.sh ]
 then
 	printf "\rMissing file: status.sh\n"
@@ -221,6 +222,16 @@ then
 elif [ ! -x recordings.sh ]
 then
 	printf "\rFile not executable: recordings.sh\n"
+	touch fakefile
+fi
+
+if [ ! -e zchannels.pl ]
+then
+	printf "\rMissing file: zchannels.pl\n"
+	touch fakefile
+elif [ ! -x zchannels.pl ]
+then
+	printf "\rFile not executable: zchannels.pl\n"
 	touch fakefile
 fi
 
@@ -1337,110 +1348,27 @@ else
 	curl -X GET --cookie "$session" https://$provider/zapi/v2/cached/channels/$powerid?details=False > channels_file 2> /dev/null
 fi
 
-cp channels_file groups_file
-
 if grep -q '"success": true' channels_file
 then
 	#
-	# CREATE CHANNELS.M3U
+	# CREATE CHANNELS.M3U + PIPE SCRIPTS
 	#
 	
-	# SPLIT INTO CHANNEL GROUPS
-	sed 's/{"channels": \[/\n/g' channels_file > workfile
-	sed -i "1d" workfile
-	sed -i 's/ "name":.*//g' workfile
+	mkdir ~/ztvh/chpipe 2> /dev/null
+	chmod 0777 ~/ztvh/chpipe/* 2> /dev/null
 	
-	# SPLIT INTO SINGLE CHANNELS
-	sed -i 's/}\],/&\n-CUT-/g' workfile
-	sed -i '/-CUT-/s/}, {/-CUT2-{/1' workfile
-	sed -i 's/.*-CUT2-//g' workfile
-	sed -i '/-CUT-/d' workfile
+	if [ ! -s ~/ztvh/user/options ]
+	then
+		echo "firstsetup=true" >> ~/ztvh/user/userfile
+		echo "chpipe 4" > ~/ztvh/user/options
+	elif ! grep -q "chpipe" ~/ztvh/user/options 2> /dev/null
+	then
+		echo "chpipe 4" >> ~/ztvh/user/options
+	fi
 	
-	# SPLIT INTO MAIN LINE + QUALITY LEVEL(S)
-	sed -i 's/"qualities": \[{/\n{/g' workfile
-	sed -i 's/}, {/},\n{/g' workfile && cp workfile epg_channels_file
-	
-	# DELETE SUBSCRIBABLE QUALITY STRINGS
-	sed -i '/"availability": "subscribable"/d' workfile
-	
-	# DELETE UNNECESSARY QUALITY STRINGS
-	sed -i 's/.*/-START-&/g' workfile
-	sed -i -e 's/\(.*\)\("level": "[a-z]d", \)\(.*\)/\2\1\3/g' -e 's/-START-//g' workfile
-	sed -i '/"level"/s/"title":[^,]*, //g' workfile
-	sed -i ':a $!N;s/\n"level"/ "level"/;ta P;D' workfile
-	sed -i 's/\(.*\)\("level": "hd",.*\)\("level": "sd",.*\)/\1\2/g' workfile
-	
-	# DELETE SUBSCRIBABLE CHANNELS
-	sed -i '/level/!d' workfile
-	
-	# SET DELIMITERS
-	sed -i 's/.*/[&/g' workfile
-	sed -i 's/|/\\u007c/g' workfile
-	sed -i 's/": null, "/": null|"/g' workfile
-	sed -i 's/": true, "/": true|"/g' workfile
-	sed -i 's/": false, "/": false|"/g' workfile
-	sed -i 's/  / /g' workfile
-	sed -i 's/, "/|"/g' workfile
-	sed -i 's/\], "/]|"/g' workfile
-	sed -i 's/\]}, "/]}|"/g' workfile
-	sed -i -e 's/}\]/|&/g' -e 's/},/|&/g' workfile
-	sed -i 's/, {/|/g' workfile
-		
-	# EXTRACT NECESSARY STRINGS
-	sed -i 's/\(.*\)\("display_alias":[^|]*|\)\(.*\)/\2\1|\3/g' workfile
-	sed -i 's/\(.*\)\("title":[^|]*|\)\(.*\)/\2\1|\3/g' workfile
-	sed -i 's/\(.*\)\("logo_black_84":[^|]*|\)\(.*\)/\2\1|\3/g' workfile
-	sed -i 's/\(.*\)\("cid":[^|]*|\)\(.*\)/\2\1|\3/g' workfile
-	sed -i 's/|\[{.*//g' workfile
-	
-	# CONVERT TO M3U FILE
-	sed -i 's/"cid": "/#EXTINF:0001 tvg-id="/g' workfile
-	sed -i 's/"|"logo_black_84": "\/images\/channels\//" group-title="Zattoo" tvg-logo="http:\/\/images.zattic.com\//g' workfile
-	sed -i 's/84x48.png"|"title": "/210x120.png", /g' workfile
-	sed -i 's/"|"display_alias": "/\npipe:\/\/-USER-\/chpipe\//g' workfile
-	sed -i '/pipe:/s/".*/.sh/g' workfile
-	sed -i '1i#EXTM3U' workfile
-	
-	# SET CORRECT PATH FOR PIPE SCRIPTS
-	cd ~/ztvh
-	echo $PWD > work/userfolder
-	sed -i 's/\//\\\//g' work/userfolder
-	sed -i 's/.*/#\!\/bin\/bash\nsed -i "s\/-USER-\/&/g' work/userfolder
-	sed -i '/sed/s/.*/&\/g" work\/workfile/g' work/userfolder
-	bash work/userfolder
-	
-	# CONVERT UNICODE CHARACTERS
-	cd work
-	sed -i 's/\\u[a-z0-9][a-z0-9][a-z0-9][a-z0-9]/\[>\[&\]<\]/g' workfile
-	ascii2uni -a U -q workfile > workfile2
-	mv workfile2 workfile
-	sed -i -e 's/\[>\[//g' -e 's/\]<\]//g' workfile
-	mv workfile ~/ztvh/channels.m3u
-	rm userfolder
-	
-	# RENAME CHANNEL GROUPS
-	sed -i 's/"channels": \[/\n[/g' groups_file
-	sed -i "1d" groups_file
-	
-	sed -i 's/\\u[a-z0-9][a-z0-9][a-z0-9][a-z0-9]/\[>\[&\]<\]/g' groups_file
-	ascii2uni -a U -q groups_file > workfile
-	mv workfile groups_file
-	sed -i -e 's/\[>\[//g' -e 's/\]<\]//g' groups_file
-	
-	while [ -s groups_file ]
-	do
-		sed -n "1p" groups_file > workfile && sed -i "1d" groups_file
-		sed -i 's/}, {"display_alias": /<GROUP_END>\n[{"display_alias": /g' workfile
-		GROUP=$(sed '/<GROUP_END>/d;s/\(.*\)\(}], "name":.*\)/\2/g' workfile)
-		sed -i "s/<GROUP_END>/$GROUP/g" workfile
-		sed -i -e 's/\(.*\)\("cid": "[^,]*,\)\(.*\)\("name": "[^,]*,\)\(.*\)/\2\4/g' -e 's/\]//g' workfile
-		sed -i -e 's/"cid": "/sed -i "\//g' -e 's/","name": "/\/s\/Zattoo\//g' -e 's/"},/\/g" channels.m3u/g' workfile
-		cat workfile >> groups.sh
-	done
-
-	sed -i "1i#\!\/bin\/bash\ncd ~\/ztvh" groups.sh
-	bash groups.sh
-	rm groups.sh workfile groups_file 2> /dev/null
+	grep "provider=" ~/ztvh/user/userfile | sed "/^$/d;s/provider=//g" > provider
+	perl ~/ztvh/zchannels.pl > ~/ztvh/channels.m3u
+	rm channels_file provider 2> /dev/null
 else
 	if grep -q "insecure=true" ~/ztvh/user/userfile
 	then
@@ -1500,71 +1428,6 @@ else
 	sleep 2s
 	rm favorites_file 2> /dev/null
 fi
-
-
-# ##############
-# PIPE STREAMS #
-# ##############
-
-cd ~/ztvh/work
-provider=$(sed "2,5d;s/provider=//g" ~/ztvh/user/userfile)
-
-if grep -q "insecure=true" ~/ztvh/user/userfile
-then
-	dialog --backtitle "[P3W00] [INSECURE] ZATTOO UNLIMITED BETA > CHANNELS" --title "PROCESSING" --infobox "Creating pipe scripts..." 3 40
-else
-	dialog --backtitle "[P3W00] ZATTOO UNLIMITED BETA > CHANNELS" --title "PROCESSING" --infobox "Creating pipe scripts..." 3 40
-fi
-
-sed "s/PROVIDER/$provider/g" ~/ztvh/pipe.sh > ~/ztvh/work/pipe.sh
-
-echo '#!/bin/bash' > pipe_workfile
-echo "cd $PWD" >> pipe_workfile
-sed -i "s/\/work//g" pipe_workfile
-cat ~/ztvh/work/pipe.sh >> pipe_workfile
-
-mkdir ~/ztvh/chpipe 2> /dev/null
-chmod 0777 ~/ztvh/chpipe
-
-# RENAME CID_CHANNEL
-sed 's/#EXTM3U/#\!\/bin\/bash/g' ~/ztvh/channels.m3u > workfile
-sed -i '/#EXTINF/{s/.*tvg-id="/ch_id=\$(echo "/g;s/" tvg-logo.*/")/g;s/" group-title.*/")/g;}' workfile
-sed -i '/pipe:\/\//{s/.*chpipe\//sed "s\/CID_CHANNEL\/\$ch_id\/g" ~\/ztvh\/work\/pipe_workfile > ~\/ztvh\/chpipe\//g;}' workfile
-bash workfile
-
-# RENAME CHANNEL_NAME
-sed 's/#EXTM3U/#\!\/bin\/bash/g' ~/ztvh/channels.m3u > workfile
-sed -i '/#EXTINF/{s/.*", /ch_name=\$(echo "/g;s/.*/&")/g;}' workfile
-sed -i '/pipe:\/\//{s/.*chpipe\//sed -i "s\/CHANNEL_NAME\/\$ch_name\/g" ~\/ztvh\/chpipe\//g;}' workfile
-sed -i -e '/ch_name=/s/\//\\\\\\\\\\&/g' -e '/ch_name=/s/\&/\\\&/g' -e "/ch_name=/s/'/´/g" workfile
-bash workfile
-
-if grep -q "chpipe 4" ~/ztvh/user/options 2> /dev/null
-then
-	sed -i '5s/# //g' ~/ztvh/chpipe/*
-elif grep -q "chpipe 3" ~/ztvh/user/options 2> /dev/null
-then
-	sed -i '6s/# //g' ~/ztvh/chpipe/*
-elif grep -q "chpipe 2" ~/ztvh/user/options 2> /dev/null
-then
-	sed -i '7s/# //g' ~/ztvh/chpipe/*
-elif grep -q "chpipe 1" ~/ztvh/user/options 2> /dev/null
-then
-	sed -i '8s/# //g' ~/ztvh/chpipe/*
-elif grep -q "chpipe 0" ~/ztvh/user/options 2> /dev/null
-then
-	sed -i '9s/# //g' ~/ztvh/chpipe/*
-else
-	sed -i '5s/# //g' ~/ztvh/chpipe/*
-fi
-
-if grep -q "insecure=true" ~/ztvh/user/userfile
-then
-	sed -i "s/curl/& -k/g" ~/ztvh/chpipe/*
-fi
-
-chmod 0777 ~/ztvh/chpipe/*
-rm workfile pipe_workfile pipe.sh
 
 
 # ################
@@ -2176,7 +2039,7 @@ then
 						if grep -q "1" value	
 						then
 							echo "chpipe 0" >> ~/ztvh/user/options
-							sed -i -e 's/# grep/grep/g' -e '5,8s/.*/# &/g' ~/ztvh/chpipe/*
+							sed -i 's/grep -E "[^"]*"/grep -E "live-600"/g' ~/ztvh/chpipe/*
 							dialog --backtitle "[M1441] ZATTOO UNLIMITED BETA > SETTINGS > STREAMING QUALITY" --title "INFO" --msgbox "Streaming quality set to MINIMUM!" 5 40
 							echo "M1400" > value
 						
@@ -2187,7 +2050,7 @@ then
 						elif grep -q "2" value	
 						then
 							echo "chpipe 1" >> ~/ztvh/user/options
-							sed -i -e 's/# grep/grep/g' -e '5,7s/.*/# &/g' -e '9s/.*/# &/g' ~/ztvh/chpipe/*
+							sed -i 's/grep -E "[^"]*"/grep -E "live-900"/g' ~/ztvh/chpipe/*
 							dialog --backtitle "[M1442] ZATTOO UNLIMITED BETA > SETTINGS > STREAMING QUALITY" --title "INFO" --msgbox "Streaming quality set to LOW!" 5 40
 							echo "M1400" > value
 							
@@ -2198,7 +2061,7 @@ then
 						elif grep -q "3" value	
 						then
 							echo "chpipe 2" >> ~/ztvh/user/options
-							sed -i -e 's/# grep/grep/g' -e '5,6s/.*/# &/g' -e '8,9s/.*/# &/g' ~/ztvh/chpipe/*
+							sed -i 's/grep -E "[^"]*"/grep -E "live-1500"/g' ~/ztvh/chpipe/*
 							dialog --backtitle "[M1443] ZATTOO UNLIMITED BETA > SETTINGS > STREAMING QUALITY" --title "INFO" --msgbox "Streaming quality set to MEDIUM!" 5 40
 							echo "M1400" > value
 					
@@ -2209,7 +2072,7 @@ then
 						elif grep -q "4" value	
 						then
 							echo "chpipe 3" >> ~/ztvh/user/options
-							sed -i -e 's/# grep/grep/g' -e '5s/.*/# &/g' -e '7,9s/.*/# &/g' ~/ztvh/chpipe/*
+							sed -i 's/grep -E "[^"]*"/grep -E "live-3000|live-2999|live-1500"/g' ~/ztvh/chpipe/*
 							dialog --backtitle "[M1444] ZATTOO UNLIMITED BETA > SETTINGS > STREAMING QUALITY" --title "INFO" --msgbox "Streaming quality set to HIGH!" 5 40
 							echo "M1400" > value
 							
@@ -2220,7 +2083,7 @@ then
 						elif grep -q "5" value	
 						then
 							echo "chpipe 4" >> ~/ztvh/user/options
-							sed -i -e 's/# grep/grep/g' -e '6,9s/.*/# &/g' ~/ztvh/chpipe/*
+							sed -i 's/grep -E "[^"]*"/grep -E "live-8000|live-5000|live-3000|live-2999|live-1500"/g' ~/ztvh/chpipe/*
 							dialog --backtitle "[M1445] ZATTOO UNLIMITED BETA > SETTINGS > STREAMING QUALITY" --title "INFO" --msgbox "Streaming quality set to MAXIMUM!" 5 40
 							echo "M1400" > value
 							
@@ -2295,7 +2158,7 @@ then
 				then
 					dialog --backtitle "[M19W0] ZATTOO UNLIMITED BETA > LOGOUT" --title "LOGOUT" --infobox "Logging out..." 3 40
 					cd ~/ztvh
-					rm channels.m3u favorites.m3u chpipe.sh zattoo_fullepg.xml zattoo_ext_fullepg.xml -rf user -rf work -rf epg -rf logos -rf chpipe 2> /dev/null
+					rm channels.m3u favorites.m3u chpipe.sh zattoo_fullepg.xml zattoo_ext_fullepg.xml -rf user -rf work -rf epg -rf logos -rf chpipe -rf pvr 2> /dev/null
 					dialog --backtitle "[M19S0] ZATTOO UNLIMITED BETA > LOGOUT" --title "LOGOUT" --infobox "Logging out... DONE!" 3 40
 					sleep 1s
 					clear
@@ -2374,6 +2237,14 @@ then
 	sed -i 's/\(.*\)\(tvg-id=".*\)\(group-title=".*\)\(tvg-logo=".*\)\(",.*\)/\1\2\3xyz\2\5/g' ~/ztvh/channels.m3u
 	sed -i 's/xyztvg-id="/tvg-logo="logos\//g' ~/ztvh/channels.m3u
 	sed -i 's/" ",/.png",/g' ~/ztvh/channels.m3u
+	
+	if [ -e ~/ztvh/favorites.m3u ]
+	then
+		sed -i 's/\(.*\)\(tvg-id=".*\)\(group-title=".*\)\(tvg-logo=".*\)\(",.*\)/\1\2\3xyz\2\5/g' ~/ztvh/favorites.m3u
+		sed -i 's/xyztvg-id="/tvg-logo="logos\//g' ~/ztvh/favorites.m3u
+		sed -i 's/" ",/.png",/g' ~/ztvh/favorites.m3u
+	fi
+	
 	chmod 0777 ~/ztvh/logos/*
 	printf "\rCollecting/updating channel logo images... OK!" && echo ""
 	echo "- CHANNEL LOGO IMAGES SAVED! -" && echo ""
@@ -2394,6 +2265,14 @@ then
 	sed -i 's/\(.*\)\(tvg-id=".*\)\(group-title=".*\)\(tvg-logo=".*\)\(",.*\)/\1\2\3xyz\2\5/g' ~/ztvh/channels.m3u
 	sed -i 's/xyztvg-id="/tvg-logo="logos\//g' ~/ztvh/channels.m3u
 	sed -i 's/" ",/.png",/g' ~/ztvh/channels.m3u
+	
+	if [ -e ~/ztvh/favorites.m3u ]
+	then
+		sed -i 's/\(.*\)\(tvg-id=".*\)\(group-title=".*\)\(tvg-logo=".*\)\(",.*\)/\1\2\3xyz\2\5/g' ~/ztvh/favorites.m3u
+		sed -i 's/xyztvg-id="/tvg-logo="logos\//g' ~/ztvh/favorites.m3u
+		sed -i 's/" ",/.png",/g' ~/ztvh/favorites.m3u
+	fi
+	
 	chmod 0777 ~/ztvh/logos/*
 	printf "\rCollecting/updating channel logo images... OK!" && echo ""
 	echo "- CHANNEL LOGO IMAGES SAVED! -" && echo ""
