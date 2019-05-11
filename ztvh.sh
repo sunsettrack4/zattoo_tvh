@@ -1355,7 +1355,7 @@ then
 	#
 	
 	mkdir ~/ztvh/chpipe 2> /dev/null
-	chmod 0777 ~/ztvh/chpipe/* 2> /dev/null
+	chmod 0777 ~/ztvh/chpipe 2> /dev/null
 	
 	if [ ! -s ~/ztvh/user/options ]
 	then
@@ -1368,6 +1368,7 @@ then
 	
 	grep "provider=" ~/ztvh/user/userfile | sed "/^$/d;s/provider=//g" > provider
 	perl ~/ztvh/zchannels.pl > ~/ztvh/channels.m3u
+	chmod 0777 ~/ztvh/chpipe/* 2> /dev/null
 	rm channels_file provider 2> /dev/null
 else
 	if grep -q "insecure=true" ~/ztvh/user/userfile
