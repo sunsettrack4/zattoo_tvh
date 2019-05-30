@@ -21,7 +21,7 @@ clear
 echo "                                                                        "
 echo "ZattooUNLIMITED for VLC and tvheadend                                   "
 echo "(c) 2017-2019 Jan-Luca Neumann                        I             +   "
-echo "Script v0.5.4 2019/05/11 | Zattoo v2.13.1       I    I         +        "
+echo "Script v0.5.5 2019/05/30 | Zattoo v2.13.1       I    I         +        "
 echo "                                                 I  I             +     "
 echo "                                                  II                    "
 echo "ZZZZZZZZZ       AA     TTTTTTTTTT TTTTTTTTTT    888888        888888    "
@@ -2202,7 +2202,7 @@ clear
 
 echo "ZattooUNLIMITED for VLC and tvheadend"
 echo "(c) 2017-2019 Jan-Luca Neumann"
-echo "Script v0.5.3 | Zattoo v2.13.1"
+echo "Script v0.5.5 | Zattoo v2.13.1"
 echo ""
 echo "=== GRABBER STARTUP ==="
 echo ""

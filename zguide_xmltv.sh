@@ -137,10 +137,10 @@ sed -i -e 's/\[{.*/<\/programme>/g' -e '/^\s*$/d' workfile
 #
 
 printf "\rAdding channel list to EPG file...                   "
-sed 's/\(.*\)\("title": "[^"]*", \)\(.*\)/\2\1\3/g' ~/ztvh/work/epg_channels_file > workfile2
-sed -i 's/\(.*\)\("cid": "[^"]*", \)\(.*\)/\2\1\3/g' workfile2
-sed -i -e 's/\("cid": "[^"]*", \)\("title": "[^"]*", \)\(.*\)/\1\2-END-/g' -e  '/"level": "/d' workfile2
-sed -i 's/"cid": "/<channel id="/g;s/", "title": "/">\n  <display-name lang="de">/g;s/", -END-/<\/display-name>\n<\/channel>/g' workfile2
+sed '/EXTINF/s/.*tvg-id="/<channel id="/g' ~/ztvh/channels.m3u > workfile2
+sed -i '/<channel id=/s/" group-title=".*, /">\n  <display-name lang="de">/g' workfile2
+sed -i '/<display-name/s/.*/&<\/display-name>\n<\/channel>/g' workfile2
+sed -i -e '/pipe:\/\//d' -e '/EXTM3U/d' workfile2
 cat workfile >> workfile2 && mv workfile2 workfile
 
 printf "\rSetting XMLTV file type...                           "
