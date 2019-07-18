@@ -319,10 +319,9 @@ do
 
 		if grep -q '"success": true' login.txt
 		then
-			sed '/Set-cookie/!d' login.txt > workfile
+			sed '/[Ss]et-cookie: beaker.session.id/!d' login.txt > workfile
 			sed -i 's/expires.*//g' workfile
-			sed -i 's/Set-cookie: //g' workfile
-			sed -i 's/Set-cookie: //g' workfile
+			sed -i 's/[Ss]et-cookie: //g' workfile
 			tr -d '\n' < workfile > ~/ztvh/user/session
 			sed -i 's/; Path.*//g' ~/ztvh/user/session
 			session=$(<~/ztvh/user/session)
@@ -1258,10 +1257,9 @@ do
 					sleep 1.5s
 				fi
 				rm cookie_list
-				sed '/Set-cookie/!d' login.txt > workfile
+				sed '/[Ss]et-cookie: beaker.session.id/!d' login.txt > workfile
 				sed -i 's/expires.*//g' workfile
-				sed -i 's/Set-cookie: //g' workfile
-				sed -i 's/Set-cookie: //g' workfile
+				sed -i 's/[Ss]et-cookie: //g' workfile
 				tr -d '\n' < workfile > ~/ztvh/user/session
 				sed -i 's/; Path.*//g' ~/ztvh/user/session
 				session=$(<~/ztvh/user/session)
