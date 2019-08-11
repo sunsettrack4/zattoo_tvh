@@ -37,10 +37,10 @@ sudo cpanm install utf8
 mkdir ~/ztvh
 
 # Download the .zip file and extract the files into the "ztvh" folder:
-wget https://github.com/sunsettrack4/zattoo_tvh/archive/v0.5.6.zip
+wget https://github.com/sunsettrack4/zattoo_tvh/archive/v0.5.7.zip
 
 # Unzip the file:
-unzip v0.5.6.zip
+unzip v0.5.7.zip
 
 # Move all script files to the created ztvh folder
 mv ~/zattoo_tvh-0.5.6/* ~/ztvh/
