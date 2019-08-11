@@ -326,7 +326,7 @@ do
 			sed -i 's/; Path.*//g' ~/ztvh/user/session
 			session=$(<~/ztvh/user/session)
 			sleep 1s
-		elif grep -q '400 Bad Request' login.txt
+		elif grep -q 'HTTP/2 400' login.txt
 		then
 			if grep -q "insecure=true" ~/ztvh/user/userfile
 			then 
@@ -371,7 +371,7 @@ do
 				clear
 				exit 1
 			fi
-		elif grep -q '403 Forbidden' login.txt
+		elif grep -q 'HTTP/2 403' login.txt
 		then
 			sed "s/PROVIDER/$provider/g" ~/ztvh/save_page.js > ~/ztvh/work/save_page.js
 			
