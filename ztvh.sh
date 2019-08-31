@@ -388,6 +388,9 @@ do
 					sed -i -e "2d" -e "s/[Ss]et-cookie: //g" -e "s/; Path.*//g" cookie_list
 				else
 					dialog --backtitle "[L41F0] [INSECURE] ZATTOO UNLIMITED BETA > LOGIN" --title "[6] FATAL ERROR" --infobox "Service unavailable! Please try again later!" 5 50
+					sleep 2s
+					clear
+					echo "ERROR: Failed to load Zattoo Session ID - script stopped."
 					exit 1
 				fi
 			else
@@ -648,6 +651,10 @@ do
 								sed -i -e "2d" -e "s/[Ss]et-cookie: //g" -e "s/; Path.*//g" cookie_list
 							else
 								dialog --backtitle "[L11F0] ZATTOO UNLIMITED BETA > PROVIDER" --title "[9] FATAL ERROR" --infobox "Service unavailable!" 3 50
+								sleep 2s
+								clear
+								echo "ERROR: Failed to load Zattoo Session ID - script stopped."
+								exit 1
 							fi
 						else
 							if grep -q "insecure=true" ~/ztvh/user/userfile 2> /dev/null
@@ -1524,7 +1531,7 @@ then
 		# M1000 MENU OVERLAY
 		if grep -q "insecure=true" ~/ztvh/user/userfile
 		then
-			echo 'dialog --backtitle "[M1000] ZATTOO UNLIMITED BETA" --title "MAIN MENU - INSECURE MODE" --menu "Welcome to Zattoo Unlimited! :)\n(c) 2017-2018 Jan-Luca Neumann\n\nIf you like this script, please support my work:\nhttps://paypal.me/sunsettrack4\n\nPlease choose a feature:" 19 55 10 \' > menu
+			echo 'dialog --backtitle "[M1000] ZATTOO UNLIMITED BETA" --title "MAIN MENU - INSECURE MODE" --menu "Welcome to Zattoo Unlimited! :)\n(c) 2017-2019 Jan-Luca Neumann\n\nIf you like this script, please support my work:\nhttps://paypal.me/sunsettrack4\n\nPlease choose a feature:" 19 55 10 \' > menu
 		else
 			echo 'dialog --backtitle "[M1000] ZATTOO UNLIMITED BETA" --title "MAIN MENU" --menu "Welcome to Zattoo Unlimited! :)\n(c) 2017-2018 Jan-Luca Neumann\n\nIf you like this script, please support my work:\nhttps://paypal.me/sunsettrack4\n\nPlease choose a feature:" 19 55 10 \' > menu
 		fi
