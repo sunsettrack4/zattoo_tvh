@@ -2,7 +2,7 @@
 #EXTINF:0001 tvg-id="SRF1.ch" group-title="Unterhaltung" tvg-logo="http://images.zattic.com/logos/d0b44da81b954a5fb01c/black/210x120.png", SRF 1 HD
 https://streams.wilmaa.com/m3u8/get?channelId=sf_1_hd&profile=64
 #EXTINF:0001 tvg-id="SRF2.ch" group-title="Unterhaltung" tvg-logo="http://images.zattic.com/logos/419de2ea55351056b116/black/210x120.png", SRF zwei HD
-https://streams.wilmaa.com/m3u8/get?channelId=sf_2_hd_50fps&profile=64
+https://telerising.de/test.m3u8
 #EXTINF:0001 tvg-id="Pro7.ch" group-title="Unterhaltung" tvg-logo="http://images.zattic.com/logos/7d70f907fd2e4cf55db4/black/210x120.png", ProSieben CH HD
 https://streams.wilmaa.com/m3u8/get?channelId=pro7_ch_hd&profile=64
 #EXTINF:0001 tvg-id="RTL.de" group-title="Unterhaltung" tvg-logo="http://images.zattic.com/logos/4c25fb45ece20ff4a3e6/black/210x120.png", RTL HD CH
