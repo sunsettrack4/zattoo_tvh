@@ -381,7 +381,7 @@ https://streams.wilmaa.com/m3u8/get?channelId=freesports_uk&profile=8
 https://streams.wilmaa.com/m3u8/get?channelId=frisbee_it&profile=8
 #EXTINF:0001 tvg-id="Giallo.it" group-title="Unterhaltung" tvg-logo="https://resources.wilmaa.com/logos/single/dark/center/360x120px/giallo_it.png", Giallo
 https://streams.wilmaa.com/m3u8/get?channelId=giallo_it&profile=8
-#EXTINF:0001 tvg-id="GODChannel.eu" group-title="Kultur" tvg-logo="https://resources.wilmaa.com/logos/single/dark/center/360x120px/god-channel-tv.png", GOD Channel
+#EXTINF:0001 tvg-id="The God Channel" group-title="Kultur" tvg-logo="https://resources.wilmaa.com/logos/single/dark/center/360x120px/god-channel-tv.png", GOD Channel
 https://streams.wilmaa.com/m3u8/get?channelId=god-channel-tv&profile=8
 #EXTINF:0001 tvg-id="go.tv" group-title="Musik" tvg-logo="https://resources.wilmaa.com/logos/single/dark/center/360x120px/gotv_austria.png", GoTV
 https://streams.wilmaa.com/m3u8/get?channelId=gotv_austria&profile=8
