@@ -1,4 +1,5 @@
 #EXTM3U
+#KODIPROP:inputstreamclass=inputstream.adaptive
 #EXTINF:0001 tvg-id="SRF1.ch" group-title="Unterhaltung" tvg-logo="https://resources.wilmaa.com/logos/single/dark/center/360x120px/sf_1_hd.png", SRF 1 HD
 https://streams.wilmaa.com/m3u8/get?channelId=sf_1_hd&profile=8
 #EXTINF:0001 tvg-id="SRF2.ch" group-title="Unterhaltung" tvg-logo="https://resources.wilmaa.com/logos/single/dark/center/360x120px/sf_2_hd.png", SRF 2 HD
