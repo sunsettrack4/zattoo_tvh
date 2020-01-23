@@ -1053,7 +1053,7 @@ https://streams.wilmaa.com/m3u8/get?channelId=zee_one&profile=8
 https://streams.wilmaa.com/m3u8/get?channelId=teleclub_zoom_fr&profile=8
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
-#EXTINF:0001 tvg-id="CineSonyItalia.it" group-title="Unterhaltung" tvg-logo="https://resources.wilmaa.com/logos/single/dark/center/360x120px/cine_sony_it.png", Cine Sony
+#EXTINF:0001 tvg-id="CineSonyItalia.it" group-title="Unterhaltung" tvg-logo="https://resources.wilmaa.com/logos/single/dark/center/360x120px/cine_sony_it.png", Mediaset Extra
 https://streams.wilmaa.com/m3u8/get?channelId=cine_sony_it&profile=8
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
