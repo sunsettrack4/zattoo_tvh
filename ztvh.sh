@@ -380,7 +380,7 @@ do
 			then
 				dialog --backtitle "[L41Z0] ZATTOO UNLIMITED BETA > LOGIN" --title "LOGIN" --infobox "Login to webservice..." 3 40
 				
-				curl --silent https://zattoo.com/ | grep "appToken" | sed "s/\(.*window.appToken = '\)\(.*\)\(';<\/script>.*\)/\2/g" >apptoken
+				curl --silent https://zattoo.com/int/ | grep "appToken" | sed "s/\(.*window.appToken = '\)\(.*\)\(';<\/script>.*\)/\2/g" >apptoken
 				curl --silent -i -X POST -H "Content-Type: application/x-www-form-urlencoded" -H "Accept: application/x-www-form-urlencoded" --data-urlencode "client_app_token=$(<apptoken)" --data-urlencode "uuid=d7512e98-38a0-4f01-b820-5a5cf98141fe" --data-urlencode "lang=en" --data-urlencode "format=json" https://zattoo.com/zapi/session/hello | grep "beaker.session.id" >cookie_list
 														
 				if grep -q "beaker.session.id" cookie_list
@@ -643,7 +643,7 @@ do
 						
 						if grep -q "provider=zattoo.com" ~/ztvh/user/userfile 2> /dev/null
 						then
-							curl --silent https://zattoo.com/ | grep "appToken" | sed "s/\(.*window.appToken = '\)\(.*\)\(';<\/script>.*\)/\2/g" >apptoken
+							curl --silent https://zattoo.com/int/ | grep "appToken" | sed "s/\(.*window.appToken = '\)\(.*\)\(';<\/script>.*\)/\2/g" >apptoken
 							curl --silent -i -X POST -H "Content-Type: application/x-www-form-urlencoded" -H "Accept: application/x-www-form-urlencoded" --data-urlencode "client_app_token=$(<apptoken)" --data-urlencode "uuid=d7512e98-38a0-4f01-b820-5a5cf98141fe" --data-urlencode "lang=en" --data-urlencode "format=json" https://zattoo.com/zapi/session/hello | grep "beaker.session.id" >cookie_list
 														
 							if grep -q "beaker.session.id" cookie_list
