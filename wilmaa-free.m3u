@@ -2,864 +2,864 @@
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/1008", SRF 1 HD
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/1008/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/1008/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/1009", SRF zwei HD
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/1009/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/1009/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/1010", ORF 1 HD
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/1010/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/1010/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/1011", ORF 2 HD
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/1011/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/1011/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/1012", ServusTV HD
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/1012/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/1012/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/1013", 3+ HD
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/1013/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/1013/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/1014", Comedy Central HD
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/1014/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/1014/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/1020", RTL HD CH
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/1020/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/1020/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/1021", VOX HD CH
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/1021/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/1021/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/1022", DW-TV
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/1022/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/1022/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/1023", Super RTL HD CH
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/1023/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/1023/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/1024", RTL ZWEI HD CH
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/1024/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/1024/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/1025", n-tv CH HD
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/1025/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/1025/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/1027", RTL Nitro HD CH
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/1027/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/1027/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/1029", Bloomberg Europe TV
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/1029/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/1029/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/1031", 4+ HD
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/1031/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/1031/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/1032", SWISS 1 HD
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/1032/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/1032/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/1033", MTV HD
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/1033/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/1033/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/1034", 7+ HD
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/1034/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/1034/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/1035", S1TV HD
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/1035/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/1035/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/1037", ProSieben CH HD
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/1037/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/1037/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/1038", Sat.1 CH HD
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/1038/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/1038/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/1039", Kabel eins CH HD
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/1039/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/1039/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/1040", SIXX CH HD
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/1040/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/1040/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/1042", TV24 HD
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/1042/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/1042/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/1045", Eurosport CH
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/1045/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/1045/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/1047", 5+ HD
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/1047/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/1047/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/1048", Tele Züri HD
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/1048/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/1048/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/1049", Euronews DE
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/1049/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/1049/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/1052", SRF info HD
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/1052/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/1052/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/1053", Puls 8
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/1053/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/1053/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/1055", TV25 HD
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/1055/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/1055/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/1075", ARD-alpha HD
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/1075/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/1075/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/1090", Tele 5
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/1090/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/1090/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/1092", HSE 24
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/1092/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/1092/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/1100", blue Zoom HD
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/1100/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/1100/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/1105", Stimmungsgarten TV
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/1105/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/1105/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/1107", Star TV HD
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/1107/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/1107/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/1109", Bibel TV
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/1109/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/1109/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/1112", BR HD
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/1112/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/1112/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/1113", WDR HD
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/1113/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/1113/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/1114", SWR HD
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/1114/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/1114/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/1115", NDR HD
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/1115/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/1115/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/1116", KiKA HD
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/1116/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/1116/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/1117", 3Sat HD
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/1117/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/1117/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/1118", ZDF Info HD
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/1118/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/1118/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/1121", ZDF Neo HD
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/1121/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/1121/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/1122", Phoenix HD
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/1122/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/1122/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/1123", DMAX HD
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/1123/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/1123/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/1124", Disney Channel
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/1124/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/1124/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/1128", Tele 1 HD
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/1128/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/1128/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/1130", Tele Südostschweiz HD
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/1130/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/1130/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/1131", TVO HD
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/1131/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/1131/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/1132", Tele M1 HD
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/1132/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/1132/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/1134", Anixe HD
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/1134/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/1134/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/1135", Telebasel
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/1135/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/1135/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/1137", TeleBärn
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/1137/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/1137/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/1146", Tele Z HD
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/1146/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/1146/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/1149", wetter.tv
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/1149/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/1149/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/1150", Arte HD
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/1150/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/1150/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/1151", QS24
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/1151/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/1151/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/1153", Deluxe Music
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/1153/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/1153/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/1154", 6+ HD
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/1154/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/1154/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/1155", SAT.1 Gold HD CH
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/1155/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/1155/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/1157", ProSieben MAXX HD CH
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/1157/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/1157/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/1162", premiumshopping.tv
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/1162/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/1162/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/1165", Das Erste HD
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/1165/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/1165/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/1166", ZDF HD
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/1166/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/1166/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/2006", TV5 Monde FBS
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/2006/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/2006/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/2007", France24
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/2007/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/2007/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/2008", France 3
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/2008/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/2008/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/2009", France 4
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/2009/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/2009/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/2010", France 5
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/2010/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/2010/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/2011", Gulli
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/2011/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/2011/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/2012", TFX CH
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/2012/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/2012/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/2014", RTL 9 HD CH
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/2014/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/2014/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/2017", NRJ12
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/2017/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/2017/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/2018", Canal 8
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/2018/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/2018/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/2019", BFM TV
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/2019/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/2019/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/2020", CNEWS
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/2020/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/2020/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/2022", W9 Suisse HD
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/2022/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/2022/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/2023", TMC CH
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/2023/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/2023/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/2026", M6 Suisse HD
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/2026/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/2026/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/2027", TF1 Suisse HD
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/2027/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/2027/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/2028", France 2 HD
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/2028/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/2028/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/2029", ARTE HD
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/2029/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/2029/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/2033", AB1
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/2033/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/2033/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/2034", RTS un HD
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/2034/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/2034/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/2035", RTS deux HD
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/2035/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/2035/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/2038", TVM3
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/2038/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/2038/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/2040", TeleBielingue
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/2040/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/2040/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/2041", Kanal 9
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/2041/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/2041/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/2043", La Tele
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/2043/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/2043/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/2044", lemanbleu
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/2044/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/2044/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/2045", Canal Alpha NE HD
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/2045/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/2045/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/2047", Rouge TV
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/2047/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/2047/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/2057", 6ter
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/2057/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/2057/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/2058", L´Equipe
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/2058/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/2058/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/2059", RMC Découverte
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/2059/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/2059/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/2060", Cherie 25
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/2060/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/2060/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/2061", TF1 Séries Films
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/2061/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/2061/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/2062", RMC Story
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/2062/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/2062/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/3009", TV8
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/3009/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/3009/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/3018", Rai News
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/3018/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/3018/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/3019", Rai 1 HD
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/3019/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/3019/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/3020", SPORTITALIA HD
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/3020/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/3020/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/3021", Rai Sport + HD
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/3021/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/3021/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/3022", Rai Gulp
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/3022/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/3022/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/3026", Canale 5 HD
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/3026/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/3026/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/3028", Italia1 HD
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/3028/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/3028/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/3029", IRIS
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/3029/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/3029/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/3032", Rete4 HD
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/3032/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/3032/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/3033", Italia Due
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/3033/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/3033/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/3034", DMAX Italy
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/3034/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/3034/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/3036", TeleTicino
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/3036/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/3036/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/3038", Boing
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/3038/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/3038/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/3041", Cielo
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/3041/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/3041/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/3045", RSI LA1 HD
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/3045/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/3045/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/3046", RSI LA2 HD
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/3046/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/3046/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/3047", Cartoonito
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/3047/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/3047/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/3048", Frisbee
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/3048/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/3048/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/3049", K2
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/3049/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/3049/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/3050", Rai YoYo
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/3050/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/3050/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/3051", Super
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/3051/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/3051/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/3052", Real Time
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/3052/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/3052/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/3053", Giallo
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/3053/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/3053/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/3054", TOP Crime
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/3054/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/3054/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/3055", Nove
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/3055/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/3055/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/3056", Rai Movie
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/3056/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/3056/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/3057", Rai Premium
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/3057/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/3057/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/3058", Rai 5
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/3058/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/3058/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/3059", Sky TG24
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/3059/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/3059/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/3060", Focus
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/3060/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/3060/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/3061", Mediaset Extra
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/3061/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/3061/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/4001", CNBC Europe
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/4001/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/4001/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/4002", CNN International HD
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/4002/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/4002/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/4003", BBC World
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/4003/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/4003/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/4005", ITV 2
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/4005/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/4005/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/4011", Fashion TV
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/4011/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/4011/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/4012", BBC Two HD
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/4012/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/4012/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/4013", Al Jazeera English
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/4013/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/4013/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/4014", ITV Granada HD
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/4014/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/4014/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/4016", E4
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/4016/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/4016/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/4017", BBC One HD
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/4017/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/4017/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/4018", ITV HD
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/4018/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/4018/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/4019", Sky News International
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/4019/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/4019/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/4020", More4
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/4020/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/4020/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/4022", Channel 4 HD
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/4022/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/4022/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/4023", Film Four
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/4023/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/4023/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/4024", Channel 5
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/4024/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/4024/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/4025", ITV 3
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/4025/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/4025/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/4026", ITV 4
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/4026/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/4026/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/5001", RTP International
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/5001/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/5001/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/5003", TVE Internacional
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/5003/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/5003/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/5006", TV Polonia
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/5006/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/5006/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/5008", Andalucia TV
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/5008/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/5008/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/5018", Show Türk
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/5018/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/5018/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/5023", RedeRecord
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/5023/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/5023/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/5035", TV Galicia
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/5035/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/5035/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/5040", RTK SAT
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/5040/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/5040/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/5044", BVN
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/5044/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/5044/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/5045", RTS Sat
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/5045/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/5045/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/5047", TRT Turk
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/5047/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/5047/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/5048", CCTV4
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/5048/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/5048/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/5050", ATV Avrupa
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/5050/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/5050/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/5051", Euro Star
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/5051/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/5051/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/5052", Kanal 7 Avrupa
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/5052/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/5052/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/5055", Euro D
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/5055/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/5055/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/6038", Sport 1 HD CH
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/6038/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/6038/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/6104", Video Italia HD
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/6104/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/6104/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/6241", Motorvision HD
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/6241/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/6241/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/1136", TLC HD
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/1136/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/1136/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/1138", Tele Top HD
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/1138/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/1138/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/1139", MDR HD
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/1139/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/1139/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/1140", HR HD
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/1140/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/1140/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/1141", rbb HD
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/1141/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/1141/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/1142", tagesschau24 HD
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/1142/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/1142/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/1143", One HD
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/1143/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/1143/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/1144", Welt HD
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/1144/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/1144/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/1147", RTL UP
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/1147/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/1147/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/1159", VOXup
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/1159/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/1159/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/3013", La 7 HD
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/3013/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/3013/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/3062", Rai 2 HD
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/3062/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/3062/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/3063", Rai 3 HD
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/3063/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/3063/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/4032", BBC Three / CBBC HD
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/4032/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/4032/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/4033", BBC Four / CBeebies HD
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/4033/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/4033/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/5030", TRT 1
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/5030/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/5030/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/5031", CGTN
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/5031/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/5031/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/1036", Alpen-Welle TV HD
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/1036/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/1036/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/1050", auftanken.TV HD
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/1050/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/1050/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/1057", Thurcom HD
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/1057/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/1057/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/1058", HSE Trend
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/1058/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/1058/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/1059", Channel 21
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/1059/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/1059/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/1063", Melodie TV
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/1063/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/1063/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/1064", Sonnenklar TV
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/1064/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/1064/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/1065", SR Fernsehen HD
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/1065/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/1065/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/1071", Tele D HD
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/1071/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/1071/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/1091", HGTV
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/1091/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/1091/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/1145", Game TV
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/1145/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/1145/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/1148", K-TV
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/1148/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/1148/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/1161", Swiss Sport HD
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/1161/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/1161/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/4010", BBC Entertainment
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/4010/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/4010/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/4015", BBC NEWS
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/4015/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/4015/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/4029", Phoenix CNE
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/4029/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/4029/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/4030", TravelXP
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/4030/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/4030/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/5009", Arirang TV
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/5009/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/5009/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/5011", Duna HD
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/5011/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/5011/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/5013", ERT World
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/5013/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/5013/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/5019", TRT Haber
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/5019/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/5019/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/5020", TRT 3 SPOR
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/5020/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/5020/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/5021", TV Montenegro
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/5021/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/5021/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/5022", TV Slovenija 1
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/5022/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/5022/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/5024", TV Slovenija 2
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/5024/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/5024/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/5026", TRT Cocuk
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/5026/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/5026/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/6130", 4Music
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/6130/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/6130/index.m3u8?content_location=x-poseidon
 #KODIPROP:inputstreamclass=inputstream.adaptive
 #KODIPROP:inputstream.adaptive.manifest_type=hls
 #EXTINF:0001 tvg-logo="https://web.netstream.tv/fb/channel-logo/7001", 24/7 Live Fire Pit
-https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/7001/index.m3u8?adap=mobile&content_location=x-poseidon
+https://netstream-hls.customers.xcdn.iptv.ch/v1/hls/ott/tv/1/7001/index.m3u8?content_location=x-poseidon
